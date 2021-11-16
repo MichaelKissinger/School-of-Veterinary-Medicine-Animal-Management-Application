@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 
 public class API {
     public static void main(String[] args) throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        HttpServer server = HttpServer.create(new InetSocketAddress(9100), 0);
 
         server.createContext("/api/SearchPage", exchange -> {
             if ("GET".equals(exchange.getRequestMethod())){
