@@ -2,6 +2,7 @@ package com.example.project.controllers;
 
 import com.example.project.model.Admin;
 import com.example.project.model.Animal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,9 +10,11 @@ import java.util.ArrayList;
 
 @RestController
 public class AdminController {
+    String response;
+
+    @Autowired
     Admin admin;
     Animal animal;
-    String response;
 
     @RequestMapping(("/admin"))
     public String display() {
