@@ -1,7 +1,9 @@
 package com.example.project.controllers;
 
-import com.example.project.model.Animal;
+import com.example.project.model.*;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 public class AnimalProfilesController {
@@ -18,9 +20,9 @@ public class AnimalProfilesController {
 
     //Display Pictures
     //Get
-    @GetMapping("/animal/{id}/pictures")
-    public String pictures(@PathVariable int id) {
-        return animal.getAnimalPictures(id);
+    @GetMapping("/animal/pictures")
+    public ArrayList<AnimalPicture> pictures() {
+        return animal.getAnimalPictures();
     }
 
     //Add pictures
@@ -29,8 +31,8 @@ public class AnimalProfilesController {
     //Show animal information
     //Get
     @GetMapping("/animal/information")
-    public String information(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    public ArrayList<String> information() {
+        return animal.getAnimalInfo();
     }
 
     //Update Animal Information
@@ -38,8 +40,8 @@ public class AnimalProfilesController {
 
     //Show animal status
     @GetMapping("/animal/status")
-    public String status(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    public ArrayList<AnimalStatus> status() {
+        return animal.getAnimalStatuses();
     }
 
     //Update animal status
@@ -48,8 +50,8 @@ public class AnimalProfilesController {
     //Show animal Treatments
     //Get
     @GetMapping("/animal/treatments")
-    public String treatments(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    public ArrayList<AnimalTreatment> treatments() {
+        return animal.getAnimalTreatments();
     }
 
     //Add animal treatments
@@ -58,8 +60,8 @@ public class AnimalProfilesController {
     //Show comments
     //Get
     @GetMapping("/animal/comments")
-    public String comments(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    public ArrayList<AnimalComment> comments() {
+        return animal.getAnimalComments();
     }
 
     //Add comments

@@ -3,10 +3,9 @@ package com.example.project.model;
 
 public class AnimalComment {
 
-    private String date;
+    private String commentID;
+    private String userID;
+    private String animalID;
     private String description;
-    private String location;
-    private String status;
-
 
 }
