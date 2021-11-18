@@ -1,6 +1,7 @@
 package com.example.project.controllers;
 
 import com.example.project.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -16,74 +17,80 @@ public class AnimalProfilesController {
 //    }
 
     //Display Pictures
-    @GetMapping("/animal/pictures")
-    public ArrayList<AnimalPicture> pictures() {
-        return animal.getAnimalPictures();
+    @GetMapping("/animal/{animalID}/pictures")
+    public /*ArrayList<AnimalPicture>*/ String pictures(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalPictures();
+        return String.format("Returning Animal Pictures as an ArrayList for animal with %s", animalID);
     }
 
     //Add pictures
-    @PostMapping("/animal/pictures")
-    public void addPicture(@RequestBody AnimalPicture newAnimalPicture) {
+    @PostMapping("/animal/{animalID}/pictures")
+    public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
         animal.addAnimalPicture(newAnimalPicture);
     }
 
     //Show animal information
-    @GetMapping("/animal/information")
-    public ArrayList<String> information() {
-        return animal.getAnimalInfo();
+    @GetMapping("/animal/{animalID}/information")
+    public /*ArrayList<String>*/ String information(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalInfo();
+        return String.format("Returning Animal Information as an ArrayList for animal with %s", animalID);
     }
 
     //Update Animal Information
-    @PutMapping("/animal/information")
-    public void updateInformation(@RequestBody String information) {
+    @PutMapping("/animal/{animalID}/information")
+    public void updateInformation(@RequestBody String information, @PathVariable("animalID") String animalID) {
         animal.updateInformation(information);
     }
 
     //Show animal status
-    @GetMapping("/animal/status")
-    public ArrayList<AnimalStatus> status() {
-        return animal.getAnimalStatuses();
+    @GetMapping("/animal/{animalID}/status")
+    public /*ArrayList<AnimalStatus>*/ String status(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalStatuses();
+        return String.format("Returning Animal Status for animal with %s", animalID);
     }
 
     //Update animal status
-    @PutMapping("/animal/status")
-    public void updateStatus(@RequestBody AnimalStatus newAnimalStatus) {
+    @PutMapping("/animal/{animalID}/status")
+    public void updateStatus(@RequestBody AnimalStatus newAnimalStatus, @PathVariable("animalID") String animalID) {
         animal.updateAnimalStatus(newAnimalStatus);
     }
 
     //Show animal Treatments
-    @GetMapping("/animal/treatments")
-    public ArrayList<AnimalTreatment> treatments() {
-        return animal.getAnimalTreatments();
+    @GetMapping("/animal/{animalID}/treatments")
+    public /*ArrayList<AnimalTreatment>*/ String treatments(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalTreatments();
+        return String.format("Returning Animal treatments as an ArrayList for animal with %s", animalID);
     }
 
     //Add animal treatments
-    @PostMapping("/animal/treatments")
-    public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment) {
+    @PostMapping("/animal/{animalID}/treatments")
+    public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment, @PathVariable("animalID") String animalID) {
         animal.addAnimalTreatment(newAnimalTreatment);
     }
 
     //Show comments
-    @GetMapping("/animal/comments")
-    public ArrayList<AnimalComment> comments() {
-        return animal.getAnimalComments();
+    @GetMapping("/animal/{animalID}/comments")
+    public /*ArrayList<AnimalComment>*/ String comments(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalComments();
+        return String.format("Returning Animal comments as an ArrayList for animal with %s", animalID);
     }
 
     //Add comments
-    @PostMapping("/animal/comments")
-    public void addComment(@RequestBody AnimalComment newAnimalComment) {
+    @PostMapping("/animal/{animalID}/comments")
+    public void addComment(@RequestBody AnimalComment newAnimalComment, @PathVariable("animalID") String animalID) {
         animal.addAnimalComment(newAnimalComment);
     }
 
     //Show prescriptions
-    @GetMapping("/animal/prescriptions")
-    public ArrayList<AnimalPrescription> prescriptions() {
-        return animal.getAnimalPrescriptions();
+    @GetMapping("/animal/{animalID}/prescriptions")
+    public /*ArrayList<AnimalPrescription>*/ String prescriptions(@PathVariable("animalID") String animalID) {
+//        animal.getAnimalPrescriptions();
+        return String.format("Returning Animal prescriptions as an ArrayList for animal with %s", animalID);
     }
 
     //Add prescription
-    @PostMapping("/animal/prescriptions")
-    public void addPrescriptions(@RequestBody AnimalPrescription newAnimalPrescription) {
+    @PostMapping("/anima/{animalID}l/prescriptions")
+    public void addPrescriptions(@RequestBody AnimalPrescription newAnimalPrescription, @PathVariable("animalID") String animalID) {
         animal.addAnimalPrescription(newAnimalPrescription);
     }
 
