@@ -10,10 +10,6 @@ public class AnimalProfilesController {
 
     private Animal animal;
 
-    public AnimalProfilesController (Animal animal) {
-        this.animal = animal;
-    }
-
     //User profile
     //Log out
     //Back to Search
