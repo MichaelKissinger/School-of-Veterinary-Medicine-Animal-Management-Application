@@ -10,6 +10,13 @@ public class AnimalProfilesController {
 
     private Animal animal;
 
+<<<<<<< HEAD
+=======
+//    public AnimalProfilesController (Animal animal) {
+//        this.animal = animal;
+//    }
+
+>>>>>>> 1527e4ac53214a88c107c35dbd0d36b4b74f9ac4
     //User profile
     //Log out
     //Back to Search
