@@ -1,5 +1,7 @@
 package com.example.project.controllers;
 
+import com.example.project.model.Admin;
+import com.example.project.model.Animal;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -7,51 +9,43 @@ import java.util.ArrayList;
 
 @RestController
 public class AdminController {
-    ArrayList<Object> students;
-    ArrayList<Object> animals;
-    ArrayList<Object> blockList;
-    Object admin;
+    Admin admin;
+    Animal animal;
     String response;
-
-    public void addStudent(Object newStudent) {
-        if (!(students.contains(newStudent)))
-            students.add(newStudent);
-    }
-
-    public void removeStudent(Object student) {
-        students.remove(student);
-    }
-
-    public void blockStudent(Object student) {
-        blockList.add(student);
-        removeStudent(student);
-    }
-
-    public void addAnimal(Object animal, String comment) {
-//        animals.get(animal).add(comment);
-    }
-
-    public ArrayList<Object> requestAnimalList() {
-        return animals;
-    }
-
-    public void displayAdminInfo() {
-//        System.out.println("Name: "+ admin.getName()+ "Last Name: "+ admin.getLastName()+ "Birth Date: "+ admin.getBirthDate());
-    }
-
-    public void DisplayAnimals() {
-        for (Object animal : animals)
-            System.out.println(animal.toString());
-    }
-
-    public void DisplayUsers() {
-        for (Object user : students)
-            System.out.println(user.toString());
-    }
 
     @RequestMapping(("/admin"))
     public String display() {
+//        admin.displayAdminInfo();
+//        admin.displayUsers();
         response = "Welcome to Admin Page! In this page you have full access to animals, users, ....";
+        return response;
+    }
+
+    @RequestMapping(("/admin/add"))
+    public String add() {
+//        admin.addAnimal();
+        response = "Welcome to Admin Page! In this page you add users, ....";
+        return response;
+    }
+
+    @RequestMapping(("/admin/remove"))
+    public String remove() {
+//        admin.removeStudent();
+        response = "Welcome to Admin Page! In this page you can remoce users, ....";
+        return response;
+    }
+
+    @RequestMapping(("/admin/block"))
+    public String block() {
+//        admin.blockStudent();
+        response = "Welcome to Admin Page! In this page you can block users, ....";
+        return response;
+    }
+
+    @RequestMapping(("/admin/requestAnimal"))
+    public String reqAnimal() {
+//        admin.blockStudent();
+        response = "Welcome to Admin Page! In this page you can request for an animal ....";
         return response;
     }
 }

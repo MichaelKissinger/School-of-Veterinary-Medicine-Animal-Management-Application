@@ -1,5 +1,7 @@
 package com.example.project.model;
 
+import com.example.project.model.*;
+
 import java.util.ArrayList;
 
 public class Animal {
@@ -95,4 +97,26 @@ public class Animal {
     public void setAnimalComments(ArrayList<AnimalComment> animalComments) {
         this.animalComments = animalComments;
     }
+
+    public void addAnimalPicture(AnimalPicture animalPicture) {
+        animalPictures.add(animalPicture);
+    }
+
+    public void updateAnimalStatus(AnimalStatus animalStatuses) {}
+
+    public void addAnimalPrescription(AnimalPrescription animalPrescription) {
+        animalPrescriptions.add(animalPrescription);
+    }
+
+    public void addAnimalTreatment(AnimalTreatment animalTreatment) {
+        animalTreatments.add(animalTreatment);
+    }
+
+    public void addAnimalComment(AnimalComment animalComment) {
+        animalComments.add(animalComment);
+    }
+
+    public void updateInformation(String info) {}
+
+
 }

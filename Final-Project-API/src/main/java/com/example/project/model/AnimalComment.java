@@ -8,4 +8,10 @@ public class AnimalComment {
     private String animalID;
     private String description;
 
+    public AnimalComment(String commentID, String userID, String animalID, String description) {
+        this.commentID = commentID;
+        this.userID = userID;
+        this.animalID = animalID;
+        this.description = description;
+    }
 }

@@ -10,36 +10,34 @@ public class AnimalProfilesController {
 
     private Animal animal;
 
-<<<<<<< HEAD
-=======
-//    public AnimalProfilesController (Animal animal) {
+    //To be implemented later
+//    AnimalProfilesController(Animal animal) {
 //        this.animal = animal;
 //    }
 
->>>>>>> 1527e4ac53214a88c107c35dbd0d36b4b74f9ac4
-    //User profile
-    //Log out
-    //Back to Search
-
     //Display Pictures
-    //Get
     @GetMapping("/animal/pictures")
     public ArrayList<AnimalPicture> pictures() {
         return animal.getAnimalPictures();
     }
 
     //Add pictures
-    //Post
+    @PostMapping("/animal/pictures")
+    public void addPicture(@RequestBody AnimalPicture newAnimalPicture) {
+        animal.addAnimalPicture(newAnimalPicture);
+    }
 
     //Show animal information
-    //Get
     @GetMapping("/animal/information")
     public ArrayList<String> information() {
         return animal.getAnimalInfo();
     }
 
     //Update Animal Information
-    //Put
+    @PutMapping("/animal/information")
+    public void updateInformation(@RequestBody String information) {
+        animal.updateInformation(information);
+    }
 
     //Show animal status
     @GetMapping("/animal/status")
@@ -48,29 +46,45 @@ public class AnimalProfilesController {
     }
 
     //Update animal status
-    //Put
+    @PutMapping("/animal/status")
+    public void updateStatus(@RequestBody AnimalStatus newAnimalStatus) {
+        animal.updateAnimalStatus(newAnimalStatus);
+    }
 
     //Show animal Treatments
-    //Get
     @GetMapping("/animal/treatments")
     public ArrayList<AnimalTreatment> treatments() {
         return animal.getAnimalTreatments();
     }
 
     //Add animal treatments
-    //Post
+    @PostMapping("/animal/treatments")
+    public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment) {
+        animal.addAnimalTreatment(newAnimalTreatment);
+    }
 
     //Show comments
-    //Get
     @GetMapping("/animal/comments")
     public ArrayList<AnimalComment> comments() {
         return animal.getAnimalComments();
     }
 
     //Add comments
-    //Post
+    @PostMapping("/animal/comments")
+    public void addComment(@RequestBody AnimalComment newAnimalComment) {
+        animal.addAnimalComment(newAnimalComment);
+    }
 
+    //Show prescriptions
+    @GetMapping("/animal/prescriptions")
+    public ArrayList<AnimalPrescription> prescriptions() {
+        return animal.getAnimalPrescriptions();
+    }
 
-
+    //Add prescription
+    @PostMapping("/animal/prescriptions")
+    public void addPrescriptions(@RequestBody AnimalPrescription newAnimalPrescription) {
+        animal.addAnimalPrescription(newAnimalPrescription);
+    }
 
 }
