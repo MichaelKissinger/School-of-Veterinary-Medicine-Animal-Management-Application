@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class AdminController {
     String response;
 
-    @Autowired
+//    @Autowired
     Admin admin;
     Animal animal;
 
