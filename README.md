@@ -35,7 +35,7 @@ similar pages but with different types of access, their specific databases, and 
 well as backend and frontend, will be implemented in the next phase of the project.
 Stories covered in this phase of the project: VET981- 15/16/17/18/19/20
 
-
+******************************************************************************
  Jira task: User Profile Page API VET981-59
  https://uofeng607981.atlassian.net/browse/VET981-59
 
