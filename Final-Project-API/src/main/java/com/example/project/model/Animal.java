@@ -1,29 +1,10 @@
 package com.example.project.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 
-import javax.persistence.*;
 import java.sql.SQLException;
 
-//@Entity
-//@Table
 public class Animal {
-//    @Id
-//    @SequenceGenerator(
-//            name = "ANIMAL",
-//            sequenceName = "ANIMAL",
-//            allocationSize = 1
-//    )
-//    @GeneratedValue(
-//            strategy = GenerationType.SEQUENCE,
-//            generator = "ANIMAL"
-//    )
-
-//    private ArrayList<AnimalPrescription> animalPrescriptions;
-//    private ArrayList<AnimalProblem> animalProblems;
-//    private ArrayList<AnimalHistory> animalHistory;
 
     private int animalID;
 
@@ -43,16 +24,6 @@ public class Animal {
         myJDBC = new JDBCConnect();
         myJDBC.createConnection();
         this.animalID = animalID;
-        this.setBreed();
-        this.setDateBirth();
-        this.setCity();
-        this.setName();
-        this.setDateBirth();
-        this.setSex();
-        this.setStatus();
-        this.setTattoo();
-        this.setType();
-        this.setUserID();
     }
 
     public int getAnimalID() {
@@ -63,91 +34,92 @@ public class Animal {
         this.animalID = animalID;
     }
 
-    public String getBreed() {
-        return breed;
+    public String getBreed() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Breed");
     }
 
-    public void setBreed() throws SQLException {
-        this.breed = myJDBC.animalStatement(animalID, "Breed");
+    public void setBreed(String breed) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Breed", breed);
     }
 
-    public String getCity() {
-        return city;
+    public String getCity() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "City");
     }
 
-    public void setCity() throws SQLException {
-        this.city = myJDBC.animalStatement(animalID, "City");
+    public void setCity(String city) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "City", city);
     }
 
-    public String getDateBirth() {
-        return dateBirth;
+    public String getDateBirth() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Date_B");
     }
 
-    public void setDateBirth() throws SQLException {
-        this.dateBirth = myJDBC.animalStatement(animalID, "Date_B");
+    public void setDateBirth(String dateBirth) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Date_B", dateBirth);
     }
 
-    public String getName() {
-        return name;
+    public String getName() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Name");
     }
 
-    public void setName() throws SQLException {
-        this.name = myJDBC.animalStatement(animalID, "Name");
+    public void setName(String name) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Name", name);
     }
 
-    public String getSex() {
-        return sex;
+    public String getSex() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Sex");
     }
 
-    public void setSex() throws SQLException {
-        this.sex = myJDBC.animalStatement(animalID, "Sex");
+    public void setSex(String sex) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Sex", sex);
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatus() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Status");
     }
 
-    public void setStatus() throws SQLException {
-        this.status = myJDBC.animalStatement(animalID, "Status");
+    public void setStatus(String status) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Status", status);
     }
 
-    public int getTattoo() {
-        return tattoo;
+    public int getTattoo() throws SQLException {
+        return Integer.parseInt(myJDBC.animalGetStatement(animalID, "Tattoo"));
     }
 
-    public void setTattoo() throws SQLException {
-        this.tattoo = Integer.parseInt(myJDBC.animalStatement(animalID, "Tattoo"));
+    public void setTattoo(String tattoo) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Tattoo", tattoo);
     }
 
-    public String getType() {
-        return type;
+    public String getType() throws SQLException {
+        return myJDBC.animalGetStatement(animalID, "Type");
     }
 
-    public void setType() throws SQLException {
-        this.type = myJDBC.animalStatement(animalID, "Type");;
+    public void setType(String type) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "Type", type);
     }
 
-    public int getUserID() {
-        return userID;
+    public int getUserID() throws SQLException {
+        return Integer.parseInt(myJDBC.animalGetStatement(animalID, "User_ID"));
     }
 
-    public void setUserID() throws SQLException {
-        this.userID = Integer.parseInt(myJDBC.animalStatement(animalID, "User_ID"));
+    public void setUserID(String userID) throws SQLException {
+        myJDBC.animalSetStatement(animalID, "User_ID", userID);
     }
 
+    @SneakyThrows
     @Override
     public String toString() {
         return "Animal {" +
-                "animalID= " + animalID +
-                ", breed= '" + breed + '\'' +
-                ", city= '" + city + '\'' +
-                ", dateBirth= '" + dateBirth + '\'' +
-                ", name= '" + name + '\'' +
-                ", sex= '" + sex + '\'' +
-                ", status= '" + status + '\'' +
-                ", tattoo= " + tattoo +
-                ", type= '" + type + '\'' +
-                ", userID= " + userID +
+                "animalID= " + this.getAnimalID() +
+                ", breed= '" + this.getBreed() + '\'' +
+                ", city= '" + this.getCity() + '\'' +
+                ", dateBirth= '" + this.getDateBirth() + '\'' +
+                ", name= '" + this.getName() + '\'' +
+                ", sex= '" + this.getSex() + '\'' +
+                ", status= '" + this.getStatus() + '\'' +
+                ", tattoo= " + this.getTattoo() +
+                ", type= '" + this.getType() + '\'' +
+                ", userID= " + this.getAnimalID() +
                 '}';
     }
 }

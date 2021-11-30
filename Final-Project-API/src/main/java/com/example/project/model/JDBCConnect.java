@@ -17,7 +17,7 @@ public class JDBCConnect {
         }
     }
 
-    public String animalStatement(int animalID, String trait) throws SQLException {
+    public String animalGetStatement(int animalID, String trait) throws SQLException {
         StringBuffer animalInfo = new StringBuffer();
         try {
             Statement myStmt = dbConnect.createStatement();
@@ -32,6 +32,23 @@ public class JDBCConnect {
                 e.printStackTrace();
             }
         return animalInfo.toString();
+    }
+
+    public void animalSetStatement(int animalID, String column, String change) throws SQLException {
+        StringBuffer animalInfo = new StringBuffer();
+        try {
+            Statement myStmt = dbConnect.createStatement();
+            myStmt.executeUpdate("UPDATE ANIMAL SET " + column + " = \"" + change +" \" WHERE Animal_ID = \""+ animalID +"\";");
+
+//            while (results.next()) {
+//                animalInfo.append(results.getString(trait));
+//            }
+            myStmt.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
