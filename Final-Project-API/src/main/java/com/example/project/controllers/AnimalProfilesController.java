@@ -4,12 +4,17 @@ import com.example.project.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class AnimalProfilesController {
 
-    private Animal animal;
+//    private final AnimalService animalService;
+//
+//    @Autowired
+//    public AnimalProfilesController(AnimalService animalService) {
+//        this.animalService = animalService;
+//    }
 
     //To be implemented later
 //    AnimalProfilesController(Animal animal) {
@@ -26,20 +31,33 @@ public class AnimalProfilesController {
     //Add pictures
     @PostMapping("/animal/{animalID}/pictures")
     public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
-        animal.addAnimalPicture(newAnimalPicture);
+//        animal.addAnimalPicture(newAnimalPicture);
     }
 
     //Show animal information
-    @GetMapping("/animal/{animalID}/information")
-    public /*ArrayList<String>*/ String information(@PathVariable("animalID") String animalID) {
+//    @GetMapping("/animal/{animalID}/information")
+    @GetMapping("/animal/information")
+    public /*ArrayList<String>*/ String information(/*@PathVariable("animalID") String animalID*/) {
 //        animal.getAnimalInfo();
-        return String.format("Returning Animal Information as an ArrayList for animal with %s", animalID);
+//        return animalService.getAnimals();
+        return "test";
+//        return List.of(
+//                new Animal(1,
+//                        "Active",
+//                        "Yes",
+//                        "jan 2021",
+//                        "Calgary",
+//                        "Cat",
+//                        "DSM",
+//                        101,
+//                        "M",
+//                        1001));
     }
 
     //Update Animal Information
     @PutMapping("/animal/{animalID}/information")
     public void updateInformation(@RequestBody String information, @PathVariable("animalID") String animalID) {
-        animal.updateInformation(information);
+//        animal.updateInformation(information);
     }
 
     //Show animal status
@@ -52,7 +70,7 @@ public class AnimalProfilesController {
     //Update animal status
     @PutMapping("/animal/{animalID}/status")
     public void updateStatus(@RequestBody AnimalStatus newAnimalStatus, @PathVariable("animalID") String animalID) {
-        animal.updateAnimalStatus(newAnimalStatus);
+//        animal.updateAnimalStatus(newAnimalStatus);
     }
 
     //Show animal Treatments
@@ -65,7 +83,7 @@ public class AnimalProfilesController {
     //Add animal treatments
     @PostMapping("/animal/{animalID}/treatments")
     public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment, @PathVariable("animalID") String animalID) {
-        animal.addAnimalTreatment(newAnimalTreatment);
+//        animal.addAnimalTreatment(newAnimalTreatment);
     }
 
     //Show comments
@@ -78,7 +96,7 @@ public class AnimalProfilesController {
     //Add comments
     @PostMapping("/animal/{animalID}/comments")
     public void addComment(@RequestBody AnimalComment newAnimalComment, @PathVariable("animalID") String animalID) {
-        animal.addAnimalComment(newAnimalComment);
+//        animal.addAnimalComment(newAnimalComment);
     }
 
     //Show prescriptions
@@ -91,7 +109,7 @@ public class AnimalProfilesController {
     //Add prescription
     @PostMapping("/anima/{animalID}l/prescriptions")
     public void addPrescriptions(@RequestBody AnimalPrescription newAnimalPrescription, @PathVariable("animalID") String animalID) {
-        animal.addAnimalPrescription(newAnimalPrescription);
+//        animal.addAnimalPrescription(newAnimalPrescription);
     }
 
 }

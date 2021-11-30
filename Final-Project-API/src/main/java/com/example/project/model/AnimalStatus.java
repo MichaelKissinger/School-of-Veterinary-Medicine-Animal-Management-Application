@@ -12,4 +12,6 @@ public class AnimalStatus {
         this.location = location;
         this.status = status;
     }
+
+
 }

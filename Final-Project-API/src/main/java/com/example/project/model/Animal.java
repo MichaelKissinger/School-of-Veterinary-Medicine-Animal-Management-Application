@@ -1,122 +1,153 @@
 package com.example.project.model;
 
-import com.example.project.model.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import javax.persistence.*;
+import java.sql.SQLException;
 
+//@Entity
+//@Table
 public class Animal {
-    private ArrayList<AnimalPicture> animalPictures;
-    private ArrayList<AnimalStatus> animalStatuses;
-    private ArrayList<AnimalPrescription> animalPrescriptions;
-    private ArrayList<AnimalTreatment> animalTreatments;
-    private ArrayList<AnimalComment> animalComments;
+//    @Id
+//    @SequenceGenerator(
+//            name = "ANIMAL",
+//            sequenceName = "ANIMAL",
+//            allocationSize = 1
+//    )
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "ANIMAL"
+//    )
+
+//    private ArrayList<AnimalPrescription> animalPrescriptions;
+//    private ArrayList<AnimalProblem> animalProblems;
+//    private ArrayList<AnimalHistory> animalHistory;
 
     private int animalID;
-    private ArrayList<String> animalInfo;
 
-    private String animalWeight;
-    private String animalTattooNumber;
-    private String cityTattooNumber;
-    private String animalBirthDate;
-
-    private String Breed;
-    private String Sex;
-    private String RFID;
-    private String Microchip;
+    private String breed;
+    private String city;
+    private String dateBirth;
+    private String name;
+    private String sex;
     private String status;
-    private String draughtMeatDairy;
+    private int tattoo;
+    private String type;
+    private int userID;
 
-    private String region;
-    private String subspecies;
-    private String distinguishingFeatures;
-    private String colour;
+    private JDBCConnect myJDBC;
 
-    public Animal() {
-        this.populateAnimalInfoList();
+    public Animal(int animalID) throws SQLException {
+        myJDBC = new JDBCConnect();
+        myJDBC.createConnection();
+        this.animalID = animalID;
+        this.setBreed();
+        this.setDateBirth();
+        this.setCity();
+        this.setName();
+        this.setDateBirth();
+        this.setSex();
+        this.setStatus();
+        this.setTattoo();
+        this.setType();
+        this.setUserID();
     }
 
-    public void populateAnimalInfoList() {
-        animalInfo.add(animalWeight);
-        animalInfo.add(animalTattooNumber);
-        animalInfo.add(cityTattooNumber);
-        animalInfo.add(animalBirthDate);
-
-        animalInfo.add(Breed);
-        animalInfo.add(Sex);
-        animalInfo.add(RFID);
-        animalInfo.add(Microchip);
-        animalInfo.add(status);
-        animalInfo.add(draughtMeatDairy);
-
-        animalInfo.add(region);
-        animalInfo.add(subspecies);
-        animalInfo.add(distinguishingFeatures);
-        animalInfo.add(colour);
+    public int getAnimalID() {
+        return animalID;
     }
 
-    public ArrayList<String> getAnimalInfo() {
-        return animalInfo;
+    public void setAnimalID(int animalID) throws SQLException {
+        this.animalID = animalID;
     }
 
-    public ArrayList<AnimalPicture> getAnimalPictures() {
-        return animalPictures;
+    public String getBreed() {
+        return breed;
     }
 
-    public void setAnimalPictures(ArrayList<AnimalPicture> animalPictures) {
-        this.animalPictures = animalPictures;
+    public void setBreed() throws SQLException {
+        this.breed = myJDBC.animalStatement(animalID, "Breed");
     }
 
-    public ArrayList<AnimalStatus> getAnimalStatuses() {
-        return animalStatuses;
+    public String getCity() {
+        return city;
     }
 
-    public void setAnimalStatuses(ArrayList<AnimalStatus> animalStatuses) {
-        this.animalStatuses = animalStatuses;
+    public void setCity() throws SQLException {
+        this.city = myJDBC.animalStatement(animalID, "City");
     }
 
-    public ArrayList<AnimalPrescription> getAnimalPrescriptions() {
-        return animalPrescriptions;
+    public String getDateBirth() {
+        return dateBirth;
     }
 
-    public void setAnimalPrescriptions(ArrayList<AnimalPrescription> animalPrescriptions) {
-        this.animalPrescriptions = animalPrescriptions;
+    public void setDateBirth() throws SQLException {
+        this.dateBirth = myJDBC.animalStatement(animalID, "Date_B");
     }
 
-    public ArrayList<AnimalTreatment> getAnimalTreatments() {
-        return animalTreatments;
+    public String getName() {
+        return name;
     }
 
-    public void setAnimalTreatments(ArrayList<AnimalTreatment> animalTreatments) {
-        this.animalTreatments = animalTreatments;
+    public void setName() throws SQLException {
+        this.name = myJDBC.animalStatement(animalID, "Name");
     }
 
-    public ArrayList<AnimalComment> getAnimalComments() {
-        return animalComments;
+    public String getSex() {
+        return sex;
     }
 
-    public void setAnimalComments(ArrayList<AnimalComment> animalComments) {
-        this.animalComments = animalComments;
+    public void setSex() throws SQLException {
+        this.sex = myJDBC.animalStatement(animalID, "Sex");
     }
 
-    public void addAnimalPicture(AnimalPicture animalPicture) {
-        animalPictures.add(animalPicture);
+    public String getStatus() {
+        return status;
     }
 
-    public void updateAnimalStatus(AnimalStatus animalStatuses) {}
-
-    public void addAnimalPrescription(AnimalPrescription animalPrescription) {
-        animalPrescriptions.add(animalPrescription);
+    public void setStatus() throws SQLException {
+        this.status = myJDBC.animalStatement(animalID, "Status");
     }
 
-    public void addAnimalTreatment(AnimalTreatment animalTreatment) {
-        animalTreatments.add(animalTreatment);
+    public int getTattoo() {
+        return tattoo;
     }
 
-    public void addAnimalComment(AnimalComment animalComment) {
-        animalComments.add(animalComment);
+    public void setTattoo() throws SQLException {
+        this.tattoo = Integer.parseInt(myJDBC.animalStatement(animalID, "Tattoo"));
     }
 
-    public void updateInformation(String info) {}
+    public String getType() {
+        return type;
+    }
 
+    public void setType() throws SQLException {
+        this.type = myJDBC.animalStatement(animalID, "Type");;
+    }
 
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID() throws SQLException {
+        this.userID = Integer.parseInt(myJDBC.animalStatement(animalID, "User_ID"));
+    }
+
+    @Override
+    public String toString() {
+        return "Animal {" +
+                "animalID= " + animalID +
+                ", breed= '" + breed + '\'' +
+                ", city= '" + city + '\'' +
+                ", dateBirth= '" + dateBirth + '\'' +
+                ", name= '" + name + '\'' +
+                ", sex= '" + sex + '\'' +
+                ", status= '" + status + '\'' +
+                ", tattoo= " + tattoo +
+                ", type= '" + type + '\'' +
+                ", userID= " + userID +
+                '}';
+    }
 }
