@@ -4,6 +4,7 @@ import com.example.project.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -36,22 +37,10 @@ public class AnimalProfilesController {
 
     //Show animal information
 //    @GetMapping("/animal/{animalID}/information")
-    @GetMapping("/animal/information")
-    public /*ArrayList<String>*/ String information(/*@PathVariable("animalID") String animalID*/) {
-//        animal.getAnimalInfo();
-//        return animalService.getAnimals();
-        return "test";
-//        return List.of(
-//                new Animal(1,
-//                        "Active",
-//                        "Yes",
-//                        "jan 2021",
-//                        "Calgary",
-//                        "Cat",
-//                        "DSM",
-//                        101,
-//                        "M",
-//                        1001));
+    @GetMapping("/animal/{animalID}/information")
+    public String information(@PathVariable("animalID") int animalID) throws SQLException {
+        Animal myAnimal = new Animal(animalID);
+        return myAnimal.toString();
     }
 
     //Update Animal Information
