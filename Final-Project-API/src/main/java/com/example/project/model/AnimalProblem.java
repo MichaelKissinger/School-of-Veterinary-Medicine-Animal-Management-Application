@@ -10,12 +10,10 @@ public class AnimalProblem {
     private String disease;
     private String description;
 
-    private JDBCConnect myJDBC;
-
-    public AnimalProblem(int animalId) {
-        myJDBC = new JDBCConnect();
-        myJDBC.createConnection();
+    public AnimalProblem(int animalId, String disease, String description) {
         this.animalId = animalId;
+        this.disease = disease;
+        this.description = description;
     }
 
     public int getAnimalId() {
@@ -26,29 +24,28 @@ public class AnimalProblem {
         this.animalId = animalId;
     }
 
-    public String getDisease() throws SQLException {
-        return myJDBC.animalGetProblem(animalId, "Disease");
+    public String getDisease() {
+        return disease;
     }
 
     public void setDisease(String disease) {
         this.disease = disease;
     }
 
-    public String getDescription() throws SQLException {
-        return myJDBC.animalGetProblem(animalId, "Description");
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @SneakyThrows
     @Override
     public String toString() {
         return "AnimalProblem{" +
-                "animalId=" + this.getAnimalId() +
-                ", disease='" + this.getDisease() + '\'' +
-                ", description='" + this.getDescription() + '\'' +
+                "animalId=" + animalId +
+                ", disease='" + disease + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

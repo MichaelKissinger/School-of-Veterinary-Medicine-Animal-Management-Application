@@ -3,6 +3,7 @@ package com.example.project.model;
 import lombok.SneakyThrows;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Animal {
 
@@ -18,12 +19,47 @@ public class Animal {
     private String type;
     private int userID;
 
+    private ArrayList<AnimalProblem> animalProblems;
+    private ArrayList<AnimalPrescription> animalPrescriptions;
+    private ArrayList<AnimalHistory> animalHistory;
+
     private JDBCConnect myJDBC;
 
     public Animal(int animalID) throws SQLException {
         myJDBC = new JDBCConnect();
         myJDBC.createConnection();
         this.animalId = animalID;
+        setAnimalInfo();
+        setAnimalProblems();
+        setAnimalPrescriptions();
+        setAnimalHistory();
+    }
+
+    public ArrayList<AnimalProblem> getAnimalProblems() {
+        return animalProblems;
+    }
+
+    public void setAnimalProblems() throws SQLException {
+        this.animalProblems = myJDBC.animalGetProblems(animalId);
+    }
+
+    public ArrayList<AnimalPrescription> getAnimalPrescriptions() {
+        return animalPrescriptions;
+    }
+
+    public void setAnimalPrescriptions() throws SQLException {
+        this.animalPrescriptions = myJDBC.animalGetPrescriptions(animalId);
+    }
+
+    public ArrayList<AnimalHistory> getAnimalHistory() {
+        return animalHistory;
+    }
+
+    public void setAnimalHistory() throws SQLException {
+        this.animalHistory = myJDBC.animalGetHistory(animalId);
+    }
+
+    public void setAnimalInfo() throws SQLException {
         this.breed = this.getBreed();
         this.city = this.getCity();
         this.dateBirth = this.getDateBirth();
