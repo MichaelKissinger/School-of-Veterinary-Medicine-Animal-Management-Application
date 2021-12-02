@@ -61,11 +61,16 @@ public class BackEndAppTester {
         int username = 547896;
         int password = 1212;
         LoginChecker checker = new LoginChecker(username, password);
+        User user = null;
         checker.checkUsernamePassword();
         if (checker.checkUsernamePassword()) {
-            User user = new User(username, password);
-            user.setUserInfo();
-            System.out.println(user);
+            user = new User(username, password);
         }
+
+        if (user.getPermission().equals("Admin")) {
+          Admin admin = new Admin(user);
+          admin.printUsers();
+        }
+
     }
 }

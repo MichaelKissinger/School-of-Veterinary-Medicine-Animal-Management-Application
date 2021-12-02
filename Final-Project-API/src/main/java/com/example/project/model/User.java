@@ -17,9 +17,10 @@ public class User {
         this.username = username;
         this.password = password;
         userDB = new UserDB();
+        setUserInfo();
     }
 
-    public String setUserInfo() {
+    public void setUserInfo() {
         setLname((userDB.getUserInfo(username, password, "Lname")));
         setFname((userDB.getUserInfo(username, password, "Fname")));
         setPhoneNumber(userDB.getUserInfo(username, password, "Phone"));
@@ -28,7 +29,7 @@ public class User {
         setBirthDate(userDB.getUserInfo(username, password, "Date_B"));
         setActivationDate(userDB.getUserInfo(username, password, "ActivationDate"));
         setPermission(userDB.getPermissionType(username));
-        return "";
+
     }
 
     public String getLname() {
