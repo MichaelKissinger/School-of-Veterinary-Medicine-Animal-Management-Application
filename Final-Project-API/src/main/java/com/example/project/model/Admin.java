@@ -34,7 +34,6 @@ public class Admin {
             users.add(new User(Integer.parseInt(userPass.substring(0, 6)), Integer.parseInt(userPass.substring(7))));
         }
         scanner.close();
-
     }
 
     public void printUsers() {

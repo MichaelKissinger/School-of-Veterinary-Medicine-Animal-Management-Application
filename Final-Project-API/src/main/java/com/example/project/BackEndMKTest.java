@@ -22,29 +22,29 @@ public class BackEndMKTest {
         System.out.println("Here is the information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
         System.out.println(myAnimal);
 
-//        System.out.println("Here is the prescription information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
-//        try {
-//            AnimalPrescription myPrescripts = new AnimalPrescription(myAnimal.getAnimalId());
-//            System.out.println(myPrescripts);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        System.out.println("Here is the problem information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
-//        try {
-//            AnimalProblem myProblem = new AnimalProblem(myAnimal.getAnimalId());
-//            System.out.println(myProblem);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-        System.out.println("Here is the history information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
+        System.out.println("Here is the prescription information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
         try {
-            AnimalHistory myHistory = new AnimalHistory(myAnimal.getAnimalId());
-            System.out.println(myHistory);
+            AnimalPrescription myPrescripts = new AnimalPrescription(myAnimal.getAnimalId());
+            System.out.println(myPrescripts);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("Here is the problem information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
+        try {
+            AnimalProblem myProblem = new AnimalProblem(myAnimal.getAnimalId());
+            System.out.println(myProblem);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        System.out.println("Here is the history information for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
+//        try {
+//            AnimalHistory myHistory = new AnimalHistory(myAnimal.getAnimalId());
+//            System.out.println(myHistory);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

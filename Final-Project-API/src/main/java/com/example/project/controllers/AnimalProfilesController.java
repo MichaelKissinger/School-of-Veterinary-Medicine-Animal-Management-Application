@@ -29,11 +29,11 @@ public class AnimalProfilesController {
         return String.format("Returning Animal Pictures as an ArrayList for animal with %s", animalID);
     }
 
-    //Add pictures
-    @PostMapping("/animal/{animalID}/pictures")
-    public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
-//        animal.addAnimalPicture(newAnimalPicture);
-    }
+//    //Add pictures
+//    @PostMapping("/animal/{animalID}/pictures")
+//    public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
+////        animal.addAnimalPicture(newAnimalPicture);
+//    }
 
     //Show animal information
 //    @GetMapping("/animal/{animalID}/information")
@@ -57,10 +57,10 @@ public class AnimalProfilesController {
     }
 
     //Update animal status
-    @PutMapping("/animal/{animalID}/status")
-    public void updateStatus(@RequestBody AnimalStatus newAnimalStatus, @PathVariable("animalID") String animalID) {
-//        animal.updateAnimalStatus(newAnimalStatus);
-    }
+//    @PutMapping("/animal/{animalID}/status")
+//    public void updateStatus(@RequestBody AnimalStatus newAnimalStatus, @PathVariable("animalID") String animalID) {
+////        animal.updateAnimalStatus(newAnimalStatus);
+//    }
 
     //Show animal Treatments
     @GetMapping("/animal/{animalID}/treatments")
@@ -70,10 +70,10 @@ public class AnimalProfilesController {
     }
 
     //Add animal treatments
-    @PostMapping("/animal/{animalID}/treatments")
-    public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment, @PathVariable("animalID") String animalID) {
-//        animal.addAnimalTreatment(newAnimalTreatment);
-    }
+//    @PostMapping("/animal/{animalID}/treatments")
+//    public void addTreatment(@RequestBody AnimalTreatment newAnimalTreatment, @PathVariable("animalID") String animalID) {
+////        animal.addAnimalTreatment(newAnimalTreatment);
+//    }
 
     //Show comments
     @GetMapping("/animal/{animalID}/comments")
@@ -83,10 +83,10 @@ public class AnimalProfilesController {
     }
 
     //Add comments
-    @PostMapping("/animal/{animalID}/comments")
-    public void addComment(@RequestBody AnimalComment newAnimalComment, @PathVariable("animalID") String animalID) {
-//        animal.addAnimalComment(newAnimalComment);
-    }
+//    @PostMapping("/animal/{animalID}/comments")
+//    public void addComment(@RequestBody AnimalComment newAnimalComment, @PathVariable("animalID") String animalID) {
+////        animal.addAnimalComment(newAnimalComment);
+//    }
 
     //Show prescriptions
     @GetMapping("/animal/{animalID}/prescriptions")
