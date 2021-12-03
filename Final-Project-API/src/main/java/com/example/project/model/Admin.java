@@ -10,6 +10,7 @@ public class Admin {
     ArrayList<User> users;
     User admin;
     UserDB userDB;
+    ArrayList<User> bloccklist;
 
     public Admin(User user) throws SQLException {
         admin = user;
@@ -18,10 +19,17 @@ public class Admin {
         userDB = new UserDB();
         addUser();
         addAnimal();
+        bloccklist = new ArrayList<>();
     }
 
     public void editUser(User user, String column, String value) {
         userDB.updateUserInfo(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()), column, value);
+        addUser();
+    }
+
+    public void blockUser(User user){
+        bloccklist.add(user);
+        userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
         addUser();
     }
 
@@ -56,10 +64,9 @@ public class Admin {
         }
     }
 
-    public void printAnimal() {
+    public void printAnimal() throws SQLException {
         for (Animal a : animals) {
-            System.out.println(a);
-            System.out.println();
+            System.out.println(a.getName() + " Status: " + a.getStatus());
         }
     }
 }

@@ -10,7 +10,7 @@ public class UserDB {
         try {
             //You may have to enter your own SQL password below to make this work
             connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -73,7 +73,7 @@ public class UserDB {
         return permissionType;
     }
 
-    public String adminAccessGetUser(){
+    public String adminAccessGetUser() {
         StringBuffer result = new StringBuffer();
         try {
             createConnection();
@@ -81,7 +81,7 @@ public class UserDB {
             rs = myStmt.executeQuery("SELECT * FROM USER ;");
 
             while (rs.next())
-                result.append(rs.getString("userID") + " " +rs.getString("Password") + "\n");
+                result.append(rs.getString("userID") + " " + rs.getString("Password") + "\n");
 
 
         } catch (Exception e) {
@@ -89,7 +89,8 @@ public class UserDB {
         }
         return result.toString();
     }
-    public String adminAccessGetAnimal(){
+
+    public String adminAccessGetAnimal() {
         StringBuffer result_animal = new StringBuffer();
         try {
             createConnection();
@@ -98,7 +99,6 @@ public class UserDB {
 
             while (rs.next())
                 result_animal.append(rs.getString("Animal_ID") + "\n");
-//            System.out.println(rs.getString("Animal_ID"));
 
 
         } catch (Exception e) {
@@ -107,16 +107,28 @@ public class UserDB {
         return result_animal.toString();
     }
 
-    public void updateUserInfo(String username, String pass,  String column, String update){
+    public void updateUserInfo(String username, String pass, String column, String update) {
         try {
             createConnection();
             Statement myStmt = connection.createStatement();
 
-            myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = \"" + username + "\";");
+            myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username + " AND Password = " + pass + ";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
+    }
+
+    public void deleteUser(String user, String pass) {
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+
+            myStmt.executeUpdate("DELETE FROM USER WHERE UserID = " + user + " AND Password = " + pass + ";");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
