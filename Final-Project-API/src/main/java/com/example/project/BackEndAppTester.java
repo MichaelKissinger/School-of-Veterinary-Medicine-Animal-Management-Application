@@ -68,8 +68,10 @@ public class BackEndAppTester {
         }
 
         if (user.getPermission().equals("Admin")) {
-          Admin admin = new Admin(user);
-          admin.printUsers();
+            Admin admin = new Admin(user);
+            admin.printUsers();
+            admin.editUser(new User(784513, 8080), "Lname", "Soqri");
+            admin.printUsers();
         }
 
     }

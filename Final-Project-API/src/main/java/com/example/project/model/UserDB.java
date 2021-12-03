@@ -73,7 +73,7 @@ public class UserDB {
         return permissionType;
     }
 
-    public String adminAccess(){
+    public String adminAccessGetUser(){
         StringBuffer result = new StringBuffer();
         try {
             createConnection();
@@ -88,5 +88,35 @@ public class UserDB {
             e.printStackTrace();
         }
         return result.toString();
+    }
+    public String adminAccessGetAnimal(){
+        StringBuffer result_animal = new StringBuffer();
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+            rs = myStmt.executeQuery("SELECT * FROM ANIMAL ;");
+
+            while (rs.next())
+                result_animal.append(rs.getString("Animal_ID") + "\n");
+//            System.out.println(rs.getString("Animal_ID"));
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result_animal.toString();
+    }
+
+    public void updateUserInfo(String username, String pass,  String column, String update){
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+
+            myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = \"" + username + "\";");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
 }
