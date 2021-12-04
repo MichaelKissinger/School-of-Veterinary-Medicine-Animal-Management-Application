@@ -131,4 +131,22 @@ public class UserDB {
             throwables.printStackTrace();
         }
     }
+
+    public void addUserToDB(String username,String password,String lName,String fName,String phone,String email, String sex, String dateB, String activationDate,String permission) throws SQLException {
+        String query = " insert into USER (UserID, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement preparedStmt = connection.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(username));
+        preparedStmt.setInt (2, Integer.parseInt(password));
+        preparedStmt.setString   (3, lName);
+        preparedStmt.setString(4, fName);
+        preparedStmt.setString(5, phone);
+        preparedStmt.setString    (6, email);
+        preparedStmt.setString    (7, sex);
+        preparedStmt.setString    (8, dateB);
+        preparedStmt.setString    (9, activationDate);
+
+        // execute the preparedstatement
+        preparedStmt.execute();
+        connection.close();
+    }
 }

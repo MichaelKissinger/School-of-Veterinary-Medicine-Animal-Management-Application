@@ -27,7 +27,7 @@ public class Admin {
         addUser();
     }
 
-    public void blockUser(User user){
+    public void blockUser(User user) {
         bloccklist.add(user);
         userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
         addUser();
@@ -62,6 +62,12 @@ public class Admin {
             System.out.println(u);
             System.out.println();
         }
+    }
+
+    public void addNewUser(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB,String actDate, String permission) throws SQLException {
+        userDB.addUserToDB(username, password, lName, fName, phone, email, sex, dateB, actDate, permission);
+        addUser();
+
     }
 
     public void printAnimal() throws SQLException {
