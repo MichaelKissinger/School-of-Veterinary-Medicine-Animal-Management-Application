@@ -125,6 +125,11 @@ public class UserDB {
             createConnection();
             Statement myStmt = connection.createStatement();
 
+            myStmt.executeUpdate("DELETE FROM STUDENT WHERE UserID = " + user + ";");
+            myStmt.executeUpdate("DELETE FROM Admin WHERE UserID = " + user + ";");
+            myStmt.executeUpdate("DELETE FROM HEALTH_TECHNICIAN WHERE UserID = " + user + ";");
+            myStmt.executeUpdate("DELETE FROM TEACHER_TECHNICIAN WHERE UserID = " + user + ";");
+            myStmt.executeUpdate("DELETE FROM CARE_ATTENDANT WHERE UserID = " + user + ";");
             myStmt.executeUpdate("DELETE FROM USER WHERE UserID = " + user + " AND Password = " + pass + ";");
 
         } catch (SQLException throwables) {
@@ -132,21 +137,45 @@ public class UserDB {
         }
     }
 
-    public void addUserToDB(String username,String password,String lName,String fName,String phone,String email, String sex, String dateB, String activationDate,String permission) throws SQLException {
+    public void addUserToDB(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB, String activationDate, String permission) throws SQLException {
         String query = " insert into USER (UserID, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt (1, Integer.parseInt(username));
-        preparedStmt.setInt (2, Integer.parseInt(password));
-        preparedStmt.setString   (3, lName);
+        preparedStmt.setInt(1, Integer.parseInt(username));
+        preparedStmt.setInt(2, Integer.parseInt(password));
+        preparedStmt.setString(3, lName);
         preparedStmt.setString(4, fName);
         preparedStmt.setString(5, phone);
-        preparedStmt.setString    (6, email);
-        preparedStmt.setString    (7, sex);
-        preparedStmt.setString    (8, dateB);
-        preparedStmt.setString    (9, activationDate);
+        preparedStmt.setString(6, email);
+        preparedStmt.setString(7, sex);
+        preparedStmt.setString(8, dateB);
+        preparedStmt.setString(9, activationDate);
 
         // execute the preparedstatement
         preparedStmt.execute();
         connection.close();
+    }
+
+    public void updateAnimalStatusToRequested(int id) {
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+
+            myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + "Requested" + " \" WHERE Animal_ID = " + id + ";");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void changeAnimalStatus(int id, String status) {
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+
+            myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
