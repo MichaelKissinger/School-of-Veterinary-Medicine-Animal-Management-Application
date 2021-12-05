@@ -58,8 +58,8 @@ public class BackEndAppTester {
 //        UserDB userDB = new UserDB();
 //        System.out.println(userDB.connect());
 
-        int username = 985410;
-        int password = 3333;
+        int username = 442153;
+        int password = 3020;
         LoginChecker checker = new LoginChecker(username, password);
         User user = null;
         checker.checkUsernamePassword();
@@ -90,5 +90,11 @@ public class BackEndAppTester {
 //            teachingTechnician.requestAnimal(101);
         }
 
+
+        if (user.getPermission().equals("Student")) {
+            Student student = new Student(user);
+            student.printAnimal();
+
+        }
     }
 }

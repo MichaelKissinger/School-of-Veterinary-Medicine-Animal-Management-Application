@@ -94,9 +94,11 @@ public class TeachingTechnician {
         }
     }
 
-    public void requestAnimal(int id) {
+    public void requestAnimal(int id) throws SQLException {
         userDB.updateAnimalStatusToRequested(id);
         reloadUserDB();
+        animals.clear();
+        addAnimal();
     }
     public void addComment(Animal animal, String comment){
 
