@@ -58,8 +58,8 @@ public class BackEndAppTester {
 //        UserDB userDB = new UserDB();
 //        System.out.println(userDB.connect());
 
-        int username = 442153;
-        int password = 3020;
+        int username = 456325;
+        int password = 6510;
         LoginChecker checker = new LoginChecker(username, password);
         User user = null;
         checker.checkUsernamePassword();
@@ -95,6 +95,15 @@ public class BackEndAppTester {
             Student student = new Student(user);
             student.printAnimal();
 
+        }
+
+        if (user.getPermission().equals("Health")){
+            HealthTechnician healthTechnician = new HealthTechnician(user);
+//            healthTechnician.printAnimal();
+//            healthTechnician.changeAnimalStatus(101, "AAAA");
+//            System.out.println("-----------------");
+//            healthTechnician.printAnimal();
+            healthTechnician.prescribeForAnimal();
         }
     }
 }

@@ -166,4 +166,16 @@ public class UserDB {
             throwables.printStackTrace();
         }
     }
+
+    public void changeAnimalStatus(int id, String status) {
+        try {
+            createConnection();
+            Statement myStmt = connection.createStatement();
+
+            myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }
