@@ -10,11 +10,42 @@ public class JDBCConnect {
     public void createConnection() {
         try {
             //You may have to enter your own SQL password below to make this work
-            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         } catch(Exception e) {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<Animal> animalFullGetStatement() throws SQLException {
+        ArrayList<Animal> animalList = new ArrayList<Animal>();
+        try {
+            Statement myStmt = dbConnect.createStatement();
+            ResultSet results = myStmt.executeQuery("SELECT * FROM ANIMAL;");
+
+            while (results.next()) {
+                int animalId = results.getInt("Animal_ID");
+                String breed = results.getString("Breed");
+                String city = results.getString("City");
+                String dateBirth = results.getString("Date_B");
+                String name = results.getString("Name");
+                String sex = results.getString("Sex");
+                String status = results.getString("Status");
+                int tattoo = results.getInt("Tattoo");
+                String type = results.getString("Type");
+                int userID = results.getInt("User_ID");
+
+                Animal myAnimal = new Animal(animalId, breed, city,
+                        dateBirth, name,  sex,
+                       status,  tattoo,  type, userID);
+                animalList.add(myAnimal);
+            }
+            myStmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return animalList;
+    }
+
 
     public String animalGetStatement(int animalID, String trait) throws SQLException {
         StringBuffer animalInfo = new StringBuffer();
@@ -168,6 +199,82 @@ public class JDBCConnect {
             e.printStackTrace();
         }
         return animalPhoto;
+    }
+
+    public void addAnimalProblem(String animalId,String disease,String description) throws SQLException {
+        String query = "INSERT INTO ANIMAL_PROBLEM (Animal_ID, Disease, Description) values (?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(animalId));
+        preparedStmt.setString    (2, disease);
+        preparedStmt.setString    (3, description);
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
+    }
+
+    public void addAnimalPrescription(String scriptRecord, String drugName, String deliveryMethod,
+                                      String userId, String date, String dosage, String instructions,
+                                      String treatmentMethod, String animalId) throws SQLException {
+        String query = "INSERT INTO ANIMAL_PRESCRIPTION (Script_Record, Drug_Name, " +
+                "Delivery_Method, User_ID, Date, Dosage, Instructions, Treatment_Method, Animal_ID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(scriptRecord));
+        preparedStmt.setString    (2, drugName);
+        preparedStmt.setString    (3, deliveryMethod);
+        preparedStmt.setInt (4, Integer.parseInt(userId));
+        preparedStmt.setString    (5, date);
+        preparedStmt.setInt (6, Integer.parseInt(dosage));
+        preparedStmt.setString    (7, instructions);
+        preparedStmt.setString    (8, treatmentMethod);
+        preparedStmt.setInt (9, Integer.parseInt(animalId));
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
+    }
+
+    public void addAnimalHistory(String recordId, String date, String measurement,
+                                 String value, String userId, String vaccination,
+                                 String animalId) throws SQLException {
+        String query = "INSERT INTO HISTORY (Record_ID, Date, Measurment, Value, User_ID, Vaccination, Animal_ID) values (?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(recordId));
+        preparedStmt.setString    (2, date);
+        preparedStmt.setString    (3, measurement);
+        preparedStmt.setInt (4, Integer.parseInt(value));
+        preparedStmt.setString    (5, userId);
+        preparedStmt.setString    (6, vaccination);
+        preparedStmt.setInt (7, Integer.parseInt(animalId));
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
+    }
+
+    public void addAnimalPhoto(String recordId, String imageId, String fileName, String type) throws SQLException {
+        String query = "INSERT INTO HISTORY_PHOTOS (Record_ID, Image_ID, File_Name, Type) values (?, ?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(recordId));
+        preparedStmt.setInt (2, Integer.parseInt(imageId));
+        preparedStmt.setString    (3, fileName);
+        preparedStmt.setString    (4, type);
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
+    }
+
+    public void addAnimalComment(String recordId, String commentId, String description) throws SQLException {
+        String query = "INSERT INTO HISTORY_COMMENTS (Record_ID, Comment_ID, Description) values (?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setInt (1, Integer.parseInt(recordId));
+        preparedStmt.setInt (2, Integer.parseInt(commentId));
+        preparedStmt.setString    (3, description);
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
     }
 
 

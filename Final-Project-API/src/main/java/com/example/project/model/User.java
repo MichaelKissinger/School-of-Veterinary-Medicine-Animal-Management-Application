@@ -29,7 +29,6 @@ public class User {
         setBirthDate(userDB.getUserInfo(username, password, "Date_B"));
         setActivationDate(userDB.getUserInfo(username, password, "ActivationDate"));
         setPermission(userDB.getPermissionType(username));
-
     }
 
     public String getLname() {

@@ -9,26 +9,31 @@ import java.util.Scanner;
 public class BackEndMKTest {
 
     public static void main(String[] args) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        JDBCConnect myJDBC = new JDBCConnect();
+        myJDBC.createConnection();
+
         boolean endApp = false;
         while (endApp == false) {
-            Scanner menuSelection2 = new Scanner(System.in);  //Create a Scanner object, for user input
+            Scanner menuSelection2 = new Scanner(System.in);
             System.out.println("Would you like to select another animal or exit?");
-            System.out.println("1 - Select another animal");
-            System.out.println("2 - Exit");
-            String option2 = menuSelection2.nextLine();  //Read user input
+            System.out.println("1 - Select an animal");
+            System.out.println("2 - Search all animals");
+            System.out.println("3 - Exit");
+            String option2 = menuSelection2.nextLine();
 
             switch (option2) {
                 case "1":
                     //Testing Animal Search Back end, search by ID
-                    Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+                    Scanner myObj = new Scanner(System.in);
                     System.out.println("Please enter Animals ID");
-                    String animalID = myObj.nextLine();  // Read user input
+                    String animalID = myObj.nextLine();
                     Animal myAnimal = new Animal(Integer.parseInt(animalID));
                     System.out.println("You are in the animal page for: " + myAnimal.getName() + " with ID: " + myAnimal.getAnimalId());
 
                     boolean endSelect = false;
                     while (endSelect == false) {
-                        Scanner menuSelection = new Scanner(System.in);  //Create a Scanner object, for user input
+                        Scanner menuSelection = new Scanner(System.in);
                         System.out.println("Please type 1 through 14 to select an option from the menu:");
                         System.out.println("1 - View all animal info");
                         System.out.println("2 - View animal status");
@@ -49,50 +54,145 @@ public class BackEndMKTest {
 
                         switch (option) {
                             case "1":
-                                System.out.println("Showing the info for: " + myAnimal.getName());
+                                System.out.println("Showing the info for: " + myAnimal.getFromDBName());
                                 System.out.println(myAnimal);
                                 break;
                             case "2":
-                                System.out.println("Showing the status for: " + myAnimal.getName());
+                                System.out.println("Showing the status for: " + myAnimal.getFromDBName());
                                 System.out.println(myAnimal.getStatus());
                                 break;
                             case "3":
-                                System.out.println("Showing the prescriptions for: " + myAnimal.getName());
+                                System.out.println("Showing the prescriptions for: " + myAnimal.getFromDBName());
                                 System.out.println(myAnimal.getAnimalPrescriptions());
                                 break;
                             case "4":
-                                System.out.println("Showing the problems for: " + myAnimal.getName());
+                                System.out.println("Showing the problems for: " + myAnimal.getFromDBName());
                                 System.out.println(myAnimal.getAnimalProblems());
                                 break;
                             case "5":
-                                System.out.println("Showing the history for: " + myAnimal.getName());
+                                System.out.println("Showing the history for: " + myAnimal.getFromDBName());
                                 System.out.println(myAnimal.getAnimalHistory());
                                 break;
                             case "6":
-                                System.out.println("Showing the photos for: " + myAnimal.getName());
-                                System.out.println(myAnimal.getAnimalHistory().get(0).getAnimalHistoryPhotos());
+                                System.out.println("Showing the photos for: " + myAnimal.getFromDBName());
+                                for (AnimalHistory ah: myAnimal.getAnimalHistory()){
+                                    System.out.println(ah.getAnimalHistoryPhotos());
+                                }
                                 break;
                             case "7":
-                                System.out.println("Showing the comments for: " + myAnimal.getName());
-                                System.out.println(myAnimal.getAnimalHistory().get(1).getAnimalHistoryComments());
+                                System.out.println("Showing the comments for: " + myAnimal.getFromDBName());
+                                for (AnimalHistory ah: myAnimal.getAnimalHistory()){
+                                    System.out.println(ah.getAnimalHistoryComments());
+                                }
                                 break;
                             case "8":
-                                System.out.println("Not implemented yet");
+                                myObj = new Scanner(System.in);
+                                System.out.println("Please enter change to status: ");
+                                String status = myObj.nextLine();
+                                myAnimal.setFromDBStatus(status);
+                                myAnimal = new Animal(Integer.parseInt(animalID));
+                                System.out.println("Status has been changed to: " + myAnimal.getFromDBStatus());
                                 break;
                             case "9":
-                                System.out.println("Not implemented yet1");
+                                System.out.println("Adding new prescription");
+                                System.out.println("Enter the scriptRecord:");
+                                myObj = new Scanner(System.in);
+                                String scriptRecord = myObj.nextLine();
+                                System.out.println("Enter the drugName:");
+                                myObj = new Scanner(System.in);
+                                String drugName = myObj.nextLine();
+                                System.out.println("Enter the deliveryMethod:");
+                                myObj = new Scanner(System.in);
+                                String deliveryMethod = myObj.nextLine();
+                                System.out.println("Enter the userId:");
+                                myObj = new Scanner(System.in);
+                                String userId = myObj.nextLine();
+                                System.out.println("Enter the date:");
+                                myObj = new Scanner(System.in);
+                                String date = myObj.nextLine();
+                                System.out.println("Enter the dosage:");
+                                myObj = new Scanner(System.in);
+                                String dosage = myObj.nextLine();
+                                System.out.println("Enter the instructions:");
+                                myObj = new Scanner(System.in);
+                                String instructions = myObj.nextLine();
+                                System.out.println("Enter the treatmentMethod:");
+                                myObj = new Scanner(System.in);
+                                String treatmentMethod = myObj.nextLine();
+                                System.out.println("Enter the animalId:");
+                                myObj = new Scanner(System.in);
+                                String animalId = myObj.nextLine();
+                                myJDBC.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
+                                        userId, date, dosage, instructions,
+                                        treatmentMethod, animalId);
                                 break;
                             case "10":
-                                System.out.println("Not implemented yet2");
+                                System.out.println("Adding new Problem");
+                                System.out.println("Enter the animalId:");
+                                myObj = new Scanner(System.in);
+                                animalId = myObj.nextLine();
+                                System.out.println("Enter the disease:");
+                                myObj = new Scanner(System.in);
+                                String disease = myObj.nextLine();
+                                System.out.println("Enter the description:");
+                                myObj = new Scanner(System.in);
+                                String description = myObj.nextLine();
+                                myJDBC.addAnimalProblem(animalId, disease, description);
                                 break;
                             case "11":
-                                System.out.println("Not implemented yet3");
+                                System.out.println("Adding new History");
+                                System.out.println("Enter the recordId:");
+                                myObj = new Scanner(System.in);
+                                String recordId = myObj.nextLine();
+                                System.out.println("Enter the date:");
+                                myObj = new Scanner(System.in);
+                                date = myObj.nextLine();
+                                System.out.println("Enter the measurement:");
+                                myObj = new Scanner(System.in);
+                                String measurement = myObj.nextLine();
+                                System.out.println("Enter the value:");
+                                myObj = new Scanner(System.in);
+                                String value = myObj.nextLine();
+                                System.out.println("Enter the userId:");
+                                myObj = new Scanner(System.in);
+                                userId = myObj.nextLine();
+                                System.out.println("Enter the vaccination:");
+                                myObj = new Scanner(System.in);
+                                String vaccination = myObj.nextLine();
+                                System.out.println("Enter the animalIdn:");
+                                myObj = new Scanner(System.in);
+                                animalId = myObj.nextLine();
+                                myJDBC.addAnimalHistory(recordId,  date,  measurement,
+                                        value, userId, vaccination, animalId);
                                 break;
                             case "12":
-                                System.out.println("Not implemented yet4");
+                                System.out.println("Adding new photo");
+                                System.out.println("Enter the recordId:");
+                                myObj = new Scanner(System.in);
+                                recordId = myObj.nextLine();
+                                System.out.println("Enter the imageId:");
+                                myObj = new Scanner(System.in);
+                                String imageId = myObj.nextLine();
+                                System.out.println("Enter the fileName:");
+                                myObj = new Scanner(System.in);
+                                String fileName = myObj.nextLine();
+                                System.out.println("Enter the type:");
+                                myObj = new Scanner(System.in);
+                                String type = myObj.nextLine();
+                                myJDBC.addAnimalPhoto(recordId, imageId, fileName, type);
                                 break;
                             case "13":
-                                System.out.println("Not implemented yet5");
+                                System.out.println("Adding new comment");
+                                System.out.println("Enter the recordId:");
+                                myObj = new Scanner(System.in);
+                                recordId = myObj.nextLine();
+                                System.out.println("Enter the commentId:");
+                                myObj = new Scanner(System.in);
+                                String commentId = myObj.nextLine();
+                                System.out.println("Enter the description:");
+                                myObj = new Scanner(System.in);
+                                description = myObj.nextLine();
+                                myJDBC.addAnimalComment( recordId, commentId,  description);
                                 break;
                             case "14":
                                 System.out.println("*** Selecting another Animal *** ");
@@ -102,10 +202,16 @@ public class BackEndMKTest {
                              }
                     break;
                 case "2":
-                        System.out.println("*** Exiting program *** ");
-                        endApp = true;
+                        for(Animal a: myDatabase.getAnimals()){
+                            System.out.println(a.getName() + ", has ID: " + a.getAnimalId());
+                        }
                         break;
-                }
+                case "3":
+                    System.out.println("*** Exiting program *** ");
+                    endApp = true;
+                    break;
+            }
+
             }
     }
 }
