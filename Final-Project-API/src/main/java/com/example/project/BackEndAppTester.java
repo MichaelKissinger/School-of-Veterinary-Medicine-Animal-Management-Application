@@ -58,8 +58,8 @@ public class BackEndAppTester {
 //        UserDB userDB = new UserDB();
 //        System.out.println(userDB.connect());
 
-        int username = 547896;
-        int password = 1212;
+        int username = 985410;
+        int password = 3333;
         LoginChecker checker = new LoginChecker(username, password);
         User user = null;
         checker.checkUsernamePassword();
@@ -69,13 +69,25 @@ public class BackEndAppTester {
 
         if (user.getPermission().equals("Admin")) {
             Admin admin = new Admin(user);
-            admin.printUsers();
-//            admin.editUser(new User(784513, 8080), "Lname", "Soqri");
-//            admin.blockUser(new User(784513, 8080));
+//            admin.printUsers();
+//            admin.editUser(new User(784513, 8080), "Lname", "aaaa");
+//            admin.blockUser(new User(784632, 8585));
 //            admin.printAnimal();
 //            System.out.println("--------------------------------------------------------------------------");
 //            admin.addNewUser("111111", "7777", "Sarraf", "Arman", "40304114587","abc.ucalgary.ca", "m", "1995-12-03", "2016-11-11", "Admin");
 //            admin.printUsers();
+        }
+
+        if (user.getPermission().equals("Teacher")) {
+            TeachingTechnician teachingTechnician = new TeachingTechnician(user);
+//            teachingTechnician.printUsers();
+//            System.out.println("--------------------------------------------------------------------------");
+//            teachingTechnician.blockStudent(new User(442153, 3020));
+//            teachingTechnician.printUsers();
+//            teachingTechnician.printAnimal();
+//            System.out.println(teachingTechnician.searchAnimalByName("Ginger"));
+//            System.out.println(teachingTechnician.searchAnimalByID(101));
+//            teachingTechnician.requestAnimal(101);
         }
 
     }

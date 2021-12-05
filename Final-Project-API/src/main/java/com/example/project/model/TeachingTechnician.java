@@ -2,18 +2,17 @@ package com.example.project.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class Admin {
+public class TeachingTechnician {
     ArrayList<Animal> animals;
     ArrayList<User> users;
-    User admin;
+    User teachingTechnician;
     UserDB userDB;
     ArrayList<User> blocklist;
 
-    public Admin(User user) throws SQLException {
-        admin = user;
+    public TeachingTechnician(User user) throws SQLException {
+        teachingTechnician = user;
         animals = new ArrayList<>();
         users = new ArrayList<>();
         userDB = new UserDB();
@@ -22,19 +21,42 @@ public class Admin {
         blocklist = new ArrayList<>();
     }
 
-    public void editUser(User user, String column, String value) {
-        userDB.updateUserInfo(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()), column, value);
-        reloadUserDB();
+    public void reloadUserDB() {
+        users.clear();
+        addUser();
     }
 
-    public void blockUser(User user) {
-        blocklist.add(user);
-        userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
-        reloadUserDB();
+
+    public void blockStudent(User user) {
+        if (user.getPermission().equals("Student")) {
+            blocklist.add(user);
+            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
+            reloadUserDB();
+        }
     }
+
+    public void removeStudent(User user) {
+        if (user.getPermission().equals("Student")) {
+            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
+            reloadUserDB();
+        }
+    }
+
+    public Animal searchAnimalByName(String name) throws SQLException {
+        for (Animal animal : animals)
+            if (animal.getName().equals(name)) return animal;
+        return null;
+    }
+
+    public Animal searchAnimalByID(int id) throws SQLException {
+        for (Animal animal : animals)
+            if (animal.getAnimalId() == id) return animal;
+        return null;
+    }
+
 
     public String userName() {
-        return admin.getFname();
+        return teachingTechnician.getFname();
     }
 
     public void addUser() {
@@ -64,20 +86,20 @@ public class Admin {
         }
     }
 
-    public void addNewUser(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB,String actDate, String permission) throws SQLException {
-        userDB.addUserToDB(username, password, lName, fName, phone, email, sex, dateB, actDate, permission);
-        reloadUserDB();
-
-    }
 
     public void printAnimal() throws SQLException {
         for (Animal a : animals) {
-            System.out.println(a.getName() + " Status: " + a.getStatus());
+            System.out.println(a);
+            System.out.println();
         }
     }
 
-    public void reloadUserDB(){
-        users.clear();
-        addUser();
+    public void requestAnimal(int id) {
+        userDB.updateAnimalStatusToRequested(id);
+        reloadUserDB();
+    }
+    public void addComment(Animal animal, String comment){
+
     }
 }
+
