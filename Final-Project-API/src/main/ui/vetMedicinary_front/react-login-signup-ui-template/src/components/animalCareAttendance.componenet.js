@@ -72,38 +72,38 @@ export default class AnimalCareAttendance extends Component {
                                                 <tr>
                                                     <th scope="col">Dog A</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat A</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Kangaroo</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Dog B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-folder-open" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                             </tbody>
                                         </table>

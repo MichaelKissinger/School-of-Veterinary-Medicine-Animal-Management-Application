@@ -11,6 +11,7 @@ import TeachingTechnician from './components/teachingTechnician.componenet';
 import AdministratorAccess from './components/administratorAccess.componenet';
 import AnimalCareAttendance from './components/animalCareAttendance.componenet'; 
 import AnimalProfile from './components/animalProfile.component';
+import AnimalHealthTechnician from './components/animalHealthTechnician.componenet'; 
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to={"/AnimalCareAttendance"}>Animal Care Attendance</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/AnimalHealthTechnician"}>Animal Health Technician</Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -58,6 +62,7 @@ function App() {
             <Route path="/AdministratorAccess" component={AdministratorAccess} />
             <Route path="/TeachingTechnician" component={TeachingTechnician} />
             <Route path="/AnimalCareAttendance" component={AnimalCareAttendance}/>
+            <Route path="/AnimalHealthTechnician" component={AnimalHealthTechnician}/>
           </Switch>
         {/* </div>
       </div> */}
