@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### REACT Modules ###
-Final-Project-API/src/main/ui/vetMedicinary_front/react-login-signup-ui-template/node_modules/
+/node_modules
