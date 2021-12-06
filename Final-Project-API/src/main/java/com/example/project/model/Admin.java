@@ -80,4 +80,11 @@ public class Admin {
         users.clear();
         addUser();
     }
+
+    public void seeAnimalComment(int animalId) {
+        for (Animal ah : animals) {
+            if (ah.getAnimalId() == animalId)
+                System.out.println(ah.getAnimalHistory());
+        }
+    }
 }

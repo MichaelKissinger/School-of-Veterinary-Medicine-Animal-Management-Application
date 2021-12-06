@@ -4,14 +4,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HealthTechnician {
+public class CareAttendant {
     ArrayList<Animal> animals;
-    User healthTechnician;
+    User careAtt;
     UserDB userDB;
     JDBCConnect jdbcConnect;
 
-    public HealthTechnician(User user) throws SQLException {
-        healthTechnician = user;
+    public CareAttendant(User user) throws SQLException {
+        careAtt = user;
         animals = new ArrayList<>();
         userDB = new UserDB();
         addAnimal();
@@ -23,6 +23,7 @@ public class HealthTechnician {
         animals.clear();
         addAnimal();
     }
+
 
     public void addAnimal() throws SQLException {
         String animal = (userDB.adminAccessGetAnimal());
@@ -41,26 +42,24 @@ public class HealthTechnician {
         }
     }
 
+    public void uploadPhoto(String recordId, String imageId, String fileName, String type) throws SQLException {
+        jdbcConnect.addAnimalPhoto(recordId, imageId, fileName, type);
+    }
+
+    public void requestTreatment(int id) throws SQLException {
+        userDB.updateAnimalStatusToRequested(id);
+        animals.clear();
+        addAnimal();
+    }
+
+
     public void changeAnimalStatus(int id, String status) throws SQLException {
         userDB.changeAnimalStatus(id, status);
         reloadAnimalDB();
     }
 
-    public void prescribeForAnimal(String scriptRecord, String drugName, String deliveryMethod,
-                                   String userId, String date, String dosage, String instructions,
-                                   String treatmentMethod, String animalId) throws SQLException {
-        for (Animal animal: animals){
-            if (animal.getAnimalId()==Integer.parseInt(animalId))
-                jdbcConnect.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
-                        userId, date, dosage, instructions,
-                        treatmentMethod, animalId);
-        }
+    public void alertDiseaseProblem(String animalId,String disease,String description) throws SQLException {
+        jdbcConnect.addAnimalProblem(animalId, disease, description);
     }
 
-    public void showPrescribe(int animalId){
-        for (Animal animal: animals){
-            if (animal.getAnimalId()==animalId)
-                System.out.println(animal.getAnimalPrescriptions());
-        }
-    }
 }

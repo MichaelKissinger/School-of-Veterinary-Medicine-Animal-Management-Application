@@ -10,6 +10,7 @@ public class TeachingTechnician {
     User teachingTechnician;
     UserDB userDB;
     ArrayList<User> blocklist;
+    JDBCConnect jdbcConnect;
 
     public TeachingTechnician(User user) throws SQLException {
         teachingTechnician = user;
@@ -19,6 +20,8 @@ public class TeachingTechnician {
         addUser();
         addAnimal();
         blocklist = new ArrayList<>();
+        jdbcConnect = new JDBCConnect();
+        jdbcConnect.createConnection();
     }
 
     public void reloadUserDB() {
@@ -100,8 +103,15 @@ public class TeachingTechnician {
         animals.clear();
         addAnimal();
     }
-    public void addComment(Animal animal, String comment){
 
+    public void addComment(String recordId, String commentId, String description) throws SQLException {
+        jdbcConnect.addAnimalComment(recordId, commentId, description);
+    }
+
+    public void seeAnimalComment(int animalId) {
+        for (Animal ah : animals) {
+            if (ah.getAnimalId() == animalId)
+                System.out.println(ah.getAnimalHistory());
+        }
     }
 }
-

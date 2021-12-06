@@ -8,12 +8,16 @@ public class Student {
     ArrayList<Animal> animals;
     User student;
     UserDB userDB;
+    JDBCConnect jdbcConnect;
+
 
     public Student(User user) throws SQLException {
         student = user;
         animals = new ArrayList<>();
         userDB = new UserDB();
         addAnimal();
+        jdbcConnect = new JDBCConnect();
+        jdbcConnect.createConnection();
     }
 
     public void reloadUserDB() throws SQLException {
@@ -58,8 +62,17 @@ public class Student {
         }
     }
 
-    public void addComment(Animal animal, String comment){
-
+    public void addComment(String recordId, String commentId, String description) throws SQLException {
+        jdbcConnect.addAnimalComment(recordId, commentId, description);
     }
+
+    public void seeAnimalComment(int animalId){
+        for (Animal ah : animals) {
+            if (ah.getAnimalId()==animalId)
+            System.out.println(ah.getAnimalHistory());
+
+        }
+    }
+
 }
 

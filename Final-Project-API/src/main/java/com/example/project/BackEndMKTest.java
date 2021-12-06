@@ -75,13 +75,13 @@ public class BackEndMKTest {
                                 break;
                             case "6":
                                 System.out.println("Showing the photos for: " + myAnimal.getFromDBName());
-                                for (AnimalHistory ah: myAnimal.getAnimalHistory()){
+                                for (AnimalHistory ah : myAnimal.getAnimalHistory()) {
                                     System.out.println(ah.getAnimalHistoryPhotos());
                                 }
                                 break;
                             case "7":
                                 System.out.println("Showing the comments for: " + myAnimal.getFromDBName());
-                                for (AnimalHistory ah: myAnimal.getAnimalHistory()){
+                                for (AnimalHistory ah : myAnimal.getAnimalHistory()) {
                                     System.out.println(ah.getAnimalHistoryComments());
                                 }
                                 break;
@@ -162,7 +162,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the animalIdn:");
                                 myObj = new Scanner(System.in);
                                 animalId = myObj.nextLine();
-                                myJDBC.addAnimalHistory(recordId,  date,  measurement,
+                                myJDBC.addAnimalHistory(recordId, date, measurement,
                                         value, userId, vaccination, animalId);
                                 break;
                             case "12":
@@ -192,26 +192,26 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 description = myObj.nextLine();
-                                myJDBC.addAnimalComment( recordId, commentId,  description);
+                                myJDBC.addAnimalComment(recordId, commentId, description);
                                 break;
                             case "14":
                                 System.out.println("*** Selecting another Animal *** ");
                                 endSelect = true;
                                 break;
-                                }
-                             }
+                        }
+                    }
                     break;
                 case "2":
-                        for(Animal a: myDatabase.getAnimals()){
-                            System.out.println(a.getName() + ", has ID: " + a.getAnimalId());
-                        }
-                        break;
+                    for (Animal a : myDatabase.getAnimals()) {
+                        System.out.println(a.getName() + ", has ID: " + a.getAnimalId());
+                    }
+                    break;
                 case "3":
                     System.out.println("*** Exiting program *** ");
                     endApp = true;
                     break;
             }
 
-            }
+        }
     }
 }
