@@ -3,6 +3,11 @@ package com.example.project.model;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * This class is used to connect to the SQL database using JDBC.
+ * Methods are used to make queries to the database.
+ * @author Michael Kissinger
+ */
 public class JDBCConnect {
 
     private Connection dbConnect;

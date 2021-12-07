@@ -5,6 +5,7 @@ import com.example.project.model.AnimalDatabase;
 
 import java.sql.SQLException;
 
+//TODO can be deleted
 public class test {
 
     public static void main(String[] args) throws SQLException {
