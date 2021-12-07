@@ -7,20 +7,26 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.util.Scanner;
 
+/**
+ * Test backend functionalities of User, Animal, and Databases
+ * @author Arman Hosseinsarraf
+ */
 public class BackEndAppTester {
 
     public static void main(String[] args) throws SQLException {
         //This area is to test the various backend functionality.
 
+        // Username and password of an existing user in DB
         int username = 123589;
         int password = 6532;
-        LoginChecker checker = new LoginChecker(username, password);
+        LoginChecker checker = new LoginChecker(username, password); // create an object of loginChecker with the username and password
         User user = null;
-        checker.checkUsernamePassword();
+        checker.checkUsernamePassword(); // Checks to see if the information exist in the database
         if (checker.checkUsernamePassword()) {
-            user = new User(username, password);
+            user = new User(username, password); // if yes, a new user object will be created
         }
 
+        // If the permission of the user is Admin, then create admin instance and checks their functions
         if (user.getPermission().equals("Admin")) {
             Admin admin = new Admin(user);
 //            admin.printUsers();
@@ -32,6 +38,7 @@ public class BackEndAppTester {
 //            admin.printUsers();
         }
 
+        // If the permission of the user is Teacher, then create teacher instance and check their functions
         if (user.getPermission().equals("Teacher")) {
             TeachingTechnician teachingTechnician = new TeachingTechnician(user);
 //            teachingTechnician.printUsers();
@@ -47,7 +54,7 @@ public class BackEndAppTester {
 
         }
 
-
+        // If the permission of the user is Student, then create student instance and check their functions
         if (user.getPermission().equals("Student")) {
             Student student = new Student(user);
 //            student.printAnimal();
@@ -55,6 +62,7 @@ public class BackEndAppTester {
 //            student.seeAnimalComment(103);
         }
 
+        // If the permission of the user is Health Technician, then create health technician instance and check their functions
         if (user.getPermission().equals("Health")) {
             HealthTechnician healthTechnician = new HealthTechnician(user);
 //            healthTechnician.printAnimal();
@@ -65,6 +73,7 @@ public class BackEndAppTester {
 //            healthTechnician.showPrescribe(101);
         }
 
+        // If the permission of the user is Care Attendant, then create care attendant instance and check their functions
         if (user.getPermission().equals("Care")) {
             CareAttendant careAttendant = new CareAttendant(user);
 //            careAttendant.uploadPhoto("10", "1", "Image1", "jpeg");

@@ -1,5 +1,9 @@
 package com.example.project.model;
 
+/**
+ * User class contains all the information that a user in this system has. It gets the username and password and loads all the information related to that user
+ * @author Arman Hosseinsarraf
+ */
 public class User {
     int username;
     int password;
@@ -13,6 +17,12 @@ public class User {
     String permission;
     UserDB userDB;
 
+    /**
+     * User Constructor gets the username and password as arguments, builds a connection with database, and gets all the information related to that username and password
+     *
+     * @param username
+     * @param password
+     */
     public User(int username, int password) {
         this.username = username;
         this.password = password;
@@ -20,6 +30,9 @@ public class User {
         setUserInfo();
     }
 
+    /**
+     * Gets all the related information to the given username and password and save them in proper variables
+     */
     public void setUserInfo() {
         setLname((userDB.getUserInfo(username, password, "Lname")));
         setFname((userDB.getUserInfo(username, password, "Fname")));

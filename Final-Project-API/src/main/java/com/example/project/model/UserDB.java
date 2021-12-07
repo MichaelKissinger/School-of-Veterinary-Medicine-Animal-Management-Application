@@ -2,26 +2,40 @@ package com.example.project.model;
 
 import java.sql.*;
 
+/**
+ * UserDB class is the bridge between backend and database. It has all required functionalities to get information from DB and write information to DB
+ * @author Arman Hosseinsarraf
+ */
 public class UserDB {
-    Connection connection;
-    ResultSet rs;
+    Connection connection; // build an object of connection for connecting to database
+    ResultSet rs; // build an object of resultSet to store the result of the query
 
+    /**
+     * createConnection() creates a connection with the database
+     */
     public void createConnection() {
         try {
             //You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * validateUser() checks to see if the given username and password are in the user database
+     *
+     * @param username
+     * @param pass
+     * @return
+     */
     public int validateUser(int username, int pass) {
         int flag = -1;
         try {
 
             createConnection();
             Statement myStmt = connection.createStatement();
-            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";");
+            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
 
             if (rs.next())
                 flag = 1;
@@ -33,13 +47,20 @@ public class UserDB {
         return flag;
     }
 
+    /**
+     * queries the required information related to given username and password
+     * @param username
+     * @param pass
+     * @param column
+     * @return
+     */
     public String getUserInfo(int username, int pass, String column) {
         StringBuffer userInformation = new StringBuffer();
 
         try {
             createConnection();
             Statement myStmt = connection.createStatement();
-            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";");
+            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
 
             if (rs.next())
                 userInformation.append(rs.getString(column));
@@ -51,6 +72,11 @@ public class UserDB {
         return userInformation.toString();
     }
 
+    /**
+     * Gives the username as argument and returns the permission type of that user
+     * @param username
+     * @return permissionType
+     */
     public String getPermissionType(int username) {
         String permissionType = "";
 
@@ -73,6 +99,10 @@ public class UserDB {
         return permissionType;
     }
 
+    /**
+     * Gets all the information about users exist in the user database
+     * @return
+     */
     public String adminAccessGetUser() {
         StringBuffer result = new StringBuffer();
         try {
@@ -90,6 +120,10 @@ public class UserDB {
         return result.toString();
     }
 
+    /**
+     * Getting all the information about all animals from the animal database
+     * @return
+     */
     public String adminAccessGetAnimal() {
         StringBuffer result_animal = new StringBuffer();
         try {
@@ -107,6 +141,13 @@ public class UserDB {
         return result_animal.toString();
     }
 
+    /**
+     * Updates User information in the given column with the given value
+     * @param username
+     * @param pass
+     * @param column
+     * @param update
+     */
     public void updateUserInfo(String username, String pass, String column, String update) {
         try {
             createConnection();
@@ -120,6 +161,11 @@ public class UserDB {
 
     }
 
+    /**
+     * Gets the username and password related to a user in the database and remove that record from the DB
+     * @param user
+     * @param pass
+     */
     public void deleteUser(String user, String pass) {
         try {
             createConnection();
@@ -137,6 +183,20 @@ public class UserDB {
         }
     }
 
+    /**
+     * addUserToDB() Gets all the information a user must have, and add them into the user database
+     * @param username
+     * @param password
+     * @param lName
+     * @param fName
+     * @param phone
+     * @param email
+     * @param sex
+     * @param dateB
+     * @param activationDate
+     * @param permission
+     * @throws SQLException
+     */
     public void addUserToDB(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB, String activationDate, String permission) throws SQLException {
         String query = " insert into USER (UserID, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -155,6 +215,10 @@ public class UserDB {
         connection.close();
     }
 
+    /**
+     * Updates the animal status to requested by default
+     * @param id
+     */
     public void updateAnimalStatusToRequested(int id) {
         try {
             createConnection();
@@ -167,6 +231,11 @@ public class UserDB {
         }
     }
 
+    /**
+     * Updating animal status to a new given status
+     * @param id
+     * @param status
+     */
     public void changeAnimalStatus(int id, String status) {
         try {
             createConnection();
