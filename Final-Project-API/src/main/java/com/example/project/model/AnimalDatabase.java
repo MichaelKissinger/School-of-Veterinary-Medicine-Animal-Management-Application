@@ -3,6 +3,11 @@ package com.example.project.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Animal Database is used to load all animals from
+ * the SQL database.
+ * @author Michael Kissinger
+ */
 public class AnimalDatabase {
     private ArrayList<Animal> animalDatabase;
 

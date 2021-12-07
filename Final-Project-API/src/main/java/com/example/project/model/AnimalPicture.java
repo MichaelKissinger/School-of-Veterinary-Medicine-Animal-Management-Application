@@ -1,5 +1,11 @@
 package com.example.project.model;
 
+/**
+ * Animal picture class holds all variables for the animal picture,
+ * along with getters, setters and toString method.
+ *
+ * @author Michael Kissinger
+ */
 public class AnimalPicture {
 
     private int imageID;
@@ -14,5 +20,56 @@ public class AnimalPicture {
         this.creationDate = creationDate;
         this.fileName = fileName;
         this.type = type;
+    }
+
+    public int getImageID() {
+        return imageID;
+    }
+
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalPicture{" +
+                "imageID=" + imageID +
+                ", userID=" + userID +
+                ", creationDate='" + creationDate + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", type='" + type + '\'' +
+                '}';
     }
 }

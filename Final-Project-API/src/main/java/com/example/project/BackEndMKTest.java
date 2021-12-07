@@ -6,6 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Used to test out all functionality related to animal profiles.
+ * This class can be used to show or add all information and attributes
+ * related to the animals
+ * @author Michael Kissinger
+ */
 public class BackEndMKTest {
 
     public static void main(String[] args) throws SQLException {

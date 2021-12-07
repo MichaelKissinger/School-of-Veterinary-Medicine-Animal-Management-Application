@@ -1,5 +1,6 @@
 package com.example.project.model;
 
+//TODO can be deleted
 public class AnimalTreatment {
 
     private String ID;

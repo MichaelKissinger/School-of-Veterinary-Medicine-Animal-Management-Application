@@ -4,6 +4,12 @@ import lombok.SneakyThrows;
 
 import java.sql.SQLException;
 
+/**
+ * Animal prescription class holds all variables for the animal prescription,
+ * along with getters, setters and toString method.
+ *
+ * @author Michael Kissinger
+ */
 public class AnimalPrescription {
     private int scriptRecord;
     private String drugName;

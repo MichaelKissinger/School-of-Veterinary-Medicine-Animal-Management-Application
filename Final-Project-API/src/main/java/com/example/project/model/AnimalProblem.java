@@ -4,6 +4,12 @@ import lombok.SneakyThrows;
 
 import java.sql.SQLException;
 
+/**
+ * Animal problem class holds all variables for the animal problem,
+ * along with getters, setters and toString method.
+ *
+ * @author Michael Kissinger
+ */
 public class AnimalProblem {
 
     private int animalId;

@@ -5,6 +5,12 @@ import lombok.SneakyThrows;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Animal history class holds all variables for the animal history,
+ * along with getters, setters and toString method.
+ * Also includes connection to database to pull info from SQL file.
+ * @author Michael Kissinger
+ */
 public class AnimalHistory {
 
     private int recordId;

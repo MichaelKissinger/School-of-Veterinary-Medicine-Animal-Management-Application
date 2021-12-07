@@ -1,5 +1,6 @@
 package com.example.project.model;
 
+//TODO can be deleted
 public class AnimalStatus {
     private String date;
     private String description;
@@ -12,6 +13,8 @@ public class AnimalStatus {
         this.location = location;
         this.status = status;
     }
+
+
 
 
 }

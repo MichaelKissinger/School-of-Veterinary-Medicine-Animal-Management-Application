@@ -4,6 +4,12 @@ import lombok.SneakyThrows;
 
 import java.sql.SQLException;
 
+/**
+ * Animal photos class holds all variables for the animal photos,
+ * along with getters, setters and toString method.
+ *
+ * @author Michael Kissinger
+ */
 public class AnimalHistoryPhotos {
     private int recordId;
     private int imageId;
