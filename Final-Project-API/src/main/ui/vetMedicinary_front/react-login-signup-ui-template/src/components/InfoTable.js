@@ -38,7 +38,7 @@ const InfoTable = () => {
           </table>
       </div>
           <div class="column is-narrow">
-            <button class="button is-dark">Update Animal Info</button>  
+            <button class="button is-dark">Update Animal Status</button>  
           </div>
       </div>
     );

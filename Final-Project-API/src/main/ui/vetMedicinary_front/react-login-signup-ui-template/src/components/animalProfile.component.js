@@ -4,6 +4,7 @@ import AnimalPhoto from "./AnimalPhotos";
 import AnimalProblems from "./AnimalProblems";
 import AnimalHistory from "./AnimalHistory";
 import AnimalPrescription from "./AnimalPrescription";
+import AnimalComments from "./AnimalComment";
 import "bulma/css/bulma.css"
 
 export default class AnimalProfile extends Component {
@@ -44,6 +45,11 @@ export default class AnimalProfile extends Component {
                         <div class="row">
                             <AnimalHistory/>
                         </div>
+                        <h3 class="title is-3">Animal Comments</h3>
+                        <div class="row">
+                            <AnimalComments/>
+                        </div>
+                        
                 </div>
                 <footer>
                     <div class="search-footer-container">
