@@ -4,6 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Teaching Technician has functions of request an animal, block and remove students, search and view animal profiles, and take comments on animal profiles.
+ * @author Arman Hosseinsarraf
+ */
 public class TeachingTechnician {
     ArrayList<Animal> animals;
     ArrayList<User> users;
@@ -12,6 +16,12 @@ public class TeachingTechnician {
     ArrayList<User> blocklist;
     JDBCConnect jdbcConnect;
 
+    /**
+     * Teaching Technician Constructor, creates objects from UserDB, AnimalDB, List of users and animals and fills both lists from database
+     *
+     * @param user
+     * @throws SQLException
+     */
     public TeachingTechnician(User user) throws SQLException {
         teachingTechnician = user;
         animals = new ArrayList<>();
@@ -24,33 +34,59 @@ public class TeachingTechnician {
         jdbcConnect.createConnection();
     }
 
+    /**
+     * After each change in the database, the user list will be refreshed
+     */
     public void reloadUserDB() {
         users.clear();
         addUser();
     }
 
-
+    /**
+     * Teaching Technician can block students. The students will be added to blocklist so that they can not be added to the system again
+     *
+     * @param user
+     */
     public void blockStudent(User user) {
         if (user.getPermission().equals("Student")) {
             blocklist.add(user);
-            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
+            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword())); // Student with that username and password will be deleted from the database
             reloadUserDB();
         }
     }
 
+    /**
+     * Teaching Technician can remove students.
+     *
+     * @param user
+     */
     public void removeStudent(User user) {
         if (user.getPermission().equals("Student")) {
-            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()));
+            userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword())); // Student with that username and password will be deleted from the database
             reloadUserDB();
         }
     }
 
+    /**
+     * Teaching Technician can search for an animal with the animal name
+     *
+     * @param name
+     * @return
+     * @throws SQLException
+     */
     public Animal searchAnimalByName(String name) throws SQLException {
         for (Animal animal : animals)
             if (animal.getName().equals(name)) return animal;
         return null;
     }
 
+    /**
+     * Teaching Technician can search for an animal with the animal ID
+     *
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Animal searchAnimalByID(int id) throws SQLException {
         for (Animal animal : animals)
             if (animal.getAnimalId() == id) return animal;
@@ -62,6 +98,9 @@ public class TeachingTechnician {
         return teachingTechnician.getFname();
     }
 
+    /**
+     * addUser() loads the users from the database and keep them in the user list.
+     */
     public void addUser() {
         String user = (userDB.adminAccessGetUser());
         Scanner scanner = new Scanner(user);
@@ -72,6 +111,11 @@ public class TeachingTechnician {
         scanner.close();
     }
 
+    /**
+     * addAnimal() loads the animals from the database and keep them in the animal list.
+     *
+     * @throws SQLException
+     */
     public void addAnimal() throws SQLException {
         String animal = (userDB.adminAccessGetAnimal());
         Scanner scanner = new Scanner(animal);
@@ -97,17 +141,36 @@ public class TeachingTechnician {
         }
     }
 
+    /**
+     * Teaching Technician can request an animal with animal ID
+     *
+     * @param id
+     * @throws SQLException
+     */
     public void requestAnimal(int id) throws SQLException {
-        userDB.updateAnimalStatusToRequested(id);
+        userDB.updateAnimalStatusToRequested(id); // Animal status will be updated to "requested" in the database
         reloadUserDB();
         animals.clear();
         addAnimal();
     }
 
+    /**
+     * Teaching Technician can add comments for each animal profiles
+     *
+     * @param recordId
+     * @param commentId
+     * @param description
+     * @throws SQLException
+     */
     public void addComment(String recordId, String commentId, String description) throws SQLException {
         jdbcConnect.addAnimalComment(recordId, commentId, description);
     }
 
+    /**
+     * Teaching Technician can see animals' comments
+     *
+     * @param animalId
+     */
     public void seeAnimalComment(int animalId) {
         for (Animal ah : animals) {
             if (ah.getAnimalId() == animalId)
