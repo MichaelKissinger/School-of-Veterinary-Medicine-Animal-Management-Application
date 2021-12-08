@@ -12,6 +12,8 @@ import AdministratorAccess from './components/administratorAccess.componenet';
 import AnimalCareAttendance from './components/animalCareAttendance.componenet'; 
 import AnimalProfile from './components/animalProfile.component';
 import AnimalHealthTechnician from './components/animalHealthTechnician.componenet'; 
+import AnimalService from './service/AnimalService';
+
 
 function App() {
   return (

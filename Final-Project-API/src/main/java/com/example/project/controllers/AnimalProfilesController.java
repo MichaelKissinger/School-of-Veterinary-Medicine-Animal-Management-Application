@@ -23,46 +23,61 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class AnimalProfilesController {
 
-//    private final AnimalService animalService;
-//
-//    @Autowired
-//    public AnimalProfilesController(AnimalService animalService) {
-//        this.animalService = animalService;
-//    }
-
-    //To be implemented later
-//    AnimalProfilesController(Animal animal) {
-//        this.animal = animal;
-//    }
-
-    @GetMapping("/animals")
-    public ArrayList<Animal> getAnimals() throws SQLException {
-        AnimalDatabase database = new AnimalDatabase();
-        ArrayList<Animal> animalsList = database.getAnimals();
-        return animalsList;
+    //Animal Info
+    @GetMapping("/animal/{animalID}")
+    public Animal getAnimal(@PathVariable("animalID") int animalID) throws SQLException {
+        Animal myAnimal = new Animal(animalID);
+        return myAnimal;
     }
-//
-    //Display Pictures
+
+    //Animal Pictures
+//    @GetMapping("/animal/{animalID}/pictures")
+//    public ArrayList<AnimalProblem> pictures(@PathVariable("animalID") int animalID) throws SQLException {
+//        Animal myAnimal = new Animal(animalID);
+//        return myAnimal.getAnimalPicture();
+//    }
+
+    //Animal Problems
     @GetMapping("/animal/{animalID}/problems")
-    public ArrayList<AnimalProblem> pictures(@PathVariable("animalID") int animalID) throws SQLException {
-//        animal.getAnimalPictures();
+    public ArrayList<AnimalProblem> getAnimalProblem(@PathVariable("animalID") int animalID) throws SQLException {
         Animal myAnimal = new Animal(animalID);
         return myAnimal.getAnimalProblems();
     }
-//
-////    //Add pictures
-////    @PostMapping("/animal/{animalID}/pictures")
-////    public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
-//////        animal.addAnimalPicture(newAnimalPicture);
-////    }
-//
-    //Show animal information
-//    @GetMapping("/animal/{animalID}/information")
-    @GetMapping("/animal/101/information")
-    public String information() throws SQLException {
-        Animal myAnimal = new Animal(101);
-        return myAnimal.toString();
+
+    //Animal Prescriptions
+    @GetMapping("/animal/{animalID}/prescriptions")
+    public ArrayList<AnimalPrescription> getAnimalPrescriptions(@PathVariable("animalID") int animalID) throws SQLException {
+        Animal myAnimal = new Animal(animalID);
+        return myAnimal.getAnimalPrescriptions();
     }
+
+    //Animal History
+    //Animal Comments
+
+
+
+
+//    @GetMapping("/animals")
+//    public ArrayList<Animal> getAnimals() throws SQLException {
+//        ArrayList<Animal> animalsList = database.getAnimals();
+//        return animalsList;
+//    }
+//
+
+//
+//    //Add pictures
+//    @PostMapping("/animal/{animalID}/pictures")
+//    public void addPicture(@RequestBody AnimalPicture newAnimalPicture, @PathVariable("animalID") String animalID) {
+////        animal.addAnimalPicture(newAnimalPicture);
+//    }
+//
+//    //Show animal information
+////    @GetMapping("/animal/{animalID}/information")
+//    @GetMapping("/animal")
+//    public Animal information() throws SQLException {
+//        Animal myAnimal = new Animal(101);
+//        return myAnimal;
+//    }
 //
 //    //Update Animal Information
 //    @PutMapping("/animal/{animalID}/information")

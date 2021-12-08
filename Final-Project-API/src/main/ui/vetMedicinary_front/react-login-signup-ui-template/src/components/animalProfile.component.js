@@ -6,6 +6,9 @@ import AnimalHistory from "./AnimalHistory";
 import AnimalPrescription from "./AnimalPrescription";
 import AnimalComments from "./AnimalComment";
 import "bulma/css/bulma.css"
+import AnimalService from "../service/AnimalService";
+import AnimalName from "./AnimalName"
+
 
 export default class AnimalProfile extends Component {
     constructor(props) {
@@ -24,7 +27,7 @@ export default class AnimalProfile extends Component {
                         </div>
                     </div>
                 </header>
-                <h1 class="title">Cinnamon's Animal Page</h1>
+                    <AnimalName/>
                 <div class="rows">
                         <div class="row">
                             <AnimalPhoto/>
@@ -49,7 +52,7 @@ export default class AnimalProfile extends Component {
                         <div class="row">
                             <AnimalComments/>
                         </div>
-                        
+
                 </div>
                 <footer>
                     <div class="search-footer-container">
