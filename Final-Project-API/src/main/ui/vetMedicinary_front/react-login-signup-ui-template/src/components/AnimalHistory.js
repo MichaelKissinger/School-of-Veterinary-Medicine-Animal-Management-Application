@@ -1,8 +1,17 @@
 import React, {useState} from "react";
+import axios from "axios";
+
+const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/101/history';
 
 const AnimalHistory = () => {
+
+    const[myArray, setMyArray] = React.useState([]);
+
+    React.useEffect(() => {
+      axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
+    }, []);
   
-    // const[count, setCount] = useState(0);
+
     return(
         <div class = "columns"> 
         <div class="column">
@@ -11,7 +20,7 @@ const AnimalHistory = () => {
             <tr>
                 <th>Record ID</th>
                 <th>Date</th>
-                <th>Measurement</th>
+                <th>Measurement/Type</th>
                 <th>Value</th>
                 <th>User ID</th>
                 <th>Vaccination</th>
@@ -19,15 +28,18 @@ const AnimalHistory = () => {
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>1</th>
-                <th>2019-04-23</th>
-                <th>107</th>
-                <th>Value</th>
-                <th>123589</th>
-                <th>N</th>
-                <th>103</th>
-            </tr>
+            {
+                myArray.map(myArray =>
+                    <tr key={myArray.id}>
+                    <td>{myArray.recordId}</td>
+                    <td>{myArray.date}</td>
+                    <td>{myArray.measurement}</td>
+                    <td>{myArray.value}</td>
+                    <td>{myArray.userId}</td>
+                    <td>{myArray.vaccination}</td>
+                    <td>{myArray.animalId}</td>
+                    </tr>)
+            }
             </tbody>
         </table>
         </div>
