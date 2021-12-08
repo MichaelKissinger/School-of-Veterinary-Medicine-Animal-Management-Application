@@ -52,6 +52,12 @@ public class AnimalProfilesController {
     }
 
     //Animal History
+    @GetMapping("/animal/{animalID}/history")
+    public ArrayList<AnimalHistory> getAnimalHistory(@PathVariable("animalID") int animalID) throws SQLException {
+        Animal myAnimal = new Animal(animalID);
+        return myAnimal.getAnimalHistory();
+    }
+
     //Animal Comments
 
 

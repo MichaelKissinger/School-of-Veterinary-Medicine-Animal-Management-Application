@@ -144,7 +144,7 @@ public class JDBCConnect {
 
                 int recordId = results.getInt("Record_ID");
                 String date  = results.getString("Date");
-                String measurement  = results.getString("Measurment");
+                String measurement  = results.getString("Measurement");
                 int value = results.getInt("Value");
                 String userId = results.getString("User_ID");
                 String vaccination = results.getString("Vaccination");
