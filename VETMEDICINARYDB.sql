@@ -31,15 +31,15 @@ VALUES
 ('Active', '3020', 'Ford', 'James', '7844512452', 'Ford_jamei@gmail.com', 'F', '1960-12-13', '2019-10-10'),
 ('Active', '8080', 'Kazem', 'Sabounchi', '7414582456', 'Kazem_sabounch@mit.org', 'M', '1938-07-14', '2004-06-25');
 
-/*----------------Admin-----------------------------*/
-DROP TABLE IF EXISTS VETMEDICINARYDB.Admin;
-CREATE TABLE VETMEDICINARYDB.Admin (
+/*----------------ADMIN-----------------------------*/
+DROP TABLE IF EXISTS VETMEDICINARYDB.ADMIN;
+CREATE TABLE VETMEDICINARYDB.ADMIN (
   UserID INT NOT NULL,
   Permission CHAR(10) NOT NULL,
   PRIMARY KEY (UserID),
   FOREIGN KEY (UserID) REFERENCES VETMEDICINARYDB.USER (UserID));
 
-INSERT INTO VETMEDICINARYDB.Admin (UserID, Permission) 
+INSERT INTO VETMEDICINARYDB.ADMIN (UserID, Permission) 
 VALUES 
 ('1', 'Admin'),
 ('2', 'Admin');
@@ -119,18 +119,18 @@ CREATE TABLE VETMEDICINARYDB.ANIMAL (
   FOREIGN KEY (User_ID) REFERENCES VETMEDICINARYDB.HEALTH_TECHNICIAN (UserID));
   
 
-INSERT INTO VETMEDICINARYDB.ANIMAL (Status, Weight, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) 
+INSERT INTO VETMEDICINARYDB.ANIMAL (Status, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) 
 VALUES 
-('Available', '10', '982', '10/21/2017', 'Calgary', 'DSH', 'Cat', 'Cinnamon', 'M', '7'),
-('Available', '11', '413', '03/04/2020', 'Calgary', 'Manx', 'Cat', 'Ginger', 'M', '7'),
-('Needs Vaccination', '34', '362', '06/23/2015', 'Cochrane', 'Bulldog', 'Dog', 'Maverik', 'F', '7'),
-('Injured', '1202', '734', '04/15/2012', 'Canmore', 'Shire', 'Horse', 'Seabiscuit', 'M', '8'),
-('Available', '123', '392', '07/13/2018', 'Calgary', 'Poodle', 'Dog', 'Frank', 'F', '7'),
-('Available', '110', '734', '05/01/2016', 'Lethbridge', 'Boxer', 'Dog', 'Clifford', 'F', '7'),
-('Needs new medication', '17', '274', '08/02/2018', 'Okotoks', 'Scottish Fold', 'Cat', 'Ruben', 'F', '7'),
-('Available', '34', '463', '12/10/2019', 'Cochrane', 'Golden Retriever', 'Dog', 'Spot', 'M', '7'),
-('Available', '1042', '427', '10/02/2012', 'Calgary', 'Throughbred', 'Horse', 'Dakota', 'M', '8'),
-('Injured', '9', '246', '01/24/2016', 'Calgary', 'DSH', 'Cat', 'Whiskey', 'M', '7');
+('Available', '982', '10/21/2017', 'Calgary', 'DSH', 'Cat', 'Cinnamon', 'M', '7'),
+('Available', '413', '03/04/2020', 'Calgary', 'Manx', 'Cat', 'Ginger', 'M', '7'),
+('Needs Vaccination', '362', '06/23/2015', 'Cochrane', 'Bulldog', 'Dog', 'Maverik', 'F', '7'),
+('Injured', '734', '04/15/2012', 'Canmore', 'Shire', 'Horse', 'Seabiscuit', 'M', '8'),
+('Available', '392', '07/13/2018', 'Calgary', 'Poodle', 'Dog', 'Frank', 'F', '7'),
+('Available', '734', '05/01/2016', 'Lethbridge', 'Boxer', 'Dog', 'Clifford', 'F', '7'),
+('Needs new medication', '274', '08/02/2018', 'Okotoks', 'Scottish Fold', 'Cat', 'Ruben', 'F', '7'),
+('Available', '463', '12/10/2019', 'Cochrane', 'Golden Retriever', 'Dog', 'Spot', 'M', '7'),
+('Available', '427', '10/02/2012', 'Calgary', 'Throughbred', 'Horse', 'Dakota', 'M', '8'),
+('Injured', '246', '01/24/2016', 'Calgary', 'DSH', 'Cat', 'Whiskey', 'M', '7');
 
 /*------------------------ANIMAL_PROBLEM-----------------*/
 DROP TABLE IF EXISTS VETMEDICINARYDB.ANIMAL_PROBLEM;

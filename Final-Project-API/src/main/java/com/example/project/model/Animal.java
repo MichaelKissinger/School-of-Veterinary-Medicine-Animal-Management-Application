@@ -87,7 +87,7 @@ public class Animal {
         this.name = this.getFromDBName();
         this.sex = this.getFromDBSex();
         this.status = this.getFromDBStatus();
-        this.tattoo = this.getFromDBTattoo();
+//        this.tattoo = this.getFromDBTattoo();
         this.type = this.getFromDBType();
         this.userID = this.getFromDBUserID();
     }
@@ -141,7 +141,13 @@ public class Animal {
     }
 
     public int getFromDBTattoo() throws SQLException {
-        return Integer.parseInt(myJDBC.animalGetStatement(animalId, "Tattoo"));
+        try {
+            return Integer.parseInt(myJDBC.animalGetStatement(animalId, "Tattoo"));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+
+        }
+        return 0;
     }
 
     public void setFromDBTattoo(String tattoo) throws SQLException {

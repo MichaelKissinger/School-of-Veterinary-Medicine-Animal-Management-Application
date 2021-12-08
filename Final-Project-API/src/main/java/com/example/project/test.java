@@ -9,9 +9,11 @@ import java.sql.SQLException;
 public class test {
 
     public static void main(String[] args) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
-        for(Animal a: myDatabase.getAnimals()) {
-            System.out.println(a);
-        }
+//        AnimalDatabase myDatabase = new AnimalDatabase();
+//        for(Animal a: myDatabase.getAnimals()) {
+//            System.out.println(a);
+//        }
+
+
     }
 }
