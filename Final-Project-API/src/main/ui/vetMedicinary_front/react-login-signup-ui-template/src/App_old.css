@@ -176,6 +176,11 @@
 .profile-header-content {
   padding: none;
 }
+/* .profile-header{
+  padding-left:20px;
+  padding-top:3px;
+  height:35%
+} */
 a {
   text-decoration: none;
 }
@@ -215,11 +220,11 @@ overflow-x: hidden;
     padding:20px 0;
     height:83.5%;
   }
-  /* .admin-access-container{
+  .admin-access-container{
     height:85.5%;
     overflow-y: hidden;
     overflow-x: hidden;
-  } */
+  }
   .animal-care-access-point{
     height:85.5%;
     overflow-y: hidden;
