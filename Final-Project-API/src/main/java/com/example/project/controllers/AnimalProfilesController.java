@@ -28,17 +28,22 @@ import javax.xml.crypto.Data;
 @RestController
 public class AnimalProfilesController {
 
+    AnimalDatabase myDatabase = new AnimalDatabase();
+
+    public AnimalProfilesController() throws SQLException {
+    }
+
     //All Animals
     @GetMapping("/allAnimals")
     public ArrayList<Animal> getAllAnimals() throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         return myDatabase.getAnimals();
     }
 
     //Animal Info
     @GetMapping("/animal/{animalID}")
     public Animal getAnimal(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal;
     }
@@ -46,7 +51,7 @@ public class AnimalProfilesController {
     //Animal Pictures
     @GetMapping("/animal/photos/{animalID}")
     public ArrayList<AnimalHistoryPhotos> getAnimalPhotos(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         ArrayList<AnimalHistoryPhotos> allPhotos = new ArrayList<AnimalHistoryPhotos>();
         for (AnimalHistory h: myAnimal.getAnimalHistory()) {
@@ -61,7 +66,7 @@ public class AnimalProfilesController {
     //Animal Problems
     @GetMapping("/animal/problems/{animalID}")
     public ArrayList<AnimalProblem> getAnimalProblem(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalProblems();
     }
@@ -69,7 +74,7 @@ public class AnimalProfilesController {
     //Animal Prescriptions
     @GetMapping("/animal/prescriptions/{animalID}")
     public ArrayList<AnimalPrescription> getAnimalPrescriptions(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalPrescriptions();
     }
@@ -77,7 +82,7 @@ public class AnimalProfilesController {
     //Animal History
     @GetMapping("/animal/history/{animalID}")
     public ArrayList<AnimalHistory> getAnimalHistory(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalHistory();
     }
@@ -85,7 +90,7 @@ public class AnimalProfilesController {
     //Animal Comments
     @GetMapping("/animal/comments/{animalID}")
     public ArrayList<AnimalHistoryComments> getAnimalComments(@PathVariable("animalID") int animalId) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
         ArrayList<AnimalHistoryComments> allComments = new ArrayList<AnimalHistoryComments>();
         for (AnimalHistory h: myAnimal.getAnimalHistory()) {
@@ -99,10 +104,11 @@ public class AnimalProfilesController {
 
     @PutMapping("/animal/updateStatus/{animalID}")
     public void updateStatus(@PathVariable("animalID") int animalId, @RequestBody String animalStatus) throws SQLException {
-        AnimalDatabase myDatabase = new AnimalDatabase();
+//        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
-//        myAnimal.updateStatus(animalId, animalStatus);
-        System.out.println(animalStatus);
+        String newStatus = animalStatus;
+        myAnimal.updateStatus(animalId, animalStatus);
+//        System.out.println(animalStatus);
     }
 
 
