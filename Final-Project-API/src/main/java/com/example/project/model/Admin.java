@@ -68,7 +68,7 @@ public class Admin {
         scanner.close();
     }
 
-<<<<<<< HEAD
+
     /**
      * addAnimal() loads the animals from the database and keep them in the animal list.
      */
@@ -81,7 +81,7 @@ public class Admin {
         }
         scanner.close();
     }
-=======
+
 //    public void addAnimal() throws SQLException {
 //        String animal = (userDB.adminAccessGetAnimal());
 //        Scanner scanner = new Scanner(animal);
@@ -91,7 +91,7 @@ public class Admin {
 //        }
 //        scanner.close();
 //    }
->>>>>>> mkbranch
+
 
     public void printUsers() {
         for (User u : users) {
