@@ -2,6 +2,7 @@ package com.example.project.model;
 
 /**
  * User class contains all the information that a user in this system has. It gets the username and password and loads all the information related to that user
+ *
  * @author Arman Hosseinsarraf
  */
 public class User {
@@ -15,6 +16,7 @@ public class User {
     String birthDate;
     String activationDate;
     String permission;
+    String status;
     UserDB userDB;
 
     /**
@@ -42,6 +44,15 @@ public class User {
         setBirthDate(userDB.getUserInfo(username, password, "Date_B"));
         setActivationDate(userDB.getUserInfo(username, password, "ActivationDate"));
         setPermission(userDB.getPermissionType(username));
+        setStatus(userDB.getUserInfo(username, password, "Status"));
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getLname() {
@@ -127,7 +138,9 @@ public class User {
     @Override
     public String toString() {
 
+
         return "User {" +
+                "Status= " + this.getStatus() + ", " +
                 "UserName= " + this.getUsername() +
                 ", LastName= '" + this.getLname() + '\'' +
                 ", FirstName= '" + this.getFname() + '\'' +
@@ -139,5 +152,6 @@ public class User {
                 ", ActivationDate= '" + this.getActivationDate() + '\'' +
                 ", Permission= '" + this.getPermission() + '\'' +
                 '}';
+
     }
 }

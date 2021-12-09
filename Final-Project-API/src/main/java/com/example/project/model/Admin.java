@@ -26,7 +26,6 @@ public class Admin {
         users = new ArrayList<>();
         userDB = new UserDB();
         addUser();
-//        addAnimal();
         blocklist = new ArrayList<>();
     }
 
@@ -47,7 +46,7 @@ public class Admin {
      */
     public void blockUser(User user) {
         blocklist.add(user); // when admin blocks a user, it will be added to the blocklist too
-        userDB.deleteUser(String.valueOf(user.getUsername()), String.valueOf(user.getPassword())); // that user will be deleted from the user
+        userDB.deleteUser(String.valueOf(user.getPassword())); // that user will be deleted from the user
         reloadUserDB(); // database will be reloaded
     }
 
@@ -63,46 +62,24 @@ public class Admin {
         Scanner scanner = new Scanner(user);
         while (scanner.hasNextLine()) {
             String userPass = scanner.nextLine();
-            users.add(new User(Integer.parseInt(userPass.substring(0, 6)), Integer.parseInt(userPass.substring(7)))); // it creates a user object for each user id, password that exist on the database
+            String[] a = userPass.split(" ");
+            users.add(new User(Integer.parseInt(a[0]), Integer.parseInt(a[1]))); // it creates a user object for each user id, password that exist on the database
         }
         scanner.close();
     }
-
-
-    /**
-     * addAnimal() loads the animals from the database and keep them in the animal list.
-     */
-    public void addAnimal() throws SQLException {
-        String animal = (userDB.adminAccessGetAnimal());
-        Scanner scanner = new Scanner(animal);
-        while (scanner.hasNextLine()) {
-            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId))); // it creates an animal object for each animal id that exist on the database
-        }
-        scanner.close();
-    }
-
-//    public void addAnimal() throws SQLException {
-//        String animal = (userDB.adminAccessGetAnimal());
-//        Scanner scanner = new Scanner(animal);
-//        while (scanner.hasNextLine()) {
-//            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId)));
-//        }
-//        scanner.close();
-//    }
 
 
     public void printUsers() {
         for (User u : users) {
+            if (u.getStatus().equals("Active"))
             System.out.println(u);
-            System.out.println();
+
         }
     }
 
     /**
      * Admin can add a new user to the database
-     * @param username
+     * @param status
      * @param password
      * @param lName
      * @param fName
@@ -114,8 +91,8 @@ public class Admin {
      * @param permission
      * @throws SQLException
      */
-    public void addNewUser(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB,String actDate, String permission) throws SQLException {
-        userDB.addUserToDB(username, password, lName, fName, phone, email, sex, dateB, actDate, permission); // creates a new record to the database
+    public void addNewUser(String status, String password, String lName, String fName, String phone, String email, String sex, String dateB,String actDate, String permission) throws SQLException {
+        userDB.addUserToDB(status, password, lName, fName, phone, email, sex, dateB, actDate, permission); // creates a new record to the database
         reloadUserDB();
 
     }

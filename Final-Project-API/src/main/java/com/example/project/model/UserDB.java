@@ -4,6 +4,7 @@ import java.sql.*;
 
 /**
  * UserDB class is the bridge between backend and database. It has all required functionalities to get information from DB and write information to DB
+ *
  * @author Arman Hosseinsarraf
  */
 public class UserDB {
@@ -49,6 +50,7 @@ public class UserDB {
 
     /**
      * queries the required information related to given username and password
+     *
      * @param username
      * @param pass
      * @param column
@@ -74,6 +76,7 @@ public class UserDB {
 
     /**
      * Gives the username as argument and returns the permission type of that user
+     *
      * @param username
      * @return permissionType
      */
@@ -101,6 +104,7 @@ public class UserDB {
 
     /**
      * Gets all the information about users exist in the user database
+     *
      * @return
      */
     public String adminAccessGetUser() {
@@ -122,6 +126,7 @@ public class UserDB {
 
     /**
      * Getting all the information about all animals from the animal database
+     *
      * @return
      */
     public String adminAccessGetAnimal() {
@@ -143,6 +148,7 @@ public class UserDB {
 
     /**
      * Updates User information in the given column with the given value
+     *
      * @param username
      * @param pass
      * @param column
@@ -163,20 +169,20 @@ public class UserDB {
 
     /**
      * Gets the username and password related to a user in the database and remove that record from the DB
-     * @param user
+     *
      * @param pass
      */
-    public void deleteUser(String user, String pass) {
+    public void deleteUser(String pass) {
         try {
             createConnection();
             Statement myStmt = connection.createStatement();
-
-            myStmt.executeUpdate("DELETE FROM STUDENT WHERE UserID = " + user + ";");
-            myStmt.executeUpdate("DELETE FROM Admin WHERE UserID = " + user + ";");
-            myStmt.executeUpdate("DELETE FROM HEALTH_TECHNICIAN WHERE UserID = " + user + ";");
-            myStmt.executeUpdate("DELETE FROM TEACHER_TECHNICIAN WHERE UserID = " + user + ";");
-            myStmt.executeUpdate("DELETE FROM CARE_ATTENDANT WHERE UserID = " + user + ";");
-            myStmt.executeUpdate("DELETE FROM USER WHERE UserID = " + user + " AND Password = " + pass + ";");
+            myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
+//            myStmt.executeUpdate("DELETE FROM STUDENT WHERE Password = " + pass + ";");
+//            myStmt.executeUpdate("DELETE FROM Admin WHERE UserID = " + 2 + ";");
+//            myStmt.executeUpdate("DELETE FROM HEALTH_TECHNICIAN WHERE Password = " + pass + ";");
+//            myStmt.executeUpdate("DELETE FROM TEACHER_TECHNICIAN WHERE Password = " + pass + ";");
+//            myStmt.executeUpdate("DELETE FROM CARE_ATTENDANT WHERE Password = " + pass + ";");
+//            myStmt.executeUpdate("DELETE FROM USER WHERE Password = " + pass + ";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -185,7 +191,8 @@ public class UserDB {
 
     /**
      * addUserToDB() Gets all the information a user must have, and add them into the user database
-     * @param username
+     *
+     * @param status
      * @param password
      * @param lName
      * @param fName
@@ -197,10 +204,10 @@ public class UserDB {
      * @param permission
      * @throws SQLException
      */
-    public void addUserToDB(String username, String password, String lName, String fName, String phone, String email, String sex, String dateB, String activationDate, String permission) throws SQLException {
-        String query = " insert into USER (UserID, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    public void addUserToDB(String status, String password, String lName, String fName, String phone, String email, String sex, String dateB, String activationDate, String permission) throws SQLException {
+        String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
-        preparedStmt.setInt(1, Integer.parseInt(username));
+        preparedStmt.setString(1, status);
         preparedStmt.setInt(2, Integer.parseInt(password));
         preparedStmt.setString(3, lName);
         preparedStmt.setString(4, fName);
@@ -217,6 +224,7 @@ public class UserDB {
 
     /**
      * Updates the animal status to requested by default
+     *
      * @param id
      */
     public void updateAnimalStatusToRequested(int id) {
@@ -233,6 +241,7 @@ public class UserDB {
 
     /**
      * Updating animal status to a new given status
+     *
      * @param id
      * @param status
      */

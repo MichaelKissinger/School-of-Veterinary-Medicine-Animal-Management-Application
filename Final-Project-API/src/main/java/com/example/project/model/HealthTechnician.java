@@ -13,6 +13,7 @@ public class HealthTechnician {
     User healthTechnician;
     UserDB userDB;
     JDBCConnect jdbcConnect;
+    AnimalDatabase animalDatabase;
 
     /**
      * Health Technician Constructor, creates objects from UserDB, AnimalDB, and list of animals and fills the list from database
@@ -23,51 +24,11 @@ public class HealthTechnician {
         healthTechnician = user;
         animals = new ArrayList<>();
         userDB = new UserDB();
-//        addAnimal();
         jdbcConnect = new JDBCConnect();
         jdbcConnect.createConnection();
+        animalDatabase = new AnimalDatabase();
     }
 
-    /**
-     * After each change in the database, the animal list will be refreshed
-     */
-    public void reloadAnimalDB() throws SQLException {
-        animals.clear();
-//        addAnimal();
-    }
-
-
-    /**
-     * addAnimal() loads the animals from the database and keep them in the animal list.
-     */
-    public void addAnimal() throws SQLException {
-        String animal = (userDB.adminAccessGetAnimal());
-        Scanner scanner = new Scanner(animal);
-        while (scanner.hasNextLine()) {
-            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId))); // it creates an animal object for each animal id that exist on the database
-        }
-        scanner.close();
-    }
-
-//    public void addAnimal() throws SQLException {
-//        String animal = (userDB.adminAccessGetAnimal());
-//        Scanner scanner = new Scanner(animal);
-//        while (scanner.hasNextLine()) {
-//            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId)));
-//        }
-//        scanner.close();
-//    }
-
-
-
-    public void printAnimal() throws SQLException {
-        for (Animal a : animals) {
-            System.out.println("Animal " + a.getName() + " Status: " + a.getStatus());
-
-        }
-    }
 
     /**
      * Health Technician can change animal status with animal ID
@@ -77,7 +38,8 @@ public class HealthTechnician {
      */
     public void changeAnimalStatus(int id, String status) throws SQLException {
         userDB.changeAnimalStatus(id, status);
-        reloadAnimalDB();
+        animalDatabase.initializeDatabase();
+
     }
 
     /**
@@ -109,9 +71,6 @@ public class HealthTechnician {
      * @param animalId
      */
     public void showPrescribe(int animalId){
-        for (Animal animal: animals){
-            if (animal.getAnimalId()==animalId)
-                System.out.println(animal.getAnimalPrescriptions());
-        }
+        System.out.println(animalDatabase.findAnimal(animalId).getAnimalPrescriptions());
     }
 }
