@@ -185,7 +185,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the type:");
                                 myObj = new Scanner(System.in);
                                 String type = myObj.nextLine();
-                                myJDBC.addAnimalPhoto(recordId, imageId, fileName, type);
+//                                myJDBC.addAnimalPhoto(recordId, imageId, fileName, type);
                                 break;
                             case "13":
                                 System.out.println("Adding new comment");
@@ -198,7 +198,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 description = myObj.nextLine();
-                                myJDBC.addAnimalComment(recordId, commentId, description);
+//                                myJDBC.addAnimalComment(recordId, commentId, description);
                                 break;
                             case "14":
                                 System.out.println("*** Selecting another Animal *** ");
