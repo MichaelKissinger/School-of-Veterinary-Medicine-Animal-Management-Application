@@ -28,58 +28,17 @@ public class CareAttendant {
         jdbcConnect.createConnection();
     }
 
-    /**
-     * After each change to animal database, the list of animals will be refreshed
-     * @throws SQLException
-     */
-    public void reloadAnimalDB() throws SQLException {
-        animals.clear();
-//        addAnimal();
-    }
 
-
-    /**
-     * addAnimal() loads the animals from the database and keep them in the animal list.
-     */
-    public void addAnimal() throws SQLException {
-        String animal = (userDB.adminAccessGetAnimal());
-        Scanner scanner = new Scanner(animal);
-        while (scanner.hasNextLine()) {
-            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId))); // it creates an animal object for each animal id that exist on the database
-        }
-        scanner.close();
-    }
-
-
-//    public void addAnimal() throws SQLException {
-//        String animal = (userDB.adminAccessGetAnimal());
-//        Scanner scanner = new Scanner(animal);
-//        while (scanner.hasNextLine()) {
-//            String animalId = scanner.nextLine();
-//            animals.add(new Animal(Integer.parseInt(animalId)));
-//        }
-//        scanner.close();
-//    }
-
-
-    public void printAnimal() throws SQLException {
-        for (Animal a : animals) {
-            System.out.println("Animal " + a.getName() + " Status: " + a.getStatus());
-
-        }
-    }
 
     /**
      * Care Attendant can take and upload photos of each animal to the system.
      * @param recordId
-     * @param imageId
      * @param fileName
      * @param type
      * @throws SQLException
      */
-    public void uploadPhoto(String recordId, String imageId, String fileName, String type) throws SQLException {
-        jdbcConnect.addAnimalPhoto(recordId, imageId, fileName, type); // All the information about animal's pictures will be saved in database
+    public void uploadPhoto(String recordId, String fileName, String type) throws SQLException {
+        jdbcConnect.addAnimalPhoto(recordId, fileName, type); // All the information about animal's pictures will be saved in database
     }
 
 
@@ -90,15 +49,8 @@ public class CareAttendant {
      */
     public void requestTreatment(int id) throws SQLException {
         userDB.updateAnimalStatusToRequested(id);
-        animals.clear();
-        addAnimal();
-    }
 
-//    public void requestTreatment(int id) throws SQLException {
-//        userDB.updateAnimalStatusToRequested(id);
-//        animals.clear();
-//        addAnimal();
-//    }
+    }
 
 
     /**
@@ -109,7 +61,6 @@ public class CareAttendant {
      */
     public void changeAnimalStatus(int id, String status) throws SQLException {
         userDB.changeAnimalStatus(id, status); // animal status will be changed in the animal database
-        reloadAnimalDB();
     }
 
     /**

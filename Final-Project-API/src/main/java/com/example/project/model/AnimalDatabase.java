@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * Animal Database is used to load all animals from
  * the SQL database.
+ *
  * @author Michael Kissinger
  */
 public class AnimalDatabase {
@@ -31,9 +32,18 @@ public class AnimalDatabase {
         this.animalDatabase = animals;
     }
 
-    public Animal findAnimal (int animalID) {
-        for (Animal a: this.animalDatabase){
+    public Animal findAnimal(int animalID) {
+        for (Animal a : this.animalDatabase) {
             if (a.getAnimalId() == animalID) {
+                return a;
+            }
+        }
+        return null;
+    }
+
+    public Animal findAnimalByName(String animalName) {
+        for (Animal a : this.animalDatabase) {
+            if (a.getName().equals(animalName)) {
                 return a;
             }
         }

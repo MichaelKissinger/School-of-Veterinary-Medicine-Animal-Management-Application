@@ -15,7 +15,7 @@ public class JDBCConnect {
     public void createConnection() {
         try {
             //You may have to enter your own SQL password below to make this work
-            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -262,25 +262,23 @@ public class JDBCConnect {
         dbConnect.close();
     }
 
-    public void addAnimalPhoto(String recordId, String imageId, String fileName, String type) throws SQLException {
-        String query = "INSERT INTO HISTORY_PHOTOS (Record_ID, Image_ID, File_Name, Type) values (?, ?, ?, ?)";
+    public void addAnimalPhoto(String recordId,  String fileName, String type) throws SQLException {
+        String query = "INSERT INTO HISTORY_PHOTOS (Record_ID, File_Name, Type) values (?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
         preparedStmt.setInt (1, Integer.parseInt(recordId));
-        preparedStmt.setInt (2, Integer.parseInt(imageId));
-        preparedStmt.setString    (3, fileName);
-        preparedStmt.setString    (4, type);
+        preparedStmt.setString    (2, fileName);
+        preparedStmt.setString    (3, type);
 
         // execute the prepared statement
         preparedStmt.execute();
         dbConnect.close();
     }
 
-    public void addAnimalComment(String recordId, String commentId, String description) throws SQLException {
-        String query = "INSERT INTO HISTORY_COMMENTS (Record_ID, Comment_ID, Description) values (?, ?, ?)";
+    public void addAnimalComment(String recordId, String description) throws SQLException {
+        String query = "INSERT INTO HISTORY_COMMENTS (Record_ID, Description) values (?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
         preparedStmt.setInt (1, Integer.parseInt(recordId));
-        preparedStmt.setInt (2, Integer.parseInt(commentId));
-        preparedStmt.setString    (3, description);
+        preparedStmt.setString    (2, description);
 
         // execute the prepared statement
         preparedStmt.execute();
