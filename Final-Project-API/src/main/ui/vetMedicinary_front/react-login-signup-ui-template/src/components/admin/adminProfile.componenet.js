@@ -5,44 +5,44 @@ export default class AdminProfile extends Component {
     render() {
         return (
             <form>
-                <div className="container-fluid">
-                    <div className="row">
-                        <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div className="sidebar-sticky">
-                            <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                            <div class="sidebar-sticky">
+                            <h7 class="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
                                     <span>Administrator</span>
                                 </h7>
-                                <ul className="nav flex-column">
-                                    <li className="nav-item">
-                                        <div className="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <div class="d-flex flex-column align-items-center text-center">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="130" />
                                         </div>
                                     </li>
                                 </ul>
-                                <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
+                                <h6 class="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                     <span>Current user full name</span>
                                 </h6>
-                                <ul className="nav flex-column mb-2">
-                                <li className="nav-item">
+                                <ul class="nav flex-column mb-2">
+                                <li class="nav-item">
                                         <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    <li class="nav-item">
                                         <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    <li class="nav-item">
                                         <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    <li class="nav-item">
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
 
-                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <h2>[Current user name] Profile</h2>
-                            <div className="mt-3">
-                                <table className="table table-responsive">
+                            <div class="mt-3">
+                                <table class="table table-responsive">
                                     <tbody>
                                         <tr>
                                             <th scope="col">Name:</th>

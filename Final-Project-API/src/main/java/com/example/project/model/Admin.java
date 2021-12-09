@@ -40,6 +40,10 @@ public class Admin {
         reloadUserDB();
     }
 
+
+    public ArrayList<User> getUsers(){
+        return users;
+    }
     /**
      * Admin can block users
      * @param user
