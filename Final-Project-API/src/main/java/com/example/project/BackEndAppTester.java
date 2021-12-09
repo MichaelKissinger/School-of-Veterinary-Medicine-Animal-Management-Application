@@ -23,7 +23,6 @@ public class BackEndAppTester {
         LoginChecker checker = new LoginChecker(username, password); // create an object of loginChecker with the username and password
 
 
-
         User user = null;
         checker.checkUsernamePassword(); // Checks to see if the information exist in the database
         if (checker.checkUsernamePassword()) {

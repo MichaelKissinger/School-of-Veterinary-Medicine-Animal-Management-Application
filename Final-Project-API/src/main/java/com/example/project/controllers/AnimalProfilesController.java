@@ -1,7 +1,9 @@
 package com.example.project.controllers;
 
 import com.example.project.model.*;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -14,6 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import javax.xml.crypto.Data;
 
@@ -41,14 +44,22 @@ public class AnimalProfilesController {
     }
 
     //Animal Pictures
-//    @GetMapping("/animal/{animalID}/pictures")
-//    public ArrayList<AnimalProblem> pictures(@PathVariable("animalID") int animalID) throws SQLException {
-//        Animal myAnimal = new Animal(animalID);
-//        return myAnimal.getAnimalPicture();
-//    }
+    @GetMapping("/animal/photos/{animalID}")
+    public ArrayList<AnimalHistoryPhotos> getAnimalPhotos(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
+        ArrayList<AnimalHistoryPhotos> allPhotos = new ArrayList<AnimalHistoryPhotos>();
+        for (AnimalHistory h: myAnimal.getAnimalHistory()) {
+            ArrayList<AnimalHistoryPhotos> myPhotos = h.getAnimalHistoryPhotos();
+            for (AnimalHistoryPhotos c: myPhotos) {
+                allPhotos.add(c);
+            }
+        }
+        return allPhotos;
+    }
 
     //Animal Problems
-    @GetMapping("/animal/{animalID}/problems")
+    @GetMapping("/animal/problems/{animalID}")
     public ArrayList<AnimalProblem> getAnimalProblem(@PathVariable("animalID") int animalId) throws SQLException {
         AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
@@ -56,7 +67,7 @@ public class AnimalProfilesController {
     }
 
     //Animal Prescriptions
-    @GetMapping("/animal/{animalID}/prescriptions")
+    @GetMapping("/animal/prescriptions/{animalID}")
     public ArrayList<AnimalPrescription> getAnimalPrescriptions(@PathVariable("animalID") int animalId) throws SQLException {
         AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
@@ -64,7 +75,7 @@ public class AnimalProfilesController {
     }
 
     //Animal History
-    @GetMapping("/animal/{animalID}/history")
+    @GetMapping("/animal/history/{animalID}")
     public ArrayList<AnimalHistory> getAnimalHistory(@PathVariable("animalID") int animalId) throws SQLException {
         AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
@@ -72,7 +83,27 @@ public class AnimalProfilesController {
     }
 
     //Animal Comments
+    @GetMapping("/animal/comments/{animalID}")
+    public ArrayList<AnimalHistoryComments> getAnimalComments(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
+        ArrayList<AnimalHistoryComments> allComments = new ArrayList<AnimalHistoryComments>();
+        for (AnimalHistory h: myAnimal.getAnimalHistory()) {
+            ArrayList<AnimalHistoryComments> myComments = h.getAnimalHistoryComments();
+            for (AnimalHistoryComments c: myComments) {
+                allComments.add(c);
+            }
+        }
+        return allComments;
+    }
 
+    @PutMapping("/animal/updateStatus/{animalID}")
+    public void updateStatus(@PathVariable("animalID") int animalId, @RequestBody String animalStatus) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
+//        myAnimal.updateStatus(animalId, animalStatus);
+        System.out.println(animalStatus);
+    }
 
 
 

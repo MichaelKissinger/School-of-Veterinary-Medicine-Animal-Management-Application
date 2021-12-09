@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import axios from "axios";
 
-const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/1/prescriptions';
+const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/prescriptions/1';
 
 const AnimalPrescription = () => {
 

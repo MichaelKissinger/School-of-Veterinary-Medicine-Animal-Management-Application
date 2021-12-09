@@ -74,12 +74,12 @@ public class JDBCConnect {
         try {
             Statement myStmt = dbConnect.createStatement();
             myStmt.executeUpdate("UPDATE ANIMAL SET " + column + " = \"" + change +" \" WHERE Animal_ID = \""+ animalID +"\";");
-
             myStmt.close();
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public ArrayList<AnimalPrescription> animalGetPrescriptions(int animalID) throws SQLException {
@@ -109,6 +109,7 @@ public class JDBCConnect {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
         return animalPrescriptions;
     }
 
@@ -131,6 +132,7 @@ public class JDBCConnect {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
         return animalProblems;
     }
 
@@ -158,6 +160,7 @@ public class JDBCConnect {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
         return animalHistory;
     }
 
@@ -180,6 +183,7 @@ public class JDBCConnect {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
         return animalComment;
     }
 
@@ -203,6 +207,7 @@ public class JDBCConnect {
         catch (SQLException e) {
             e.printStackTrace();
         }
+
         return animalPhoto;
     }
 
