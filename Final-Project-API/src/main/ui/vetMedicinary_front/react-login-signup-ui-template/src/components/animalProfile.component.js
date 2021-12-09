@@ -20,13 +20,13 @@ export default class AnimalProfile extends Component {
     render() {
         return (
             <form class="animal-profile">
-                <header>
+                {/* <header>
                     <div class="search-header-container blog-main-clear">
                         <div class="search-header-date-container">
                             <div class="header-date-inner">{this.state.date}</div>
                         </div>
                     </div>
-                </header>
+                </header> */}
                     <AnimalName/>
                 <div class="rows">
                         <div class="row">
@@ -54,12 +54,12 @@ export default class AnimalProfile extends Component {
                         </div>
 
                 </div>
-                <footer>
+                {/* <footer>
                     <div class="search-footer-container">
                     <p class="footer-address-inner">School of Veterinary Medicine 
                                             </p>
                     </div>
-                </footer>
+                </footer> */}
             </form >
         );
     }

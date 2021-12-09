@@ -14,13 +14,13 @@ export default class SearchAnimal extends Component {
             
 
             <form class="main-search">
-                <header>
+                {/* <header>
                     <div class="search-header-container blog-main-clear">
                         <div class="search-header-date-container">
                             <div class="header-date-inner">{this.state.date}</div>
                         </div>
                     </div>
-                </header>
+                </header> */}
                 <div class="search-container">
                     <table class="table table-responsive">
                         <tbody>
@@ -154,14 +154,12 @@ export default class SearchAnimal extends Component {
                     </nav>
                     </div>
                 </div>
-                
-
-                <footer>
+                {/* <footer>
                     <div class="search-footer-container">
                     <p class="footer-address-inner">School of Veterinary Medicine 
                                             </p>
                     </div>
-                </footer>
+                </footer> */}
             </form >
         );
     }
