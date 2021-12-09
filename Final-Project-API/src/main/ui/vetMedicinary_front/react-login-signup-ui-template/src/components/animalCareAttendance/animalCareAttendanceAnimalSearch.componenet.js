@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import axios from "axios";
 
-export default class AnimalCareAttendanceAnimalSearch extends Component {
-    render() {
+
+const User_REST_API_URL = 'http://localhost:8080/allAnimals';
+
+const AnimalCareAttendanceAnimalSearch = () => {
+
+    const[myArray, setMyArray] = React.useState([]);
+
+    React.useEffect(() => {
+      axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
+    }, []);
         return (
             <form>
                 <div className="container-fluid">
@@ -61,101 +70,38 @@ export default class AnimalCareAttendanceAnimalSearch extends Component {
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Type</th>
+                                            <th scope="col">City</th>
+                                            <th scope="col">Date of Birth</th>
                                             <th scope="col">Name</th>
-                                            <th scope="col">bread</th>
-                                            <th scope="col">Color</th>
-                                            <th scope="col">Birthday</th>
+                                            <th scope="col">Sex</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Tattoo</th>
+                                            <th scope="col">Breed</th>
+                                            <th scope="col">User ID</th>
                                             <th scope="col">Alert Disease</th>
                                             <th scope="col">Request Treatment</th>
                                             <th scope="col">Animal Profile</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>German Shepherd</td>
-                                            <td>Brown - Black</td>
-                                            <td>23-01-2018</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>Tibetan Mastiff</td>
-                                            <td>White</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>Siberian Husky</td>
-                                            <td>Gray</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">4</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>Siberian Husky</td>
-                                            <td>Khaki</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">5</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>Siberian Husky</td>
-                                            <td>Gray</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">6</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>German Shepherd</td>
-                                            <td>Brown - Black</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">7</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>Tibetan Mastiff</td>
-                                            <td>White</td>
-                                            <td>2018-11-10</td>
-                                            <td>The Status</td>
-                                            <td><a className="fa fa-bell" href="#"></a></td>
-                                            <td><a className="fa fa-ambulance" href="#"></a></td>
-                                            <td><a className="fa fa-eye" href="#"></a></td>
-                                        </tr>
+                                        {
+                                    myArray.map(myArray =>
+                                                    <tr key={myArray.animalId}>
+                                                  <td>{myArray.animalId}</td>
+                                                  <td>{myArray.breed}</td>
+                                                  <td>{myArray.city}</td>
+                                                  <td>{myArray.dateBirth}</td>
+                                                  <td>{myArray.name}</td>
+                                                  <td>{myArray.sex}</td>
+                                                  <td>{myArray.status}</td>
+                                                  <td>{myArray.tattoo}</td>
+                                                  <td>{myArray.type}</td>
+                                                  <td>{myArray.userID}</td>
+                                                  <td><a className="fa fa-bell" href="#"></a></td>
+                                                  <td><a className="fa fa-ambulance" href="#"></a></td>
+                                                  <td><a className="fa fa-eye" href="#"></a></td>
+                                                  </tr>)
+                                                 }
                                     </tbody>
                                 </table>
                             </div>
@@ -165,4 +111,4 @@ export default class AnimalCareAttendanceAnimalSearch extends Component {
             </form >
         );
     }
-}
+export default AnimalCareAttendanceAnimalSearch;
