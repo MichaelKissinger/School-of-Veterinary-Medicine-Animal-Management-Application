@@ -212,10 +212,10 @@ public class JDBCConnect {
         return animalPhoto;
     }
 
-    public void addAnimalProblem(String animalId, String disease, String description) throws SQLException {
+    public void addAnimalProblem(int animalId, String disease, String description) throws SQLException {
         String query = "INSERT INTO ANIMAL_PROBLEM (Animal_ID, Disease, Description) values (?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
-        preparedStmt.setInt(1, Integer.parseInt(animalId));
+        preparedStmt.setInt(1, animalId);
         preparedStmt.setString(2, disease);
         preparedStmt.setString(3, description);
 

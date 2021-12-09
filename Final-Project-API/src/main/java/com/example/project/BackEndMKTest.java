@@ -143,7 +143,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 String description = myObj.nextLine();
-                                myJDBC.addAnimalProblem(animalId, disease, description);
+//                                myJDBC.addAnimalProblem(animalId, disease, description);
                                 break;
                             case "11":
                                 System.out.println("Adding new History");

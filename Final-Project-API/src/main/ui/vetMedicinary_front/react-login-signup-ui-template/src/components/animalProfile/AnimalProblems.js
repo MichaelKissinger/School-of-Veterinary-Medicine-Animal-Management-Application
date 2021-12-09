@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
+import AnimalService from "../../service/AnimalService";
 
 const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/problems/1';
 
@@ -7,8 +8,14 @@ const AnimalProblems = () => {
   
     const[myArray, setMyArray] = React.useState([]);
 
+    // React.useEffect(() => {
+    //   axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
+    // }, []);
+
+    const id = 1;
+
     React.useEffect(() => {
-      axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
+      AnimalService.getAnimalProblems(id).then(response => setMyArray(response.data));
     }, []);
 
     // const[count, setCount] = useState(0);

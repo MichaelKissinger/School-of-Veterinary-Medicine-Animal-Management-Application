@@ -1,17 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
-const ANIMAL_REST_API_URL = 'http://localhost:8080/animal';
+import AnimalService from "../../service/AnimalService";
 
 const AnimalStatus = () => {
-  
-    const[myArray, setMyArray] = React.useState([]);
     const[changeStatus, setChangeStatus] = React.useState();
     const statusText = useRef();
-
-    React.useEffect(() => {
-      axios.get(`${ANIMAL_REST_API_URL}/1`).then(response => setMyArray(response.data));
-    }, []);
+    const id = 1;
 
 //TODO Fix issue where update status button must be pressed twice, 
 //Also once that is fixed the refresh page at bottom of function can be uncommented
@@ -21,8 +15,10 @@ const AnimalStatus = () => {
     console.log(changeStatus);
     //   setChangeStatus = newUpdate;
     const status = {Status : changeStatus};
-      axios.put('http://localhost:8080/animal/updateStatus/1', status)
+      axios.put('http://localhost:8080/animal/updateStatus/' + id, status)
           .then();
+      // AnimalService.getAnimalHistory(id, status).then();
+
     // window.location.reload(false);
   }
 

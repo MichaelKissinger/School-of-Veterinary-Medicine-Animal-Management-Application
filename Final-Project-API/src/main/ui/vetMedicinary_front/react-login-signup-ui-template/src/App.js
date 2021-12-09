@@ -58,7 +58,7 @@ function App() {
                   <Link className="nav-link" to={"/SearchAnimal"}>SearchAnimal</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/AnimalProfile"}>AnimalProfile</Link>
+                  <Link className="nav-link" to={"/AnimalProfile/:id"}>AnimalProfile</Link>
                 </li>
                 {/* <li className="nav-item">
                 <Link className="nav-link" to={"/UserProfile"}>Student Profile</Link>
@@ -103,7 +103,8 @@ function App() {
           {/* <Route path="/UserProfile" component={UserProfile} /> */}
           {/* <Route path="/SearchMain" component={SearchMain} /> */}
           <Route path="/SearchAnimal" component={SearchAnimal} />
-          <Route path="/AnimalProfile" component={AnimalProfile} />
+
+          <Route path="/AnimalProfile/:id" component={AnimalProfile} />
           {/* <Route path="/AdministratorAccess" component={AdministratorAccess} />
             <Route path="/TeachingTechnician" component={TeachingTechnician} />
             <Route path="/AnimalCareAttendance" component={AnimalCareAttendance}/>

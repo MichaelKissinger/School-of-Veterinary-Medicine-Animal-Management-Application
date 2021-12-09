@@ -70,7 +70,7 @@ public class CareAttendant {
      * @param description
      * @throws SQLException
      */
-    public void alertDiseaseProblem(String animalId,String disease,String description) throws SQLException {
+    public void alertDiseaseProblem(int animalId,String disease,String description) throws SQLException {
         jdbcConnect.addAnimalProblem(animalId, disease, description); // new alert and disease will be written into animal database
     }
 
