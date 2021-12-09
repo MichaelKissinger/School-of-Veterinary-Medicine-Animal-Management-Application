@@ -6,7 +6,7 @@ import AnimalHistory from "./AnimalHistory";
 import AnimalPrescription from "./AnimalPrescription";
 import AnimalComments from "./AnimalComment";
 import "bulma/css/bulma.css"
-import AnimalService from "../service/AnimalService";
+// import AnimalService from "../service/AnimalService";
 import AnimalName from "./AnimalName"
 import AnimalStatus from "./AnimalStatus";
 

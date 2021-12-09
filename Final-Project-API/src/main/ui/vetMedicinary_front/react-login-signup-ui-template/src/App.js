@@ -4,15 +4,19 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./components/login.component";
+//Animal Profile
+import AnimalProfile from './components/animalProfile/animalProfile.component';
+
 import SearchAnimal from './components/searchAnimal.componenet';
 // import UserProfile from "./components/userProfile.componenet";
 // import SearchMain from './components/searchMain.componenet';
 // import TeachingTechnician from './components/teachingTechnician.componenet';
 // import AdministratorAccess from './components/administratorAccess.componenet';
 // import AnimalCareAttendance from './components/animalCareAttendance.componenet'; 
-import AnimalProfile from './components/animalProfile.component';
+// import AnimalProfile from './components/animalProfile.component';
 // import AnimalHealthTechnician from './components/animalHealthTechnician.componenet'; 
 import AnimalService from './service/AnimalService';
+
 // Admin
 import AdminAnimalSearch from './components/admin/adminAnimalSearch.componenet';
 import AdminUserList from './components/admin/adminUserList.componenet';

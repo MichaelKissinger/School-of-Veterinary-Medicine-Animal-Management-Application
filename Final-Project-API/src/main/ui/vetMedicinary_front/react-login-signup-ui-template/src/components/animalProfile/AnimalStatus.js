@@ -13,21 +13,17 @@ const AnimalStatus = () => {
       axios.get(`${ANIMAL_REST_API_URL}/1`).then(response => setMyArray(response.data));
     }, []);
 
-    //TODO Not working yet
-    const sendStatus = React.useEffect(() => {
-      // PUT request using axios inside useEffect React hook
-      const status = {Status : "Test"};
-      axios.put('http://localhost:8080/animal/updateStatus/1', status)
-          .then();
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
-
+//TODO Fix issue where update status button must be pressed twice, 
+//Also once that is fixed the refresh page at bottom of function can be uncommented
+//This refreshes page and shows updated status
   function statusInput(e) {
     setChangeStatus(statusText.current.value);
     console.log(changeStatus);
     //   setChangeStatus = newUpdate;
-    
-      
+    const status = {Status : changeStatus};
+      axios.put('http://localhost:8080/animal/updateStatus/1', status)
+          .then();
+    // window.location.reload(false);
   }
 
     return(
@@ -37,7 +33,7 @@ const AnimalStatus = () => {
                 <input class="input" type="text" placeholder="Update Status" ref={statusText}/>
             </div>
             <div class="control">
-                <a class="button is-info" onClick={() => this.editEmployee()}>
+                <a class="button is-info" onClick={statusInput}>
                     Update
                 </a>
             </div>

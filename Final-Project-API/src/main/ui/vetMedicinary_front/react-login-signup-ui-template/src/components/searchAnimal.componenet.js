@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "bulma/css/bulma.css"
-import AllAnimals from "./AllAnimals";
+import AllAnimals from "./animalProfile/AllAnimals";
 
 export default class SearchAnimal extends Component {
     constructor(props) {
