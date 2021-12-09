@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "bulma/css/bulma.css"
+import AllAnimals from "./AllAnimals";
 
 export default class SearchAnimal extends Component {
     constructor(props) {
@@ -9,6 +11,8 @@ export default class SearchAnimal extends Component {
     }
     render() {
         return (
+            
+
             <form class="main-search">
                 <header>
                     <div class="search-header-container blog-main-clear">
@@ -31,7 +35,8 @@ export default class SearchAnimal extends Component {
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-responsive table-striped table-hover">
+                    <AllAnimals/>
+                    {/* <table class="table table-responsive table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -135,7 +140,7 @@ export default class SearchAnimal extends Component {
                                 <td><a class="fa fa-plus-circle" href="#"></a></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                     <div class="search-pagination">
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
@@ -149,6 +154,7 @@ export default class SearchAnimal extends Component {
                     </nav>
                     </div>
                 </div>
+                
 
                 <footer>
                     <div class="search-footer-container">

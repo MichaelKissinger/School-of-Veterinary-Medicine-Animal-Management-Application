@@ -16,16 +16,14 @@ public class BackEndAppTester {
     public static void main(String[] args) throws SQLException {
         //This area is to test the various backend functionality.
 
-<<<<<<< HEAD
+
         // Username and password of an existing user in DB
-        int username = 123589;
-        int password = 6532;
-        LoginChecker checker = new LoginChecker(username, password); // create an object of loginChecker with the username and password
-=======
         int username = 1;
         int password = 3333;
-        LoginChecker checker = new LoginChecker(username, password);
->>>>>>> mkbranch
+        LoginChecker checker = new LoginChecker(username, password); // create an object of loginChecker with the username and password
+
+
+
         User user = null;
         checker.checkUsernamePassword(); // Checks to see if the information exist in the database
         if (checker.checkUsernamePassword()) {

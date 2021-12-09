@@ -25,6 +25,13 @@ import javax.xml.crypto.Data;
 @RestController
 public class AnimalProfilesController {
 
+    //All Animals
+    @GetMapping("/allAnimals")
+    public ArrayList<Animal> getAllAnimals() throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        return myDatabase.getAnimals();
+    }
+
     //Animal Info
     @GetMapping("/animal/{animalID}")
     public Animal getAnimal(@PathVariable("animalID") int animalId) throws SQLException {

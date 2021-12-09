@@ -1,25 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
 
-const ANIMAL_REST_API_URL = 'http://localhost:8080/animal';
+const ANIMAL_REST_API_URL = 'http://localhost:8080/allAnimals';
 
-const InfoTable = () => {
-  
+const AllAnimals = () => {
+
     const[myArray, setMyArray] = React.useState([]);
 
     React.useEffect(() => {
-      axios.get(`${ANIMAL_REST_API_URL}/1`).then(response => setMyArray(response.data));
+      axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
-
-    // React.useEffect(() => {
-    //   axios.get(ANIMAL_REST_API_URL).then((response) => {
-    //     setMyArray(response.data);
-    //   });
-    // }, []);
-
+  
     return(
-      <div class = "columns"> 
-        <div class="column">
           <table class="table">
             <thead>
               <tr>
@@ -36,6 +28,9 @@ const InfoTable = () => {
               </tr>
             </thead> 
             <tbody>
+            {
+                myArray.map(myArray =>
+                    <tr key={myArray.id}>
                   <td>{myArray.animalId}</td>
                   <td>{myArray.breed}</td>
                   <td>{myArray.city}</td>
@@ -46,15 +41,11 @@ const InfoTable = () => {
                   <td>{myArray.tattoo}</td>
                   <td>{myArray.type}</td>
                   <td>{myArray.userID}</td>
-              
+                  </tr>)
+            }
             </tbody>
           </table>
-      </div>
-          <div class="column is-narrow">
-            <button class="button is-dark">Update Animal Status</button>  
-          </div>
-      </div>
     );
 };
 
-export default InfoTable;
+export default AllAnimals;
