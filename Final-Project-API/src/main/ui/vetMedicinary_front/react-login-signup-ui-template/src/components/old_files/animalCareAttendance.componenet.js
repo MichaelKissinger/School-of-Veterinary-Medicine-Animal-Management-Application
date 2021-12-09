@@ -9,26 +9,26 @@ export default class AnimalCareAttendance extends Component {
     }
     render() {
         return (
-            <form class="animal-care-access-point">
+            <form className="animal-care-access-point">
                 <header>
-                    <div class="search-header-container blog-main-clear">
-                        <div class="search-header-date-container">
-                            <div class="header-date-inner">{this.state.date}</div>
+                    <div className="search-header-container blog-main-clear">
+                        <div className="search-header-date-container">
+                            <div className="header-date-inner">{this.state.date}</div>
                         </div>
-                        <div class="sign-out">
-                        <a class="sign-out fa fa-times" href="./Login" title="log out"></a>
+                        <div className="sign-out">
+                        <a className="sign-out fa fa-times" href="./Login" title="log out"></a>
                         </div>
                     </div>
                 </header>
-                <div class="admin-access-container row">
-                    <div class="col-md-3">
-                        <div class="card">
-                            <h4 class="text-center bg-dark text-white-50">Animal Care Attendance</h4>
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" />
-                                    <div class="mt-3">
-                                        <table class="table table-responsive">
+                <div className="admin-access-container row">
+                    <div className="col-md-3">
+                        <div className="card">
+                            <h4 className="text-center bg-dark text-white-50">Animal Care Attendance</h4>
+                            <div className="card-body">
+                                <div className="d-flex flex-column align-items-center text-center">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150" />
+                                    <div className="mt-3">
+                                        <table className="table table-responsive">
                                             <tbody>
                                                 <tr>
                                                     <th scope="col">Name:</th>
@@ -53,13 +53,13 @@ export default class AnimalCareAttendance extends Component {
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="card">
-                            <h4 class="text-center bg-dark text-white-50">Animals List</h4>
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <div class="mt-5">
-                                        <table class="table table-responsive table-hover table-striped">
+                    <div className="col-md-5">
+                        <div className="card">
+                            <h4 className="text-center bg-dark text-white-50">Animals List</h4>
+                            <div className="card-body">
+                                <div className="d-flex flex-column align-items-center text-center">
+                                    <div className="mt-5">
+                                        <table className="table table-responsive table-hover table-striped">
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Name</th>
@@ -72,38 +72,38 @@ export default class AnimalCareAttendance extends Component {
                                                 <tr>
                                                     <th scope="col">Dog A</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat A</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Kangaroo</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Dog B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                                 <tr>
                                                     <th scope="col">Cat B</th>
                                                     <th scope="col">Dog A</th>
-                                                    <th scope="col"><a class="fa fa-bell" href="#"></a></th>
-                                                    <th scope="col"><a class="fa fa-ambulance" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-bell" href="#"></a></th>
+                                                    <th scope="col"><a className="fa fa-ambulance" href="#"></a></th>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -114,8 +114,8 @@ export default class AnimalCareAttendance extends Component {
                     </div>
                 </div>
                 <footer>
-                    <div class="search-footer-container">
-                    <p class="footer-address-inner">School of Veterinary Medicine 
+                    <div className="search-footer-container">
+                    <p className="footer-address-inner">School of Veterinary Medicine 
                                             </p>
                     </div>
                 </footer>
