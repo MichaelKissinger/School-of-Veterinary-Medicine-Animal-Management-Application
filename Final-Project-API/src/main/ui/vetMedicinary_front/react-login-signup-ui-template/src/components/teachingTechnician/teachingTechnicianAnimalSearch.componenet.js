@@ -5,63 +5,63 @@ export default class TeachingTechnicianAnimalSearch extends Component {
     render() {
         return (
             <form>
-                <div class="container-fluid">
-                    <div class="row">
-                        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div class="sidebar-sticky">
-                                <h7 class="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
+                <div className="container-fluid">
+                    <div className="row">
+                        <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+                            <div className="sidebar-sticky">
+                                <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
                                 <span>Teaching Technician</span>
                                 </h7>
-                                <ul class="nav flex-column">
-                                    <li class="nav-item">
-                                        <div class="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="130" />
+                                <ul className="nav flex-column">
+                                    <li className="nav-item">
+                                        <div className="d-flex flex-column align-items-center text-center">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
                                         </div>
                                     </li>
                                 </ul>
-                                <h6 class="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
+                                <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                     <span>Current user full name</span>
                                 </h6>
 
-                                <ul class="nav flex-column mb-2">
-                                <li class="nav-item">
+                                <ul className="nav flex-column mb-2">
+                                <li className="nav-item">
                                         <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
                                     </li>
-                                    <li class="nav-item">
+                                    <li className="nav-item">
                                         <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
                                     </li>
-                                    <li class="nav-item">
+                                    <li className="nav-item">
                                         <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
                                     </li>
 
-                                    <li class="nav-item">
+                                    <li className="nav-item">
                                         <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
                                     </li>
-                                    <li class="nav-item">
+                                    <li className="nav-item">
                                         <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
 
-                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                            <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
 
                                 <div>
-                                    <table class="table table-responsive">
+                                    <table className="table table-responsive">
                                         <tbody>
                                             <tr>
-                                                <td><input class="form-control mr-sm-2" type="search" placeholder="ID" /></td>
-                                                <td><input class="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                                                <td><button class="btn btn-outline-primary" type="submit">Search</button></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
+                                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                             <h2>Animals List</h2>
-                            <div class="table-responsive">
-                                <table class="table table-responsive table-striped table-hover">
+                            <div className="table-responsive">
+                                <table className="table table-responsive table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
@@ -84,8 +84,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>Brown - Black</td>
                                             <td>23-01-2018</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
@@ -95,8 +95,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>White</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">3</th>
@@ -106,8 +106,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>Gray</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">4</th>
@@ -117,8 +117,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>Khaki</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">5</th>
@@ -128,8 +128,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>Gray</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">6</th>
@@ -139,8 +139,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>Brown - Black</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">7</th>
@@ -150,8 +150,8 @@ export default class TeachingTechnicianAnimalSearch extends Component {
                                             <td>White</td>
                                             <td>2018-11-10</td>
                                             <td>The Status</td>
-                                            <td><a class="fa fa-edit" href="#"></a></td>
-                                            <td><a class="fa fa-eye" href="#"></a></td>
+                                            <td><a className="fa fa-edit" href="#"></a></td>
+                                            <td><a className="fa fa-eye" href="#"></a></td>
                                         </tr>
                                     </tbody>
                                 </table>

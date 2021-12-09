@@ -11,18 +11,18 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div class="login">
+            <div className="login">
                 <header>
-                    <div class="header-container blog-main-clear">
-                        <div class="header-date-container">
-                            <div class="header-date-inner">{this.state.date}</div>
+                    <div className="header-container blog-main-clear">
+                        <div className="header-date-container">
+                            <div className="header-date-inner">{this.state.date}</div>
                         </div>
-                        <div class="header-logo-container">
-                            <div class="header-logo-inner"></div>
+                        <div className="header-logo-container">
+                            <div className="header-logo-inner"></div>
                         </div>
                     </div>
                 </header>
-                <div class="body-container">
+                <div className="body-container">
                     <form>
                         <div className="login-signup-inner">
                             <h3 id="form-title">Sign In</h3>
@@ -40,8 +40,8 @@ export default class Login extends Component {
                 </div>
 
                 <footer>
-                    <div class="search-footer-container">
-                    <p class="footer-address-inner">School of Veterinary Medicine 
+                    <div className="search-footer-container">
+                    <p className="footer-address-inner">School of Veterinary Medicine 
                                                     <br/>
                                                     2500 University Drive NW
                                                     <br/>

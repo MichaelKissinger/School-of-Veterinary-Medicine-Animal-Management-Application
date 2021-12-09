@@ -9,45 +9,45 @@ export default class UserProfile extends Component {
     }
     render() {
         return (
-            <form class="user-profile">
+            <form className="user-profile">
                 <header>
-                    <div class="search-header-container blog-main-clear">
-                        <div class="search-header-date-container">
-                            <div class="header-date-inner">{this.state.date}</div>
+                    <div className="search-header-container blog-main-clear">
+                        <div className="search-header-date-container">
+                            <div className="header-date-inner">{this.state.date}</div>
                         </div>
                     </div>
                 </header>
-                <div class="profile-header alert alert-info">
-                    <div class="profile-header-cover"></div>
-                    <div class="profile-header-content">
-                        <div class="profile-header-img mb-3">
-                            <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" class="mb-4" class="" alt="" />
+                <div className="profile-header alert alert-info">
+                    <div className="profile-header-cover"></div>
+                    <div className="profile-header-content">
+                        <div className="profile-header-img mb-3">
+                            <img src="https://www.bootdey.com/img/Content/avatar/avatar1.png" className="mb-4" className="" alt="" />
                         </div>
-                        <div class="profile-header-info">
-                            <h4 class="m-t-sm">General information</h4>
-                            <p class="m-b-sm">First Name: <strong><i>John</i></strong></p>
-                            <p class="m-b-sm">Last Name: <strong><i>Smith</i></strong></p>
-                            <p class="m-b-sm">Birthday: <strong><i>1984-08-30</i></strong></p>
-                            <p class="m-b-sm">Age: <strong><i>36</i></strong></p>
-                            <p class="m-b-sm">Role: <strong><i>Manager</i></strong></p>
+                        <div className="profile-header-info">
+                            <h4 className="m-t-sm">General information</h4>
+                            <p className="m-b-sm">First Name: <strong><i>John</i></strong></p>
+                            <p className="m-b-sm">Last Name: <strong><i>Smith</i></strong></p>
+                            <p className="m-b-sm">Birthday: <strong><i>1984-08-30</i></strong></p>
+                            <p className="m-b-sm">Age: <strong><i>36</i></strong></p>
+                            <p className="m-b-sm">Role: <strong><i>Manager</i></strong></p>
                         </div>
                     </div>
                 </div>
-                <div class="profile-search-container">
-                <table class="table table-responsive">
+                <div className="profile-search-container">
+                <table className="table table-responsive">
                     <tbody>
                         <tr>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="ID" /></td>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="Breed" /></td>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="Color" /></td>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="Birthday" /></td>
-                            <td><input class="form-control mr-sm-2" type="search" placeholder="Owner" /></td>
-                            <td><button class="btn btn-outline-primary" type="submit">Search</button></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="Breed" /></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="Color" /></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="Birthday" /></td>
+                            <td><input className="form-control mr-sm-2" type="search" placeholder="Owner" /></td>
+                            <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
                         </tr>
                     </tbody>
                 </table>
-                <table class="table table-responsive table-striped table-hover">
+                <table className="table table-responsive table-striped table-hover">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -69,7 +69,7 @@ export default class UserProfile extends Component {
                             <td>Brown - Black</td>
                             <td>23-01-2018</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
@@ -79,7 +79,7 @@ export default class UserProfile extends Component {
                             <td>White</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
@@ -89,7 +89,7 @@ export default class UserProfile extends Component {
                             <td>Gray</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
@@ -99,7 +99,7 @@ export default class UserProfile extends Component {
                             <td>Khaki</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">5</th>
@@ -109,7 +109,7 @@ export default class UserProfile extends Component {
                             <td>Gray</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">6</th>
@@ -119,7 +119,7 @@ export default class UserProfile extends Component {
                             <td>Brown - Black</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                         <tr>
                             <th scope="row">7</th>
@@ -129,14 +129,14 @@ export default class UserProfile extends Component {
                             <td>White</td>
                             <td>2018-11-10</td>
                             <td>The Owner</td>
-                            <td><a class="fa fa-folder-open" href="#"></a></td>
+                            <td><a className="fa fa-folder-open" href="#"></a></td>
                         </tr>
                     </tbody>
                 </table>
                 </div>
                 <footer>
-                    <div class="search-footer-container">
-                    <p class="footer-address-inner">School of Veterinary Medicine 
+                    <div className="search-footer-container">
+                    <p className="footer-address-inner">School of Veterinary Medicine 
                                             </p>
                     </div>
                 </footer>

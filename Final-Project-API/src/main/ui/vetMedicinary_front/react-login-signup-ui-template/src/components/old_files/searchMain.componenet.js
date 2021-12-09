@@ -9,29 +9,29 @@ export default class SearchMain extends Component {
     }
     render() {
         return (
-            <form class="main-search">
+            <form className="main-search">
                 <header>
-                    <div class="search-header-container blog-main-clear">
-                        <div class="search-header-date-container">
-                            <div class="header-date-inner">{this.state.date}</div>
+                    <div className="search-header-container blog-main-clear">
+                        <div className="search-header-date-container">
+                            <div className="header-date-inner">{this.state.date}</div>
                         </div>
                     </div>
                 </header>
-                <div class="search-container">
-                    <table class="table table-responsive">
+                <div className="search-container">
+                    <table className="table table-responsive">
                         <tbody>
                             <tr>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="ID" /></td>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="Breed" /></td>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="Color" /></td>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="Birthday" /></td>
-                                <td><input class="form-control mr-sm-2" type="search" placeholder="Owner" /></td>
-                                <td><button class="btn btn-outline-primary" type="submit">Search</button></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="Breed" /></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="Color" /></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="Birthday" /></td>
+                                <td><input className="form-control mr-sm-2" type="search" placeholder="Owner" /></td>
+                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
                             </tr>
                         </tbody>
                     </table>
-                    <table class="table table-responsive table-striped table-hover">
+                    <table className="table table-responsive table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
@@ -53,7 +53,7 @@ export default class SearchMain extends Component {
                                 <td>Brown - Black</td>
                                 <td>23-01-2018</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
 
                             </tr>
                             <tr>
@@ -64,7 +64,7 @@ export default class SearchMain extends Component {
                                 <td>White</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">3</th>
@@ -74,7 +74,7 @@ export default class SearchMain extends Component {
                                 <td>Gray</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">4</th>
@@ -84,7 +84,7 @@ export default class SearchMain extends Component {
                                 <td>Khaki</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">5</th>
@@ -94,7 +94,7 @@ export default class SearchMain extends Component {
                                 <td>Gray</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">6</th>
@@ -104,7 +104,7 @@ export default class SearchMain extends Component {
                                 <td>Brown - Black</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">7</th>
@@ -114,7 +114,7 @@ export default class SearchMain extends Component {
                                 <td>White</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                             <tr>
                                 <th scope="row">8</th>
@@ -124,18 +124,18 @@ export default class SearchMain extends Component {
                                 <td>White</td>
                                 <td>2018-11-10</td>
                                 <td>The Owner</td>
-                                <td><a class="fa fa-folder-open" href="#"></a></td>
+                                <td><a className="fa fa-folder-open" href="#"></a></td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="search-pagination">
+                    <div className="search-pagination">
                     <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <ul className="pagination justify-content-end">
+                            <li className="page-item disabled">
+                                <a className="page-link" href="#" tabindex="-1">Previous</a>
                             </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                            <li className="page-item">
+                                <a className="page-link" href="#">Next</a>
                             </li>
                         </ul>
                     </nav>
@@ -143,8 +143,8 @@ export default class SearchMain extends Component {
                 </div>
 
                 <footer>
-                    <div class="search-footer-container">
-                    <p class="footer-address-inner">School of Veterinary Medicine 
+                    <div className="search-footer-container">
+                    <p className="footer-address-inner">School of Veterinary Medicine 
                                             </p>
                     </div>
                 </footer>
