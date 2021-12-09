@@ -26,7 +26,7 @@ public class Admin {
         users = new ArrayList<>();
         userDB = new UserDB();
         addUser();
-        addAnimal();
+//        addAnimal();
         blocklist = new ArrayList<>();
     }
 
@@ -68,6 +68,7 @@ public class Admin {
         scanner.close();
     }
 
+<<<<<<< HEAD
     /**
      * addAnimal() loads the animals from the database and keep them in the animal list.
      */
@@ -80,6 +81,17 @@ public class Admin {
         }
         scanner.close();
     }
+=======
+//    public void addAnimal() throws SQLException {
+//        String animal = (userDB.adminAccessGetAnimal());
+//        Scanner scanner = new Scanner(animal);
+//        while (scanner.hasNextLine()) {
+//            String animalId = scanner.nextLine();
+//            animals.add(new Animal(Integer.parseInt(animalId)));
+//        }
+//        scanner.close();
+//    }
+>>>>>>> mkbranch
 
     public void printUsers() {
         for (User u : users) {

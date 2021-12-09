@@ -23,7 +23,7 @@ public class CareAttendant {
         careAtt = user;
         animals = new ArrayList<>();
         userDB = new UserDB();
-        addAnimal();
+//        addAnimal();
         jdbcConnect = new JDBCConnect();
         jdbcConnect.createConnection();
     }
@@ -34,8 +34,9 @@ public class CareAttendant {
      */
     public void reloadAnimalDB() throws SQLException {
         animals.clear();
-        addAnimal();
+//        addAnimal();
     }
+
 
     /**
      * addAnimal() loads the animals from the database and keep them in the animal list.
@@ -45,10 +46,22 @@ public class CareAttendant {
         Scanner scanner = new Scanner(animal);
         while (scanner.hasNextLine()) {
             String animalId = scanner.nextLine();
-            animals.add(new Animal(Integer.parseInt(animalId))); // it creates an animal object for each animal id that exist on the database
+//            animals.add(new Animal(Integer.parseInt(animalId))); // it creates an animal object for each animal id that exist on the database
         }
         scanner.close();
     }
+
+
+//    public void addAnimal() throws SQLException {
+//        String animal = (userDB.adminAccessGetAnimal());
+//        Scanner scanner = new Scanner(animal);
+//        while (scanner.hasNextLine()) {
+//            String animalId = scanner.nextLine();
+//            animals.add(new Animal(Integer.parseInt(animalId)));
+//        }
+//        scanner.close();
+//    }
+
 
     public void printAnimal() throws SQLException {
         for (Animal a : animals) {
@@ -69,6 +82,7 @@ public class CareAttendant {
         jdbcConnect.addAnimalPhoto(recordId, imageId, fileName, type); // All the information about animal's pictures will be saved in database
     }
 
+
     /**
      * Care Attendant can request for an animal treatment from the technician
      * @param id
@@ -79,6 +93,13 @@ public class CareAttendant {
         animals.clear();
         addAnimal();
     }
+
+//    public void requestTreatment(int id) throws SQLException {
+//        userDB.updateAnimalStatusToRequested(id);
+//        animals.clear();
+//        addAnimal();
+//    }
+
 
     /**
      * Care Attendant can change animal status

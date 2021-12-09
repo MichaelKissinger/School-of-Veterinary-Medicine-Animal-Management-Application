@@ -31,19 +31,21 @@ public class Animal {
 
     private JDBCConnect myJDBC;
 
-    public Animal(int animalID) throws SQLException {
-        myJDBC = new JDBCConnect();
-        myJDBC.createConnection();
-        this.animalId = animalID;
-        setAnimalInfo();
-        setAnimalProblems();
-        setAnimalPrescriptions();
-        setAnimalHistory();
-    }
+//    public Animal(int animalID) throws SQLException {
+//        myJDBC = new JDBCConnect();
+//        myJDBC.createConnection();
+//        this.animalId = animalID;
+//        setAnimalInfo();
+//        setAnimalProblems();
+//        setAnimalPrescriptions();
+//        setAnimalHistory();
+//    }
 
     public Animal(int animalId, String breed, String city,
                   String dateBirth, String name, String sex,
-                  String status, int tattoo, String type, int userID) {
+                  String status, int tattoo, String type, int userID) throws SQLException {
+        myJDBC = new JDBCConnect();
+        myJDBC.createConnection();
         this.animalId = animalId;
         this.breed = breed;
         this.city = city;
@@ -54,6 +56,9 @@ public class Animal {
         this.tattoo = tattoo;
         this.type = type;
         this.userID = userID;
+        setAnimalProblems();
+        setAnimalPrescriptions();
+        setAnimalHistory();
     }
 
     public ArrayList<AnimalProblem> getAnimalProblems() {
@@ -80,95 +85,94 @@ public class Animal {
         this.animalHistory = myJDBC.animalGetHistory(animalId);
     }
 
-    public void setAnimalInfo() throws SQLException {
-        this.breed = this.getFromDBBreed();
-        this.city = this.getFromDBCity();
-        this.dateBirth = this.getFromDBDateBirth();
-        this.name = this.getFromDBName();
-        this.sex = this.getFromDBSex();
-        this.status = this.getFromDBStatus();
+//    public void setAnimalInfo() throws SQLException {
+//        this.breed = this.getFromDBBreed();
+//        this.city = this.getFromDBCity();
+//        this.dateBirth = this.getFromDBDateBirth();
+//        this.name = this.getFromDBName();
+//        this.sex = this.getFromDBSex();
+//        this.status = this.getFromDBStatus();
 //        this.tattoo = this.getFromDBTattoo();
-        this.type = this.getFromDBType();
-        this.userID = this.getFromDBUserID();
-    }
+//        this.type = this.getFromDBType();
+//        this.userID = this.getFromDBUserID();
+//    }
 
-    public String getFromDBBreed() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Breed");
-    }
-
-    public void setFromDBBreed(String breed) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Breed", breed);
-    }
-
-    public String getFromDBCity() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "City");
-    }
-
-    public void setFromDBCity(String city) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "City", city);
-    }
-
-    public String getFromDBDateBirth() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Date_B");
-    }
-
-    public void setFromDBDateBirth(String dateBirth) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Date_B", dateBirth);
-    }
-
-    public String getFromDBName() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Name");
-    }
-
-    public void setFromDBName(String name) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Name", name);
-    }
-
-    public String getFromDBSex() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Sex");
-    }
-
-    public void setFromDBSex(String sex) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Sex", sex);
-    }
-
-    public String getFromDBStatus() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Status");
-    }
-
-    public void setFromDBStatus(String status) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Status", status);
-    }
-
-    public int getFromDBTattoo() throws SQLException {
-        try {
-            return Integer.parseInt(myJDBC.animalGetStatement(animalId, "Tattoo"));
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-
-        }
-        return 0;
-    }
-
-    public void setFromDBTattoo(String tattoo) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Tattoo", tattoo);
-    }
-
-    public String getFromDBType() throws SQLException {
-        return myJDBC.animalGetStatement(animalId, "Type");
-    }
-
-    public void setFromDBType(String type) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "Type", type);
-    }
-
-    public int getFromDBUserID() throws SQLException {
-        return Integer.parseInt(myJDBC.animalGetStatement(animalId, "User_ID"));
-    }
-
-    public void setFromDBUserID(String userID) throws SQLException {
-        myJDBC.animalSetStatement(animalId, "User_ID", userID);
-    }
+//    public String getFromDBBreed() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Breed");
+//    }
+//
+//    public void setFromDBBreed(String breed) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Breed", breed);
+//    }
+//
+//    public String getFromDBCity() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "City");
+//    }
+//
+//    public void setFromDBCity(String city) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "City", city);
+//    }
+//
+//    public String getFromDBDateBirth() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Date_B");
+//    }
+//
+//    public void setFromDBDateBirth(String dateBirth) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Date_B", dateBirth);
+//    }
+//
+//    public String getFromDBName() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Name");
+//    }
+//
+//    public void setFromDBName(String name) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Name", name);
+//    }
+//
+//    public String getFromDBSex() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Sex");
+//    }
+//
+//    public void setFromDBSex(String sex) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Sex", sex);
+//    }
+//
+//    public String getFromDBStatus() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Status");
+//    }
+//
+//    public void setFromDBStatus(String status) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Status", status);
+//    }
+//
+//    public int getFromDBTattoo() throws SQLException {
+//        try {
+//            return Integer.parseInt(myJDBC.animalGetStatement(animalId, "Tattoo"));
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//        return 0;
+//    }
+//
+//    public void setFromDBTattoo(String tattoo) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Tattoo", tattoo);
+//    }
+//
+//    public String getFromDBType() throws SQLException {
+//        return myJDBC.animalGetStatement(animalId, "Type");
+//    }
+//
+//    public void setFromDBType(String type) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "Type", type);
+//    }
+//
+//    public int getFromDBUserID() throws SQLException {
+//        return Integer.parseInt(myJDBC.animalGetStatement(animalId, "User_ID"));
+//    }
+//
+//    public void setFromDBUserID(String userID) throws SQLException {
+//        myJDBC.animalSetStatement(animalId, "User_ID", userID);
+//    }
 
 
     public int getAnimalId() {
