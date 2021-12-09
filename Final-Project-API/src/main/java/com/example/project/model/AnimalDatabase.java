@@ -30,4 +30,13 @@ public class AnimalDatabase {
     public void setAnimals(ArrayList<Animal> animals) {
         this.animalDatabase = animals;
     }
+
+    public Animal findAnimal (int animalID) {
+        for (Animal a: this.animalDatabase){
+            if (a.getAnimalId() == animalID) {
+                return a;
+            }
+        }
+        return null;
+    }
 }

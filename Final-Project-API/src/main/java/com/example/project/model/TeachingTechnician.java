@@ -18,7 +18,7 @@ public class TeachingTechnician {
         users = new ArrayList<>();
         userDB = new UserDB();
         addUser();
-        addAnimal();
+//        addAnimal();
         blocklist = new ArrayList<>();
         jdbcConnect = new JDBCConnect();
         jdbcConnect.createConnection();
@@ -72,15 +72,15 @@ public class TeachingTechnician {
         scanner.close();
     }
 
-    public void addAnimal() throws SQLException {
-        String animal = (userDB.adminAccessGetAnimal());
-        Scanner scanner = new Scanner(animal);
-        while (scanner.hasNextLine()) {
-            String animalId = scanner.nextLine();
-            animals.add(new Animal(Integer.parseInt(animalId)));
-        }
-        scanner.close();
-    }
+//    public void addAnimal() throws SQLException {
+//        String animal = (userDB.adminAccessGetAnimal());
+//        Scanner scanner = new Scanner(animal);
+//        while (scanner.hasNextLine()) {
+//            String animalId = scanner.nextLine();
+//            animals.add(new Animal(Integer.parseInt(animalId)));
+//        }
+//        scanner.close();
+//    }
 
     public void printUsers() {
         for (User u : users) {
@@ -96,13 +96,13 @@ public class TeachingTechnician {
             System.out.println();
         }
     }
-
-    public void requestAnimal(int id) throws SQLException {
-        userDB.updateAnimalStatusToRequested(id);
-        reloadUserDB();
-        animals.clear();
-        addAnimal();
-    }
+//
+//    public void requestAnimal(int id) throws SQLException {
+//        userDB.updateAnimalStatusToRequested(id);
+//        reloadUserDB();
+//        animals.clear();
+//        addAnimal();
+//    }
 
     public void addComment(String recordId, String commentId, String description) throws SQLException {
         jdbcConnect.addAnimalComment(recordId, commentId, description);

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.xml.crypto.Data;
+
 /**
  * Makes API calls for the Animal profile
  * @author Michael Kissinger
@@ -25,8 +27,9 @@ public class AnimalProfilesController {
 
     //Animal Info
     @GetMapping("/animal/{animalID}")
-    public Animal getAnimal(@PathVariable("animalID") int animalID) throws SQLException {
-        Animal myAnimal = new Animal(animalID);
+    public Animal getAnimal(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal;
     }
 
@@ -39,22 +42,25 @@ public class AnimalProfilesController {
 
     //Animal Problems
     @GetMapping("/animal/{animalID}/problems")
-    public ArrayList<AnimalProblem> getAnimalProblem(@PathVariable("animalID") int animalID) throws SQLException {
-        Animal myAnimal = new Animal(animalID);
+    public ArrayList<AnimalProblem> getAnimalProblem(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalProblems();
     }
 
     //Animal Prescriptions
     @GetMapping("/animal/{animalID}/prescriptions")
-    public ArrayList<AnimalPrescription> getAnimalPrescriptions(@PathVariable("animalID") int animalID) throws SQLException {
-        Animal myAnimal = new Animal(animalID);
+    public ArrayList<AnimalPrescription> getAnimalPrescriptions(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalPrescriptions();
     }
 
     //Animal History
     @GetMapping("/animal/{animalID}/history")
-    public ArrayList<AnimalHistory> getAnimalHistory(@PathVariable("animalID") int animalID) throws SQLException {
-        Animal myAnimal = new Animal(animalID);
+    public ArrayList<AnimalHistory> getAnimalHistory(@PathVariable("animalID") int animalId) throws SQLException {
+        AnimalDatabase myDatabase = new AnimalDatabase();
+        Animal myAnimal = myDatabase.findAnimal(animalId);
         return myAnimal.getAnimalHistory();
     }
 
