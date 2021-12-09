@@ -3,12 +3,14 @@ package com.example.project.controllers;
 import com.example.project.model.*;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
@@ -102,13 +104,16 @@ public class AnimalProfilesController {
         return allComments;
     }
 
-    @PutMapping("/animal/updateStatus/{animalID}")
-    public void updateStatus(@PathVariable("animalID") int animalId, @RequestBody String animalStatus) throws SQLException {
+    @PutMapping(
+            value = "/animal/updateStatus/{animalID}",
+    consumes = {MediaType.APPLICATION_JSON_VALUE},
+    produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HashMap> updateStatus(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
 //        AnimalDatabase myDatabase = new AnimalDatabase();
         Animal myAnimal = myDatabase.findAnimal(animalId);
-        String newStatus = animalStatus;
-        myAnimal.updateStatus(animalId, animalStatus);
-//        System.out.println(animalStatus);
+        myAnimal.updateStatus(animalId, animalStatus.get("Status"));
+        System.out.println(animalStatus.get("Status"));
+        return null;
     }
 
 

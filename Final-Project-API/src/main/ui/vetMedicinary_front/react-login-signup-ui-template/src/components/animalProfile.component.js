@@ -8,6 +8,7 @@ import AnimalComments from "./AnimalComment";
 import "bulma/css/bulma.css"
 import AnimalService from "../service/AnimalService";
 import AnimalName from "./AnimalName"
+import AnimalStatus from "./AnimalStatus";
 
 
 export default class AnimalProfile extends Component {
@@ -31,6 +32,10 @@ export default class AnimalProfile extends Component {
                 <div class="rows">
                         <div class="row">
                             <AnimalPhoto/>
+                        </div>
+                        <h3 class="title is-3">Animal Status</h3>
+                        <div class="row">
+                            <AnimalStatus/>
                         </div>
                         <h3 class="title is-3">Animal Information</h3>
                         <div class="row">

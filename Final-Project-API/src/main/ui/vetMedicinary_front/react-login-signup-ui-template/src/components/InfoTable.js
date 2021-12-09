@@ -13,14 +13,14 @@ const InfoTable = () => {
     }, []);
 
     //TODO Not working yet
-    const statusChange = useEffect(() => {
-      // PUT request using axios inside useEffect React hook
-      const status = { Status: 'Changed' };
-      axios.put('http://localhost:8080/animal/updateStatus/1', status)
-          .then();
+    // const statusChange = useEffect(() => {
+    //   // PUT request using axios inside useEffect React hook
+    //   const status = { Status: 'Changed' };
+    //   axios.put('http://localhost:8080/animal/updateStatus/1', status)
+    //       .then();
   
   // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  }, []);
+  // }, []);
 
     return(
       <div class = "columns"> 
@@ -56,7 +56,7 @@ const InfoTable = () => {
           </table>
       </div>
           <div class="column is-narrow">
-            <button class="button is-dark" onClick={statusChange}>Update Animal Status</button>  
+            {/* <button class="button is-dark" onClick={statusChange}>Update Animal Status</button>   */}
           </div>
       </div>
     );
