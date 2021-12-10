@@ -1,7 +1,9 @@
 package com.example.project.model;
 
 /**
- * Login Checker class checks the username and password with the information in the user database to see if that user is authorized
+ * Login Checker class checks the username and password with the information in
+ * the user database to see if that user is authorized
+ * 
  * @author Arman Hosseinsarraf
  */
 public class LoginChecker {
@@ -11,7 +13,9 @@ public class LoginChecker {
     int flag = -1;
 
     /**
-     * LoginChecker Constructor gets the username and password from login page, it also builds a connection with user database
+     * LoginChecker Constructor gets the username and password from login page, it
+     * also builds a connection with user database
+     * 
      * @param username
      * @param password
      */
@@ -22,13 +26,26 @@ public class LoginChecker {
     }
 
     /**
-     * checkUsernamePassword() checks the username and password with the database to see if the user is authorized
-     * @return true if user is in database and false if the information is not in database
+     * checkUsernamePassword() checks the username and password with the database to
+     * see if the user is authorized
+     * 
+     * @return true if user is in database and false if the information is not in
+     *         database
      */
-    public boolean checkUsernamePassword() {
+    // behnaz comment
+    // public boolean checkUsernamePassword() {
+    // flag = userDB.validateUser(username, password);
+    // if (flag == 1)
+    // return true;
+    // else
+    // return false;
+    // }
+
+    public User checkUsernamePassword() {
         flag = userDB.validateUser(username, password);
-        if (flag == 1) return true;
+        if (flag == 1)
+            return new User(username, password);
         else
-            return false;
+            return null;
     }
 }

@@ -1,86 +1,39 @@
 package com.example.project.controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 
+import com.example.project.model.LoginChecker;
+import com.example.project.model.User;
 import com.example.project.model.UserDB;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin()
+@CrossOrigin
 @RestController
 public class LoginController {
 
     private String userName;
-    private int response;
+    // private int response;
     private int pass;
 
-     @RequestMapping("/Login")
-     public int authentication() throws SQLException {
-     // UserDB userInfo = new UserDB();
-     // response = userInfo.validateUser(name, password);
-     return 1;
-     }
+    @RequestMapping("/login")
+    public HashMap<String, String> authentication(@RequestBody HashMap<String, Integer> userInfo) throws SQLException {
+        int name = userInfo.get("name");
+        int password = userInfo.get("password");
+        LoginChecker loginChecker = new LoginChecker(name, password);
+        User result = loginChecker.checkUsernamePassword();
+        HashMap<String, String> out = new HashMap<String, String>();
+        out.put("username", String.valueOf(result.getUsername()));
+        out.put("FName", result.getLname());
+        out.put("lastName", result.getFname());
+        out.put("permission", result.getPermission());
+        System.out.println(out);
+        return out;
 
-    // @RequestMapping("/login")
-    // public int authentication(@RequestParam String name, @RequestParam String
-    // password) throws SQLException {
-    // // UserDB userInfo = new UserDB();
-    // // response = userInfo.validateUser(name, password);
-    // return 1;
-    // }
-
-//    @GetMapping("/Login")
-//    public int authentication() throws SQLException {
-//        // UserDB userInfo = new UserDB();
-//        // response = userInfo.validateUser(name, password);
-////        System.out.println("asd");
-//        return 1;
-//    }
-
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//package com.example.project.controllers;
-//
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//public class LoginController {
-//    private String userName;
-//    private String response;
-//    private int pass;
-//
-//    @RequestMapping("/login")
-//    public String authentication(){
-//        response = "Welcome to Login Page! You should enter your username/password information";
-//        return response;
-//    }
-//
-//}
