@@ -2,6 +2,7 @@ package com.example.project.controllers;
 
 import com.example.project.model.Admin;
 import com.example.project.model.Animal;
+import com.example.project.model.CareAttendant;
 import com.example.project.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +26,12 @@ public class AdminController {
     public ArrayList<User> userArrayList() throws SQLException {
         Admin admin = new Admin(new User(1, 3333));
         return admin.getUsers();
+    }
+
+    @GetMapping("/requestedlist")
+    public ArrayList<Animal> requestedList() throws SQLException {
+        CareAttendant careAttendant = new CareAttendant(new User(5, 7788));
+        return careAttendant.getRequestedAnimals();
     }
 
 //    @RequestMapping(("/admin"))

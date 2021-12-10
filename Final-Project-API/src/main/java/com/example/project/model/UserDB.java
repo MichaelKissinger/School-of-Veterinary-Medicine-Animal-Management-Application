@@ -17,7 +17,7 @@ public class UserDB {
     public void createConnection() {
         try {
             //You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
         } catch (Exception e) {
             e.printStackTrace();
         }

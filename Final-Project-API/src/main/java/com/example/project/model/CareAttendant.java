@@ -10,9 +10,11 @@ import java.util.Scanner;
  */
 public class CareAttendant {
     ArrayList<Animal> animals;
+    ArrayList<Animal> requestedAnimals;
     User careAtt;
     UserDB userDB;
     JDBCConnect jdbcConnect;
+    AnimalDatabase animalDatabase;
 
     /**
      * Care Attendants Constructor, creates objects from UserDB, AnimalDB, and list of animals and fills the list from database
@@ -26,6 +28,8 @@ public class CareAttendant {
 //        addAnimal();
         jdbcConnect = new JDBCConnect();
         jdbcConnect.createConnection();
+        animalDatabase = new AnimalDatabase();
+        requestedAnimals = new ArrayList<>();
     }
 
 
@@ -41,6 +45,13 @@ public class CareAttendant {
         jdbcConnect.addAnimalPhoto(recordId, fileName, type); // All the information about animal's pictures will be saved in database
     }
 
+    public ArrayList<Animal> getRequestedAnimals() {
+        for (Animal animal:animalDatabase.getAnimals()){
+            if (animal.getStatus().contains("Requested"))
+                requestedAnimals.add(animal);
+        }
+        return requestedAnimals;
+    }
 
     /**
      * Care Attendant can request for an animal treatment from the technician
