@@ -9,9 +9,22 @@ const AnimalCareAttendanceAnimalSearch = () => {
 
     const[myArray, setMyArray] = React.useState([]);
 
+    const[changeStatus, setChangeStatus] = React.useState();
+    // const statusText = useRef();
+
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
+
+    function statusInput(e) {
+    setChangeStatus("Requested");
+    console.log(changeStatus);
+    const status = {Status : changeStatus};
+    console.log(status);
+    axios.put('http://localhost:8080/animal/updateStatus/1', status)
+          .then();
+    window.location.reload(false);
+  }
         return (
             <form>
                 <div className="container-fluid">
@@ -98,7 +111,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                                   <td>{myArray.type}</td>
                                                   <td>{myArray.userID}</td>
                                                   <td><a className="fa fa-bell" href="#"></a></td>
-                                                  <td><a className="fa fa-ambulance" href="#"></a></td>
+                                                  <td><button className="fa fa-ambulance" href="#" onClick={statusInput}></button></td>
                                                   <td><a className="fa fa-eye" href="#"></a></td>
                                                   </tr>)
                                                  }

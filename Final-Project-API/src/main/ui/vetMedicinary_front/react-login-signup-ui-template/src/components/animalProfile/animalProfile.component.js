@@ -15,13 +15,9 @@ export default class AnimalProfile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id:this.props.match.params.id,
-            // id: 1,
             date: new Date().toLocaleString()
         };
     }
-
-    
     render() {
         return (
             <form class="animal-profile">
@@ -43,7 +39,7 @@ export default class AnimalProfile extends Component {
                         </div>
                         <h3 class="title is-3">Animal Information</h3>
                         <div class="row">
-                            <InfoTable value={this.state.id}/>
+                            <InfoTable/>
                         </div>
                         <h3 class="title is-3">Animal Problems</h3>
                         <div class="row">

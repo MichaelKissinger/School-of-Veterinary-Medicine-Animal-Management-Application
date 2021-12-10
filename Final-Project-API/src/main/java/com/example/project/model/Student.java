@@ -74,7 +74,7 @@ public class Student {
      * @throws SQLException
      */
     public void addComment(String recordId,  String description) throws SQLException {
-        jdbcConnect.addAnimalComment(Integer.parseInt(recordId), description); // comment will be added to the comment history table in database
+        jdbcConnect.addAnimalComment(recordId, description); // comment will be added to the comment history table in database
     }
 
     /**

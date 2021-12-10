@@ -1,13 +1,15 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { Component, useEffect, useState, useRef } from "react";
+import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import axios from "axios";
 
 
 const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
+
 const AdministratorAccess = () => {
 
     const[myArray, setMyArray] = React.useState([]);
+
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
@@ -25,6 +27,7 @@ const AdministratorAccess = () => {
                                     <li class="nav-item">
                                         <div class="d-flex flex-column align-items-center text-center">
                                             <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="130" />
+                                            
                                         </div>
                                     </li>
                                 </ul>
@@ -79,13 +82,13 @@ const AdministratorAccess = () => {
                                             <th scope="col">Tattoo</th>
                                             <th scope="col">Breed</th>
                                             <th scope="col">User ID</th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Edit </th>
                                             <th scope="col">View</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {                                           
+                                        {                                          
                                                 myArray.map(myArray =>
                                                     <tr key={myArray.animalId}>
                                                   <td>{myArray.animalId}</td>
@@ -98,9 +101,10 @@ const AdministratorAccess = () => {
                                                   <td>{myArray.tattoo}</td>
                                                   <td>{myArray.type}</td>
                                                   <td>{myArray.userID}</td>
-                                                  <td><a class="fa fa-edit" href="#"></a></td>
+                                                  <td><a class="fa fa-edit" href="#" ></a></td>
                                                   <td><a class="fa fa-eye" href="#"></a></td>
                                                   </tr>)
+                                                  
                                             }
                                     </tbody>
                                 </table>

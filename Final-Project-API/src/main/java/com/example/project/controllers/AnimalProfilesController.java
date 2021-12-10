@@ -27,8 +27,6 @@ import javax.xml.crypto.Data;
 public class AnimalProfilesController {
 
     AnimalDatabase myDatabase = new AnimalDatabase();
-    JDBCConnect myJDBC = new JDBCConnect();
-
 
     public AnimalProfilesController() throws SQLException {
     }
@@ -102,69 +100,16 @@ public class AnimalProfilesController {
     public ResponseEntity<HashMap> updateStatus(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         Animal myAnimal = myDatabase.findAnimal(animalId);
         myAnimal.updateStatus(animalId, animalStatus.get("Status"));
-        return null;
-    }
-
-    @PostMapping(
-            value = "/animal/addProblem/{animalID}",
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> addProblem(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
-        myJDBC.createConnection();
-        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
+        System.out.println("Test");
         return null;
     }
 
 
-    @PostMapping(
-            value = "/animal/addPrescription/{animalID}",
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> addPrescription(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalPrescription) throws SQLException {
-        myJDBC.createConnection();
-        myJDBC.addAnimalPrescription(animalPrescription.get("drugName"), animalPrescription.get("deliveryMethod"),
-                animalPrescription.get("userId"), animalPrescription.get("date"),
-                animalPrescription.get("dosage"), animalPrescription.get("instructions"),
-                animalPrescription.get("treatmentMethod"), animalId);
-        return null;
-    }
-
-
-    @PostMapping(
-            value = "/animal/addHistory/{animalID}",
-            consumes = {MediaType.APPLICATION_JSON_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> addHistory(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalHistory) throws SQLException {
-        myJDBC.createConnection();
-        myJDBC.addAnimalHistory(animalHistory.get("date"), animalHistory.get("measurement"),
-                animalHistory.get("value"), animalHistory.get("userId"),
-                animalHistory.get("vaccination"), animalId);
-        return null;
-    }
-
-
-
-    //TODO add animal Photo
-//    @PostMapping(
-//            value = "/animal/addProblem/{animalID}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<HashMap> addPhoto(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
-//        myJDBC.createConnection();
-//        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
-//        return null;
-//    }
-
+    //TODO Add animal problem
+    //TODO add animal Prescription
+    //TODO add animal History
+    //TODO add animal history
     //TODO add animal comment
-//    @PostMapping(
-//            value = "/animal/addProblem/{animalID}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<HashMap> addComment(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
-//        myJDBC.createConnection();
-//        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
-//        return null;
-//    }
 
 
 }

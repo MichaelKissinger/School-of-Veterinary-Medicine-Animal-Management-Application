@@ -1,31 +1,13 @@
 import axios from 'axios'
 import React, {useState} from 'react';
 
-const ANIMAL_REST_API_URL = 'http://localhost:8080/animal';
+const ANIMAL_REST_API_URL = 'http://localhost:8080/search/animal';
 
 class AnimalService {
 
-    getAnimalById(animalId) {
-        return axios.get(ANIMAL_REST_API_URL + '/' + animalId);
+    getAnimals() {
+        return axios.get(ANIMAL_REST_API_URL);
     }
-
-    getAnimalProblems(animalId) {
-        return axios.get(ANIMAL_REST_API_URL + '/problems/' + animalId);
-    }
-
-    getAnimalPrescriptions(animalId) {
-        return axios.get(ANIMAL_REST_API_URL + '/prescriptions/' + animalId);
-    }
-
-    getAnimalHistory(animalId) {
-        return axios.get(ANIMAL_REST_API_URL + '/history/' + animalId);
-    }
-
-    UpdateAnimalStatus(animalId, status) {
-        return axios.put(ANIMAL_REST_API_URL + '/updateStatus/' + animalId, status);
-    }
-
-
 
 }
 

@@ -152,7 +152,7 @@ public class TeachingTechnician {
 
     }
 
-
+//
 //    public void requestAnimal(int id) throws SQLException {
 //        userDB.updateAnimalStatusToRequested(id);
 //        reloadUserDB();
@@ -169,6 +169,6 @@ public class TeachingTechnician {
      * @throws SQLException
      */
     public void addComment(String recordId, String description) throws SQLException {
-        jdbcConnect.addAnimalComment(Integer.parseInt(recordId), description);
+        jdbcConnect.addAnimalComment(recordId, description);
     }
 }
