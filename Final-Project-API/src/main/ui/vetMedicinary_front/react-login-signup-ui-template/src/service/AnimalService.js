@@ -21,12 +21,6 @@ class AnimalService {
         return axios.get(ANIMAL_REST_API_URL + '/history/' + animalId);
     }
 
-    UpdateAnimalStatus(animalId, status) {
-        return axios.put(ANIMAL_REST_API_URL + '/updateStatus/' + animalId, status);
-    }
-
-
-
 }
 
 export default new AnimalService();
