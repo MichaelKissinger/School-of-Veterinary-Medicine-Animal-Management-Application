@@ -1,9 +1,6 @@
 package com.example.project.controllers;
 
-import com.example.project.model.Admin;
-import com.example.project.model.Animal;
-import com.example.project.model.CareAttendant;
-import com.example.project.model.User;
+import com.example.project.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +12,7 @@ import java.util.ArrayList;
 
 @CrossOrigin
 @RestController
-public class AdminController {
-//    String response;
-
-//    @Autowired
-//    Admin admin;
-//    Animal animal;
+public class InformationController {
 
     @GetMapping("/allusers")
     public ArrayList<User> userArrayList() throws SQLException {
@@ -32,6 +24,14 @@ public class AdminController {
     public ArrayList<Animal> requestedList() throws SQLException {
         CareAttendant careAttendant = new CareAttendant(new User(5, 7788));
         return careAttendant.getRequestedAnimals();
+    }
+
+    @GetMapping("/studentList")
+    public ArrayList<User> studentArrayList() throws SQLException {
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        System.out.println("12");
+        System.out.println(teachingTechnician.getUsers().toString());
+        return teachingTechnician.getUsers();
     }
 
 //    @RequestMapping(("/admin"))
