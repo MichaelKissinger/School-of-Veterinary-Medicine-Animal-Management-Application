@@ -2,10 +2,12 @@ import React from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import Login from "./components/login.component";
+
 //Animal Profile
 import AnimalProfile from './components/animalProfile/animalProfile.component';
+import AnimalAddProblem from './components/animalProfile/AnimalAddProblems';
+
 
 import SearchAnimal from './components/searchAnimal.componenet';
 // import UserProfile from "./components/userProfile.componenet";
@@ -58,7 +60,7 @@ function App() {
                   <Link className="nav-link" to={"/SearchAnimal"}>SearchAnimal</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/AnimalProfile"}>AnimalProfile</Link>
+                  <Link className="nav-link" to={"/AnimalProfile/:id"}>AnimalProfile</Link>
                 </li>
                 {/* <li className="nav-item">
                 <Link className="nav-link" to={"/UserProfile"}>Student Profile</Link>
@@ -103,7 +105,14 @@ function App() {
           {/* <Route path="/UserProfile" component={UserProfile} /> */}
           {/* <Route path="/SearchMain" component={SearchMain} /> */}
           <Route path="/SearchAnimal" component={SearchAnimal} />
-          <Route path="/AnimalProfile" component={AnimalProfile} />
+
+
+          {/* Animal Profile */}
+          <Route path="/AnimalProfile/:id" component={AnimalProfile} />
+          <Route path="/AnimalProblems/:id" component={AnimalAddProblem} />
+
+
+
           {/* <Route path="/AdministratorAccess" component={AdministratorAccess} />
             <Route path="/TeachingTechnician" component={TeachingTechnician} />
             <Route path="/AnimalCareAttendance" component={AnimalCareAttendance}/>

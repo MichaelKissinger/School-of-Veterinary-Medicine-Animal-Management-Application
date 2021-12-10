@@ -1,15 +1,23 @@
 import React, {useState} from "react";
-import axios from "axios";
+ import axios from "axios";
+ import AnimalService from "../../service/AnimalService";
 
-const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/history/1';
+ const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/history/1';
 
-const AnimalHistory = () => {
+ const AnimalHistory = () => {
 
-    const[myArray, setMyArray] = React.useState([]);
+     const[myArray, setMyArray] = React.useState([]);
 
-    React.useEffect(() => {
-      axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
-    }, []);
+     // React.useEffect(() => {
+     //   axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
+     // }, []);
+
+     //TODO Figure out how to pass ID from animal Profile to here and set to ID
+     const id = 1;
+
+     React.useEffect(() => {
+       AnimalService.getAnimalHistory(id).then(response => setMyArray(response.data));
+     }, []);
   
 
     return(
