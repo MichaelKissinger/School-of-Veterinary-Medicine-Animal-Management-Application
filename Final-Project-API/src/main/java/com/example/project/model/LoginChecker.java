@@ -1,5 +1,7 @@
 package com.example.project.model;
 
+import java.sql.SQLException;
+
 /**
  * Login Checker class checks the username and password with the information in
  * the user database to see if that user is authorized
@@ -19,7 +21,7 @@ public class LoginChecker {
      * @param username
      * @param password
      */
-    public LoginChecker(int username, int password) {
+    public LoginChecker(int username, int password) throws SQLException {
         userDB = new UserDB();
         this.username = username;
         this.password = password;
@@ -41,7 +43,7 @@ public class LoginChecker {
     // return false;
     // }
 
-    public User checkUsernamePassword() {
+    public User checkUsernamePassword() throws SQLException {
         flag = userDB.validateUser(username, password);
         if (flag == 1)
             return new User(username, password);

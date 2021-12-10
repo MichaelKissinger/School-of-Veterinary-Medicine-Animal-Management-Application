@@ -35,7 +35,7 @@ public class Admin {
      * @param column
      * @param value
      */
-    public void editUser(User user, String column, String value) {
+    public void editUser(User user, String column, String value) throws SQLException {
         userDB.updateUserInfo(String.valueOf(user.getUsername()), String.valueOf(user.getPassword()), column, value);
         reloadUserDB();
     }
@@ -48,9 +48,9 @@ public class Admin {
      * Admin can block users
      * @param user
      */
-    public void blockUser(User user) {
+    public void blockUser(User user) throws SQLException {
         blocklist.add(user); // when admin blocks a user, it will be added to the blocklist too
-        userDB.deleteUser(String.valueOf(user.getPassword())); // that user will be deleted from the user
+        userDB.blockUser(String.valueOf(user.getPassword())); // that user will be deleted from the user
         reloadUserDB(); // database will be reloaded
     }
 
@@ -61,7 +61,7 @@ public class Admin {
     /**
      * addUser() loads the users from the database and keep them in the user list.
      */
-    public void addUser() {
+    public void addUser() throws SQLException {
         String user = (userDB.adminAccessGetUser());
         Scanner scanner = new Scanner(user);
         while (scanner.hasNextLine()) {
@@ -114,7 +114,7 @@ public class Admin {
     /**
      * After each change in the database, the user list will be refreshed
      */
-    public void reloadUserDB(){
+    public void reloadUserDB() throws SQLException {
         users.clear();
         addUser();
     }

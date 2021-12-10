@@ -1,5 +1,7 @@
 package com.example.project.model;
 
+import java.sql.SQLException;
+
 /**
  * User class contains all the information that a user in this system has. It gets the username and password and loads all the information related to that user
  *
@@ -25,7 +27,7 @@ public class User {
      * @param username
      * @param password
      */
-    public User(int username, int password) {
+    public User(int username, int password) throws SQLException {
         this.username = username;
         this.password = password;
         userDB = new UserDB();
