@@ -1,20 +1,11 @@
 import React, { Component, useEffect, useState, useRef } from "react";
-import InfoTable from "./InfoTable"
-import AnimalPhoto from "./AnimalPhotos";
-import AnimalProblems from "./AnimalProblems";
-import AnimalHistory from "./AnimalHistory";
-import AnimalPrescription from "./AnimalPrescription";
-import AnimalComments from "./AnimalComment";
 import "bulma/css/bulma.css"
 // import AnimalService from "../service/AnimalService";
-import AnimalName from "./AnimalName"
-import AnimalStatus from "./AnimalStatus";
-import axios from "axios";
-import AddProblemForm from "./AddProblemForm";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import AddPrescriptionForm from "./AddPrescriptionForm";
 
 
-export default class AnimalAddProblem extends Component {
+export default class AnimalAddPrescription extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,9 +26,10 @@ export default class AnimalAddProblem extends Component {
                 </header> */}
             <div class="rows">
                 <div class="row">
-                    <AddProblemForm/>
+                    <AddPrescriptionForm/>
 
                 </div>
+                <br></br>
                 <br></br>
                 <br></br>
                 <div class="row">    

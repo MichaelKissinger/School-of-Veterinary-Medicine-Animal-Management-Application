@@ -2,14 +2,6 @@ import React, { Component, useState } from "react";
 import axios from 'axios';
 
 export default class Login extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         user:[]
-    //     };
-    // }
-
-
 
     handleSubmit = e => {
         e.preventDefault();
@@ -18,8 +10,6 @@ export default class Login extends Component {
             password: this.password,
         }
         axios.post(this.state.REST_API_LOGIN, sendData)
-        // .then(response =>console.log(response))
-        // .then(res=>console.log(res.data))
             .then(res => { localStorage.setItem('username', res.data.username); 
             localStorage.setItem('LName', res.data.lastName);
             localStorage.setItem('FName', res.data.FName);

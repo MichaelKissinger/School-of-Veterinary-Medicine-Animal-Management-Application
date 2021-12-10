@@ -19,14 +19,19 @@ public class test {
 
 
         AnimalDatabase myDatabase = new AnimalDatabase();
-        Animal myAnimal = myDatabase.findAnimal(1);
-        ArrayList<AnimalHistoryComments> allComments = new ArrayList<AnimalHistoryComments>();
-        for (AnimalHistory h: myAnimal.getAnimalHistory()) {
-            ArrayList<AnimalHistoryComments> myComments = h.getAnimalHistoryComments();
-            for (AnimalHistoryComments c: myComments) {
-                allComments.add(c);
-            }
-        }
+//        Animal myAnimal = myDatabase.findAnimal(1);
+//        ArrayList<AnimalHistoryComments> allComments = new ArrayList<AnimalHistoryComments>();
+//        for (AnimalHistory h: myAnimal.getAnimalHistory()) {
+//            ArrayList<AnimalHistoryComments> myComments = h.getAnimalHistoryComments();
+//            for (AnimalHistoryComments c: myComments) {
+//                allComments.add(c);
+//            }
+//        }
+        int animalId = 1;
+
+
+        Animal myAnimal = myDatabase.findAnimal(animalId);
+        System.out.println(myAnimal.getAnimalPrescriptions());
 
 
     }

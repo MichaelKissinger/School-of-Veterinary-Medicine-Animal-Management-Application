@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.xml.crypto.Data;
+import java.time.LocalDateTime;
 
 /**
  * Makes API calls for the Animal profile
@@ -120,9 +122,12 @@ public class AnimalProfilesController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> addPrescription(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalPrescription) throws SQLException {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
         myJDBC.createConnection();
         myJDBC.addAnimalPrescription(animalPrescription.get("drugName"), animalPrescription.get("deliveryMethod"),
-                animalPrescription.get("userId"), animalPrescription.get("date"),
+                animalPrescription.get("userId"), formattedDate,
                 animalPrescription.get("dosage"), animalPrescription.get("instructions"),
                 animalPrescription.get("treatmentMethod"), animalId);
         return null;
