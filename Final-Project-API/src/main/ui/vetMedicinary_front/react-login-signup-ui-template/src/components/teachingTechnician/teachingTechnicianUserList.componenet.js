@@ -5,13 +5,36 @@ import axios from "axios";
 
 const User_REST_API_URL = 'http://localhost:8080/studentList';
 
-const TeachingTechnicianRequestedAnimal = () => {
+const TeachingTechnicianStudentList = () => {
 
     const[myArray, setMyArray] = React.useState([]);
 
-React.useEffect(() => {
-  axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
-}, []);
+    const[changeStatus, setChangeStatus] = React.useState();
+    // const statusText = useRef();
+
+    React.useEffect(() => {
+      axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
+    }, []);
+
+    function removeStudent(e) {
+    setChangeStatus("Removed");
+    console.log(changeStatus);
+    const status = {Status : changeStatus};
+    console.log(status);
+    axios.put('http://localhost:8080/removestudent/10', status)
+          .then();
+    window.location.reload(false);
+  }
+
+  function blockStudent(e) {
+    setChangeStatus("Blocked");
+    console.log(changeStatus);
+    const status = {Status : changeStatus};
+    console.log(status);
+    axios.put('http://localhost:8080/blockstudent/10', status)
+          .then();
+    window.location.reload(false);
+  }
         return (
             <form>
                 <div className="container-fluid">
@@ -81,7 +104,7 @@ React.useEffect(() => {
                                             <th scope="col">Sex</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Type</th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Remove</th>
                                             <th scope="col">Block</th>
                                         </tr>
                                     </thead>
@@ -97,8 +120,8 @@ React.useEffect(() => {
                                                 <td>{myArray.sex}</td>
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
-                                                <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                                <th scope="col"><a className="fa fa-times" href="#"></a></th>
+                                                <th scope="col"><button className="fa fa-edit" href="#" onClick={removeStudent}></button></th>
+                                                <th scope="col"><button className="fa fa-times" href="#" onClick={blockStudent}></button></th>
 
                                                 </tr>)
                                             }
@@ -113,4 +136,4 @@ React.useEffect(() => {
             </form >
         );
     };
-    export default TeachingTechnicianRequestedAnimal;
+    export default TeachingTechnicianStudentList;

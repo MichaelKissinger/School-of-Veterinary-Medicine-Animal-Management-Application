@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import axios from "axios";
 
-export default class TeachingTechnicianBlockedUserList extends Component {
-    render() {
+const User_REST_API_URL = 'http://localhost:8080/studentblocklist';
+
+const TeachingTechnicianBlockedUserList = () => {
+
+        const[myArray, setMyArray] = React.useState([]);
+
+    React.useEffect(() => {
+      axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
+    }, []);
         return (
             <form>
                 <div className="container-fluid">
@@ -30,7 +38,7 @@ export default class TeachingTechnicianBlockedUserList extends Component {
                                         <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
+                                        <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked Student List</Link>
                                     </li>
 
                                     <li className="nav-item">
@@ -58,48 +66,36 @@ export default class TeachingTechnicianBlockedUserList extends Component {
                                     </table>
                                 </div>
                             </div>
-                            <h2>Blocked Users</h2>
+                            <h2>Blocked Students</h2>
                             <div className="table-responsive">
                                 <table className="table table-responsive table-hover table-striped">
                                     <thead>
                                         <tr>
-                                            <th scope="col">First Name</th>
+                                        <th scope="col">First Name</th>
                                             <th scope="col">Last Name</th>
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Block</th>
+                                            <th scope="col">Phone Number</th>
+                                            <th scope="col">Date of Birth</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Sex</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Type</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="col">User Name</th>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                            <th scope="col"><a className="fa fa-times" href="#"></a></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Frank Puskas</th>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                            <th scope="col"><a className="fa fa-times" href="#"></a></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Jim Carrey</th>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                            <th scope="col"><a className="fa fa-times" href="#"></a></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                            <th scope="col"><a className="fa fa-times" href="#"></a></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Frank Puskas</th>
-                                            <th scope="col">John Smith</th>
-                                            <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                            <th scope="col"><a className="fa fa-times" href="#"></a></th>
-                                        </tr>
+                                    {
+                                            myArray.map(myArray =>
+                                                <tr key={myArray.userID}>
+                                            <td>{myArray.fname}</td>
+                                            <td>{myArray.lname}</td>
+                                            <td>{myArray.phoneNumber}</td>
+                                            <td>{myArray.birthDate}</td>
+                                            <td>{myArray.email}</td>
+                                            <td>{myArray.sex}</td>
+                                            <td>{myArray.status}</td>
+                                            <td>{myArray.permission}</td>
+
+                                            </tr>)
+                                        }
                                     </tbody>
                                 </table>
                             </div>
@@ -109,4 +105,4 @@ export default class TeachingTechnicianBlockedUserList extends Component {
             </form >
         );
     }
-}
+    export default TeachingTechnicianBlockedUserList;

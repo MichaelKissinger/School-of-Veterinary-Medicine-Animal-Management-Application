@@ -2,13 +2,13 @@ package com.example.project.controllers;
 
 import com.example.project.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @CrossOrigin
 @RestController
@@ -29,10 +29,35 @@ public class InformationController {
     @GetMapping("/studentList")
     public ArrayList<User> studentArrayList() throws SQLException {
         TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
-        System.out.println("12");
-        System.out.println(teachingTechnician.getUsers().toString());
         return teachingTechnician.getUsers();
     }
+
+    @GetMapping("/studentblocklist")
+    public ArrayList<User> blockedStudentList() throws SQLException {
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        return teachingTechnician.getBlocklist();
+    }
+
+    @PutMapping(
+            value = "/removestudent/{userID}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HashMap> removeStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        teachingTechnician.removeStudent(userID);
+        return null;
+    }
+
+    @PutMapping(
+            value = "/blockstudent/{userID}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        teachingTechnician.blockStudent(userID);
+        return null;
+    }
+
 
 //    @RequestMapping(("/admin"))
 //    public String display() {

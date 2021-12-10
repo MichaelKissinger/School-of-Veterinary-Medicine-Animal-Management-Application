@@ -15,8 +15,7 @@ public class TeachingTechnician {
 
     User teachingTechnician;
     UserDB userDB;
-    ArrayList<User> blocklist;
-    JDBCConnect jdbcConnect;
+
 
     /**
      * Teaching Technician Constructor, creates objects from UserDB, AnimalDB, List of users and animals and fills both lists from database
@@ -27,45 +26,34 @@ public class TeachingTechnician {
     public TeachingTechnician(User user) throws SQLException {
         teachingTechnician = user;
         animals = new AnimalDatabase();
-        studentUsers = new ArrayList<>();
+        studentUsers = new ArrayList<User>();
         userDB = new UserDB();
         addUser();
-//        addAnimal();
-        blocklist = new ArrayList<>();
-        jdbcConnect = new JDBCConnect();
-        jdbcConnect.createConnection();
     }
 
-    /**
-     * After each change in the database, the user list will be refreshed
-     */
-    public void reloadUserDB() {
-        studentUsers.clear();
-        addUser();
-    }
 
-    /**
-     * Teaching Technician can block students. The students will be added to blocklist so that they can not be added to the system again
-     *
-     * @param user
-     */
-    public void blockStudent(User user) {
-        if (user.getPermission().equals("Student")) {
-            blocklist.add(user);
-            userDB.deleteUser(String.valueOf(user.getPassword())); // Student with that username and password will be deleted from the database
-            reloadUserDB();
-        }
-    }
 
     /**
      * Teaching Technician can remove students.
      *
-     * @param user
+     * @param userID
      */
-    public void removeStudent(User user) {
-        if (user.getPermission().equals("Student")) {
-            userDB.deleteUser(String.valueOf(user.getPassword())); // Student with that username and password will be deleted from the database
-            reloadUserDB();
+    public void removeStudent(int userID) throws SQLException {
+        for (User user:studentUsers){
+            if (user.getUsername()==userID){
+                userDB.removeUser(String.valueOf(user.getPassword()));// Student with that username and password will be deleted from the database
+                user.setStatus("Removed");
+            }
+        }
+    }
+
+    public void blockStudent(int userID) throws SQLException {
+        for (User user:studentUsers){
+            if (user.getUsername()==userID){
+                userDB.blockUser(String.valueOf(user.getPassword()));// Student with that username and password will be deleted from the database
+                user.setStatus("Blocked");
+
+            }
         }
     }
 
@@ -99,7 +87,7 @@ public class TeachingTechnician {
     /**
      * addUser() loads the users from the database and keep them in the user list.
      */
-    public void addUser() {
+    public void addUser() throws SQLException {
         String user = (userDB.adminAccessGetUser());
         Scanner scanner = new Scanner(user);
         while (scanner.hasNextLine()) {
@@ -113,39 +101,22 @@ public class TeachingTechnician {
     }
 
     public ArrayList<User> getUsers() {
-        return studentUsers;
+       ArrayList<User> active = new ArrayList<>();
+       for (User user: studentUsers)
+           if (user.getStatus().equals("Active"))
+               active.add(user);
+        return active;
     }
 
-    /**
-     * addAnimal() loads the animals from the database and keep them in the animal list.
-     *
-     * @throws SQLException
-     */
-//    public void addAnimal() throws SQLException {
-//        String animal = (userDB.adminAccessGetAnimal());
-//        Scanner scanner = new Scanner(animal);
-//        while (scanner.hasNextLine()) {
-//            String animalId = scanner.nextLine();
-//            System.out.println(animalId);
-//            animals.add(new Animal());
-//        }
-//        scanner.close();
-//    }
-    public void printUsers() {
-        for (User u : studentUsers) {
-            if (u.getStatus().equals("Active"))
-                System.out.println(u);
+    public ArrayList<User> getBlocklist(){
+        ArrayList<User> blocked = new ArrayList<>();
+        for (User user:studentUsers){
+            if (user.getStatus().equals("Blocked"))
+                blocked.add(user);
         }
+        System.out.println(blocked);
+        return blocked;
     }
-
-
-//    public void printAnimal() throws SQLException {
-//        for (Animal a : animals) {
-//            System.out.println(a);
-//            System.out.println();
-//        }
-//    }
-
 
     /**
      * Teaching Technician can request an animal with animal ID
