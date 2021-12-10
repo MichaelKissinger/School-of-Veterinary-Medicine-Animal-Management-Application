@@ -146,6 +146,9 @@ public class AnimalProfilesController {
     //TODO add animal Photo
     //TODO add animal comment
 
+    //NEW CHANGES
+
+
 //        @PostMapping(
 //                value = "/animal/addProblem/{animalID}",
 //                consumes = {MediaType.APPLICATION_JSON_VALUE},
