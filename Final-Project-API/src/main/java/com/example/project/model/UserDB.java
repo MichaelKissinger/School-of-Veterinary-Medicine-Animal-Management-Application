@@ -3,7 +3,8 @@ package com.example.project.model;
 import java.sql.*;
 
 /**
- * UserDB class is the bridge between backend and database. It has all required functionalities to get information from DB and write information to DB
+ * UserDB class is the bridge between backend and database. It has all required
+ * functionalities to get information from DB and write information to DB
  *
  * @author Arman Hosseinsarraf
  */
@@ -16,15 +17,16 @@ public class UserDB {
      */
     public void createConnection() {
         try {
-            //You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            // You may have to enter your own SQL password below to make this work
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * validateUser() checks to see if the given username and password are in the user database
+     * validateUser() checks to see if the given username and password are in the
+     * user database
      *
      * @param username
      * @param pass
@@ -36,11 +38,15 @@ public class UserDB {
 
             createConnection();
             Statement myStmt = connection.createStatement();
-            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
+            rs = myStmt.executeQuery(
+                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
+                                                                                                                // from
+                                                                                                                // DB
 
             if (rs.next())
                 flag = 1;
-            else flag = 0;
+            else
+                flag = 0;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,11 +68,13 @@ public class UserDB {
         try {
             createConnection();
             Statement myStmt = connection.createStatement();
-            rs = myStmt.executeQuery("SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
+            rs = myStmt.executeQuery(
+                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
+                                                                                                                // from
+                                                                                                                // DB
 
             if (rs.next())
                 userInformation.append(rs.getString(column));
-
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,7 +94,8 @@ public class UserDB {
         try {
             createConnection();
             Statement myStmt = connection.createStatement();
-            String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN", "STUDENT"};
+            String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
+                    "STUDENT" };
             for (String permission : permissionList) {
                 rs = myStmt.executeQuery("SELECT * FROM " + permission + " WHERE UserID = \"" + username + "\";");
                 if (rs.next()) {
@@ -117,7 +126,6 @@ public class UserDB {
             while (rs.next())
                 result.append(rs.getString("userID") + " " + rs.getString("Password") + "\n");
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -139,7 +147,6 @@ public class UserDB {
             while (rs.next())
                 result_animal.append(rs.getString("Animal_ID") + "\n");
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -159,7 +166,8 @@ public class UserDB {
             createConnection();
             Statement myStmt = connection.createStatement();
 
-            myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username + " AND Password = " + pass + ";");
+            myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username
+                    + " AND Password = " + pass + ";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -168,7 +176,8 @@ public class UserDB {
     }
 
     /**
-     * Gets the username and password related to a user in the database and remove that record from the DB
+     * Gets the username and password related to a user in the database and remove
+     * that record from the DB
      *
      * @param pass
      */
@@ -177,12 +186,15 @@ public class UserDB {
             createConnection();
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
-//            myStmt.executeUpdate("DELETE FROM STUDENT WHERE Password = " + pass + ";");
-//            myStmt.executeUpdate("DELETE FROM Admin WHERE UserID = " + 2 + ";");
-//            myStmt.executeUpdate("DELETE FROM HEALTH_TECHNICIAN WHERE Password = " + pass + ";");
-//            myStmt.executeUpdate("DELETE FROM TEACHER_TECHNICIAN WHERE Password = " + pass + ";");
-//            myStmt.executeUpdate("DELETE FROM CARE_ATTENDANT WHERE Password = " + pass + ";");
-//            myStmt.executeUpdate("DELETE FROM USER WHERE Password = " + pass + ";");
+            // myStmt.executeUpdate("DELETE FROM STUDENT WHERE Password = " + pass + ";");
+            // myStmt.executeUpdate("DELETE FROM Admin WHERE UserID = " + 2 + ";");
+            // myStmt.executeUpdate("DELETE FROM HEALTH_TECHNICIAN WHERE Password = " + pass
+            // + ";");
+            // myStmt.executeUpdate("DELETE FROM TEACHER_TECHNICIAN WHERE Password = " +
+            // pass + ";");
+            // myStmt.executeUpdate("DELETE FROM CARE_ATTENDANT WHERE Password = " + pass +
+            // ";");
+            // myStmt.executeUpdate("DELETE FROM USER WHERE Password = " + pass + ";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -190,7 +202,8 @@ public class UserDB {
     }
 
     /**
-     * addUserToDB() Gets all the information a user must have, and add them into the user database
+     * addUserToDB() Gets all the information a user must have, and add them into
+     * the user database
      *
      * @param status
      * @param password
@@ -204,7 +217,8 @@ public class UserDB {
      * @param permission
      * @throws SQLException
      */
-    public void addUserToDB(String status, String password, String lName, String fName, String phone, String email, String sex, String dateB, String activationDate, String permission) throws SQLException {
+    public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
+            String sex, String dateB, String activationDate, String permission) throws SQLException {
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, status);
@@ -232,7 +246,8 @@ public class UserDB {
             createConnection();
             Statement myStmt = connection.createStatement();
 
-            myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + "Requested" + " \" WHERE Animal_ID = " + id + ";");
+            myStmt.executeUpdate(
+                    "UPDATE ANIMAL SET " + "Status = \"" + "Requested" + " \" WHERE Animal_ID = " + id + ";");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

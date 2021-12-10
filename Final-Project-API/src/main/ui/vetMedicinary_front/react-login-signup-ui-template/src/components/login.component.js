@@ -11,8 +11,8 @@ export default class Login extends Component {
             password: this.password,
         }
         axios.post(this.state.REST_API_LOGIN, sendData)
-        .then(res=>console.log(res))
-        .then(res=>console.log(res.data))
+        .then(response =>console.log(response))
+        // .then(res=>console.log(res.data))
             // .then(res => { localStorage.setItem('username', res.data.username); })
             // .then(res => { localStorage.setItem('LName', res.data.lastName); })
             // .then(res => { localStorage.setItem('FName', res.data.FName); })
@@ -21,8 +21,8 @@ export default class Login extends Component {
             // .then(console.log(localStorage.getItem('username')))
             // .then(console.log(localStorage.getItem('permission')))
             // .then(console.log(localStorage.getItem('FName')))
-            .catch(err => {
-                console.log(err);
+            .catch(response => {
+                console.log(response);
             })
         // switch (localStorage.getItem('permission')) {
         //     case 'Admin':
