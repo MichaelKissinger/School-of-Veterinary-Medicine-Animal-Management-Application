@@ -215,18 +215,18 @@ public class JDBCConnect {
     public void addAnimalProblem(int animalId, String disease, String description) throws SQLException {
         String query = "INSERT INTO ANIMAL_PROBLEM (Animal_ID, Disease, Description) values (?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
-        preparedStmt.setInt(1,  animalId);
+        preparedStmt.setInt(1, animalId);
         preparedStmt.setString(2, disease);
         preparedStmt.setString(3, description);
 
         // execute the prepared statement
         preparedStmt.execute();
-        preparedStmt.close();
+        dbConnect.close();
     }
 
     public void addAnimalPrescription(String drugName, String deliveryMethod,
-            String userId, String date, String dosage, String instructions,
-            String treatmentMethod, int animalId) throws SQLException {
+                                      String userId, String date, String dosage, String instructions,
+                                      String treatmentMethod, int animalId) throws SQLException {
         String query = "INSERT INTO ANIMAL_PRESCRIPTION (Drug_Name, " +
                 "Delivery_Method, User_ID, Date, Dosage, Instructions, Treatment_Method, Animal_ID) values (?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
@@ -245,8 +245,8 @@ public class JDBCConnect {
     }
 
     public void addAnimalHistory(String date, String measurement,
-            String value, String userId, String vaccination,
-            int animalId) throws SQLException {
+                                 String value, String userId, String vaccination,
+                                 int animalId) throws SQLException {
         String query = "INSERT INTO HISTORY (Date, Measurement, Value, User_ID, Vaccination, Animal_ID) values (?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
         preparedStmt.setString(1, date);

@@ -29,7 +29,6 @@ public class AnimalProfilesController {
     AnimalDatabase myDatabase = new AnimalDatabase();
     JDBCConnect myJDBC = new JDBCConnect();
 
-
     public AnimalProfilesController() throws SQLException {
     }
 
@@ -145,26 +144,16 @@ public class AnimalProfilesController {
 
 
     //TODO add animal Photo
-//    @PostMapping(
-//            value = "/animal/addProblem/{animalID}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<HashMap> addPhoto(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
-//        myJDBC.createConnection();
-//        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
-//        return null;
-//    }
-
     //TODO add animal comment
-//    @PostMapping(
-//            value = "/animal/addProblem/{animalID}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<HashMap> addComment(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
-//        myJDBC.createConnection();
-//        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
-//        return null;
-//    }
 
+//        @PostMapping(
+//                value = "/animal/addProblem/{animalID}",
+//                consumes = {MediaType.APPLICATION_JSON_VALUE},
+//                produces = {MediaType.APPLICATION_JSON_VALUE})
+//        public ResponseEntity<HashMap> addPhoto(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
+//            myJDBC.createConnection();
+//            myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
+//            return null;
+//        }
 
 }

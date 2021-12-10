@@ -143,7 +143,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 String description = myObj.nextLine();
-                                myJDBC.addAnimalProblem(Integer.parseInt(animalId), disease, description);
+//                                myJDBC.addAnimalProblem(animalId, disease, description);
                                 break;
                             case "11":
                                 System.out.println("Adding new History");
@@ -198,7 +198,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 description = myObj.nextLine();
-//                                myJDBC.addAnimalComment(Integer.parseInt(recordId), commentId, description);
+//                                myJDBC.addAnimalComment(recordId, commentId, description);
                                 break;
                             case "14":
                                 System.out.println("*** Selecting another Animal *** ");

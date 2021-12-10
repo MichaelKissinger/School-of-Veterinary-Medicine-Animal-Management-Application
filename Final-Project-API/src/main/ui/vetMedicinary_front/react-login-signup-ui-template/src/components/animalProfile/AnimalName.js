@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import AnimalService from "../../service/AnimalService";
 
 const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/1';
 
@@ -8,12 +7,8 @@ const AnimalName = () => {
   
     const[myArray, setMyArray] = React.useState([]);
 
-
-    //TODO Figure out how to pass ID from animal Profile to here and set to ID
-    const id = 1;
-
     React.useEffect(() => {
-      AnimalService.getAnimalById(id).then(response => setMyArray(response.data));
+      axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
     return(

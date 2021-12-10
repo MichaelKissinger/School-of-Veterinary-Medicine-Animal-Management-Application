@@ -59,10 +59,10 @@ public class HealthTechnician {
                                    String userId, String date, String dosage, String instructions,
                                    String treatmentMethod, String animalId) throws SQLException {
         for (Animal animal: animals){
-            if (animal.getAnimalId()==Integer.parseInt(animalId))
-                jdbcConnect.addAnimalPrescription(drugName, deliveryMethod,
-                        userId, date, dosage, instructions,
-                        treatmentMethod, Integer.parseInt(animalId));
+//            if (animal.getAnimalId()==Integer.parseInt(animalId))
+//                jdbcConnect.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
+//                        userId, date, dosage, instructions,
+//                        treatmentMethod, animalId);
         }
     }
 
