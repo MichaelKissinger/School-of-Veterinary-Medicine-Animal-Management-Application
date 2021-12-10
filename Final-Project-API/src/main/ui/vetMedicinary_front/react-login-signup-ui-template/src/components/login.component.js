@@ -1,7 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from 'axios';
 
 export default class Login extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         user:[]
+    //     };
+    // }
+
 
 
     handleSubmit = e => {
@@ -11,43 +18,44 @@ export default class Login extends Component {
             password: this.password,
         }
         axios.post(this.state.REST_API_LOGIN, sendData)
-        .then(response =>console.log(response))
+        // .then(response =>console.log(response))
         // .then(res=>console.log(res.data))
-            // .then(res => { localStorage.setItem('username', res.data.username); })
-            // .then(res => { localStorage.setItem('LName', res.data.lastName); })
-            // .then(res => { localStorage.setItem('FName', res.data.FName); })
-            // .then(res => { localStorage.setItem('permission', res.data.permission); })
-            // .then(console.log(localStorage.getItem('LName')))
-            // .then(console.log(localStorage.getItem('username')))
-            // .then(console.log(localStorage.getItem('permission')))
-            // .then(console.log(localStorage.getItem('FName')))
+            .then(res => { localStorage.setItem('username', res.data.username); 
+            localStorage.setItem('LName', res.data.lastName);
+            localStorage.setItem('FName', res.data.FName);
+            localStorage.setItem('permission', res.data.permission); })
             .catch(response => {
                 console.log(response);
             })
-        // switch (localStorage.getItem('permission')) {
-        //     case 'Admin':
-        //         console.log("Admin");
-        //         this.props.history.push('/AdminAnimalSearch');
-        //         break;
-        //     case 'Teacher':
-        //         console.log('Teacher');
-        //         this.props.history.push('/TeachingTechnicianAnimalSearch');
-        //         break;
-        //     case 'Care':
-        //         console.log("Care");
-        //         this.props.history.push('/AnimalCareAttendanceAnimalSearch');
-        //         break;
-        //     case 'Health':
-        //         console.log("Health");
-        //         this.props.history.push('/AnimalHealthTechnicianAnimalSearch');
-        //         break;
-        //     case 'Student':
-        //         console.log("Student");
-        //         this.props.history.push('/StudentAnimalSearch');
-        //         break;
-        //     default:
-        //         console.log("User not found");
-        // }
+            console.log(localStorage.getItem('LName'))
+            console.log(localStorage.getItem('username'))
+            console.log(localStorage.getItem('permission'))
+            console.log(localStorage.getItem('FName'))
+
+        switch (localStorage.getItem('permission')) {
+            case 'Admin':
+                console.log("Admin");
+                this.props.history.push('/AdminAnimalSearch');
+                break;
+            case 'Teacher':
+                console.log('Teacher');
+                this.props.history.push('/TeachingTechnicianAnimalSearch');
+                break;
+            case 'Care':
+                console.log("Care");
+                this.props.history.push('/AnimalCareAttendanceAnimalSearch');
+                break;
+            case 'Health':
+                console.log("Health");
+                this.props.history.push('/AnimalHealthTechnicianAnimalSearch');
+                break;
+            case 'Student':
+                console.log("Student");
+                this.props.history.push('/StudentAnimalSearch');
+                break;
+            default:
+                console.log("User not found");
+        }
 
     }
     constructor(props) {
