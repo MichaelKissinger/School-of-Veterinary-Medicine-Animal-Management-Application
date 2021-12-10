@@ -6,11 +6,13 @@ import java.util.Scanner;
 
 /**
  * Teaching Technician has functions of request an animal, block and remove students, search and view animal profiles, and take comments on animal profiles.
+ *
  * @author Arman Hosseinsarraf
  */
 public class TeachingTechnician {
     AnimalDatabase animals;
-    ArrayList<User> users;
+    ArrayList<User> studentUsers;
+
     User teachingTechnician;
     UserDB userDB;
     ArrayList<User> blocklist;
@@ -25,7 +27,7 @@ public class TeachingTechnician {
     public TeachingTechnician(User user) throws SQLException {
         teachingTechnician = user;
         animals = new AnimalDatabase();
-        users = new ArrayList<>();
+        studentUsers = new ArrayList<>();
         userDB = new UserDB();
         addUser();
 //        addAnimal();
@@ -38,7 +40,7 @@ public class TeachingTechnician {
      * After each change in the database, the user list will be refreshed
      */
     public void reloadUserDB() {
-        users.clear();
+        studentUsers.clear();
         addUser();
     }
 
@@ -103,11 +105,16 @@ public class TeachingTechnician {
         while (scanner.hasNextLine()) {
             String userPass = scanner.nextLine();
             String[] a = userPass.split(" ");
-            users.add(new User(Integer.parseInt(a[0]), Integer.parseInt(a[1]))); // it creates a user object for each user id, password that exist on the database
+            if (new User(Integer.parseInt(a[0]), Integer.parseInt(a[1])).getPermission().equals("Student")) {
+                studentUsers.add(new User(Integer.parseInt(a[0]), Integer.parseInt(a[1]))); // it creates a user object for each user id, password that exist on the database
+            }
         }
         scanner.close();
     }
 
+    public ArrayList<User> getUsers() {
+        return studentUsers;
+    }
 
     /**
      * addAnimal() loads the animals from the database and keep them in the animal list.
@@ -125,7 +132,7 @@ public class TeachingTechnician {
 //        scanner.close();
 //    }
     public void printUsers() {
-        for (User u : users) {
+        for (User u : studentUsers) {
             if (u.getStatus().equals("Active"))
                 System.out.println(u);
         }

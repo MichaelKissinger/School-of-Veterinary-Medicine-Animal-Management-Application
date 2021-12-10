@@ -19,7 +19,7 @@ public class UserDB {
         try {
 
             // You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
 
             //You may have to enter your own SQL password below to make this work
 //            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
