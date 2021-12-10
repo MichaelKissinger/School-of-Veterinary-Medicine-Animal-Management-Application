@@ -1,6 +1,7 @@
 import React, {useState} from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
+ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
  const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/history/1';
 
@@ -52,7 +53,8 @@ import React, {useState} from "react";
         </table>
         </div>
           <div class="column is-narrow">
-            <button class="button is-dark">Add Animal History</button>  
+            {/* <button class="button is-dark">Add Animal History</button>  */}
+            <Link to="/AnimalHistory/:id" className="btn btn-primary">Add History</Link> 
           </div>
       </div>
     );

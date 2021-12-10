@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const AddProblemForm = () => {
+ const AddHistoryForm = () => {
      const[addDisease, setAddDisease] = React.useState();
      const[addDescription, setAddDescription] = React.useState();
     //  const diseaseText = useRef();
@@ -23,7 +23,7 @@ import React, { useEffect, useState, useRef } from "react";
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             </div>
-                            <h3 class="title is-3">Add Animal Problem</h3>
+                            <h3 class="title is-3">Add Animal History</h3>
                             <div class="col-md-8 order-md-1">
                                 <div class="field">
                                     <label class="label">Disease</label>
@@ -63,4 +63,4 @@ import React, { useEffect, useState, useRef } from "react";
     );
 };
 
-export default AddProblemForm;
+export default AddHistoryForm;

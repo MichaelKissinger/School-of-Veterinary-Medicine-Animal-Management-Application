@@ -119,6 +119,6 @@ public class AnimalPrescription {
                 ", instructions='" + instructions + '\'' +
                 ", treatmentMethod='" + treatmentMethod + '\'' +
                 ", animalId=" + animalId +
-                '}';
+                '}' + '\n';
     }
 }

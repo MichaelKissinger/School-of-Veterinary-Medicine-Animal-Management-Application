@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useHistory} from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
+ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
- const ANIMAL_REST_API_URL = 'http://localhost:8080/animal/problems/1';
+ function AnimalProblems() {
 
- const AnimalProblems = () => {
-
+    // const history = useHistory();
      const[myArray, setMyArray] = React.useState([]);
 
      // React.useEffect(() => {
@@ -18,6 +18,12 @@ import React, {useState} from "react";
        AnimalService.getAnimalProblems(id).then(response => setMyArray(response.data));
      }, []);
     // const[count, setCount] = useState(0);
+
+    // const changePage = () =>{ 
+    //   let path = "/AnimalProblems/:id"; 
+    //   history.push(path);
+    // }
+
     return(
         <div class = "columns"> 
         <div class="column">
@@ -42,7 +48,8 @@ import React, {useState} from "react";
         </table>
         </div>
           <div class="column is-narrow">
-            <button class="button is-dark">Add Animal Problem</button>  
+            {/* <button class="button is-dark" onCLick={changePage}>Add Animal Problem</button>   */}
+            <Link to="/AnimalProblems/:id" className="btn btn-primary">Add Problem</Link>
           </div>
       </div>
     );
