@@ -14,11 +14,22 @@ public class test {
 //            System.out.println(a);
 //        }
         JDBCConnect myJDBC = new JDBCConnect();
+        myJDBC.createConnection();
         int animalId = 1;
         String disease = "Bad";
-//        String description =
+        String description = "no good";
 
-//        myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
+        myJDBC.addAnimalComment(animalId, disease);
+
+//        myJDBC.addAnimalProblem(animalId, disease, description);
+
+//        String scriptRecord, String drugName, String deliveryMethod,
+//                String userId, String date, String dosage, String instructions,
+//                String treatmentMethod, String animalId
+//
+//        myJDBC.addAnimalPrescription(String scriptRecord, String drugName, String deliveryMethod,
+//                String userId, String date, String dosage, String instructions,
+//                String treatmentMethod, String animalId)
 
 
 

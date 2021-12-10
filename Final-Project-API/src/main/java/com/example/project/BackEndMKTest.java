@@ -128,9 +128,9 @@ public class BackEndMKTest {
                                 System.out.println("Enter the animalId:");
                                 myObj = new Scanner(System.in);
                                 String animalId = myObj.nextLine();
-                                myJDBC.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
-                                        userId, date, dosage, instructions,
-                                        treatmentMethod, animalId);
+//                                myJDBC.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
+//                                        userId, date, dosage, instructions,
+//                                        treatmentMethod, animalId);
                                 break;
                             case "10":
                                 System.out.println("Adding new Problem");
@@ -143,7 +143,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 String description = myObj.nextLine();
-//                                myJDBC.addAnimalProblem(animalId, disease, description);
+                                myJDBC.addAnimalProblem(Integer.parseInt(animalId), disease, description);
                                 break;
                             case "11":
                                 System.out.println("Adding new History");
@@ -168,8 +168,8 @@ public class BackEndMKTest {
                                 System.out.println("Enter the animalIdn:");
                                 myObj = new Scanner(System.in);
                                 animalId = myObj.nextLine();
-                                myJDBC.addAnimalHistory(recordId, date, measurement,
-                                        value, userId, vaccination, animalId);
+//                                myJDBC.addAnimalHistory(recordId, date, measurement,
+//                                        value, userId, vaccination, animalId);
                                 break;
                             case "12":
                                 System.out.println("Adding new photo");
@@ -198,7 +198,7 @@ public class BackEndMKTest {
                                 System.out.println("Enter the description:");
                                 myObj = new Scanner(System.in);
                                 description = myObj.nextLine();
-//                                myJDBC.addAnimalComment(recordId, commentId, description);
+//                                myJDBC.addAnimalComment(Integer.parseInt(recordId), commentId, description);
                                 break;
                             case "14":
                                 System.out.println("*** Selecting another Animal *** ");
