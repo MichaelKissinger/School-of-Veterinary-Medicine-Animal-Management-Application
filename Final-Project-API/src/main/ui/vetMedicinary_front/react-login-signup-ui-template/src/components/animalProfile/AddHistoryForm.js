@@ -3,20 +3,26 @@ import React, { useEffect, useState, useRef } from "react";
  import AnimalService from "../../service/AnimalService";
 
  const AddHistoryForm = () => {
-     const[addDisease, setAddDisease] = React.useState();
-     const[addDescription, setAddDescription] = React.useState();
+     const[addMeasurement, setMeasurement] = React.useState();
+     const[addValue, setValue] = React.useState();
+     const[addVaccination, setVaccination] = React.useState();
     //  const diseaseText = useRef();
     //  const descriptionText = useRef();
      const id = 1;
+     const userId = 1;
 
-  function problemInput(e) {
+  function historyInput(e) {
     // console.log(changeStatus);
     //   setChangeStatus = newUpdate;
-    const newProblem = { disease: addDisease, description: addDescription};
-    console.log(newProblem );
-       axios.post('http://localhost:8080/animal/addProblem/' + id, newProblem)
+    const newHistory = {
+        measurement : addMeasurement,
+        value : addValue,
+        userId : userId,
+        vaccination : addVaccination,
+    };
+    console.log(newHistory );
+       axios.post('http://localhost:8080/animal/addHistory/' + id, newHistory )
            .then();
-    // window.location.reload(false);
   }
 
     return(
@@ -25,25 +31,34 @@ import React, { useEffect, useState, useRef } from "react";
                             </div>
                             <h3 class="title is-3">Add Animal History</h3>
                             <div class="col-md-8 order-md-1">
-                                <div class="field">
-                                    <label class="label">Disease</label>
-                                    <div class="control">
-                                        <input class="input" type="text" placeholder="enter disease"  onChange={e => setAddDisease(e.target.value)}/>
-                                    </div>
-                                    </div>
 
-                                    <div class="field">
-                                    <label class="label">Description</label>
+                                <div class="field">
+                                    <label class="label">History Type or Measurement</label>
                                     <div class="control">
-                                        <input class="input" type="text" placeholder="enter description" onChange={e => setAddDescription(e.target.value)}/>
+                                        <input class="input" type="text" placeholder="enter history type or measurement"  onChange={e => setMeasurement(e.target.value)}/>
                                     </div>
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">Value</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="enter value" onChange={e => setValue(e.target.value)}/>
                                     </div>
-                 
+                                </div>
+
+                                <div class="field">
+                                    <label class="label">Is this a vaccination record? (y/n)</label>
+                                    <div class="control">
+                                        <input class="input" type="text" placeholder="enter y/n"  onChange={e => setVaccination(e.target.value)}/>
+                                    </div>
+                                </div>
+               
                                 {/* <button type="submit" className="btn btn-primary btn-block" onClick={problemInput}>Add Animal Problem</button> */}
-                                <a class="button is-info" onClick={problemInput}>
-                                    Add Animal Problem
+                                <a class="button is-info" onClick={historyInput}>
+                                    Add Animal Prescription
                                 </a>
                             </div>
+
                         </main>
 
 

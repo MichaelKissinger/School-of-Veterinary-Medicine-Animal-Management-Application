@@ -103,6 +103,7 @@ public class AnimalProfilesController {
     public ResponseEntity<HashMap> updateStatus(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         Animal myAnimal = myDatabase.findAnimal(animalId);
         myAnimal.updateStatus(animalId, animalStatus.get("Status"));
+        myDatabase.initializeDatabase();
         return null;
     }
 
@@ -113,6 +114,7 @@ public class AnimalProfilesController {
     public ResponseEntity<HashMap> addProblem(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalProblem) throws SQLException {
         myJDBC.createConnection();
         myJDBC.addAnimalProblem(animalId, animalProblem.get("disease"), animalProblem.get("description"));
+        myDatabase.initializeDatabase();
         return null;
     }
 
@@ -130,6 +132,7 @@ public class AnimalProfilesController {
                 animalPrescription.get("userId"), formattedDate,
                 animalPrescription.get("dosage"), animalPrescription.get("instructions"),
                 animalPrescription.get("treatmentMethod"), animalId);
+        myDatabase.initializeDatabase();
         return null;
     }
 
@@ -139,10 +142,14 @@ public class AnimalProfilesController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> addHistory(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalHistory) throws SQLException {
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
         myJDBC.createConnection();
-        myJDBC.addAnimalHistory(animalHistory.get("date"), animalHistory.get("measurement"),
+        myJDBC.addAnimalHistory(formattedDate, animalHistory.get("measurement"),
                 animalHistory.get("value"), animalHistory.get("userId"),
                 animalHistory.get("vaccination"), animalId);
+        myDatabase.initializeDatabase();
         return null;
     }
 
