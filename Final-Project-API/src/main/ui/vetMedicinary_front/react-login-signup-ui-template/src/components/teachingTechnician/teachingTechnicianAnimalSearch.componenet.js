@@ -10,6 +10,9 @@ const TeachingTechnicianAnimalSearch = () => {
     const[myArray, setMyArray] = React.useState([]);
     const[ID, setID] = React.useState();
     const[changeStatus, setChangeStatus] = React.useState();
+    const[name, setName] = React.useState('')
+    const[id, setA] = React.useState('');
+
     const LName=localStorage.getItem('LName');
     const FName=localStorage.getItem('FName');
 
@@ -27,6 +30,16 @@ const TeachingTechnicianAnimalSearch = () => {
     axios.put('http://localhost:8080/animal/updateStatus/'+ID, status)
           .then();
     window.location.reload(false);
+    }
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const sendData = {
+            name: name,
+            id: id,
+        }
+
+        axios.post('http://localhost:8080/searchAnimal', sendData).then(response => setMyArray(response.data));
     }
         return (
             <form>
@@ -76,9 +89,9 @@ const TeachingTechnicianAnimalSearch = () => {
                                     <table className="table table-responsive">
                                         <tbody>
                                             <tr>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
+                                            <td><input className="form-control mr-sm-2" type="search" placeholder="ID" onChange={e => setA(e.target.value)}/></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" onChange={e => setName(e.target.value)}/></td>
+                                                <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
