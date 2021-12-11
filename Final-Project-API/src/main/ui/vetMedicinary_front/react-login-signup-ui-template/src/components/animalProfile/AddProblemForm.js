@@ -2,21 +2,16 @@ import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const AddProblemForm = () => {
+ const AddProblemForm = (props) => {
      const[addDisease, setAddDisease] = React.useState();
      const[addDescription, setAddDescription] = React.useState();
-    //  const diseaseText = useRef();
-    //  const descriptionText = useRef();
-     const id = 1;
+    const id = props.id;
 
   function problemInput(e) {
-    // console.log(changeStatus);
-    //   setChangeStatus = newUpdate;
     const newProblem = { disease: addDisease, description: addDescription};
     console.log(newProblem );
        axios.post('http://localhost:8080/animal/addProblem/' + id, newProblem)
            .then();
-    // window.location.reload(false);
   }
 
     return(

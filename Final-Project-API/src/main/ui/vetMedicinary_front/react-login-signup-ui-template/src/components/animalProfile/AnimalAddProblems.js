@@ -18,10 +18,10 @@ export default class AnimalAddProblem extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id:this.props.match.params.id,
             date: new Date().toLocaleString()
         };
     }
-
     
     render() {
         return (
@@ -35,13 +35,13 @@ export default class AnimalAddProblem extends Component {
                 </header> */}
             <div class="rows">
                 <div class="row">
-                    <AddProblemForm/>
+                    <AddProblemForm id={this.state.id}/>
 
                 </div>
                 <br></br>
                 <br></br>
                 <div class="row">    
-                    <Link to="/AnimalProfile/:id" className="btn btn-primary">Back to Animal Profile</Link>
+                    <Link to={"/AnimalProfile/" + this.state.id} className="btn btn-primary">Back to Animal Profile</Link>
                 </div>
             </div>
                 {/* <footer>

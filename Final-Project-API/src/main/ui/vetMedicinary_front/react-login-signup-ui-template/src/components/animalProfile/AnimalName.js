@@ -7,9 +7,6 @@ import React, { useEffect, useState } from "react";
  const AnimalName = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
-
-
-     //TODO Figure out how to pass ID from animal Profile to here and set to ID
      const id = props.id;
 
      React.useEffect(() => {

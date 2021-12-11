@@ -2,30 +2,14 @@ import React, { useEffect, useState } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const ANIMAL_REST_API_URL = 'http://localhost:8080/animal';
-
  const InfoTable = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
-
-
-     //TODO Figure out how to pass ID from animal Profile to here and set to ID
-    //  const id = 1;
      const id = props.id;
 
      React.useEffect(() => {
        AnimalService.getAnimalById(id).then(response => setMyArray(response.data));
      }, []);
-
-    //TODO Not working yet
-    // const statusChange = useEffect(() => {
-    //   // PUT request using axios inside useEffect React hook
-    //   const status = { Status: 'Changed' };
-    //   axios.put('http://localhost:8080/animal/updateStatus/1', status)
-    //       .then();
-  
-  // empty dependency array means this effect will only run once (like componentDidMount in classes)
-  // }, []);
 
     return(
       <div class = "columns"> 

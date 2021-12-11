@@ -6,9 +6,8 @@ import React, {useState} from "react";
  const AnimalPrescription = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
-
-     //TODO Figure out how to pass ID from animal Profile to here and set to ID
-     const id = props.id;
+     const id = localStorage.getItem('currentAnimal');
+     const link = "/AnimalPrescriptions/" + id;
 
      React.useEffect(() => {
        AnimalService.getAnimalPrescriptions(id).then(response => setMyArray(response.data));
@@ -20,6 +19,7 @@ import React, {useState} from "react";
             <table class="table">
             <thead>
             <tr>
+                <th>animalId</th>
                 <th>scriptRecord</th>
                 <th>drugName</th>
                 <th>deliveryMethod</th>
@@ -28,13 +28,14 @@ import React, {useState} from "react";
                 <th>dosage</th>
                 <th>instructions</th>
                 <th>treatmentMethod</th>
-                <th>animalId</th>
+                
             </tr>
             </thead>
             <tbody>
             {
                 myArray.map(myArray =>
                     <tr key={myArray.id}>
+                    <td>{myArray.animalId}</td>
                     <td>{myArray.scriptRecord}</td>
                     <td>{myArray.drugName}</td>
                     <td>{myArray.deliveryMethod}</td>
@@ -43,7 +44,6 @@ import React, {useState} from "react";
                     <td>{myArray.dosage}</td>
                     <td>{myArray.instructions}</td>
                     <td>{myArray.treatmentMethod}</td>
-                    <td>{myArray.animalId}</td>
                     </tr>)
             }
             </tbody>
@@ -51,7 +51,7 @@ import React, {useState} from "react";
         </div>
           <div class="column is-narrow">
             {/* <button class="button is-dark">Add Animal Prescription</button>   */}
-            <Link to="/AnimalPrescriptions/:id" className="btn btn-primary">Add Animal Prescription</Link>
+            <Link to={link} className="btn btn-primary">Add Animal Prescription</Link>
           </div>
       </div>
     );
