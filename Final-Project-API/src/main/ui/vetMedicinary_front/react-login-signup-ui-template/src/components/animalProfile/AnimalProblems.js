@@ -19,7 +19,7 @@ import React, {useState} from "react";
             <table class="table">
             <thead>
             <tr>
-                <th>Animal ID {id}</th>
+                <th>Animal ID</th>
                 <th>Disease</th>
                 <th>Description</th>
             </tr>

@@ -16,7 +16,7 @@ const AdministratorAccess = () => {
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
-    }, []);
+    }, []); 
         return (
             <form>
                 <div className="container-fluid">
@@ -112,6 +112,7 @@ const AdministratorAccess = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <Link to={"/adminAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>
                 </div>

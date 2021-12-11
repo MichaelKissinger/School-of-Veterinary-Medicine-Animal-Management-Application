@@ -11,13 +11,6 @@ import AnimalAddHistory from './components/animalProfile/AnimalAddHistory';
 import AnimalAddPrescription from './components/animalProfile/AnimalAddPrescription';
 
 import SearchAnimal from './components/searchAnimal.componenet';
-// import UserProfile from "./components/userProfile.componenet";
-// import SearchMain from './components/searchMain.componenet';
-// import TeachingTechnician from './components/teachingTechnician.componenet';
-// import AdministratorAccess from './components/administratorAccess.componenet';
-// import AnimalCareAttendance from './components/animalCareAttendance.componenet'; 
-// import AnimalProfile from './components/animalProfile.component';
-// import AnimalHealthTechnician from './components/animalHealthTechnician.componenet'; 
 import AnimalService from './service/AnimalService';
 
 // Admin
@@ -26,14 +19,18 @@ import AdminUserList from './components/admin/adminUserList.componenet';
 import AdminBlockedUserList from './components/admin/adminBlockedUserList.componenet';
 import AdminAddUser from './components/admin/adminAddUser.componenet';
 import AdminProfile from './components/admin/adminProfile.componenet';
+import AdminAddAnimal from './components/admin/adminAddAnimal.component';
+
 // Animal Health Technician
 import AnimalHealthTechnicianAnimalSearch from './components/animalHealthTechnician/animalHealthTechnicianAnimalSearch.componenet';
 import AnimalHealthTechnicianProfile from './components/animalHealthTechnician/animalHealthTechnicianProfile.componenet';
+import AnimalHealthTechAddAnimal from './components/animalHealthTechnician/animalHealthTechAddAnimal';
 // Animal Care Attendance
 import AnimalCareAttendanceAnimalSearch from './components/animalCareAttendance/animalCareAttendanceAnimalSearch.componenet';
 import AnimalCareAttendanceAlertAnimal from './components/animalCareAttendance/animalCareAttendanceAlertAnimal.componenet';
 import AnimalCareAttendanceRequestedTreatment from './components/animalCareAttendance/animalCareAttendanceRequestedTreatment.componenet.js';
 import AnimalCareAttendanceProfile from './components/animalCareAttendance/animalCareAttendanceProfile.componenet';
+import AnimalCareAddAnimal from './components/animalCareAttendance/animalCareAddAnimal';
 // Teaching Technician
 import TeachingTechnicianUserList from './components/teachingTechnician/teachingTechnicianUserList.componenet';
 import TeachingTechnicianAnimalSearch from './components/teachingTechnician/teachingTechnicianAnimalSearch.componenet';
@@ -125,14 +122,17 @@ function App() {
           <Route path="/AdminBlockedUserList" component={AdminBlockedUserList} />
           <Route path="/AdminAddUser" component={AdminAddUser} />
           <Route path="/AdminProfile" component={AdminProfile} />
+          <Route path="/AdminAddAnimal" component={AdminAddAnimal} />
           {/* Animal Health Technician */}
           <Route path="/AnimalHealthTechnicianAnimalSearch" component={AnimalHealthTechnicianAnimalSearch} />
           <Route path="/AnimalHealthTechnicianProfile" component={AnimalHealthTechnicianProfile} />
+          <Route path="/AnimalHealthTechAddAnimal" component={AnimalHealthTechAddAnimal} />
           {/* Animal Care  Attendance */}
           <Route path="/AnimalCareAttendanceAnimalSearch" component={AnimalCareAttendanceAnimalSearch} />
           <Route path="/AnimalCareAttendanceAlertAnimal" component={AnimalCareAttendanceAlertAnimal} />
           <Route path="/AnimalCareAttendanceProfile" component={AnimalCareAttendanceProfile} />
           <Route path="/AnimalCareAttendanceRequestedTreatment" component={AnimalCareAttendanceRequestedTreatment} />
+          <Route path="/AnimalCareAddAnimal" component={AnimalCareAddAnimal} />
           {/* Teaching Technician*/}
           <Route path="/TeachingTechnicianUserList" component={TeachingTechnicianUserList} />
           <Route path="/TeachingTechnicianAnimalSearch" component={TeachingTechnicianAnimalSearch} />

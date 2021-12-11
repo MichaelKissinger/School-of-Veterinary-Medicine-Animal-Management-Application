@@ -124,6 +124,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <Link to={"/AnimalCareAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>
                 </div>

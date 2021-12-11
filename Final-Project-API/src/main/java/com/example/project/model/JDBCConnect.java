@@ -284,4 +284,24 @@ public class JDBCConnect {
         dbConnect.close();
     }
 
+    public void addAnimal(String status, String tattoo,
+                          String dateBirth, String city, String breed,
+                          String type, String name, String sex, String userID) throws SQLException {
+        String query = "INSERT INTO ANIMAL (Status, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
+        preparedStmt.setString(1, status);
+        preparedStmt.setInt(2, Integer.parseInt(tattoo));
+        preparedStmt.setString(3, dateBirth);
+        preparedStmt.setString(4, city);
+        preparedStmt.setString(5, breed);
+        preparedStmt.setString(6, type);
+        preparedStmt.setString(7, name);
+        preparedStmt.setString(8, sex);
+        preparedStmt.setInt(9, Integer.parseInt(userID));
+
+        // execute the prepared statement
+        preparedStmt.execute();
+        dbConnect.close();
+    }
+
 }

@@ -26,7 +26,7 @@ import React, { useEffect, useState } from "react";
                 <th>Status</th>
                 <th>Tattoo</th>
                 <th>Type</th>
-                <th>Owner</th>
+                <th>Assigned Vet</th>
               </tr>
             </thead> 
             <tbody>

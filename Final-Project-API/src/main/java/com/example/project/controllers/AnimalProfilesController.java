@@ -136,7 +136,6 @@ public class AnimalProfilesController {
         return null;
     }
 
-
     @PostMapping(
             value = "/animal/addHistory/{animalID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
@@ -152,6 +151,22 @@ public class AnimalProfilesController {
         myDatabase.initializeDatabase();
         return null;
     }
+
+
+    @PostMapping(
+            value = "/animal/addAnimal",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HashMap> addAnimal(@RequestBody HashMap<String, String> animalInfo) throws SQLException {
+        myJDBC.createConnection();
+        myJDBC.addAnimal(animalInfo.get("status"), animalInfo.get("tattoo"),
+                animalInfo.get("dateBirth"), animalInfo.get("city"), animalInfo.get("breed"),
+                animalInfo.get("type"), animalInfo.get("name"), animalInfo.get("sex"), animalInfo.get("userID"));
+        myDatabase.initializeDatabase();
+        return null;
+    }
+
+
 
 
 

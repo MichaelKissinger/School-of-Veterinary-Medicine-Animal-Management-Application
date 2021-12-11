@@ -101,6 +101,7 @@ const AdministratorAccess = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <Link to={"/AnimalHealthTechAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>
                 </div>
