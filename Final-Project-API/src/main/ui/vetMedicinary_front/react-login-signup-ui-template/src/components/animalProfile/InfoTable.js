@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 
  const ANIMAL_REST_API_URL = 'http://localhost:8080/animal';
 
- const InfoTable = () => {
+ const InfoTable = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
 
+
      //TODO Figure out how to pass ID from animal Profile to here and set to ID
-     const id = 1;
+    //  const id = 1;
+     const id = props.id;
 
      React.useEffect(() => {
        AnimalService.getAnimalById(id).then(response => setMyArray(response.data));

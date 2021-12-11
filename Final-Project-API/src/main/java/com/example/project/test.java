@@ -6,6 +6,8 @@ import com.example.project.model.AnimalHistory;
 import com.example.project.model.AnimalHistoryComments;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 //TODO can be deleted
@@ -31,7 +33,12 @@ public class test {
 
 
         Animal myAnimal = myDatabase.findAnimal(animalId);
-        System.out.println(myAnimal.getAnimalPrescriptions());
+//        System.out.println(myAnimal.getAnimalPrescriptions());
+
+        LocalDateTime myDateObj = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedDate = myDateObj.format(myFormatObj);
+        System.out.println(formattedDate);
 
 
     }
