@@ -73,9 +73,8 @@ const TeachingTechnicianAnimalSearch = () => {
                                             <th scope="col">Status</th>
                                             <th scope="col">Tattoo</th>
                                             <th scope="col">Breed</th>
-                                            <th scope="col">User ID</th>
+                                            <th scope="col">Assigned Vet</th>
                                             <th scope="col">Animal Profile</th>
-                                      
                                         </tr>
                                     </thead>
                                     <tbody>

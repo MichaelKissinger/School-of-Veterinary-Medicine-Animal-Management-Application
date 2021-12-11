@@ -73,8 +73,7 @@ const AdministratorAccess = () => {
                                             <th scope="col">Status</th>
                                             <th scope="col">Tattoo</th>
                                             <th scope="col">Breed</th>
-                                            <th scope="col">User ID</th>
-                                            <th scope="col">diagnose/prescribe</th>
+                                            <th scope="col">Assigned Vet</th>
                                             <th scope="col">Animal Profile</th>
 
                                         </tr>
@@ -93,7 +92,6 @@ const AdministratorAccess = () => {
                                               <td>{myArray.tattoo}</td>
                                               <td>{myArray.type}</td>
                                               <td>{myArray.userID}</td>
-                                           <td><a className="fa fa-bell" href="#"></a></td>
                                             <td><a className="fa fa-eye" href="#"></a></td> 
                                             </tr>)
                                         }
