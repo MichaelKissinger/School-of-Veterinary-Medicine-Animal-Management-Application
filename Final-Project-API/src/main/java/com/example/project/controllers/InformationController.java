@@ -70,16 +70,6 @@ public class InformationController {
         String birthday = userInfo.get("birthday");
         String gender = userInfo.get("gender");
 
-        System.out.println(FName);
-        System.out.println(LName);
-        System.out.println(email);
-        System.out.println(phoneNumber);
-        System.out.println(permission);
-        System.out.println(activatedate);
-        System.out.println(password);
-        System.out.println(birthday);
-        System.out.println(gender);
-
         Admin admin = new Admin(new User(1, 3333));
         admin.addNewUser("Active", password, LName, FName, phoneNumber, email, gender, birthday, activatedate,
                 permission);
