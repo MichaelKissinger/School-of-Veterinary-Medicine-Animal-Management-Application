@@ -2,20 +2,17 @@ import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const AddPrescriptionForm = () => {
+ const AddPrescriptionForm = (props) => {
      const[addDrugName, setDrugName] = React.useState();
      const[addDeliveryMethod, setDeliveryMethod] = React.useState();
      const[addDosage, setDosage] = React.useState();
      const[addInstructions, setInstructions] = React.useState();
      const[addTreatmentMethod, setTreatmentMethod] = React.useState();
-    //  const diseaseText = useRef();
-    //  const descriptionText = useRef();
-     const id = 1;
-     const userId = 1;
+
+    const userId = localStorage.getItem('username');
+    const id = localStorage.getItem('currentAnimal');
 
   function problemInput(e) {
-    // console.log(changeStatus);
-    //   setChangeStatus = newUpdate;
     const newPrescription = {
         drugName : addDrugName,
         deliveryMethod : addDeliveryMethod,
@@ -27,7 +24,6 @@ import React, { useEffect, useState, useRef } from "react";
     console.log(newPrescription);
        axios.post('http://localhost:8080/animal/addPrescription/' + id, newPrescription)
            .then();
-    // window.location.reload(false);
   }
 
     return(
@@ -71,8 +67,6 @@ import React, { useEffect, useState, useRef } from "react";
                                         <input class="input" type="text" placeholder="enter Treatment Method" onChange={e => setTreatmentMethod(e.target.value)}/>
                                     </div>
                                 </div>
-                                
-                                
                  
                                 {/* <button type="submit" className="btn btn-primary btn-block" onClick={problemInput}>Add Animal Problem</button> */}
                                 <a class="button is-info" onClick={problemInput}>
@@ -81,21 +75,6 @@ import React, { useEffect, useState, useRef } from "react";
                             </div>
 
                         </main>
-
-
-
-        // <div class="field has-addons">
-        //     <div class="control">
-        //         {/* <input class="input" type="text" placeholder="Update Status" onChange={e => setChangeStatus(e.target.value)}/> */}
-        //         <input class="input" type="text" placeholder="Update Status" ref={statusText}/>
-        //     </div>
-        //     <div class="control">
-        //         <a class="button is-info" onClick={statusInput}>
-        //             Update
-        //         </a>
-        //     </div>
-        // </div>
-    
     );
 };
 

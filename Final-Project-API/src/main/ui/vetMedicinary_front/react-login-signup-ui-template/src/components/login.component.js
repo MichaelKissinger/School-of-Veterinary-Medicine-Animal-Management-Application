@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default class Login extends Component {
 
+
     handleSubmit = e => {
         e.preventDefault();
         const sendData = {
@@ -10,17 +11,27 @@ export default class Login extends Component {
             password: this.password,
         }
         axios.post(this.state.REST_API_LOGIN, sendData)
-            .then(res => { localStorage.setItem('username', res.data.username); 
+
+            // .then(res => { localStorage.setItem('username', res.data.username); 
+            .then(res => {
+            localStorage.setItem('username', res.data.username); 
             localStorage.setItem('LName', res.data.lastName);
             localStorage.setItem('FName', res.data.FName);
-            localStorage.setItem('permission', res.data.permission); })
+            localStorage.setItem('permission', res.data.permission); 
+            localStorage.setItem('phoneNumber', res.data.phoneNumber); 
+            localStorage.setItem('email', res.data.email); 
+            localStorage.setItem('birthDate', res.data.birthDate); })
             .catch(response => {
                 console.log(response);
             })
-            console.log(localStorage.getItem('LName'))
-            console.log(localStorage.getItem('username'))
-            console.log(localStorage.getItem('permission'))
-            console.log(localStorage.getItem('FName'))
+            
+            console.log(localStorage.getItem('LName'));
+            console.log(localStorage.getItem('username'));
+            console.log(localStorage.getItem('permission'));
+            console.log(localStorage.getItem('FName'));
+            console.log(localStorage.getItem('phoneNumber'));
+            console.log(localStorage.getItem('email'));
+            console.log(localStorage.getItem('birthDate'));
 
         switch (localStorage.getItem('permission')) {
             case 'Admin':

@@ -2,18 +2,14 @@ import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const AddHistoryForm = () => {
+ const AddHistoryForm = (props) => {
      const[addMeasurement, setMeasurement] = React.useState();
      const[addValue, setValue] = React.useState();
      const[addVaccination, setVaccination] = React.useState();
-    //  const diseaseText = useRef();
-    //  const descriptionText = useRef();
-     const id = 1;
-     const userId = 1;
+     const userId = localStorage.getItem('username');
+     const id = localStorage.getItem('currentAnimal');
 
   function historyInput(e) {
-    // console.log(changeStatus);
-    //   setChangeStatus = newUpdate;
     const newHistory = {
         measurement : addMeasurement,
         value : addValue,
@@ -60,20 +56,6 @@ import React, { useEffect, useState, useRef } from "react";
                             </div>
 
                         </main>
-
-
-
-        // <div class="field has-addons">
-        //     <div class="control">
-        //         {/* <input class="input" type="text" placeholder="Update Status" onChange={e => setChangeStatus(e.target.value)}/> */}
-        //         <input class="input" type="text" placeholder="Update Status" ref={statusText}/>
-        //     </div>
-        //     <div class="control">
-        //         <a class="button is-info" onClick={statusInput}>
-        //             Update
-        //         </a>
-        //     </div>
-        // </div>
     
     );
 };

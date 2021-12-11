@@ -5,12 +5,14 @@ import axios from "axios";
 const User_REST_API_URL = 'http://localhost:8080/studentblocklist';
 
 const TeachingTechnicianBlockedUserList = () => {
-
+        const FName=localStorage.getItem('FName');
+        const LName=localStorage.getItem('LName');
         const[myArray, setMyArray] = React.useState([]);
 
-    React.useEffect(() => {
-      axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
-    }, []);
+        React.useEffect(() => {
+            axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
+          }, []);
+
         return (
             <form>
                 <div className="container-fluid">
@@ -18,7 +20,7 @@ const TeachingTechnicianBlockedUserList = () => {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                                 <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                <span>Teaching Technician</span>
+                                <span><strong>Teaching Technician</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -28,7 +30,7 @@ const TeachingTechnicianBlockedUserList = () => {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
  
                                 <ul className="nav flex-column mb-2">                                <li className="nav-item">

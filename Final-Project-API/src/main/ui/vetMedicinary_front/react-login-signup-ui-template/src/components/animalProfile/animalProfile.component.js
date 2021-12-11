@@ -16,9 +16,10 @@ export default class AnimalProfile extends Component {
         super(props);
         this.state = {
             id:this.props.match.params.id,
-            // id: 1,
-            date: new Date().toLocaleString()
+            date: new Date().toLocaleString(),  
         };
+    localStorage.setItem('currentAnimal', this.state.id);
+    console.log(this.state.id)
     }
     render() {
         return (

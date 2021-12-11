@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
 
- const AnimalStatus = () => {
+ const AnimalStatus = (props) => {
      const[changeStatus, setChangeStatus] = React.useState();
      const statusText = useRef();
-     const id = 1;
+     const id = props.id;
 //TODO Fix issue where update status button must be pressed twice, 
 //Also once that is fixed the refresh page at bottom of function can be uncommented
 //This refreshes page and shows updated status

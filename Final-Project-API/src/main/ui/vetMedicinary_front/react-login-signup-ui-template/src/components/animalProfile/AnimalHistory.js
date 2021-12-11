@@ -8,45 +8,41 @@ import React, {useState} from "react";
  const AnimalHistory = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
-
-     // React.useEffect(() => {
-     //   axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
-     // }, []);
-
-     //TODO Figure out how to pass ID from animal Profile to here and set to ID
-     const id = props.id;
+     const id = localStorage.getItem('currentAnimal');
+     const link = "/AnimalHistory/" + id;
 
      React.useEffect(() => {
        AnimalService.getAnimalHistory(id).then(response => setMyArray(response.data));
      }, []);
   
-
     return(
         <div class = "columns"> 
         <div class="column">
             <table class="table">
             <thead>
             <tr>
+              <th>Animal ID</th>
                 <th>Record ID</th>
                 <th>Date</th>
                 <th>Measurement/Type</th>
                 <th>Value</th>
                 <th>User ID</th>
                 <th>Vaccination</th>
-                <th>Animal ID</th>
+                
             </tr>
             </thead>
             <tbody>
             {
                 myArray.map(myArray =>
                     <tr key={myArray.id}>
+                    <td>{myArray.animalId}</td>
                     <td>{myArray.recordId}</td>
                     <td>{myArray.date}</td>
                     <td>{myArray.measurement}</td>
                     <td>{myArray.value}</td>
                     <td>{myArray.userId}</td>
                     <td>{myArray.vaccination}</td>
-                    <td>{myArray.animalId}</td>
+                    
                     </tr>)
             }
             </tbody>
@@ -54,7 +50,7 @@ import React, {useState} from "react";
         </div>
           <div class="column is-narrow">
             {/* <button class="button is-dark">Add Animal History</button>  */}
-            <Link to="/AnimalHistory/:id" className="btn btn-primary">Add History</Link> 
+            <Link to={link} className="btn btn-primary">Add History</Link> 
           </div>
       </div>
     );

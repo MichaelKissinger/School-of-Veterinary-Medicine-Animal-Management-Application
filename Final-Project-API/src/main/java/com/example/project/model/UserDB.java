@@ -18,6 +18,7 @@ public class UserDB {
     /**
      * createConnection() creates a connection with the database
      */
+
 //    public void createConnection() {
 //        try {
 //
@@ -31,6 +32,23 @@ public class UserDB {
 //            e.printStackTrace();
 //        }
 //    }
+
+    public void createConnection() {
+        try {
+
+            // You may have to enter your own SQL password below to make this work
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
+
+            // You may have to enter your own SQL password below to make this work
+            // connection =
+            // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
+            // "9788");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * validateUser() checks to see if the given username and password are in the

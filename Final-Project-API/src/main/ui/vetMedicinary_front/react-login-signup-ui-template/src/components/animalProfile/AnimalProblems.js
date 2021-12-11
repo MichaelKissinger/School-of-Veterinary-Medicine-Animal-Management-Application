@@ -1,28 +1,17 @@
-import React, {useState, useHistory} from "react";
+import React, {useState} from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
  function AnimalProblems(props) {
 
-    // const history = useHistory();
      const[myArray, setMyArray] = React.useState([]);
-
-     // React.useEffect(() => {
-     //   axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
-     // }, []);
-
-     const id = props.id;
+     const id = localStorage.getItem('currentAnimal');
+     const link = "/AnimalProblems/" + id;
 
      React.useEffect(() => {
        AnimalService.getAnimalProblems(id).then(response => setMyArray(response.data));
      }, []);
-    // const[count, setCount] = useState(0);
-
-    // const changePage = () =>{ 
-    //   let path = "/AnimalProblems/:id"; 
-    //   history.push(path);
-    // }
 
     return(
         <div class = "columns"> 
@@ -30,7 +19,7 @@ import React, {useState, useHistory} from "react";
             <table class="table">
             <thead>
             <tr>
-                <th>Animal ID</th>
+                <th>Animal ID {id}</th>
                 <th>Disease</th>
                 <th>Description</th>
             </tr>
@@ -49,7 +38,7 @@ import React, {useState, useHistory} from "react";
         </div>
           <div class="column is-narrow">
             {/* <button class="button is-dark" onCLick={changePage}>Add Animal Problem</button>   */}
-            <Link to="/AnimalProblems/:id" className="btn btn-primary">Add Problem</Link>
+            <Link to={link} className="btn btn-primary">Add Problem</Link>
           </div>
       </div>
     );
