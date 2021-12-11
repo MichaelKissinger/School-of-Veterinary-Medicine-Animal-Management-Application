@@ -8,6 +8,9 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const AdministratorAccess = () => {
 
+    const FName=localStorage.getItem('FName');
+    const LName=localStorage.getItem('LName');
+
     const[myArray, setMyArray] = React.useState([]);
 
 
@@ -21,7 +24,7 @@ const AdministratorAccess = () => {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                                 <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                    <span>Administrator</span>
+                                    <span><strong>Administrator</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -32,7 +35,7 @@ const AdministratorAccess = () => {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                   <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
 
                                 <ul className="nav flex-column mb-2">

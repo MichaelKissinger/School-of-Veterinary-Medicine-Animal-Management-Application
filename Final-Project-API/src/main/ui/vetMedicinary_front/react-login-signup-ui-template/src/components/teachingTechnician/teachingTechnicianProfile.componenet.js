@@ -1,8 +1,15 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export default class TeachingTechnicianProfile extends Component {
-    render() {
+
+const TeachingTechnicianProfile = () => {
+
+        const FName=localStorage.getItem('FName');
+        const LName=localStorage.getItem('LName');
+        const bithday=localStorage.getItem('birthDate');
+        const phoneNumber=localStorage.getItem('phoneNumber');
+        const email=localStorage.getItem('email');
+        
         return (
             <form>
                 <div className="container-fluid">
@@ -10,7 +17,7 @@ export default class TeachingTechnicianProfile extends Component {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                             <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                    <span>Administrator</span>
+                            <span><strong>Teaching Technician</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -20,7 +27,7 @@ export default class TeachingTechnicianProfile extends Component {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
                                 <ul className="nav flex-column mb-2">
                                 <li className="nav-item">
@@ -49,15 +56,15 @@ export default class TeachingTechnicianProfile extends Component {
                                     <tbody>
                                         <tr>
                                             <th scope="col">Name:</th>
-                                            <th scope="col"><strong><i>John</i></strong></th>
+                                            <th scope="col"><strong><i>{FName}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Family:</th>
-                                            <th scope="col"><strong><i>Smith</i></strong></th>
+                                            <th scope="col"><strong><i>{LName}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Birtdate:</th>
-                                            <th scope="col"><strong><i>1984-08-30</i></strong></th>
+                                            <th scope="col"><strong><i>{bithday}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
@@ -65,11 +72,11 @@ export default class TeachingTechnicianProfile extends Component {
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>
-                                            <th scope="col"><strong><i>808-808-4444</i></strong></th>
+                                            <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Email:</th>
-                                            <th scope="col"><strong><i>email@site.com</i></strong></th>
+                                            <th scope="col"><strong><i>{email}</i></strong></th>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -81,4 +88,4 @@ export default class TeachingTechnicianProfile extends Component {
             </form >
         );
     }
-}
+    export default TeachingTechnicianProfile;
