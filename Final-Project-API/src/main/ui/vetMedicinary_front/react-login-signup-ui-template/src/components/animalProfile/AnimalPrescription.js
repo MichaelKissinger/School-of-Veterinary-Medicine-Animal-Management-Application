@@ -3,12 +3,12 @@ import React, {useState} from "react";
  import AnimalService from "../../service/AnimalService";
  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
- const AnimalPrescription = () => {
+ const AnimalPrescription = (props) => {
 
      const[myArray, setMyArray] = React.useState([]);
 
      //TODO Figure out how to pass ID from animal Profile to here and set to ID
-     const id = 1;
+     const id = props.id;
 
      React.useEffect(() => {
        AnimalService.getAnimalPrescriptions(id).then(response => setMyArray(response.data));

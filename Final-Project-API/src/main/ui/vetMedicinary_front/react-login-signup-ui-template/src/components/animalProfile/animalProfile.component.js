@@ -30,34 +30,34 @@ export default class AnimalProfile extends Component {
                         </div>
                     </div>
                 </header> */}
-                    <AnimalName/>
+                    <AnimalName id={this.state.id}/>
                 <div class="rows">
                         <div class="row">
-                            <AnimalPhoto/>
+                            <AnimalPhoto id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal Status</h3>
                         <div class="row">
-                            <AnimalStatus/>
+                            <AnimalStatus id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal Information</h3>
                         <div class="row">
-                            <InfoTable value={this.state.id}/>
+                            <InfoTable id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal Problems</h3>
                         <div class="row">
-                            <AnimalProblems/>
+                            <AnimalProblems id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal Prescriptions</h3>
                         <div class="row">
-                            <AnimalPrescription/>
+                            <AnimalPrescription id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal History</h3>
                         <div class="row">
-                            <AnimalHistory/>
+                            <AnimalHistory id={this.state.id}/>
                         </div>
                         <h3 class="title is-3">Animal Comments</h3>
                         <div class="row">
-                            <AnimalComments/>
+                            <AnimalComments id={this.state.id}/>
                         </div>
 
                 </div>

@@ -3,7 +3,7 @@ import React, {useState, useHistory} from "react";
  import AnimalService from "../../service/AnimalService";
  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
- function AnimalProblems() {
+ function AnimalProblems(props) {
 
     // const history = useHistory();
      const[myArray, setMyArray] = React.useState([]);
@@ -12,7 +12,7 @@ import React, {useState, useHistory} from "react";
      //   axios.get(ANIMAL_REST_API_URL).then(response => setMyArray(response.data));
      // }, []);
 
-     const id = 1;
+     const id = props.id;
 
      React.useEffect(() => {
        AnimalService.getAnimalProblems(id).then(response => setMyArray(response.data));
