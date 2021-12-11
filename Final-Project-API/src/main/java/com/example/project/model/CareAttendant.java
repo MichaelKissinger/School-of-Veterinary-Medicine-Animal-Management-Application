@@ -25,30 +25,17 @@ public class CareAttendant {
         careAtt = user;
         animals = new ArrayList<>();
         userDB = new UserDB();
-//        addAnimal();
         jdbcConnect = new JDBCConnect();
         jdbcConnect.createConnection();
         animalDatabase = new AnimalDatabase();
         requestedAnimals = new ArrayList<>();
     }
 
-
-
-    /**
-     * Care Attendant can take and upload photos of each animal to the system.
-     * @param recordId
-     * @param fileName
-     * @param type
-     * @throws SQLException
-     */
-    public void uploadPhoto(String recordId, String fileName, String type) throws SQLException {
-        jdbcConnect.addAnimalPhoto(recordId, fileName, type); // All the information about animal's pictures will be saved in database
-    }
-
     public ArrayList<Animal> getRequestedAnimals() {
         for (Animal animal:animalDatabase.getAnimals()){
             if (animal.getStatus().contains("Requested"))
                 requestedAnimals.add(animal);
+            System.out.println(21334234);
         }
         return requestedAnimals;
     }
@@ -62,27 +49,4 @@ public class CareAttendant {
         userDB.updateAnimalStatusToRequested(id);
 
     }
-
-
-    /**
-     * Care Attendant can change animal status
-     * @param id
-     * @param status
-     * @throws SQLException
-     */
-    public void changeAnimalStatus(int id, String status) throws SQLException {
-        userDB.changeAnimalStatus(id, status); // animal status will be changed in the animal database
-    }
-
-    /**
-     * Care Attendant can alert disease and problems for an animal
-     * @param animalId
-     * @param disease
-     * @param description
-     * @throws SQLException
-     */
-    public void alertDiseaseProblem(String animalId,String disease,String description) throws SQLException {
-//        jdbcConnect.addAnimalProblem(animalId, disease, description); // new alert and disease will be written into animal database
-    }
-
 }

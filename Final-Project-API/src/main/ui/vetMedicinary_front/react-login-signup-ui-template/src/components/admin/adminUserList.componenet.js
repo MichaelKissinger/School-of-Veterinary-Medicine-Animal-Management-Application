@@ -8,10 +8,23 @@ const User_REST_API_URL = 'http://localhost:8080/allusers';
 const AdministratorAccess = () => {
 
         const[myArray, setMyArray] = React.useState([]);
+        const[ID, setID] = React.useState();
+        const[changeStatus, setChangeStatus] = React.useState();
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
+
+    function blockUser(id) {
+        setChangeStatus("Blocked");
+        setID(id);
+        const status = {Status : changeStatus};
+        console.log(ID);
+        axios.put('http://localhost:8080/blockUsers/'+ID, status)
+              .then();
+        window.location.reload(false);
+      }
+
         return (
             <form>
                 <div className="container-fluid">
@@ -95,7 +108,7 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
                                                 <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                                <th scope="col"><a className="fa fa-times" href="#"></a></th>
+                                                <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockUser(myArray.username)} ></button></th>
 
                                                 </tr>)
                                             }

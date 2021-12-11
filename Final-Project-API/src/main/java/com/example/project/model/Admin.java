@@ -13,10 +13,10 @@ public class Admin {
     ArrayList<User> users;
     User admin;
     UserDB userDB;
-    ArrayList<User> blocklist;
 
     /**
      * Admin Constructor, creates objects from UserDB, List of users and animals and fills both lists from database
+     *
      * @param user logged in user
      * @throws SQLException
      */
@@ -26,11 +26,11 @@ public class Admin {
         users = new ArrayList<>();
         userDB = new UserDB();
         addUser();
-        blocklist = new ArrayList<>();
     }
 
     /**
      * Admin has access and makes changes to the users record and database
+     *
      * @param user
      * @param column
      * @param value
@@ -41,16 +41,29 @@ public class Admin {
     }
 
 
-    public ArrayList<User> getUsers(){
-        return users;
+    public ArrayList<User> getUsers() {
+        ArrayList<User> activeUser = new ArrayList<>();
+        for (User user : users) {
+            if (user.getStatus().equals("Active")) {
+                activeUser.add(user);
+            }
+        }
+        return
+                activeUser;
     }
+
     /**
      * Admin can block users
-     * @param user
+     *
+     * @param userID
      */
-    public void blockUser(User user) throws SQLException {
-        blocklist.add(user); // when admin blocks a user, it will be added to the blocklist too
-        userDB.blockUser(String.valueOf(user.getPassword())); // that user will be deleted from the user
+    public void blockUser(int userID) throws SQLException {
+        for (User user : users) {
+            if (user.getUsername() == userID) {
+                userDB.blockUser(String.valueOf(user.getPassword())); // that user will be deleted from the user
+            }
+        }
+
         reloadUserDB(); // database will be reloaded
     }
 
@@ -73,16 +86,9 @@ public class Admin {
     }
 
 
-    public void printUsers() {
-        for (User u : users) {
-            if (u.getStatus().equals("Active"))
-            System.out.println(u);
-
-        }
-    }
-
     /**
      * Admin can add a new user to the database
+     *
      * @param status
      * @param password
      * @param lName
@@ -95,20 +101,20 @@ public class Admin {
      * @param permission
      * @throws SQLException
      */
-    public void addNewUser(String status, String password, String lName, String fName, String phone, String email, String sex, String dateB,String actDate, String permission) throws SQLException {
+    public void addNewUser(String status, String password, String lName, String fName, String phone, String email, String sex, String dateB, String actDate, String permission) throws SQLException {
         userDB.addUserToDB(status, password, lName, fName, phone, email, sex, dateB, actDate, permission); // creates a new record to the database
         reloadUserDB();
 
     }
 
-    /**
-     * Admin con monitor animals status. This function prints out all animals' name and status exist in the database
-     * @throws SQLException
-     */
-    public void printAnimal() throws SQLException {
-        for (Animal a : animals) {
-            System.out.println(a.getName() + " Status: " + a.getStatus());
+    public ArrayList<User> getBlocklist() {
+        ArrayList<User> blocklist = new ArrayList<>();
+        for (User user : users) {
+            if (!user.getStatus().equals("Active")) {
+                blocklist.add(user);
+            }
         }
+        return blocklist;
     }
 
     /**
@@ -119,14 +125,4 @@ public class Admin {
         addUser();
     }
 
-    /**
-     * Admin can see comments for each animal. This function gets an animal id and shows its comments
-     * @param animalId
-     */
-    public void seeAnimalComment(int animalId) {
-        for (Animal ah : animals) {
-            if (ah.getAnimalId() == animalId)
-                System.out.println(ah.getAnimalHistory());
-        }
-    }
 }

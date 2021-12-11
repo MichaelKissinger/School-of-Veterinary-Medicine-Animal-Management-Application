@@ -32,15 +32,14 @@ public class TeachingTechnician {
     }
 
 
-
     /**
      * Teaching Technician can remove students.
      *
      * @param userID
      */
     public void removeStudent(int userID) throws SQLException {
-        for (User user:studentUsers){
-            if (user.getUsername()==userID){
+        for (User user : studentUsers) {
+            if (user.getUsername() == userID) {
                 userDB.removeUser(String.valueOf(user.getPassword()));// Student with that username and password will be deleted from the database
                 user.setStatus("Removed");
             }
@@ -48,8 +47,8 @@ public class TeachingTechnician {
     }
 
     public void blockStudent(int userID) throws SQLException {
-        for (User user:studentUsers){
-            if (user.getUsername()==userID){
+        for (User user : studentUsers) {
+            if (user.getUsername() == userID) {
                 userDB.blockUser(String.valueOf(user.getPassword()));// Student with that username and password will be deleted from the database
                 user.setStatus("Blocked");
 
@@ -101,16 +100,16 @@ public class TeachingTechnician {
     }
 
     public ArrayList<User> getUsers() {
-       ArrayList<User> active = new ArrayList<>();
-       for (User user: studentUsers)
-           if (user.getStatus().equals("Active"))
-               active.add(user);
+        ArrayList<User> active = new ArrayList<>();
+        for (User user : studentUsers)
+            if (user.getStatus().equals("Active"))
+                active.add(user);
         return active;
     }
 
-    public ArrayList<User> getBlocklist(){
+    public ArrayList<User> getBlocklist() {
         ArrayList<User> blocked = new ArrayList<>();
-        for (User user:studentUsers){
+        for (User user : studentUsers) {
             if (user.getStatus().equals("Blocked"))
                 blocked.add(user);
         }
@@ -128,25 +127,5 @@ public class TeachingTechnician {
         userDB.updateAnimalStatusToRequested(id); // Animal status will be updated to "requested" in the database
         animals.initializeDatabase();
 
-    }
-
-//
-//    public void requestAnimal(int id) throws SQLException {
-//        userDB.updateAnimalStatusToRequested(id);
-//        reloadUserDB();
-//        animals.clear();
-//        addAnimal();
-//    }
-
-
-    /**
-     * Teaching Technician can add comments for each animal profiles
-     *
-     * @param recordId
-     * @param description
-     * @throws SQLException
-     */
-    public void addComment(String recordId, String description) throws SQLException {
-//        jdbcConnect.addAnimalComment(recordId, description);
     }
 }

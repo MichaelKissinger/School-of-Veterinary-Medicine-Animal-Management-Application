@@ -8,7 +8,7 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 const TeachingTechnicianAnimalSearch = () => {
 
     const[myArray, setMyArray] = React.useState([]);
-
+    const[ID, setID] = React.useState();
     const[changeStatus, setChangeStatus] = React.useState();
     // const statusText = useRef();
 
@@ -16,12 +16,12 @@ const TeachingTechnicianAnimalSearch = () => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
-    function statusInput(e) {
+    function statusInput(id) {
     setChangeStatus("Requested");
-    console.log(changeStatus);
+    setID(id);
     const status = {Status : changeStatus};
     console.log(status);
-    axios.put('http://localhost:8080/animal/updateStatus/1', status)
+    axios.put('http://localhost:8080/animal/updateStatus/'+ID, status)
           .then();
     window.location.reload(false);
     }
@@ -116,7 +116,7 @@ const TeachingTechnicianAnimalSearch = () => {
                                               <td>{myArray.type}</td>
                                               <td>{myArray.userID}</td>
                                                 
-                                            <td><button className="fa fa-edit" href="#" onClick={statusInput}></button></td>
+                                            <td><button className="fa fa-edit" href="#" onClick= {() => statusInput(myArray.animalId)}></button></td>
                                             <td><a className="fa fa-eye" href="#"></a></td>
                                             </tr>)
                                         }

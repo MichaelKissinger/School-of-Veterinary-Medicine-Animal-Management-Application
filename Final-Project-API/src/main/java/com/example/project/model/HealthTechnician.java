@@ -42,35 +42,4 @@ public class HealthTechnician {
 
     }
 
-    /**
-     * Health Technician can prescribe for animals
-     * @param scriptRecord
-     * @param drugName
-     * @param deliveryMethod
-     * @param userId
-     * @param date
-     * @param dosage
-     * @param instructions
-     * @param treatmentMethod
-     * @param animalId
-     * @throws SQLException
-     */
-    public void prescribeForAnimal(String scriptRecord, String drugName, String deliveryMethod,
-                                   String userId, String date, String dosage, String instructions,
-                                   String treatmentMethod, String animalId) throws SQLException {
-        for (Animal animal: animals){
-//            if (animal.getAnimalId()==Integer.parseInt(animalId))
-//                jdbcConnect.addAnimalPrescription(scriptRecord, drugName, deliveryMethod,
-//                        userId, date, dosage, instructions,
-//                        treatmentMethod, animalId);
-        }
-    }
-
-    /**
-     * Health Technician can see the prescription for each animal
-     * @param animalId
-     */
-    public void showPrescribe(int animalId){
-        System.out.println(animalDatabase.findAnimal(animalId).getAnimalPrescriptions());
-    }
 }

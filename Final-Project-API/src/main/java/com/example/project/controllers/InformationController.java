@@ -20,13 +20,13 @@ public class InformationController {
         return admin.getUsers();
     }
 
-    @GetMapping("/requestedlist")
+    @GetMapping("/reqAnimalList")
     public ArrayList<Animal> requestedList() throws SQLException {
         CareAttendant careAttendant = new CareAttendant(new User(5, 7788));
         return careAttendant.getRequestedAnimals();
     }
 
-    @GetMapping("/studentList")
+    @GetMapping("/studentlist")
     public ArrayList<User> studentArrayList() throws SQLException {
         TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
         return teachingTechnician.getUsers();
@@ -37,6 +37,13 @@ public class InformationController {
         TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
         return teachingTechnician.getBlocklist();
     }
+
+    @GetMapping("/allusersBlockList")
+    public ArrayList<User> blockedUserList() throws SQLException {
+        Admin admin = new Admin(new User(1,3333));
+        return admin.getBlocklist();
+    }
+
 
     @PutMapping(
             value = "/removestudent/{userID}",
@@ -57,6 +64,17 @@ public class InformationController {
         teachingTechnician.blockStudent(userID);
         return null;
     }
+
+    @PutMapping(
+            value = "/blockUsers/{UserID}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<HashMap> updateStatus(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        Admin admin = new Admin(new User(1,3333));
+        admin.blockUser(userId);
+        return null;
+    }
+
 
 
 //    @RequestMapping(("/admin"))

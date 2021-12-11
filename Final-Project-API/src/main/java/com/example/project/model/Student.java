@@ -28,12 +28,6 @@ public class Student {
         jdbcConnect.createConnection();
     }
 
-    /**
-     * After each change in the database, the user list will be refreshed
-     */
-    public void reloadUserDB() throws SQLException {
-        animals.clear();}
-
 
     /**
      * Student can search for an animal with the animal name
@@ -65,22 +59,6 @@ public class Student {
     public String userName() {
         return student.getFname();
     }
-
-
-    /**
-     * Student can add comments for each animal profiles
-     * @param recordId
-     * @param description
-     * @throws SQLException
-     */
-    public void addComment(String recordId,  String description) throws SQLException {
-        jdbcConnect.addAnimalComment(Integer.parseInt(recordId), description); // comment will be added to the comment history table in database
-    }
-
-    /**
-     * Student can see animals' comments
-     * @param animalId
-     */
 
 }
 

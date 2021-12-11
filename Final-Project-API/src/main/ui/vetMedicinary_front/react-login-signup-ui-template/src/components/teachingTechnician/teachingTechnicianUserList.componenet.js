@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 
 
-const User_REST_API_URL = 'http://localhost:8080/studentList';
+const User_REST_API_URL = 'http://localhost:8080/studentlist';
 
 const TeachingTechnicianStudentList = () => {
 
     const[myArray, setMyArray] = React.useState([]);
-
+    const[ID1, setID1] = React.useState();
+    const[ID2, setID2] = React.useState();
     const[changeStatus, setChangeStatus] = React.useState();
     // const statusText = useRef();
 
@@ -16,22 +17,24 @@ const TeachingTechnicianStudentList = () => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
-    function removeStudent(e) {
+    function removeStudent(id) {
     setChangeStatus("Removed");
-    console.log(changeStatus);
+    setID1(id);
+    console.log(ID1);
     const status = {Status : changeStatus};
-    console.log(status);
-    axios.put('http://localhost:8080/removestudent/10', status)
+    // console.log(status);
+    axios.put('http://localhost:8080/removestudent/'+ID1, status)
           .then();
     window.location.reload(false);
   }
 
-  function blockStudent(e) {
+  function blockStudent(id) {
     setChangeStatus("Blocked");
-    console.log(changeStatus);
+    setID2(id);
+    console.log(id);
     const status = {Status : changeStatus};
-    console.log(status);
-    axios.put('http://localhost:8080/blockstudent/10', status)
+    // console.log(status);
+    axios.put('http://localhost:8080/blockstudent/'+ID2, status)
           .then();
     window.location.reload(false);
   }
@@ -120,9 +123,8 @@ const TeachingTechnicianStudentList = () => {
                                                 <td>{myArray.sex}</td>
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
-                                                <th scope="col"><button className="fa fa-edit" href="#" onClick={removeStudent}></button></th>
-                                                <th scope="col"><button className="fa fa-times" href="#" onClick={blockStudent}></button></th>
-
+                                                <th scope="col"><button className="fa fa-edit" href="#" onClick={() => removeStudent(myArray.username)}></button></th>
+                                                <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockStudent(myArray.username)}></button></th>
                                                 </tr>)
                                             }
                                     </tbody>

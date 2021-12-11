@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 
-const User_REST_API_URL = 'http://localhost:8080/blocklist';
+const User_REST_API_URL = 'http://localhost:8080/allusersBlockList';
 
 const AdministratorAccess = () => {
 
