@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-export default class TeachingTechnicianBlockedUserList extends Component {
-    render() {
+
+
+const TeachingTechnicianBlockedUserList = () => {
+        const FName=localStorage.getItem('FName');
+        const LName=localStorage.getItem('LName');
+
         return (
             <form>
                 <div className="container-fluid">
@@ -10,7 +14,7 @@ export default class TeachingTechnicianBlockedUserList extends Component {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                                 <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                <span>Teaching Technician</span>
+                                <span><strong>Teaching Technician</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -20,7 +24,7 @@ export default class TeachingTechnicianBlockedUserList extends Component {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
  
                                 <ul className="nav flex-column mb-2">                                <li className="nav-item">
@@ -109,4 +113,4 @@ export default class TeachingTechnicianBlockedUserList extends Component {
             </form >
         );
     }
-}
+    export default TeachingTechnicianBlockedUserList;

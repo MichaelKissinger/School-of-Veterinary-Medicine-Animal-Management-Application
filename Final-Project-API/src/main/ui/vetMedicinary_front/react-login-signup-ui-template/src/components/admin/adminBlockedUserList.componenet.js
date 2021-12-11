@@ -6,7 +6,9 @@ const User_REST_API_URL = 'http://localhost:8080/blocklist';
 
 const AdministratorAccess = () => {
 
-        const[myArray, setMyArray] = React.useState([]);
+    const[myArray, setMyArray] = React.useState([]);
+    const FName=localStorage.getItem('FName');
+    const LName=localStorage.getItem('LName');
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
@@ -18,7 +20,7 @@ const AdministratorAccess = () => {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                                 <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                    <span>Administrator</span>
+                                <span><strong>Administrator</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -28,48 +30,27 @@ const AdministratorAccess = () => {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
-                                {/* <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Main Menu</span>
-                                    <a className="d-flex align-items-center text-muted" href="#">
-                                        <span data-feather="plus-circle"></span>
-                                    </a>
-                                </h6> */}
                                 <ul className="nav flex-column mb-2">
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                     </li>
-                                    {/* <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminAddUser"}>Add User </Link>
-                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                     </li>
-                                    {/* <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                            Users list
-                                        </a>
-                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
-                                    {/* <li className="nav-item">
-                                        <a className="nav-link" href="#">
-                                            Blockd Users list
-                                        </a>
-                                    </li> */}
                                 </ul>
                             </div>
                         </nav>
 
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                                {/* <h2 className="h2">Search</h2> */}
-                                {/* <div className="btn-toolbar mb-2 mb-md-0"> */}
                                 <div>
                                     <table className="table table-responsive">
                                         <tbody>
@@ -120,5 +101,5 @@ const AdministratorAccess = () => {
                 </div>
             </form >
         );
-                                    };
+                                    }
 export default AdministratorAccess;

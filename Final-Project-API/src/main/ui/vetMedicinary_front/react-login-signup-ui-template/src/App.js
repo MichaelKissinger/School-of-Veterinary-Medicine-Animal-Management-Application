@@ -87,7 +87,7 @@ function App() {
                   <Link className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal Care Attendance</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Teaching Technician</Link>
+                  <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Teaching Technician</Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to={"/StudentAnimalSearch"}>Student</Link>

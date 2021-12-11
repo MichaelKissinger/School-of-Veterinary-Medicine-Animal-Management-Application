@@ -8,6 +8,8 @@ const User_REST_API_URL = 'http://localhost:8080/studentList';
 const TeachingTechnicianRequestedAnimal = () => {
 
     const[myArray, setMyArray] = React.useState([]);
+    const FName=localStorage.getItem('FName');
+    const LName=localStorage.getItem('LName');
 
 React.useEffect(() => {
   axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
@@ -19,7 +21,7 @@ React.useEffect(() => {
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
                                 <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                <span>Teaching Technician</span>
+                                <span><strong>Teaching Technician</strong></span>
                                 </h7>
                                 <ul className="nav flex-column">
                                     <li className="nav-item">
@@ -29,7 +31,7 @@ React.useEffect(() => {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    <span>Current user full name</span>
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
 
                                 <ul className="nav flex-column mb-2">
