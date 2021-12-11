@@ -12,11 +12,23 @@ const AdministratorAccess = () => {
     const LName=localStorage.getItem('LName');
 
     const[myArray, setMyArray] = React.useState([]);
+    const[name, setName] = React.useState('')
+    const[id, setID] = React.useState('');
 
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []); 
+
+    function handleSubmit(event){
+        event.preventDefault();
+        const sendData = {
+            name: name,
+            id: id,
+        }
+
+        axios.post('http://localhost:8080/searchAnimal', sendData).then(response => setMyArray(response.data));
+    }
         return (
             <form>
                 <div className="container-fluid">
@@ -62,9 +74,9 @@ const AdministratorAccess = () => {
                                     <table className="table table-responsive">
                                         <tbody>
                                             <tr>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" onChange={e => setID(e.target.value)}/></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" onChange={e => setName(e.target.value)}/></td>
+                                                <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>

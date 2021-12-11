@@ -9,7 +9,7 @@ import java.sql.*;
  * @author Arman Hosseinsarraf
  */
 public class UserDB {
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");; // build an object of connection for connecting to database
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");; // build an object of connection for connecting to database
     ResultSet rs; // build an object of resultSet to store the result of the query
 
     public UserDB() throws SQLException {

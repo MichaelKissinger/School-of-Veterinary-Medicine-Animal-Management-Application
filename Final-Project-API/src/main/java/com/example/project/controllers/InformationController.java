@@ -50,7 +50,7 @@ public class InformationController {
 
     @GetMapping("/allusersBlockList")
     public ArrayList<User> blockedUserList() throws SQLException {
-        Admin admin = new Admin(new User(1,3333));
+        Admin admin = new Admin(new User(1, 3333));
         return admin.getBlocklist();
     }
 
@@ -80,11 +80,25 @@ public class InformationController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> updateStatus(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        Admin admin = new Admin(new User(1,3333));
+        Admin admin = new Admin(new User(1, 3333));
         admin.blockUser(userId);
         return null;
     }
 
+    @RequestMapping("/searchAnimal")
+    public ArrayList<Animal> authentication(@RequestBody HashMap<String, String> userInfo) throws SQLException {
+        ArrayList<Animal> searchedAnimal = new ArrayList<>();
+        AnimalDatabase animalDatabase = new AnimalDatabase();
+
+        String id = userInfo.get("id");
+        String name = userInfo.get("name");
+        if (!id.equals(""))
+            searchedAnimal.add(animalDatabase.findAnimal(Integer.parseInt(id)));
+        if (!name.equals(""))
+            searchedAnimal.add(animalDatabase.findAnimalByName(name));
+        return searchedAnimal;
+
+    }
 
 
 //    @RequestMapping(("/admin"))
