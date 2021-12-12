@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import axios from 'axios';
 
 export default class Login extends Component {
+    
 
 
     handleSubmit = e => {
@@ -14,6 +15,7 @@ export default class Login extends Component {
 
             // .then(res => { localStorage.setItem('username', res.data.username); 
             .then(res => {
+            window.location.reload(false);
             localStorage.setItem('username', res.data.username); 
             localStorage.setItem('LName', res.data.lastName);
             localStorage.setItem('FName', res.data.FName);
@@ -36,22 +38,27 @@ export default class Login extends Component {
         switch (localStorage.getItem('permission')) {
             case 'Admin':
                 console.log("Admin");
+                localStorage.setItem('userLink', '/AdminAnimalSearch');
                 this.props.history.push('/AdminAnimalSearch');
                 break;
             case 'Teacher':
                 console.log('Teacher');
+                localStorage.setItem('userLink', '/TeachingTechnicianAnimalSearch');
                 this.props.history.push('/TeachingTechnicianAnimalSearch');
                 break;
             case 'Care':
                 console.log("Care");
+                localStorage.setItem('userLink', '/AnimalCareAttendanceAnimalSearch');
                 this.props.history.push('/AnimalCareAttendanceAnimalSearch');
                 break;
             case 'Health':
                 console.log("Health");
+                localStorage.setItem('userLink', '/AnimalHealthTechnicianAnimalSearch');
                 this.props.history.push('/AnimalHealthTechnicianAnimalSearch');
                 break;
             case 'Student':
                 console.log("Student");
+                localStorage.setItem('userLink', '/StudentAnimalSearch');
                 this.props.history.push('/StudentAnimalSearch');
                 break;
             default:

@@ -76,12 +76,12 @@ public class InformationController {
     }
 
     @PutMapping(
-            value = "/blockUsers/{UserID}",
+            value = "/blockUsers/{userId}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> updateStatus(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+    public ResponseEntity<HashMap> blockUser(@PathVariable("userId") String userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         Admin admin = new Admin(new User(1, 3333));
-        admin.blockUser(userId);
+        admin.blockUser(Integer.parseInt(userId));
         return null;
     }
 
