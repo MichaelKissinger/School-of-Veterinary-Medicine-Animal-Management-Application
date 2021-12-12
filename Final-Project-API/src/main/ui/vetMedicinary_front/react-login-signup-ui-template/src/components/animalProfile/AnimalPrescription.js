@@ -19,15 +19,15 @@ import React, {useState} from "react";
             <table class="table">
             <thead>
             <tr>
-                <th>animalId</th>
-                <th>scriptRecord</th>
-                <th>drugName</th>
-                <th>deliveryMethod</th>
-                <th>userId</th>
-                <th>date</th>
-                <th>dosage</th>
-                <th>instructions</th>
-                <th>treatmentMethod</th>
+                <th>Animal ID</th>
+                <th>Script Record</th>
+                <th>Drug Name</th>
+                <th>Delivery Method</th>
+                <th>User Id</th>
+                <th>Date</th>
+                <th>Dosage</th>
+                <th>Instructions</th>
+                <th>TreatmentMethod</th>
                 
             </tr>
             </thead>
