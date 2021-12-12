@@ -16,7 +16,7 @@ public class JDBCConnect {
     public void createConnection() {
         try {
             // You may have to enter your own SQL password below to make this work
-            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -285,8 +285,8 @@ public class JDBCConnect {
     }
 
     public void addAnimal(String status, String tattoo,
-                          String dateBirth, String city, String breed,
-                          String type, String name, String sex, String userID) throws SQLException {
+            String dateBirth, String city, String breed,
+            String type, String name, String sex, String userID) throws SQLException {
         String query = "INSERT INTO ANIMAL (Status, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
         preparedStmt.setString(1, status);

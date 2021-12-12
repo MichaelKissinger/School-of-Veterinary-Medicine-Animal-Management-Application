@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import swal from 'sweetalert';
 export default class TeachingTechnicianAddUser extends Component {
+
+    handleLogout = e=>{
+        localStorage.clear();
+        this.props.history.push('/Login');
+    }
 
     handleSubmit = e => {
         e.preventDefault();
@@ -20,8 +25,10 @@ export default class TeachingTechnicianAddUser extends Component {
         axios.post(this.state.REST_API_ADD_STUDENT, sendData)
              .then(res => {
                  if (res.data==true){
-                    alert("Student"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.");
-                    window.location.reload();
+                    swal("Student"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.","","success")
+                    .then(function() {
+                        window.location.reload();
+                    });
                  }
              })
     }
@@ -73,6 +80,9 @@ export default class TeachingTechnicianAddUser extends Component {
                                         <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={this.handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 

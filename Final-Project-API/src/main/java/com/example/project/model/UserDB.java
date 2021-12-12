@@ -9,7 +9,8 @@ import java.sql.*;
  * @author Arman Hosseinsarraf
  */
 public class UserDB {
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");; // build an object of connection for connecting to database
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
+            "BSh@23071367");; // build an object of connection for connecting to database
     ResultSet rs; // build an object of resultSet to store the result of the query
 
     public UserDB() throws SQLException {
@@ -19,19 +20,23 @@ public class UserDB {
      * createConnection() creates a connection with the database
      */
 
-//    public void createConnection() {
-//        try {
-//
-//            // You may have to enter your own SQL password below to make this work
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-//
-//            //You may have to enter your own SQL password below to make this work
-////            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    // public void createConnection() {
+    // try {
+    //
+    // // You may have to enter your own SQL password below to make this work
+    // connection =
+    // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
+    // "9788");
+    //
+    // //You may have to enter your own SQL password below to make this work
+    //// connection =
+    // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
+    // "9788");
+    //
+    // } catch (Exception e) {
+    // e.printStackTrace();
+    // }
+    // }
 
     public void createConnection() {
         try {
@@ -49,7 +54,6 @@ public class UserDB {
         }
     }
 
-
     /**
      * validateUser() checks to see if the given username and password are in the
      * user database
@@ -62,7 +66,7 @@ public class UserDB {
         int flag = -1;
         try {
 
-            //createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
@@ -92,7 +96,7 @@ public class UserDB {
         StringBuffer userInformation = new StringBuffer();
 
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
@@ -118,7 +122,7 @@ public class UserDB {
         String permissionType = "";
 
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
                     "STUDENT" };
@@ -145,7 +149,7 @@ public class UserDB {
     public String adminAccessGetUser() {
         StringBuffer result = new StringBuffer();
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery("SELECT * FROM USER ;");
 
@@ -166,7 +170,7 @@ public class UserDB {
     public String adminAccessGetAnimal() {
         StringBuffer result_animal = new StringBuffer();
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery("SELECT * FROM ANIMAL ;");
 
@@ -189,7 +193,7 @@ public class UserDB {
      */
     public void updateUserInfo(String username, String pass, String column, String update) {
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username
@@ -209,7 +213,7 @@ public class UserDB {
      */
     public void removeUser(String pass) {
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Removed" + " \" WHERE Password = " + pass + ";");
 
@@ -220,7 +224,7 @@ public class UserDB {
 
     public void blockUser(String pass) {
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
 
@@ -271,7 +275,7 @@ public class UserDB {
      */
     public void updateAnimalStatusToRequested(int id) {
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate(
@@ -290,7 +294,7 @@ public class UserDB {
      */
     public void changeAnimalStatus(int id, String status) {
         try {
-//            createConnection();
+            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");

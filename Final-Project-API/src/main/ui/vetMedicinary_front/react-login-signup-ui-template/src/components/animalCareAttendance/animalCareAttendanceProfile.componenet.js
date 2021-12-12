@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
     const AnimalCareAttendanceProfile = () => {
 
+        function handleLogout (){
+            localStorage.clear();
+            window.open("/Login");
+        }
+
         const FName=localStorage.getItem('FName');
         const LName=localStorage.getItem('LName');
         const bithday=localStorage.getItem('birthDate');
@@ -46,6 +51,9 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
                                         <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
@@ -68,7 +76,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>Teacher Assistant</i></strong></th>
+                                            <th scope="col"><strong><i>Animal Care Attendance</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>

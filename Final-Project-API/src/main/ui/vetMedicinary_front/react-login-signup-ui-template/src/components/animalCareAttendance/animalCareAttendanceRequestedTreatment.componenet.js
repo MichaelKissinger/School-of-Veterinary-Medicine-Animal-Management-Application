@@ -5,6 +5,11 @@ const User_REST_API_URL = 'http://localhost:8080/reqAnimalList';
 
 const CareAttendanceRequestList = () => {
     
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+    
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
     const[myArray, setMyArray] = React.useState([]);
@@ -48,6 +53,9 @@ React.useEffect(() => {
                                     </li>
 
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 

@@ -8,6 +8,11 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const AdministratorAccess = () => {
 
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
 
@@ -52,6 +57,9 @@ const AdministratorAccess = () => {
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
@@ -112,6 +120,7 @@ const AdministratorAccess = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <br/>
                             <Link to={"/adminAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>

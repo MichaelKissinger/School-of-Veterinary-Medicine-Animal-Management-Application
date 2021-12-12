@@ -27,17 +27,21 @@ public class LoginController {
         int password = userInfo.get("password");
         LoginChecker loginChecker = new LoginChecker(name, password);
         User result = loginChecker.checkUsernamePassword();
-        HashMap<String, String> out = new HashMap<String, String>();
-        out.put("username", String.valueOf(result.getUsername()));
-        out.put("FName", result.getFname());
-        out.put("lastName", result.getLname());
-        out.put("permission", result.getPermission());
-        out.put("phoneNumber", result.getPhoneNumber());
-        out.put("email", result.getEmail());
-        out.put("birthDate", result.getBirthDate());
-        System.out.println(out);
-        return out;
-
+        if (result == null) {
+            return null;
+        } else {
+            HashMap<String, String> out = new HashMap<String, String>();
+            out.put("username", String.valueOf(result.getUsername()));
+            out.put("FName", result.getFname());
+            out.put("lastName", result.getLname());
+            out.put("permission", result.getPermission());
+            out.put("phoneNumber", result.getPhoneNumber());
+            out.put("email", result.getEmail());
+            out.put("birthDate", result.getBirthDate());
+            out.put("password", String.valueOf(result.getPassword()));
+            System.out.println(out);
+            return out;
+        }
     }
 }
 
