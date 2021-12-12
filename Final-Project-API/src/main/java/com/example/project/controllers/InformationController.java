@@ -42,14 +42,14 @@ public class InformationController {
 
     @GetMapping("/studentlist")
     public ArrayList<User> studentArrayList() throws SQLException {
-        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561), userDB);
         return teachingTechnician.getUsers();
     }
 
 
     @GetMapping("/studentblocklist")
     public ArrayList<User> blockedStudentList() throws SQLException {
-        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561), userDB);
         return teachingTechnician.getBlocklist();
     }
 
@@ -65,28 +65,18 @@ public class InformationController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> removeStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561), userDB);
         teachingTechnician.removeStudent(userID);
         return null;
     }
 
-//    @PutMapping(
-//            value = "/blockstudent/{userID}",
-//            consumes = {MediaType.APPLICATION_JSON_VALUE},
-//            produces = {MediaType.APPLICATION_JSON_VALUE})
-//    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") String userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-//        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
-//        if (!userID.equals(""))
-//            teachingTechnician.blockStudent(Integer.parseInt(userID));
-//        return null;
-//    }
 
     @PutMapping(
             value = "/blockstudent/{userID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561), userDB);
         teachingTechnician.blockStudent(userID);
         return null;
     }
