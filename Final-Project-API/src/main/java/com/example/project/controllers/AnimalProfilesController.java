@@ -167,9 +167,6 @@ public class AnimalProfilesController {
     }
 
 
-
-
-
     //TODO add animal Photo
     //TODO add animal comment
 

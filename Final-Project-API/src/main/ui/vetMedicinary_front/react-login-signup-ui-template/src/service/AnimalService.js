@@ -13,6 +13,10 @@ class AnimalService {
         return axios.get(ANIMAL_REST_API_URL + '/problems/' + animalId);
     }
 
+    getAnimalComments(animalId) {
+        return axios.get(ANIMAL_REST_API_URL + '/comments/' + animalId);
+    }
+
     getAnimalPrescriptions(animalId) {
         return axios.get(ANIMAL_REST_API_URL + '/prescriptions/' + animalId);
     }

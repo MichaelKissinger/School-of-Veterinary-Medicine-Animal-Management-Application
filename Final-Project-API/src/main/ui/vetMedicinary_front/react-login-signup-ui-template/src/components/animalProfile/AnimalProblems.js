@@ -2,6 +2,7 @@ import React, {useState} from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+ 
 
  function AnimalProblems(props) {
 

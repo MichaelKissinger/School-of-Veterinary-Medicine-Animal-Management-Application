@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AnimalHealthTechnicianProfile = () => {
 
-        const FName=localStorage.getItem('FName');
+    const FName=localStorage.getItem('FName');
         const LName=localStorage.getItem('LName');
         const bithday=localStorage.getItem('birthDate');
         const phoneNumber=localStorage.getItem('phoneNumber');

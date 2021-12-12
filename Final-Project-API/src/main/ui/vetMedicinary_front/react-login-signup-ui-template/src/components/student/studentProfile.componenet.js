@@ -10,6 +10,7 @@ const StudentProfile = () => {
         const phoneNumber = localStorage.getItem('phoneNumber');
         const email = localStorage.getItem('email');
 
+
         function handleLogout (){
             localStorage.clear();
             window.open("/Login");
