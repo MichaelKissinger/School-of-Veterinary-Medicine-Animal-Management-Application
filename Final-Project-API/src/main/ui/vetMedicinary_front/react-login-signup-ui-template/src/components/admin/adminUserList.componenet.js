@@ -10,6 +10,8 @@ const AdministratorAccess = () => {
         const[myArray, setMyArray] = React.useState([]);
         const[ID, setID] = React.useState();
         const[changeStatus, setChangeStatus] = React.useState();
+        const FName=localStorage.getItem('FName');
+        const LName=localStorage.getItem('LName');
         const[name, setName] = React.useState('')
         const[searchId, setSearchId] = React.useState('');
 
@@ -24,7 +26,7 @@ const AdministratorAccess = () => {
         console.log(ID);
         axios.put('http://localhost:8080/blockUsers/'+ID, status)
               .then();
-        window.location.reload(false);
+        // window.location.reload(false);
       }
 
       function handleSubmit(event){
@@ -54,7 +56,7 @@ const AdministratorAccess = () => {
                                     </li>
                                 </ul>
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                    {/* <span>Current user full name</span> */}
+                                <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
                                 <ul className="nav flex-column mb-2">
                                     <li className="nav-item">
@@ -120,8 +122,7 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
                                                 <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                                <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockUser(myArray.username)} ></button></th>
-
+                                                <th scope="col"><button className="fa fa-times" href="#" onclick={() => blockUser(myArray.username)} ></button></th>
                                                 </tr>)
                                             }
                                     </tbody>

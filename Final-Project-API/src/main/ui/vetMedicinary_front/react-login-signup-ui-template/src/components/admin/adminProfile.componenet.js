@@ -7,6 +7,7 @@ const AdminProfile = () => {
     const bithday=localStorage.getItem('birthDate');
     const phoneNumber=localStorage.getItem('phoneNumber');
     const email=localStorage.getItem('email');
+    const permission =  localStorage.getItem('permission');
 
         return (
             <form>
@@ -63,7 +64,7 @@ const AdminProfile = () => {
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>Teacher Assistant</i></strong></th>
+                                            <th scope="col"><strong><i>{permission}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>

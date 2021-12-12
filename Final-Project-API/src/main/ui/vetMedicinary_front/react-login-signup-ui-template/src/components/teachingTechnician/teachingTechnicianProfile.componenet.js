@@ -7,6 +7,7 @@ const TeachingTechnicianProfile = () => {
         const FName=localStorage.getItem('FName');
         const LName=localStorage.getItem('LName');
         const bithday=localStorage.getItem('birthDate');
+        const permission =  localStorage.getItem('permission');
         const phoneNumber=localStorage.getItem('phoneNumber');
         const email=localStorage.getItem('email');
         
@@ -68,7 +69,7 @@ const TeachingTechnicianProfile = () => {
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>Teacher Assistant</i></strong></th>
+                                            <th scope="col"><strong><i>{permission}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>

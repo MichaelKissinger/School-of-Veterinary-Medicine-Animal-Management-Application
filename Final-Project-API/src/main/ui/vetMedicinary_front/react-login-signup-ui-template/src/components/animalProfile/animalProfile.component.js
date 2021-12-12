@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import InfoTable from "./InfoTable"
 import AnimalPhoto from "./AnimalPhotos";
 import AnimalProblems from "./AnimalProblems";
@@ -44,22 +45,32 @@ export default class AnimalProfile extends Component {
                         <div class="row">
                             <InfoTable id={this.state.id}/>
                         </div>
+                        <br></br>
                         <h3 class="title is-3">Animal Problems</h3>
                         <div class="row">
                             <AnimalProblems id={this.state.id}/>
                         </div>
+                        <br></br>
                         <h3 class="title is-3">Animal Prescriptions</h3>
                         <div class="row">
                             <AnimalPrescription id={this.state.id}/>
                         </div>
+                        <br></br>
                         <h3 class="title is-3">Animal History</h3>
                         <div class="row">
                             <AnimalHistory id={this.state.id}/>
                         </div>
+                        <br></br>
                         <h3 class="title is-3">Animal Comments</h3>
                         <div class="row">
                             <AnimalComments id={this.state.id}/>
                         </div>
+                        <br></br>
+                        <br></br>
+                        <div class="row">
+                        <Link to={localStorage.getItem('userLink')} className="btn btn-primary">Back to User Profile</Link>
+                        </div>
+
 
                 </div>
                 {/* <footer>

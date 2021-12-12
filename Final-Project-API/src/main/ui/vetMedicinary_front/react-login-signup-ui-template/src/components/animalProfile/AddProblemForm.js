@@ -8,10 +8,12 @@ import React, { useEffect, useState, useRef } from "react";
     const id = props.id;
 
   function problemInput(e) {
+
     const newProblem = { disease: addDisease, description: addDescription};
     console.log(newProblem );
        axios.post('http://localhost:8080/animal/addProblem/' + id, newProblem)
            .then();
+    // window.location.reload(false);
   }
 
     return(
@@ -40,20 +42,6 @@ import React, { useEffect, useState, useRef } from "react";
                                 </a>
                             </div>
                         </main>
-
-
-
-        // <div class="field has-addons">
-        //     <div class="control">
-        //         {/* <input class="input" type="text" placeholder="Update Status" onChange={e => setChangeStatus(e.target.value)}/> */}
-        //         <input class="input" type="text" placeholder="Update Status" ref={statusText}/>
-        //     </div>
-        //     <div class="control">
-        //         <a class="button is-info" onClick={statusInput}>
-        //             Update
-        //         </a>
-        //     </div>
-        // </div>
     
     );
 };

@@ -6,17 +6,22 @@ import React, { useEffect, useState, useRef } from "react";
      const[changeStatus, setChangeStatus] = React.useState();
      const statusText = useRef();
      const id = props.id;
+     var counter = 0;
 //TODO Fix issue where update status button must be pressed twice, 
 //Also once that is fixed the refresh page at bottom of function can be uncommented
 //This refreshes page and shows updated status
   function statusInput(e) {
+    counter += 1;
     setChangeStatus(statusText.current.value);
     console.log(changeStatus);
     //   setChangeStatus = newUpdate;
     const status = {Status : changeStatus};
        axios.put('http://localhost:8080/animal/updateStatus/' + id, status)
            .then();
-    // window.location.reload(false);
+    if (counter > 1) {
+    window.location.reload(false);
+    counter = 0;
+    }
   }
 
     return(
@@ -29,6 +34,9 @@ import React, { useEffect, useState, useRef } from "react";
                 <a class="button is-info" onClick={statusInput}>
                     Update
                 </a>
+                {/* <button
+                    onClick={statusInput}
+                    type="submit" className="btn btn-primary btn-block">Update</button> */}
             </div>
         </div>
     
