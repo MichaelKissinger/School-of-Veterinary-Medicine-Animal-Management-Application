@@ -10,7 +10,7 @@ import java.sql.*;
  */
 public class UserDB {
 
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
     ; // build an object of connection for connecting to database
 
 //    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
@@ -76,7 +76,7 @@ public class UserDB {
         try {
 
             // You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
 
             // You may have to enter your own SQL password below to make this work
             // connection =
