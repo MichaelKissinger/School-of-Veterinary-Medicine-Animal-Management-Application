@@ -16,12 +16,6 @@ const AnimalHealthTechnicianProfile = () => {
         window.open("/Login");
     }
 
-    const FName = localStorage.getItem('FName');
-    const LName = localStorage.getItem('LName');
-    const bithday = localStorage.getItem('birthDate');
-    const phoneNumber = localStorage.getItem('phoneNumber');
-    const email = localStorage.getItem('email');
-
     return (
         <form>
             <div className="container-fluid">

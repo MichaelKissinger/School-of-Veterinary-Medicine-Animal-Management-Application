@@ -13,6 +13,9 @@ const TeachingTechnicianAnimalSearch = () => {
     const[name, setName] = React.useState('')
     const[id, setID] = React.useState('');
 
+    const LName=localStorage.getItem('LName');
+    const FName=localStorage.getItem('FName');
+
     function handleLogout (){
         localStorage.clear();
         window.open("/Login");
