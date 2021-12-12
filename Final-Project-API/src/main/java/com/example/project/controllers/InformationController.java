@@ -97,7 +97,7 @@ public class InformationController {
         if (!id.equals(""))
             searchedAnimal.add(animalDatabase.findAnimal(Integer.parseInt(id)));
         if (!name.equals(""))
-            searchedAnimal.add(animalDatabase.findAnimalByName(name));
+            searchedAnimal = (animalDatabase.findAnimalByName(name));
         return searchedAnimal;
     }
 
@@ -109,14 +109,11 @@ public class InformationController {
         String id = userInfo.get("id");
         String name = userInfo.get("name");
         if (!name.equals("")) {
-            if (admin.searchUserByName(name).getPermission().equals("Student"))
-                users.add(admin.searchUserByName(name));
-            System.out.println(admin.searchUserByName(name));
+            users = admin.searchUserByName(name);
         }
         if (!id.equals("")) {
             if (admin.searchUserByid(Integer.parseInt(id)).getPermission().equals("Student"))
                 users.add(admin.searchUserByid(Integer.parseInt(id)));
-            System.out.println(admin.searchUserByName(name));
         }
 
         return users;
@@ -129,8 +126,10 @@ public class InformationController {
 
         String id = userInfo.get("id");
         String name = userInfo.get("name");
+
+
         if (!name.equals("")) {
-            users.add(admin.searchUserByName(name));
+            users = admin.searchUserByName(name);
 
         }
         if (!id.equals("")) {

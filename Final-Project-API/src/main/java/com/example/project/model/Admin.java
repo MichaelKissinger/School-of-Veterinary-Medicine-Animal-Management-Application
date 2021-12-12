@@ -54,13 +54,14 @@ public class Admin {
                 activeUser;
     }
 
-    public User searchUserByName(String name) {
-        for (User user : users) {
-            if (String.valueOf(user.getFname()).contains(name) || String.valueOf(user.getLname()).contains(name)) {
-                return user;
+    public ArrayList<User> searchUserByName(String name) {
+        ArrayList<User> users = new ArrayList<>();
+        for (User user : this.users) {
+            if (user.getFname().equals(name) || user.getLname().equals(name)) {
+                users.add(user);
             }
         }
-        return null;
+        return users;
     }
 
     public User searchUserByid(int id) {

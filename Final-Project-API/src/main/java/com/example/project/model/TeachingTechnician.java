@@ -63,7 +63,7 @@ public class TeachingTechnician {
      * @return
      * @throws SQLException
      */
-    public Animal searchAnimalByName(String name) throws SQLException {
+    public ArrayList<Animal> searchAnimalByName(String name) throws SQLException {
         return animals.findAnimalByName(name);
     }
 

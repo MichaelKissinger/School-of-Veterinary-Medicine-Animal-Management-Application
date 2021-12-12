@@ -41,12 +41,13 @@ public class AnimalDatabase {
         return null;
     }
 
-    public Animal findAnimalByName(String animalName) {
+    public ArrayList<Animal> findAnimalByName(String animalName) {
+        ArrayList<Animal> animals = new ArrayList<>();
         for (Animal a : this.animalDatabase) {
             if (a.getName().equals(animalName)) {
-                return a;
+                animals.add(a);
             }
         }
-        return null;
+        return animals;
     }
 }
