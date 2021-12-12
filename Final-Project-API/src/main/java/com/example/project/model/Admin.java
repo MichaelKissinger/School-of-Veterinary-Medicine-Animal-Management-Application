@@ -1,10 +1,12 @@
 package com.example.project.model;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Admin class has full access to users and animals. It can add users, edit users, block users, monitor an animal's status, and review comments.
+ *
  * @author Arman Hosseinsarraf
  */
 
@@ -50,6 +52,24 @@ public class Admin {
         }
         return
                 activeUser;
+    }
+
+    public User searchUserByName(String name) {
+        for (User user : users) {
+            if (String.valueOf(user.getFname()).contains(name) || String.valueOf(user.getLname()).contains(name)) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    public User searchUserByid(int id) {
+        for (User user : users) {
+            if (user.getUsername() == id) {
+                return user;
+            }
+        }
+        return null;
     }
 
     /**

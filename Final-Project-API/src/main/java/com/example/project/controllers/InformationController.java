@@ -69,9 +69,10 @@ public class InformationController {
             value = "/blockstudent/{userID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") String userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
-        teachingTechnician.blockStudent(userID);
+        if (!userID.equals(""))
+            teachingTechnician.blockStudent(Integer.parseInt(userID));
         return null;
     }
 
@@ -79,14 +80,15 @@ public class InformationController {
             value = "/blockUsers/{userId}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> blockUser(@PathVariable("userId") String userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+    public ResponseEntity<HashMap> blockUser(@PathVariable("UserID") String userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         Admin admin = new Admin(new User(1, 3333));
-        admin.blockUser(Integer.parseInt(userId));
+        if (!userId.equals(""))
+            admin.blockUser(Integer.parseInt(userId));
         return null;
     }
 
     @RequestMapping("/searchAnimal")
-    public ArrayList<Animal> authentication(@RequestBody HashMap<String, String> userInfo) throws SQLException {
+    public ArrayList<Animal> searchAnimal(@RequestBody HashMap<String, String> userInfo) throws SQLException {
         ArrayList<Animal> searchedAnimal = new ArrayList<>();
         AnimalDatabase animalDatabase = new AnimalDatabase();
 
@@ -97,7 +99,46 @@ public class InformationController {
         if (!name.equals(""))
             searchedAnimal.add(animalDatabase.findAnimalByName(name));
         return searchedAnimal;
+    }
 
+    @RequestMapping("/searchStudent")
+    public ArrayList<User> searchStudent(@RequestBody HashMap<String, String> userInfo) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        Admin admin = new Admin(new User(1, 3333));
+
+        String id = userInfo.get("id");
+        String name = userInfo.get("name");
+        if (!name.equals("")) {
+            if (admin.searchUserByName(name).getPermission().equals("Student"))
+                users.add(admin.searchUserByName(name));
+            System.out.println(admin.searchUserByName(name));
+        }
+        if (!id.equals("")) {
+            if (admin.searchUserByid(Integer.parseInt(id)).getPermission().equals("Student"))
+                users.add(admin.searchUserByid(Integer.parseInt(id)));
+            System.out.println(admin.searchUserByName(name));
+        }
+
+        return users;
+    }
+
+    @RequestMapping("/searchUser")
+    public ArrayList<User> searchUser(@RequestBody HashMap<String, String> userInfo) throws SQLException {
+        ArrayList<User> users = new ArrayList<>();
+        Admin admin = new Admin(new User(1, 3333));
+
+        String id = userInfo.get("id");
+        String name = userInfo.get("name");
+        if (!name.equals("")) {
+            users.add(admin.searchUserByName(name));
+
+        }
+        if (!id.equals("")) {
+            users.add(admin.searchUserByid(Integer.parseInt(id)));
+
+        }
+
+        return users;
     }
 
 

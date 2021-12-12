@@ -9,7 +9,8 @@ import java.sql.*;
  * @author Arman Hosseinsarraf
  */
 public class UserDB {
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");; // build an object of connection for connecting to database
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+    ; // build an object of connection for connecting to database
     ResultSet rs; // build an object of resultSet to store the result of the query
 
     public UserDB() throws SQLException {
@@ -32,22 +33,20 @@ public class UserDB {
 //            e.printStackTrace();
 //        }
 //    }
-
-    public void createConnection() {
-        try {
-
-            // You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
-
-            // You may have to enter your own SQL password below to make this work
-            // connection =
-            // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-            // "9788");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void createConnection() {
+//        try {
+//
+//            // You may have to enter your own SQL password below to make this work
+////            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
+//
+//            // You may have to enter your own SQL password below to make this work
+////             connection =
+////            DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     /**
@@ -66,8 +65,8 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-                                                                                                                // from
-                                                                                                                // DB
+            // from
+            // DB
 
             if (rs.next())
                 flag = 1;
@@ -96,8 +95,8 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-                                                                                                                // from
-                                                                                                                // DB
+            // from
+            // DB
 
             if (rs.next())
                 userInformation.append(rs.getString(column));
@@ -120,8 +119,8 @@ public class UserDB {
         try {
 //            createConnection();
             Statement myStmt = connection.createStatement();
-            String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
-                    "STUDENT" };
+            String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
+                    "STUDENT"};
             for (String permission : permissionList) {
                 rs = myStmt.executeQuery("SELECT * FROM " + permission + " WHERE UserID = \"" + username + "\";");
                 if (rs.next()) {
@@ -246,7 +245,7 @@ public class UserDB {
      * @throws SQLException
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
-            String sex, String dateB, String activationDate, String permission) throws SQLException {
+                            String sex, String dateB, String activationDate, String permission) throws SQLException {
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, status);
