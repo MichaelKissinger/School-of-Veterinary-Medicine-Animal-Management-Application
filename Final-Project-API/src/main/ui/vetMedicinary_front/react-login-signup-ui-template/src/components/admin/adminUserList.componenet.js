@@ -8,18 +8,17 @@ const User_REST_API_URL = 'http://localhost:8080/allusers';
 
 const AdministratorAccess = () => {
 
-        const[myArray, setMyArray] = React.useState([]);
-        const[ID, setID] = React.useState();
-        const[changeStatus, setChangeStatus] = React.useState();
-        const FName=localStorage.getItem('FName');
-        const LName=localStorage.getItem('LName');
-        const[name, setName] = React.useState('')
-        const[searchId, setSearchId] = React.useState('');
-
     function handleLogout() {
         localStorage.clear();
         window.open("/Login");
     }
+
+    const FName=localStorage.getItem('FName');
+    const LName=localStorage.getItem('LName');
+
+    const [myArray, setMyArray] = React.useState([]);
+    const [ID, setID] = React.useState();
+    const [changeStatus, setChangeStatus] = React.useState();
 
     React.useEffect(() => {
         axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
@@ -30,25 +29,10 @@ const AdministratorAccess = () => {
         setID(id);
         const status = { Status: changeStatus };
         console.log(ID);
-        axios.put('http://localhost:8080/blockUsers/'+ID, status)
-              .then();
-        // window.location.reload(false);
-      }
-
-      function handleSubmit(event){
-        event.preventDefault();
-        const sendData = {
-            name: name,
-            id: searchId,
-        }
-
-        axios.post('http://localhost:8080/searchUser', sendData).then(response => setMyArray(response.data));
+        axios.put('http://localhost:8080/blockUsers/' + ID, status)
+            .then();
+        window.location.reload(false);
     }
-
-    //     axios.put('http://localhost:8080/blockUsers/' + ID, status)
-    //         .then();
-    //     window.location.reload(false);
-    // }
 
     return (
         <form>
@@ -137,10 +121,12 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.permission}</td>
                                                 <th scope="col"><a className="fa fa-edit" href="#"></a></th>
                                                 <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockUser(myArray.username)} ></button></th>
+
                                             </tr>)
                                     }
                                 </tbody>
                             </table>
+
                         </div>
                         <br />
                         <Link to={"/adminAddUser"}> <button className="btn btn-outline-primary" type="submit">Add User</button></Link>

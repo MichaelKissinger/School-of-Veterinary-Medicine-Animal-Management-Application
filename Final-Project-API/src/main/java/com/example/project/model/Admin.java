@@ -22,7 +22,7 @@ public class Admin {
      * @param user logged in user
      * @throws SQLException
      */
-    public Admin(User user) throws SQLException {
+    public Admin(User user, UserDB database) throws SQLException {
         admin = user;
         animals = new ArrayList<>();
         users = new ArrayList<>();
