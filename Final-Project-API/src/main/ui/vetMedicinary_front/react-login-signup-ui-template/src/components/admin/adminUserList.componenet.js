@@ -10,6 +10,8 @@ const AdministratorAccess = () => {
         const[myArray, setMyArray] = React.useState([]);
         const[ID, setID] = React.useState();
         const[changeStatus, setChangeStatus] = React.useState();
+        const[name, setName] = React.useState('')
+        const[searchId, setSearchId] = React.useState('');
 
     React.useEffect(() => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
@@ -24,6 +26,16 @@ const AdministratorAccess = () => {
               .then();
         window.location.reload(false);
       }
+
+      function handleSubmit(event){
+        event.preventDefault();
+        const sendData = {
+            name: name,
+            id: searchId,
+        }
+
+        axios.post('http://localhost:8080/searchUser', sendData).then(response => setMyArray(response.data));
+    }
 
         return (
             <form>
@@ -69,9 +81,9 @@ const AdministratorAccess = () => {
                                     <table className="table table-responsive">
                                         <tbody>
                                             <tr>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="First Name" /></td>
-                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Last Name" /></td>
-                                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="ID" onChange={e => setSearchId(e.target.value)}/></td>
+                                                <td><input className="form-control mr-sm-2" type="search" placeholder="Name" onChange={e => setName(e.target.value)}/></td>
+                                                <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
