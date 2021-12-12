@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
         const bithday=localStorage.getItem('birthDate');
         const phoneNumber=localStorage.getItem('phoneNumber');
         const email=localStorage.getItem('email');
+        const permission =  localStorage.getItem('permission');
     
 
     // render() {
@@ -68,7 +69,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>Teacher Assistant</i></strong></th>
+                                            <th scope="col"><strong><i>{permission}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>

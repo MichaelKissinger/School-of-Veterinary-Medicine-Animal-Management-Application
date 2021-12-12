@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 const StudentProfile = () => {
         const FName=localStorage.getItem('FName');
         const LName=localStorage.getItem('LName');
+        const permission =  localStorage.getItem('permission');
+        const birthDate = localStorage.getItem('birthDate');
+        const phoneNumber = localStorage.getItem('phoneNumber');
+        const email = localStorage.getItem('email');
+        
         return (
             <form>
                 <div className="container-fluid">
@@ -50,19 +55,19 @@ const StudentProfile = () => {
                                         </tr>
                                         <tr>
                                             <th scope="col">Birtdate:</th>
-                                            <th scope="col"><strong><i>1984-08-30</i></strong></th>
+                                            <th scope="col"><strong><i>{birthDate}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>Teacher Assistant</i></strong></th>
+                                            <th scope="col"><strong><i>{permission}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Phone Number:</th>
-                                            <th scope="col"><strong><i>808-808-4444</i></strong></th>
+                                            <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
                                         </tr>
                                         <tr>
                                             <th scope="col">Email:</th>
-                                            <th scope="col"><strong><i>email@site.com</i></strong></th>
+                                            <th scope="col"><strong><i>{email}</i></strong></th>
                                         </tr>
                                     </tbody>
                                 </table>
