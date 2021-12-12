@@ -3,6 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AnimalCareAttendanceAlertAnimal = () => {
 
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
 
@@ -41,6 +46,9 @@ const AnimalCareAttendanceAlertAnimal = () => {
                                 </li>
 
                             </ul>
+                            <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                         </div>
                     </nav>
 

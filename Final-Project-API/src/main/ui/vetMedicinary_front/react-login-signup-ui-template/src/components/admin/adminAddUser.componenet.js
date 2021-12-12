@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import swal from 'sweetalert';
 export default class AdministratorAccess extends Component {
 
+    handleLogout = e=>{
+        localStorage.clear();
+        this.props.history.push('/Login');
+    }
     handleSubmit = e => {
         e.preventDefault();
         const sendData = {
@@ -20,8 +24,10 @@ export default class AdministratorAccess extends Component {
         axios.post(this.state.REST_API_ADD_USER, sendData)
              .then(res => {
                  if (res.data==true){
-                    alert("User"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.");
-                    window.location.reload();
+                    swal("User"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.","","success")
+                    .then(function() {
+                        window.location.reload();
+                    });
                  }
              })
     }
@@ -69,6 +75,9 @@ export default class AdministratorAccess extends Component {
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={this.handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 

@@ -7,6 +7,11 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const AnimalCareAttendanceAnimalSearch = () => {
 
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const[myArray, setMyArray] = React.useState([]);
     const[ID, setID] = React.useState();
     const[changeStatus, setChangeStatus] = React.useState();
@@ -73,6 +78,9 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                         <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
@@ -135,6 +143,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <br/>
                             <Link to={"/AnimalCareAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>

@@ -285,8 +285,8 @@ public class JDBCConnect {
     }
 
     public void addAnimal(String status, String tattoo,
-                          String dateBirth, String city, String breed,
-                          String type, String name, String sex, String userID) throws SQLException {
+            String dateBirth, String city, String breed,
+            String type, String name, String sex, String userID) throws SQLException {
         String query = "INSERT INTO ANIMAL (Status, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
         preparedStmt.setString(1, status);
