@@ -113,7 +113,6 @@ public class TeachingTechnician {
             if (user.getStatus().equals("Blocked"))
                 blocked.add(user);
         }
-        System.out.println(blocked);
         return blocked;
     }
 

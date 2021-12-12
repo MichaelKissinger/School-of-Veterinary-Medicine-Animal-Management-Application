@@ -23,9 +23,14 @@ import java.util.HashMap;
 @RestController
 public class InformationController {
 
+    UserDB userDB = new UserDB();
+
+    public InformationController() throws SQLException {
+    }
+
     @GetMapping("/allusers")
     public ArrayList<User> userArrayList() throws SQLException {
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
         return admin.getUsers();
     }
 
@@ -50,7 +55,7 @@ public class InformationController {
 
     @GetMapping("/allusersBlockList")
     public ArrayList<User> blockedUserList() throws SQLException {
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
         return admin.getBlocklist();
     }
 
@@ -65,27 +70,39 @@ public class InformationController {
         return null;
     }
 
+//    @PutMapping(
+//            value = "/blockstudent/{userID}",
+//            consumes = {MediaType.APPLICATION_JSON_VALUE},
+//            produces = {MediaType.APPLICATION_JSON_VALUE})
+//    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") String userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+//        TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
+//        if (!userID.equals(""))
+//            teachingTechnician.blockStudent(Integer.parseInt(userID));
+//        return null;
+//    }
+
     @PutMapping(
             value = "/blockstudent/{userID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") String userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+    public ResponseEntity<HashMap> blockStudent(@PathVariable("userID") int userID, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
         TeachingTechnician teachingTechnician = new TeachingTechnician(new User(3, 1561));
-        if (!userID.equals(""))
-            teachingTechnician.blockStudent(Integer.parseInt(userID));
+        teachingTechnician.blockStudent(userID);
         return null;
     }
 
+
+
     @PutMapping(
-            value = "/blockUsers/{userId}",
+            value = "/blockUsers/{UserID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<HashMap> blockUser(@PathVariable("UserID") String userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        Admin admin = new Admin(new User(1, 3333));
-        if (!userId.equals(""))
-            admin.blockUser(Integer.parseInt(userId));
+    public ResponseEntity<HashMap> updateStatus(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        Admin admin = new Admin(new User(1,3333), userDB);
+        admin.blockUser(userId);
         return null;
     }
+
 
     @RequestMapping("/searchAnimal")
     public ArrayList<Animal> searchAnimal(@RequestBody HashMap<String, String> userInfo) throws SQLException {
@@ -104,7 +121,7 @@ public class InformationController {
     @RequestMapping("/searchStudent")
     public ArrayList<User> searchStudent(@RequestBody HashMap<String, String> userInfo) throws SQLException {
         ArrayList<User> users = new ArrayList<>();
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
 
         String id = userInfo.get("id");
         String name = userInfo.get("name");
@@ -122,7 +139,7 @@ public class InformationController {
     @RequestMapping("/searchUser")
     public ArrayList<User> searchUser(@RequestBody HashMap<String, String> userInfo) throws SQLException {
         ArrayList<User> users = new ArrayList<>();
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
 
         String id = userInfo.get("id");
         String name = userInfo.get("name");
@@ -190,7 +207,7 @@ public class InformationController {
         String birthday = userInfo.get("birthday");
         String gender = userInfo.get("gender");
 
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
         admin.addNewUser("Active", password, LName, FName, phoneNumber, email,
                 gender, birthday, activatedate,
                 permission);
@@ -211,7 +228,7 @@ public class InformationController {
         String birthday = userInfo.get("birthday");
         String gender = userInfo.get("gender");
 
-        Admin admin = new Admin(new User(1, 3333));
+        Admin admin = new Admin(new User(1, 3333), userDB);
         admin.addNewUser("Active", password, LName, FName, phoneNumber, email, gender, birthday, activatedate,
                 permission);
         return true;
