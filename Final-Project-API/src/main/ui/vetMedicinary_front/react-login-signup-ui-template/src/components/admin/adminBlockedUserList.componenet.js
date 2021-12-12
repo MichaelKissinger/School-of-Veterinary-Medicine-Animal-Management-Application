@@ -6,6 +6,11 @@ const User_REST_API_URL = 'http://localhost:8080/allusersBlockList';
 
 const AdministratorAccess = () => {
 
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const[myArray, setMyArray] = React.useState([]);
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
@@ -46,6 +51,10 @@ const AdministratorAccess = () => {
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    
                             </div>
                         </nav>
 

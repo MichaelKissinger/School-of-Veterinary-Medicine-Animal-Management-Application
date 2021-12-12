@@ -7,6 +7,11 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const AdministratorAccess = () => {
 
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const[myArray, setMyArray] = React.useState([]);
     const[name, setName] = React.useState('')
     const[id, setID] = React.useState('');
@@ -55,6 +60,9 @@ const AdministratorAccess = () => {
                                         <Link className="nav-link" to={"/AnimalHealthTechnicianAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
@@ -114,6 +122,7 @@ const AdministratorAccess = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <br/>
                             <Link to={"/AnimalHealthTechAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>

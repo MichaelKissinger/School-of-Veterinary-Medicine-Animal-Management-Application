@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AdminProfile = () => {
+
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
     const bithday=localStorage.getItem('birthDate');
@@ -41,7 +47,11 @@ const AdminProfile = () => {
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
+
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 

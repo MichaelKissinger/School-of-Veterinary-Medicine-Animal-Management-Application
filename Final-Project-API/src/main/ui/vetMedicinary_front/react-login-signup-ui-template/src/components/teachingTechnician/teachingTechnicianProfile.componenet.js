@@ -10,6 +10,11 @@ const TeachingTechnicianProfile = () => {
         const permission =  localStorage.getItem('permission');
         const phoneNumber=localStorage.getItem('phoneNumber');
         const email=localStorage.getItem('email');
+
+        function handleLogout() {
+            localStorage.clear();
+            window.open("/Login");
+        }
         
         return (
             <form>
@@ -17,38 +22,42 @@ const TeachingTechnicianProfile = () => {
                     <div className="row">
                         <nav className="col-md-2 d-none d-md-block bg-light sidebar">
                             <div className="sidebar-sticky">
+
                             <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                            <span><strong>Teaching Technician</strong></span>
-                                </h7>
-                                <ul className="nav flex-column">
-                                    <li className="nav-item">
-                                        <div className="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                <span><strong>{FName}  {LName}</strong></span>
-                                </h6>
-                                <ul className="nav flex-column mb-2">
+                                <span><strong>Teaching Technician</strong></span>
+                            </h7>
+                            <ul className="nav flex-column">
                                 <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
+                                    <div className="d-flex flex-column align-items-center text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
+                                    </div>
+                                </li>
+                            </ul>
+                            <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
+                                <span><strong>{FName}  {LName}</strong></span>
+                            </h6>
+                            <ul className="nav flex-column mb-2">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
+                                </li>
+                            </ul>
+                            <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                        </div>
+                    </nav>
 
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <h2>[Current user name] Profile</h2>
@@ -83,10 +92,10 @@ const TeachingTechnicianProfile = () => {
                                 </table>
                             </div>
 
-                        </main>
-                    </div>
+                    </main>
                 </div>
-            </form >
-        );
-    }
-    export default TeachingTechnicianProfile;
+            </div>
+        </form >
+    );
+}
+export default TeachingTechnicianProfile;

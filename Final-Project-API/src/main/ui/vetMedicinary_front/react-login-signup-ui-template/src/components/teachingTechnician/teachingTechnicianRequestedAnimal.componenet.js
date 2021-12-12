@@ -5,6 +5,12 @@ const User_REST_API_URL = 'http://localhost:8080/reqAnimalList';
 
 const TeachingTechRequestList = () => {
 
+
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
+
     const[myArray, setMyArray] = React.useState([]);
 
     const FName=localStorage.getItem('FName');
@@ -51,6 +57,9 @@ React.useEffect(() => {
                                         <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 

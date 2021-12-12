@@ -11,36 +11,50 @@ const AnimalHealthTechnicianProfile = () => {
         const permission =  localStorage.getItem('permission');
         const email=localStorage.getItem('email');
 
-        return (
-            <form>
-                <div className="container-fluid">
-                    <div className="row">
-                        <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div className="sidebar-sticky">
-                                <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
-                                <span><strong>Animal Health Technician</strong></span>
-                                </h7>
-                                <ul className="nav flex-column">
-                                    <li className="nav-item">
-                                        <div className="d-flex flex-column align-items-center text-center">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
-                                        </div>
-                                    </li>
-                                </ul>
-                                <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
-                                <span><strong>{FName}  {LName}</strong></span>
-                                </h6>
-                                <ul className="nav flex-column mb-2">
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/AnimalHealthTechnicianProfile"}>My Profile</Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        <Link className="nav-link" to={"/AnimalHealthTechnicianAnimalSearch"}>Animal List</Link>
-                                    </li>
+    function handleLogout (){
+        localStorage.clear();
+        window.open("/Login");
+    }
 
-                                </ul>
-                            </div>
-                        </nav>
+    const FName = localStorage.getItem('FName');
+    const LName = localStorage.getItem('LName');
+    const bithday = localStorage.getItem('birthDate');
+    const phoneNumber = localStorage.getItem('phoneNumber');
+    const email = localStorage.getItem('email');
+
+    return (
+        <form>
+            <div className="container-fluid">
+                <div className="row">
+                    <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+                        <div className="sidebar-sticky">
+                            <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
+                                <span><strong>Animal Health Technician</strong></span>
+                            </h7>
+                            <ul className="nav flex-column">
+                                <li className="nav-item">
+                                    <div className="d-flex flex-column align-items-center text-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="130" />
+                                    </div>
+                                </li>
+                            </ul>
+                            <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
+                                <span><strong>{FName}  {LName}</strong></span>
+                            </h6>
+                            <ul className="nav flex-column mb-2">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/AnimalHealthTechnicianProfile"}>My Profile</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to={"/AnimalHealthTechnicianAnimalSearch"}>Animal List</Link>
+                                </li>
+
+                            </ul>
+                            <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                        </div>
+                    </nav>
 
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <h2>[Current user name] Profile</h2>
@@ -75,10 +89,10 @@ const AnimalHealthTechnicianProfile = () => {
                                 </table>
                             </div>
 
-                        </main>
-                    </div>
+                    </main>
                 </div>
-            </form >
-        );
-    }
-  export default AnimalHealthTechnicianProfile;
+            </div>
+        </form >
+    );
+}
+export default AnimalHealthTechnicianProfile;

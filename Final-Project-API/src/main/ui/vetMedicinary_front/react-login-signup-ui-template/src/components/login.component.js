@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import axios from 'axios';
-
+// import swal from 'sweetalert';
 export default class Login extends Component {
     
 
@@ -66,13 +66,94 @@ export default class Login extends Component {
         }
 
     }
+
     constructor(props) {
         super(props);
         this.state = {
             date: new Date().toLocaleString(),
             REST_API_LOGIN: "http://localhost:8080//login",
+            error: "",
         };
     }
+
+    // handleSubmit = e => {
+
+    //     e.preventDefault();
+
+    //     if (!this.name) {
+    //         this.state.error = "User Id cannot be empty";
+    //         console.log(this.state.error);
+    //         swal(this.state.error, "", "error");
+    //     }
+    //     else if (isNaN(this.name)) {
+    //         this.state.error = "User Id can only be number";
+    //         console.log(this.state.error);
+    //         swal(this.state.error, "", "error");
+    //     }
+    //     else if (!this.password) {
+    //         this.state.error = "Password can cannot be empty";
+    //         console.log(this.state.error);
+    //         swal(this.state.error, "", "error");
+    //     }
+    //     else if (isNaN(this.password)) {
+    //         this.state.error = "Password can only be number";
+    //         console.log(this.state.error);
+    //         swal(this.state.error, "", "error");
+    //     }
+    //     else {
+    //         const sendData = {
+    //             name: this.name,
+    //             password: this.password,
+    //         }
+    //         axios.post(this.state.REST_API_LOGIN, sendData)
+    //             .then(res => { console.log(res.data);
+    //                 if (res.data!=""){
+    //                     localStorage.setItem('username', res.data.username);
+    //                     localStorage.setItem('LName', res.data.lastName);
+    //                     localStorage.setItem('FName', res.data.FName);
+    //                     localStorage.setItem('permission', res.data.permission);
+    //                     localStorage.setItem('phoneNumber', res.data.phoneNumber);
+    //                     localStorage.setItem('email', res.data.email);
+    //                     localStorage.setItem('birthDate', res.data.birthDate);
+    //                     localStorage.setItem('password', res.data.password);
+
+    //                     switch (localStorage.getItem('permission')) {
+    //                         case 'Admin':
+    //                             console.log("Admin");
+    //                             this.props.history.push('/AdminAnimalSearch');
+    //                             break;
+    //                         case 'Teacher':
+    //                             console.log('Teacher');
+    //                             this.props.history.push('/TeachingTechnicianAnimalSearch');
+    //                             break;
+    //                         case 'Care':
+    //                             console.log("Care");
+    //                             this.props.history.push('/AnimalCareAttendanceAnimalSearch');
+    //                             break;
+    //                         case 'Health':
+    //                             console.log("Health");
+    //                             this.props.history.push('/AnimalHealthTechnicianAnimalSearch');
+    //                             break;
+    //                         case 'Student':
+    //                             console.log("Student");
+    //                             this.props.history.push('/StudentAnimalSearch');
+    //                             break;
+    //                         default:
+    //                             console.log("User not found");
+    //                     }
+    //                 }
+    //                 else{
+    //                         swal("User Not Found!", "", "error")                   
+    //                         .then(function() {
+    //                             window.location.reload();
+    //                         });
+    //                 }
+    //             })
+    //             .catch(response => {
+    //                 console.log(response);
+    //             })
+    //     }
+    // }
     render() {
         return (
             <div className="login">
@@ -103,10 +184,10 @@ export default class Login extends Component {
                                     className="form-control" placeholder="Enter password" />
                             </div>
                             <button type="submit" className="login-btn btn btn-danger btn-block">SIGN IN</button>
+                            <span style={{ color: "red", fontSize: 25 }}><strong>{this.state.error}</strong></span>
                         </div>
                     </form>
                 </div>
-
                 <footer>
                     <div className="search-footer-container">
                         <p className="footer-address-inner">School of Veterinary Medicine

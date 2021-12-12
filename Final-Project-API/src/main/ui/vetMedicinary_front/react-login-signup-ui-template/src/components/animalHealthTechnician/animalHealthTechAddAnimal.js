@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import swal from 'sweetalert';
 
 export default class AnimalHealthTechAddAnimal extends Component {
 
+
+    handleLogout = e=>{
+        localStorage.clear();
+        this.props.history.push('/Login');
+    }
+    
     handleSubmit = e => {
         e.preventDefault();
         const sendData = {
@@ -20,8 +27,10 @@ export default class AnimalHealthTechAddAnimal extends Component {
         axios.post(this.state.REST_API_ADD_ANIMAL, sendData)
              .then(res => {
                  if (res.data==true){
-                    alert("Animal"+" "+ sendData.name + " Successfully Added.");
-                    window.location.reload();
+                    swal("Animal"+" "+ sendData.name + " Successfully Added.","","success")
+                    .then(function() {
+                        window.location.reload();
+                    });
                  }
              })
     }
@@ -63,6 +72,9 @@ export default class AnimalHealthTechAddAnimal extends Component {
                                         <Link className="nav-link" to={"/AnimalHealthTechnicianAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
+                                <button
+                                    onClick={this.handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
