@@ -29,8 +29,7 @@ const AnimalComments = (props) => {
             .then();
         axios.post('http://localhost:8080/animal/addComment/' + id, newComment )
             .then();
-        //     console.log(newComment);
-        window.location.reload(false);
+        // window.location.reload(false);
       }
 
     return(
