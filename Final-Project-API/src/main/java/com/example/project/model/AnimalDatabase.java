@@ -32,6 +32,20 @@ public class AnimalDatabase {
         this.animalDatabase = animals;
     }
 
+    public int getHistoryNumber(int animalID) {
+        int recordId = 0;
+        for (Animal a : this.animalDatabase) {
+                for(AnimalHistory h: a.getAnimalHistory()) {
+                    if (h.getRecordId() >= recordId) {
+                        recordId = h.getRecordId();
+                    }
+
+            }
+        }
+        recordId += 1;
+        return recordId;
+    }
+
     public Animal findAnimal(int animalID) {
         for (Animal a : this.animalDatabase) {
             if (a.getAnimalId() == animalID) {

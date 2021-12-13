@@ -26,7 +26,7 @@ public class Admin {
         admin = user;
         animals = new ArrayList<>();
         users = new ArrayList<>();
-        userDB = new UserDB();
+        userDB = database;
         addUser();
     }
 

@@ -6,40 +6,35 @@ import React, { useEffect, useState, useRef } from "react";
      const[changeStatus, setChangeStatus] = React.useState();
      const statusText = useRef();
      const id = props.id;
-     var counter = 0;
 //TODO Fix issue where update status button must be pressed twice, 
 //Also once that is fixed the refresh page at bottom of function can be uncommented
 //This refreshes page and shows updated status
   function statusInput(e) {
-    counter += 1;
-    setChangeStatus(statusText.current.value);
+    // setChangeStatus(statusText.current.value);
     console.log(changeStatus);
     //   setChangeStatus = newUpdate;
     const status = {Status : changeStatus};
        axios.put('http://localhost:8080/animal/updateStatus/' + id, status)
            .then();
-    if (counter > 1) {
     window.location.reload(false);
-    counter = 0;
-    }
   }
 
     return(
         <div class="field has-addons">
             <div class="control">
-                {/* <input class="input" type="text" placeholder="Update Status" onChange={e => setChangeStatus(e.target.value)}/> */}
-                <input class="input" type="text" placeholder="Update Status" ref={statusText}/>
+                <label for="type"></label>
+                    <input type="text"
+                        onChange={e => setChangeStatus(e.target.value)}
+                        className="form-control" id="type" placeholder="Enter New Status" required />
+                    <div className="invalid-feedback">
+                        Valid type is required.
+                    </div>
             </div>
-            <div class="control">
+            <br></br>
                 <a class="button is-info" onClick={statusInput}>
                     Update
                 </a>
-                {/* <button
-                    onClick={statusInput}
-                    type="submit" className="btn btn-primary btn-block">Update</button> */}
-            </div>
         </div>
-    
     );
 };
 

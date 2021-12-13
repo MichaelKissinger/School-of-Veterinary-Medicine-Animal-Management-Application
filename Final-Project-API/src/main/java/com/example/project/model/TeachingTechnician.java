@@ -23,11 +23,11 @@ public class TeachingTechnician {
      * @param user
      * @throws SQLException
      */
-    public TeachingTechnician(User user) throws SQLException {
+    public TeachingTechnician(User user, UserDB userDB) throws SQLException {
         teachingTechnician = user;
         animals = new AnimalDatabase();
         studentUsers = new ArrayList<User>();
-        userDB = new UserDB();
+        this.userDB = userDB;
         addUser();
     }
 

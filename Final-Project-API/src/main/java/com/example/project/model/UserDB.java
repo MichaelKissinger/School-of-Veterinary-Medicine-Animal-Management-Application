@@ -10,11 +10,15 @@ import java.sql.*;
  */
 public class UserDB {
 
+
     Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
     ; // build an object of connection for connecting to database
 
 //    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
 //            "BSh@23071367");; // build an object of connection for connecting to database
+
+//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788"); // build an object of connection for connecting to database
+
 
     ResultSet rs; // build an object of resultSet to store the result of the query
 
@@ -22,6 +26,7 @@ public class UserDB {
     }
 
     /**
+<<<<<<< HEAD
      * createConnection() creates a connection with the database
      */
 
@@ -90,6 +95,8 @@ public class UserDB {
 
 
     /**
+=======
+>>>>>>> main
      * validateUser() checks to see if the given username and password are in the
      * user database
      *
@@ -101,12 +108,9 @@ public class UserDB {
         int flag = -1;
         try {
 
-            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
-                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-            // from
-            // DB
+                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
 
             if (rs.next())
                 flag = 1;
@@ -131,12 +135,10 @@ public class UserDB {
         StringBuffer userInformation = new StringBuffer();
 
         try {
-            // createConnection();
+
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
-                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-            // from
-            // DB
+                    "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query from DB
 
             if (rs.next())
                 userInformation.append(rs.getString(column));
@@ -157,7 +159,6 @@ public class UserDB {
         String permissionType = "";
 
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
             String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
                     "STUDENT"};
@@ -184,7 +185,6 @@ public class UserDB {
     public String adminAccessGetUser() {
         StringBuffer result = new StringBuffer();
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery("SELECT * FROM USER ;");
 
@@ -205,7 +205,6 @@ public class UserDB {
     public String adminAccessGetAnimal() {
         StringBuffer result_animal = new StringBuffer();
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery("SELECT * FROM ANIMAL ;");
 
@@ -228,7 +227,6 @@ public class UserDB {
      */
     public void updateUserInfo(String username, String pass, String column, String update) {
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username
@@ -248,7 +246,6 @@ public class UserDB {
      */
     public void removeUser(String pass) {
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Removed" + " \" WHERE Password = " + pass + ";");
 
@@ -259,7 +256,6 @@ public class UserDB {
 
     public void blockUser(String pass) {
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
 
@@ -310,7 +306,6 @@ public class UserDB {
      */
     public void updateAnimalStatusToRequested(int id) {
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate(
@@ -329,7 +324,6 @@ public class UserDB {
      */
     public void changeAnimalStatus(int id, String status) {
         try {
-            // createConnection();
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");
