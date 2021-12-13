@@ -11,13 +11,8 @@ import java.sql.*;
 public class UserDB {
 
 
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
     ; // build an object of connection for connecting to database
-
-//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-//            "BSh@23071367");; // build an object of connection for connecting to database
-
-//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788"); // build an object of connection for connecting to database
 
 
     ResultSet rs; // build an object of resultSet to store the result of the query
@@ -26,77 +21,6 @@ public class UserDB {
     }
 
     /**
-<<<<<<< HEAD
-     * createConnection() creates a connection with the database
-     */
-
-
-//    public void createConnection() {
-//        try {
-//
-//            // You may have to enter your own SQL password below to make this work
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-//
-//            //You may have to enter your own SQL password below to make this work
-////            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    public void createConnection() {
-//        try {
-//
-//            // You may have to enter your own SQL password below to make this work
-////            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
-//
-//            // You may have to enter your own SQL password below to make this work
-////             connection =
-////            DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    // public void createConnection() {
-    // try {
-    //
-    // // You may have to enter your own SQL password below to make this work
-    // connection =
-    // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-    // "9788");
-    //
-    // //You may have to enter your own SQL password below to make this work
-    //// connection =
-    // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-    // "9788");
-    //
-    // } catch (Exception e) {
-    // e.printStackTrace();
-    // }
-    // }
-
-    public void createConnection() {
-        try {
-
-            // You may have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
-
-            // You may have to enter your own SQL password below to make this work
-            // connection =
-            // DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-            // "9788");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    /**
-=======
->>>>>>> main
      * validateUser() checks to see if the given username and password are in the
      * user database
      *
