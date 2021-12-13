@@ -74,9 +74,9 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal List</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAlertAnimal"}>Alerts</Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
@@ -117,7 +117,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                             <th scope="col">Status</th>
                                             <th scope="col">Tattoo</th>
                                             <th scope="col">Assigned Vet</th>
-                                            <th scope="col">Alert Disease</th>
+                                            {/* <th scope="col">Alert Disease</th> */}
                                             <th scope="col">Request Treatment</th>
                                             <th scope="col">Animal Profile</th>
                                         </tr>
@@ -136,8 +136,10 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                                   <td>{myArray.status}</td>
                                                   <td>{myArray.tattoo}</td>
                                                   <td>{myArray.userID}</td>
-                                                  <td><a className="fa fa-bell" href="#"></a></td>
-                                                  <td><button className="fa fa-ambulance" href="#" onClick= {() => statusInput(myArray.animalId)}></button></td>
+                                                  {/* <td><a className="fa fa-bell" href="#"></a></td> */}
+                                                  <td>
+                                                      <button className="btn btn-outline-danger"  href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-ambulance"></i></button>
+                                                  </td>
                                                   <td><Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
                                                   </tr>)
                                                  }
