@@ -103,7 +103,7 @@ const AdministratorAccess = () => {
                                             <th scope="col">Status</th>
                                             <th scope="col">Tattoo</th>
                                             <th scope="col">Assigned Vet</th>
-                                            <th scope="col">View</th>
+                                            <th scope="col">Animal Profile</th>
                                             
                                         </tr>
                                     </thead>

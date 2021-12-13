@@ -10,13 +10,12 @@ import java.sql.*;
  */
 public class UserDB {
 
-
     private Connection connection;
 
     public void createConnection() {
         try {
             // You will have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
         } catch (Exception e) {
             e.printStackTrace();
         }
