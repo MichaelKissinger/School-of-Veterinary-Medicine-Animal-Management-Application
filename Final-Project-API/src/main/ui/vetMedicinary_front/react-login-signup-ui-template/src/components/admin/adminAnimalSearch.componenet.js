@@ -1,17 +1,11 @@
 import React, { Component, useEffect, useState, useRef } from "react";
 import { BrowserRouter as Router, Switch, Route, Link, NavLink } from "react-router-dom";
 import axios from "axios";
-
-
-const User_REST_API_URL = 'http://localhost:8080/allAnimals';
-
+import { useHistory } from 'react-router-dom';
 
 const AdministratorAccess = () => {
 
-    function handleLogout (){
-        localStorage.clear();
-        window.open("/Login");
-    }
+    // const history = useHistory();
 
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
@@ -20,10 +14,14 @@ const AdministratorAccess = () => {
     const[name, setName] = React.useState('')
     const[id, setID] = React.useState('');
 
-
     React.useEffect(() => {
-      axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
+      axios.get('http://localhost:8080/allAnimals').then(response => setMyArray(response.data));
     }, []); 
+
+    function handleLogout (){
+        localStorage.clear();
+        // history.push("/Login");
+    }
 
     function handleSubmit(event){
         event.preventDefault();

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 
@@ -7,6 +8,7 @@ const User_REST_API_URL = 'http://localhost:8080/studentlist';
 
 const TeachingTechnicianStudentList = () => {
 
+    // const history = useHistory();
     const[myArray, setMyArray] = React.useState([]);
     const[ID1, setID1] = React.useState();
     const[ID2, setID2] = React.useState();
@@ -16,7 +18,7 @@ const TeachingTechnicianStudentList = () => {
 
     function handleLogout() {
         localStorage.clear();
-        window.open("/Login");
+        // history.push("/Login");
     }
     // const statusText = useRef();
 

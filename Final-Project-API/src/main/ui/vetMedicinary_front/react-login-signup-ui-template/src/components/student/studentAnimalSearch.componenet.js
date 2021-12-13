@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 
-
 const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
-
-
 const TeachingTechnicianAnimalSearch = () => {
+    // const history = useHistory();
 
     const[myArray, setMyArray] = React.useState([]);
     const[name, setName] = React.useState('')
@@ -18,7 +17,7 @@ const TeachingTechnicianAnimalSearch = () => {
 
     function handleLogout (){
         localStorage.clear();
-        window.open("/Login");
+        // history.push("/Login");
     }
 
     React.useEffect(() => {

@@ -1,28 +1,29 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 const StudentProfile = () => {
-        const FName=localStorage.getItem('FName');
-        const LName=localStorage.getItem('LName');
-        const permission =  localStorage.getItem('permission');
-        const birthDate = localStorage.getItem('birthDate');
-        const phoneNumber = localStorage.getItem('phoneNumber');
-        const email = localStorage.getItem('email');
+    // const history = useHistory();
+    const FName = localStorage.getItem('FName');
+    const LName = localStorage.getItem('LName');
+    const permission = localStorage.getItem('permission');
+    const birthDate = localStorage.getItem('birthDate');
+    const phoneNumber = localStorage.getItem('phoneNumber');
+    const email = localStorage.getItem('email');
 
+    function handleLogout() {
+        localStorage.clear();
+        // history.push("/Login");
+    }
 
-        function handleLogout (){
-            localStorage.clear();
-            window.open("/Login");
-        }
-        
-        return (
-            <form>
-                <div className="container-fluid">
-                    <div className="row">
-                        <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-                            <div className="sidebar-sticky">
-                                <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
+    return (
+        <form>
+            <div className="container-fluid">
+                <div className="row">
+                    <nav className="col-md-2 d-none d-md-block bg-light sidebar">
+                        <div className="sidebar-sticky">
+                            <h7 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1  text-muted">
                             </h7>
                             <ul className="nav flex-column">
                                 <li className="nav-item">
@@ -42,41 +43,41 @@ const StudentProfile = () => {
                                     <Link className="nav-link" to={"/StudentAnimalSearch"}>Animal List</Link>
                                 </li>
 
-                                </ul>
-                            </div>
-                        </nav>
-                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                            <h2> Profile</h2>
-                            <div className="mt-3">
-                                <table className="table table-responsive">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="col">Name:</th>
-                                            <th scope="col"><strong><i>{FName}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Family:</th>
-                                            <th scope="col"><strong><i>{LName}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Birtdate:</th>
-                                            <th scope="col"><strong><i>{birthDate}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>{permission}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Phone Number:</th>
-                                            <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Email:</th>
-                                            <th scope="col"><strong><i>{email}</i></strong></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            </ul>
+                        </div>
+                    </nav>
+                    <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                        <h2> Profile</h2>
+                        <div className="mt-3">
+                            <table className="table table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Name:</th>
+                                        <th scope="col"><strong><i>{FName}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Family:</th>
+                                        <th scope="col"><strong><i>{LName}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Birtdate:</th>
+                                        <th scope="col"><strong><i>{birthDate}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Type of Access:</th>
+                                        <th scope="col"><strong><i>{permission}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Phone Number:</th>
+                                        <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Email:</th>
+                                        <th scope="col"><strong><i>{email}</i></strong></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </main>
                 </div>

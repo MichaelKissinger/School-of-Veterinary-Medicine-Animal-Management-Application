@@ -5,33 +5,86 @@ import swal from 'sweetalert';
 
 export default class AdminAddAnimal extends Component {
 
-    handleLogout = e=>{
+    handleLogout = e => {
         localStorage.clear();
         this.props.history.push('/Login');
     }
-    
+
     handleSubmit = e => {
+        
         e.preventDefault();
-        const sendData = {
-            name: this.name,
-            status: this.status,
-            tattoo: this.tattoo,
-            dateBirth: this.dateBirth,
-            city: this.city,
-            breed: this.breed,
-            type: this.type,
-            sex: this.sex,
-            userID: this.userID,
+
+        if (!this.name) {
+            this.state.error = "Name can not be empty";
+            swal(this.state.error, "", "error");
+
+        } else if (!this.status) {
+
+            this.state.error = "Status can not be empty";
+            swal(this.state.error, "", "error");
+
+        } else if ((!this.tattoo) || (isNaN(this.tattoo))  || (this.tattoo.length!=3)) {
+
+            this.state.error = "Please enter 3 digits for tattoo";
+            swal(this.state.error, "", "error");
+
+        } else if (!this.breed) {
+            this.state.error = "Breed can not be empty";
+            swal(this.state.error, "", "error");
+
+        } else if (!this.type) {
+            this.state.error = "Type can not be empty";
+            
+            swal(this.state.error, "", "error");
+
+        } else if (!this.city) {
+
+            this.state.error = "City can not be empty";
+            swal(this.state.error, "", "error");
+
+        } else if (!this.sex) {
+            this.state.error = "Please select Male or Female!";
+            swal(this.state.error, "", "error");
+
         }
-        axios.post(this.state.REST_API_ADD_ANIMAL, sendData)
-             .then(res => {
-                 if (res.data==true){
-                    swal("Animal"+" "+ sendData.name + " Successfully Added.","","success")
-                    .then(function() {
-                        window.location.reload();
-                    });
-                 }
-             })
+        else if (!this.dateBirth) {
+
+            this.state.error = "Birthdate can not be empty";
+            swal(this.state.error, "", "error");
+
+        }
+        else if ((!this.userID) || (isNaN(this.userID))) {
+
+            this.state.error = "Please enter ID for assigned health technician ";
+            console.log(this.state.error);
+            swal(this.state.error, "", "error");
+        }
+        else {
+
+            console.log("I am here!");
+            
+            const sendData = {
+                name: this.name,
+                status: this.status,
+                tattoo: this.tattoo,
+                dateBirth: this.dateBirth,
+                city: this.city,
+                breed: this.breed,
+                type: this.type,
+                sex: this.sex,
+                userID: this.userID,
+            }
+            axios.post(this.state.REST_API_ADD_ANIMAL, sendData)
+                .then(res => {
+                    if (res.data == true) {
+                        swal("Animal" + " " + sendData.name + " Successfully Added.", "", "success")
+                            .then(function () {
+                                window.location.reload();
+                            });
+                    }
+                })
+        }
+
     }
     constructor(props) {
         super(props);
@@ -39,8 +92,8 @@ export default class AdminAddAnimal extends Component {
             FName: localStorage.getItem('FName'),
             LName: localStorage.getItem('LName'),
             REST_API_ADD_ANIMAL: "http://localhost:8080/animal/addAnimal",
-            gender:"",
-            result:"null",
+            gender: "",
+            result: "null",
         };
     }
     render() {
@@ -79,7 +132,7 @@ export default class AdminAddAnimal extends Component {
                                 </ul>
                                 <button
                                     onClick={this.handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{ marginLeft: 50 }} type="submit" className="btn btn-outline-primary">Logout</button>
                             </div>
                         </nav>
 
@@ -144,15 +197,15 @@ export default class AdminAddAnimal extends Component {
                                         Valid city is required.
                                     </div>
                                 </div>
-                                <div className="radio-buttons" style={{ fontSize: 19,marginBottom: 15 }}>
-                                    <input 
+                                <div className="radio-buttons" style={{ fontSize: 19, marginBottom: 15 }}>
+                                    <input
                                         id="Male"
                                         value="M"
                                         name="gender"
                                         type="radio"
                                         onChange={e => this.sex = e.target.value}
                                     />
-                                    Male   
+                                    Male
                                     <input style={{ marginLeft: 20 }}
                                         id="Female"
                                         value="F"
@@ -164,7 +217,7 @@ export default class AdminAddAnimal extends Component {
                                 </div>
 
                                 <div className="col-md-6 mb-3">
-                                    <label for="start" >Birthday Date:</label>
+                                    <label for="start" >Birthdate</label>
                                     <br />
                                     <input onChange={e => this.dateBirth = e.target.value} className="form-control" type="date" id="start" name="trip-start"
                                         min="2005-01-01" max="2022-12-20" />

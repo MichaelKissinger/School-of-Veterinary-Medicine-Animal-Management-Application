@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const AdminProfile = () => {
 
+    // const history = useHistory();
+
     function handleLogout (){
         localStorage.clear();
-        window.open("/Login");
+        // history.push("/Login");
     }
 
     const FName=localStorage.getItem('FName');
