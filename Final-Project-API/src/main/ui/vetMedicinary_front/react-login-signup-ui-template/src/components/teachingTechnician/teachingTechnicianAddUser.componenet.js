@@ -12,46 +12,46 @@ export default class TeachingTechnicianAddUser extends Component {
     handleSubmit = e => {
         e.preventDefault();
 
-        if (!this.FName) {
-            this.state.error = "First Name can not be empty";
-            swal(this.state.error, "", "error");
+        // if (!this.FName) {
+        //     this.state.error = "First Name can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.LName) {
+        // } else if (!this.LName) {
 
-            this.state.error = "Last Name can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Last Name can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.email) {
+        // } else if (!this.email) {
 
-            this.state.error = "Email can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Email can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.phoneNumber) {
-            this.state.error = "Phone Number can not be empty";
-            swal(this.state.error, "", "error");
+        // } else if (!this.phoneNumber) {
+        //     this.state.error = "Phone Number can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }else if (!this.gender) {
+        // }else if (!this.gender) {
 
-            this.state.error = "Please select Male or Female!";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Please select Male or Female!";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.birthday) {
+        // } else if (!this.birthday) {
 
-            this.state.error = "Birthdate can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Birthdate can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.activatedate) {
-            this.state.error = "Activation Date can not be empty";
-            swal(this.state.error, "", "error");
+        // } else if (!this.activatedate) {
+        //     this.state.error = "Activation Date can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }
-        else if ((!this.password) || (isNaN(this.password))) {
+        // }
+        // else if ((!this.password) || (isNaN(this.password))) {
 
-            this.state.error = "Please enter number for password";
-            console.log(this.state.error);
-            swal(this.state.error, "", "error");
-        }
-        else {
+        //     this.state.error = "Please enter number for password";
+        //     console.log(this.state.error);
+        //     swal(this.state.error, "", "error");
+        // }
+        // else {
             const sendData = {
                 FName: this.FName,
                 LName: this.LName,
@@ -72,7 +72,7 @@ export default class TeachingTechnicianAddUser extends Component {
                             });
                     }
                 })
-        }
+        // }
     }
     constructor() {
         super()

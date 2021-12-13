@@ -14,52 +14,52 @@ export default class AdminAddAnimal extends Component {
         
         e.preventDefault();
 
-        if (!this.name) {
-            this.state.error = "Name can not be empty";
-            swal(this.state.error, "", "error");
+        // if (!this.name) {
+        //     this.state.error = "Name can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.status) {
+        // } else if (!this.status) {
 
-            this.state.error = "Status can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Status can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if ((!this.tattoo) || (isNaN(this.tattoo))  || (this.tattoo.length!=3)) {
+        // } else if ((!this.tattoo) || (isNaN(this.tattoo))  || (this.tattoo.length!=3)) {
 
-            this.state.error = "Please enter 3 digits for tattoo";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Please enter 3 digits for tattoo";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.breed) {
-            this.state.error = "Breed can not be empty";
-            swal(this.state.error, "", "error");
+        // } else if (!this.breed) {
+        //     this.state.error = "Breed can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.type) {
-            this.state.error = "Type can not be empty";
+        // } else if (!this.type) {
+        //     this.state.error = "Type can not be empty";
             
-            swal(this.state.error, "", "error");
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.city) {
+        // } else if (!this.city) {
 
-            this.state.error = "City can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "City can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        } else if (!this.sex) {
-            this.state.error = "Please select Male or Female!";
-            swal(this.state.error, "", "error");
+        // } else if (!this.sex) {
+        //     this.state.error = "Please select Male or Female!";
+        //     swal(this.state.error, "", "error");
 
-        }
-        else if (!this.dateBirth) {
+        // }
+        // else if (!this.dateBirth) {
 
-            this.state.error = "Birthdate can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Birthdate can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }
-        else if ((!this.userID) || (isNaN(this.userID))) {
+        // }
+        // else if ((!this.userID) || (isNaN(this.userID))) {
 
-            this.state.error = "Please enter ID for assigned health technician ";
-            console.log(this.state.error);
-            swal(this.state.error, "", "error");
-        }
-        else {
+        //     this.state.error = "Please enter ID for assigned health technician ";
+        //     console.log(this.state.error);
+        //     swal(this.state.error, "", "error");
+        // }
+        // else {
 
             console.log("I am here!");
             
@@ -83,7 +83,7 @@ export default class AdminAddAnimal extends Component {
                             });
                     }
                 })
-        }
+        // }
 
     }
     constructor(props) {

@@ -12,51 +12,51 @@ export default class AdministratorAccess extends Component {
 
         e.preventDefault();
 
-        if (!this.FName){
-            this.state.error = "First Name can not be empty";
-            swal(this.state.error, "", "error");
+        // if (!this.FName){
+        //     this.state.error = "First Name can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.LName){
+        // }else if(!this.LName){
 
-            this.state.error = "Last Name can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Last Name can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.email){
+        // }else if(!this.email){
 
-            this.state.error = "Email can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Email can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.phoneNumber){
-            this.state.error = "Phone Number can not be empty";
-            swal(this.state.error, "", "error");
+        // }else if(!this.phoneNumber){
+        //     this.state.error = "Phone Number can not be empty";
+        //     swal(this.state.error, "", "error");
             
-        }else if((!this.permission) || (this.permission!="Admin" && this.permission!="Care" && this.permission!="Student" && this.permission!="Teacher" && this.permission!="Health" )){
+        // }else if((!this.permission) || (this.permission!="Admin" && this.permission!="Care" && this.permission!="Student" && this.permission!="Teacher" && this.permission!="Health" )){
 
-            this.state.error = "Please enter one of the Admin, Care, Student, Teacher, Health as a permission";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Please enter one of the Admin, Care, Student, Teacher, Health as a permission";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.gender){
+        // }else if(!this.gender){
 
-            this.state.error = "Please select Male or Female!";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Please select Male or Female!";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.birthday){
+        // }else if(!this.birthday){
             
-            this.state.error = "Birthdate can not be empty";
-            swal(this.state.error, "", "error");
+        //     this.state.error = "Birthdate can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }else if(!this.activatedate){
-            this.state.error = "Activation Date can not be empty";
-            swal(this.state.error, "", "error");
+        // }else if(!this.activatedate){
+        //     this.state.error = "Activation Date can not be empty";
+        //     swal(this.state.error, "", "error");
 
-        }
-        else if((!this.password) || (isNaN(this.password))){
+        // }
+        // else if((!this.password) || (isNaN(this.password))){
 
-            this.state.error = "Please enter number for password";
-            console.log(this.state.error);
-            swal(this.state.error, "", "error");
-        }
-        else{
+        //     this.state.error = "Please enter number for password";
+        //     console.log(this.state.error);
+        //     swal(this.state.error, "", "error");
+        // }
+        // else{
             const sendData = {
                 FName: this.FName,
                 LName: this.LName,
@@ -77,7 +77,7 @@ export default class AdministratorAccess extends Component {
                         });
                      }
                  })
-        }
+        // }
     }
     constructor(props) {
         super(props);
