@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AnimalCareAttendanceAlertAnimal = () => {
 
+    const history = useHistory();
+
     function handleLogout (){
         localStorage.clear();
-        window.open("/Login");
+        history.push("/Login");
     }
 
     const FName=localStorage.getItem('FName');

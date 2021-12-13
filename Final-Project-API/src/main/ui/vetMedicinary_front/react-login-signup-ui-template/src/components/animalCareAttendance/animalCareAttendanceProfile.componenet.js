@@ -1,13 +1,16 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 // export default class AnimalCareAttendanceProfile extends Component {
 
     const AnimalCareAttendanceProfile = () => {
 
+        const history = useHistory();
+
         function handleLogout (){
             localStorage.clear();
-            window.open("/Login");
+            history.push("/Login");
         }
 
         const FName=localStorage.getItem('FName');

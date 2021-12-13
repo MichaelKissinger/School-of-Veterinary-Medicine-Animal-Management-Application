@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import { useHistory } from 'react-router-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 const AnimalHealthTechnicianProfile = () => {
 
-        const FName=localStorage.getItem('FName');
-        const LName=localStorage.getItem('LName');
-        const bithday=localStorage.getItem('birthDate');
-        const phoneNumber=localStorage.getItem('phoneNumber');
-        const permission =  localStorage.getItem('permission');
-        const email=localStorage.getItem('email');
+    const history = useHistory();
 
-    function handleLogout (){
+    const FName = localStorage.getItem('FName');
+    const LName = localStorage.getItem('LName');
+    const bithday = localStorage.getItem('birthDate');
+    const phoneNumber = localStorage.getItem('phoneNumber');
+    const permission = localStorage.getItem('permission');
+    const email = localStorage.getItem('email');
+
+    function handleLogout() {
         localStorage.clear();
-        window.open("/Login");
+        history.push("/Login");
     }
 
     return (
@@ -45,43 +48,43 @@ const AnimalHealthTechnicianProfile = () => {
 
                             </ul>
                             <button
-                                    onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                onClick={handleLogout}
+                                style={{ marginLeft: 50 }} type="submit" className="btn btn-outline-primary">Logout</button>
                         </div>
                     </nav>
 
-                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                            <h2>[Current user name] Profile</h2>
-                            <div className="mt-3">
-                                <table className="table table-responsive">
-                                    <tbody>
-                                        <tr>
-                                            <th scope="col">Name:</th>
-                                            <th scope="col"><strong><i>{FName} </i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Family:</th>
-                                            <th scope="col"><strong><i>{LName}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Birtdate:</th>
-                                            <th scope="col"><strong><i>{bithday}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Type of Access:</th>
-                                            <th scope="col"><strong><i>{permission}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Phone Number:</th>
-                                            <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">Email:</th>
-                                            <th scope="col"><strong><i>{email}</i></strong></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                        <h2>[Current user name] Profile</h2>
+                        <div className="mt-3">
+                            <table className="table table-responsive">
+                                <tbody>
+                                    <tr>
+                                        <th scope="col">Name:</th>
+                                        <th scope="col"><strong><i>{FName} </i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Family:</th>
+                                        <th scope="col"><strong><i>{LName}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Birtdate:</th>
+                                        <th scope="col"><strong><i>{bithday}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Type of Access:</th>
+                                        <th scope="col"><strong><i>{permission}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Phone Number:</th>
+                                        <th scope="col"><strong><i>{phoneNumber}</i></strong></th>
+                                    </tr>
+                                    <tr>
+                                        <th scope="col">Email:</th>
+                                        <th scope="col"><strong><i>{email}</i></strong></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
 
                     </main>
                 </div>

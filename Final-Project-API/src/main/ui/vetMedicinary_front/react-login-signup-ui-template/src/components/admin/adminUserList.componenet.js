@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
-
+import { useHistory } from 'react-router-dom';
 
 const User_REST_API_URL = 'http://localhost:8080/allusers';
 
 
 const AdministratorAccess = () => {
 
+    const history = useHistory();
+
     function handleLogout() {
         localStorage.clear();
-        window.open("/Login");
+        history.push("/Login");
     }
 
     const FName=localStorage.getItem('FName');
