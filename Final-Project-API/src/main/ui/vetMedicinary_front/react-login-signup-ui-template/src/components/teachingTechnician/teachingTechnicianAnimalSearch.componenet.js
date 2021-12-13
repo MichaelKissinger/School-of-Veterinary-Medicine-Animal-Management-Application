@@ -142,7 +142,7 @@ const TeachingTechnicianAnimalSearch = () => {
                                               <td>{myArray.tattoo}</td>
                                               <td>{myArray.userID}</td>
                                             <td><button className="fa fa-edit" href="#" onClick= {() => statusInput(myArray.animalId)}></button></td>
-                                            <td><Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
+                                            <td><Link to={"/AnimalRestrictedProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
                                             </tr>)
                                         }
                                     </tbody>
