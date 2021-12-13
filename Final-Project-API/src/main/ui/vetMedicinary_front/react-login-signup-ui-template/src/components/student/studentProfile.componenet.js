@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
 const StudentProfile = () => {
-    // const history = useHistory();
+    const history = useHistory();
     const FName = localStorage.getItem('FName');
     const LName = localStorage.getItem('LName');
     const permission = localStorage.getItem('permission');
@@ -14,7 +14,7 @@ const StudentProfile = () => {
 
     function handleLogout() {
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
 
     return (
@@ -44,6 +44,9 @@ const StudentProfile = () => {
                                 </li>
 
                             </ul>
+                            <button
+                                    onClick={handleLogout}
+                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
                         </div>
                     </nav>
                     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

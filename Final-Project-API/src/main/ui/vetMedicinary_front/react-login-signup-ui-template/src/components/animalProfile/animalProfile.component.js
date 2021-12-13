@@ -37,7 +37,7 @@ export default class AnimalProfile extends Component {
                         <div class="row">
                             <AnimalPhoto id={this.state.id}/>
                         </div>
-                        <h3 class="title is-3">Animal Status</h3>
+                        {/* <h3 class="title is-3">Animal Status</h3> */}
                         <div class="row">
                             <AnimalStatus id={this.state.id}/>
                         </div>

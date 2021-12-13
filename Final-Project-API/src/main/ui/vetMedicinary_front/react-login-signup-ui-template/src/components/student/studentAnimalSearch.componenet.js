@@ -6,7 +6,7 @@ import axios from "axios";
 const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const TeachingTechnicianAnimalSearch = () => {
-    // const history = useHistory();
+    const history = useHistory();
 
     const[myArray, setMyArray] = React.useState([]);
     const[name, setName] = React.useState('')
@@ -17,7 +17,7 @@ const TeachingTechnicianAnimalSearch = () => {
 
     function handleLogout (){
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
 
     React.useEffect(() => {

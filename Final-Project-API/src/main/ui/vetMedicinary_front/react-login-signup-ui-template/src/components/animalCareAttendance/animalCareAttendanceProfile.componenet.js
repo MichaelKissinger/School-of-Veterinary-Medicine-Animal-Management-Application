@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
     const AnimalCareAttendanceProfile = () => {
 
-        // const history = useHistory();
+        const history = useHistory();
 
         function handleLogout (){
             localStorage.clear();
-            // history.push("/Login");
+            history.push("/Login");
         }
 
         const FName=localStorage.getItem('FName');

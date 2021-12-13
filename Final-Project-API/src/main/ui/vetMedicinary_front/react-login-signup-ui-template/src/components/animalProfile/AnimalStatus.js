@@ -22,6 +22,8 @@ import React, { useEffect, useState, useRef } from "react";
 
     return(
         <div class="field has-addons">
+        <div class="rows">
+            <div class="row">
             <div class="control">
                 <label for="type"></label>
                     <input type="text"
@@ -31,10 +33,14 @@ import React, { useEffect, useState, useRef } from "react";
                         Valid type is required.
                     </div>
             </div>
-            <br></br>
+            </div>
+            <div class="row">
+
                 <a class="button is-info" onClick={statusInput}>
                     Update
                 </a>
+                </div>
+                </div>
         </div>
     );
 };

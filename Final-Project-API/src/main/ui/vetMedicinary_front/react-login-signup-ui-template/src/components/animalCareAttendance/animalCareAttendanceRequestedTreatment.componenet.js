@@ -6,11 +6,11 @@ const User_REST_API_URL = 'http://localhost:8080/reqAnimalList';
 
 const CareAttendanceRequestList = () => {
     
-    // const history = useHistory();
+    const history = useHistory();
 
     function handleLogout (){
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
     
     const FName=localStorage.getItem('FName');

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 
 const AdministratorAccess = () => {
 
-    // const history = useHistory();
+    const history = useHistory();
 
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
@@ -20,7 +20,7 @@ const AdministratorAccess = () => {
 
     function handleLogout (){
         localStorage.clear();
-        window.open("/Login");
+        history.push("/Login");
     }
 
     function handleSubmit(event){
