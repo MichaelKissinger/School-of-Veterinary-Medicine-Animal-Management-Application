@@ -9,27 +9,75 @@ export default class AdministratorAccess extends Component {
         this.props.history.push('/Login');
     }
     handleSubmit = e => {
+
         e.preventDefault();
-        const sendData = {
-            FName: this.FName,
-            LName: this.LName,
-            email: this.email,
-            phoneNumber: this.phoneNumber,
-            permission: this.permission,
-            activatedate: this.activatedate,
-            password: this.password,
-            birthday: this.birthday,
-            gender: this.gender,
+
+        if (!this.FName){
+            this.state.error = "First Name can not be empty";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.LName){
+
+            this.state.error = "Last Name can not be empty";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.email){
+
+            this.state.error = "Email can not be empty";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.phoneNumber){
+            this.state.error = "Phone Number can not be empty";
+            swal(this.state.error, "", "error");
+            
+        }else if((!this.permission) || (this.permission!="Admin" && this.permission!="Care" && this.permission!="Student" && this.permission!="Teacher" && this.permission!="Health" )){
+
+            this.state.error = "Please enter one of the Admin, Care, Student, Teacher, Health as a permission";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.gender){
+
+            this.state.error = "Please select Male or Female!";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.birthday){
+            
+            this.state.error = "Birthdate can not be empty";
+            swal(this.state.error, "", "error");
+
+        }else if(!this.activatedate){
+            this.state.error = "Activation Date can not be empty";
+            swal(this.state.error, "", "error");
+
         }
-        axios.post(this.state.REST_API_ADD_USER, sendData)
-             .then(res => {
-                 if (res.data==true){
-                    swal("User"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.","","success")
-                    .then(function() {
-                        window.location.reload();
-                    });
-                 }
-             })
+        else if((!this.password) || (isNaN(this.password))){
+
+            this.state.error = "Please enter number for password";
+            console.log(this.state.error);
+            swal(this.state.error, "", "error");
+        }
+        else{
+            const sendData = {
+                FName: this.FName,
+                LName: this.LName,
+                email: this.email,
+                phoneNumber: this.phoneNumber,
+                permission: this.permission,
+                activatedate: this.activatedate,
+                password: this.password,
+                birthday: this.birthday,
+                gender: this.gender,
+            }
+            axios.post(this.state.REST_API_ADD_USER, sendData)
+                 .then(res => {
+                     if (res.data==true){
+                        swal("User"+" "+ sendData.FName +" "+ sendData.LName + " Successfully Added.","","success")
+                        .then(function() {
+                            window.location.reload();
+                        });
+                     }
+                 })
+        }
     }
     constructor(props) {
         super(props);
@@ -85,12 +133,13 @@ export default class AdministratorAccess extends Component {
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             </div>
                             <h2 style={{ marginBottom: 20, fontSize: 20 }}> Add User</h2>
-                            <div className="col-md-8 order-md-1">
+                            {/* <div className="col-md-8 order-md-1"> */}
+                            <form class="col-md-8 order-md-1 needs-validation">  
                                 <div className="col-md-6 mb-3">
-                                    <label for="firstName">First name</label>
+                                    <label for="firstName">First Name</label>
                                     <input type="text"
                                         onChange={e => this.FName = e.target.value}
-                                        className="form-control" id="firstName" placeholder="" required />
+                                        className="form-control" id="firstName" placeholder="" required/>
                                     <div className="invalid-feedback">
                                         Valid first name is required.
                                     </div>
@@ -153,13 +202,13 @@ export default class AdministratorAccess extends Component {
                                 </div>
 
                                 <div className="col-md-6 mb-3">
-                                    <label for="start" >Birthday Date:</label>
+                                    <label for="start" >Birthdate</label>
                                     <br />
                                     <input onChange={e => this.birthday = e.target.value} className="form-control" type="date" id="start" name="trip-start"
                                         min="2005-01-01" max="2022-12-20" />
                                 </div>
                                 <div className="col-md-6 mb-3">
-                                    <label for="start" >Activation Date:</label>
+                                    <label for="start" >Activation Date</label>
                                     <br />
                                     <input onChange={e => this.activatedate = e.target.value} className="form-control" type="date" id="start" name="trip-start"
                                         min="2018-01-01" max="2022-12-20" />
@@ -175,7 +224,8 @@ export default class AdministratorAccess extends Component {
                                 <button
                                     onClick={this.handleSubmit}
                                     type="submit" className="btn btn-primary btn-block">Submit</button>
-                            </div>
+                            {/* </div> */}
+                            </form>
                         </main>
                     </div>
                 </div>
