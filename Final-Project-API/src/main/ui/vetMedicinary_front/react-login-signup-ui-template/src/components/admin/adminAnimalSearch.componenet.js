@@ -20,7 +20,7 @@ const AdministratorAccess = () => {
 
     function handleLogout (){
         localStorage.clear();
-        // history.push("/Login");
+        window.open("/Login");
     }
 
     function handleSubmit(event){

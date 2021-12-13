@@ -75,14 +75,7 @@ export default class AdminAddAnimal extends Component {
                 userID: this.userID,
             }
             axios.post(this.state.REST_API_ADD_ANIMAL, sendData)
-                .then(res => {
-                    if (res.data == true) {
-                        swal("Animal" + " " + sendData.name + " Successfully Added.", "", "success")
-                            .then(function () {
-                                window.location.reload();
-                            });
-                    }
-                })
+            .then(swal("Animal" + " " + sendData.name + " Successfully Added.", "", "success"))
         }
 
     }
@@ -223,7 +216,7 @@ export default class AdminAddAnimal extends Component {
                                         min="2005-01-01" max="2022-12-20" />
                                 </div>
                                 <div className="col-md-6 mb-3">
-                                    <label for="password">Assigned Health Technician</label>
+                                    <label for="password">Assigned Health Technician (Must be 7 or 8)</label>
                                     <input onChange={e => this.userID = e.target.value}
                                         type="text" className="form-control" id="userID" placeholder="" required />
                                     <div className="invalid-feedback">

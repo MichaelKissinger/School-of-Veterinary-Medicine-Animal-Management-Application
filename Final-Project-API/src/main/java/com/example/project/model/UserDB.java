@@ -11,26 +11,16 @@ import java.sql.*;
 public class UserDB {
 
 
-
-
+//    private Connection connection;
+//
 //    public void createConnection() {
 //        try {
-//            // You may have to enter your own SQL password below to make this work
+//            // You will have to enter your own SQL password below to make this work
 //            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
 //    }
-
-
-
-//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
-    ; // build an object of connection for connecting to database
-
-
-//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root",
-//            "Katana123!"); // build an object of connection for connecting to database
-
 
     ResultSet rs; // build an object of resultSet to store the result of the query
 

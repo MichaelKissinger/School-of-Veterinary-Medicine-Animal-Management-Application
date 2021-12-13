@@ -74,14 +74,7 @@ export default class AnimalCareAddAnimal extends Component {
                 userID: this.userID,
             }
             axios.post(this.state.REST_API_ADD_ANIMAL, sendData)
-                 .then(res => {
-                     if (res.data==true){
-                        swal("Animal"+" "+ sendData.name + " Successfully Added.","","success")
-                        .then(function() {
-                            window.location.reload();
-                        });
-                     }
-                 })
+            .then(swal("Animal" + " " + sendData.name + " Successfully Added.", "", "success"))
         }
     }
     constructor(props) {

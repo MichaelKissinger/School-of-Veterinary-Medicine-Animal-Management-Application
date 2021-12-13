@@ -18,27 +18,27 @@ import React, { useEffect, useState } from "react";
             <thead>
               <tr>
                 <th>Animal ID</th>
+                <th>Name</th>
+                <th>Type</th>
                 <th>Breed</th>
                 <th>City</th>
                 <th>Date of Birth</th>
-                <th>Name</th>
                 <th>Sex</th>
                 <th>Status</th>
                 <th>Tattoo</th>
-                <th>Type</th>
                 <th>Assigned Vet</th>
               </tr>
             </thead> 
             <tbody>
                   <td>{myArray.animalId}</td>
+                  <td>{myArray.name}</td>
+                  <td>{myArray.type}</td>
                   <td>{myArray.breed}</td>
                   <td>{myArray.city}</td>
                   <td>{myArray.dateBirth}</td>
-                  <td>{myArray.name}</td>
                   <td>{myArray.sex}</td>
                   <td>{myArray.status}</td>
                   <td>{myArray.tattoo}</td>
-                  <td>{myArray.type}</td>
                   <td>{myArray.userID}</td>
               
             </tbody>
