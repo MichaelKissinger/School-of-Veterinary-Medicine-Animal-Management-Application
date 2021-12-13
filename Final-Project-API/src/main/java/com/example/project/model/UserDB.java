@@ -12,7 +12,19 @@ public class UserDB {
 
 
 
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+
+//    public void createConnection() {
+//        try {
+//            // You may have to enter your own SQL password below to make this work
+//            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
+
+//    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
     ; // build an object of connection for connecting to database
 
 
@@ -33,7 +45,8 @@ public class UserDB {
      * @param pass
      * @return
      */
-    public int validateUser(int username, int pass) {
+    public int validateUser(int username, int pass) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         int flag = -1;
         try {
 
@@ -62,7 +75,8 @@ public class UserDB {
      * @param column
      * @return
      */
-    public String getUserInfo(int username, int pass, String column) {
+    public String getUserInfo(int username, int pass, String column) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         StringBuffer userInformation = new StringBuffer();
 
         try {
@@ -88,7 +102,8 @@ public class UserDB {
      * @param username
      * @return permissionType
      */
-    public String getPermissionType(int username) {
+    public String getPermissionType(int username) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         String permissionType = "";
 
         try {
@@ -115,7 +130,8 @@ public class UserDB {
      *
      * @return
      */
-    public String adminAccessGetUser() {
+    public String adminAccessGetUser() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         StringBuffer result = new StringBuffer();
         try {
             Statement myStmt = connection.createStatement();
@@ -135,7 +151,8 @@ public class UserDB {
      *
      * @return
      */
-    public String adminAccessGetAnimal() {
+    public String adminAccessGetAnimal() throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         StringBuffer result_animal = new StringBuffer();
         try {
             Statement myStmt = connection.createStatement();
@@ -158,7 +175,8 @@ public class UserDB {
      * @param column
      * @param update
      */
-    public void updateUserInfo(String username, String pass, String column, String update) {
+    public void updateUserInfo(String username, String pass, String column, String update) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         try {
             Statement myStmt = connection.createStatement();
 
@@ -177,7 +195,8 @@ public class UserDB {
      *
      * @param pass
      */
-    public void removeUser(String pass) {
+    public void removeUser(String pass) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         try {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Removed" + " \" WHERE Password = " + pass + ";");
@@ -187,7 +206,8 @@ public class UserDB {
         }
     }
 
-    public void blockUser(String pass) {
+    public void blockUser(String pass) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         try {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
@@ -215,6 +235,7 @@ public class UserDB {
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
             String sex, String dateB, String activationDate, String permission) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, status);
@@ -237,7 +258,8 @@ public class UserDB {
      *
      * @param id
      */
-    public void updateAnimalStatusToRequested(int id) {
+    public void updateAnimalStatusToRequested(int id) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         try {
             Statement myStmt = connection.createStatement();
 
@@ -255,7 +277,8 @@ public class UserDB {
      * @param id
      * @param status
      */
-    public void changeAnimalStatus(int id, String status) {
+    public void changeAnimalStatus(int id, String status) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
         try {
             Statement myStmt = connection.createStatement();
 

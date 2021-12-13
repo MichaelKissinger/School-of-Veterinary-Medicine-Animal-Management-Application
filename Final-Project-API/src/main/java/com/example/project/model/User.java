@@ -37,7 +37,7 @@ public class User {
     /**
      * Gets all the related information to the given username and password and save them in proper variables
      */
-    public void setUserInfo() {
+    public void setUserInfo() throws SQLException {
         setLname((userDB.getUserInfo(username, password, "Lname")));
         setFname((userDB.getUserInfo(username, password, "Fname")));
         setPhoneNumber(userDB.getUserInfo(username, password, "Phone"));
