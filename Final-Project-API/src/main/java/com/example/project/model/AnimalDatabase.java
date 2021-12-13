@@ -42,6 +42,7 @@ public class AnimalDatabase {
 
             }
         }
+        recordId += 1;
         return recordId;
     }
 

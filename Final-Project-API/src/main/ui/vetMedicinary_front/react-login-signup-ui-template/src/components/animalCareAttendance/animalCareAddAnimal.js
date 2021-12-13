@@ -114,9 +114,9 @@ export default class AnimalCareAddAnimal extends Component {
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal List</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAlertAnimal"}>Alerts</Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
