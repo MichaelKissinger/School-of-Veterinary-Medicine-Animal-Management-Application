@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
+ import swal from 'sweetalert';
 
  const AddHistoryForm = (props) => {
      const[addMeasurement, setMeasurement] = React.useState();
@@ -8,18 +9,43 @@ import React, { useEffect, useState, useRef } from "react";
      const[addVaccination, setVaccination] = React.useState();
      const userId = localStorage.getItem('username');
      const id = localStorage.getItem('currentAnimal');
+     var error = null;
 
   function historyInput(e) {
+
+    if (!addMeasurement) {
+        error = "Measurement/History type cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (!addVaccination) {
+        error = "Vaccine cannot be empty, if not a vaccination, please enter N";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    if (!addValue) {
+        error = "Value cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (isNaN(addValue)) {
+        error = "Value can only be number";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else {
+
     const newHistory = {
         measurement : addMeasurement,
         value : addValue,
         userId : userId,
         vaccination : addVaccination,
     };
-    console.log(newHistory );
+    console.log(newHistory);
        axios.post('http://localhost:8080/animal/addHistory/' + id, newHistory )
-           .then();
+           .then(swal("Submitted Sucessfully", "", "success"));
   }
+}
 
     return(
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

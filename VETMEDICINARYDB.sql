@@ -106,7 +106,6 @@ DROP TABLE IF EXISTS VETMEDICINARYDB.ANIMAL;
 CREATE TABLE VETMEDICINARYDB.ANIMAL (
   Animal_ID INT NOT NULL AUTO_INCREMENT,
   Status VARCHAR(100) NULL,
-  Weight INT NULL,
   Tattoo INT NULL,
   Date_B VARCHAR(20) NOT NULL,
   City VARCHAR(15) NOT NULL,
@@ -121,16 +120,16 @@ CREATE TABLE VETMEDICINARYDB.ANIMAL (
 
 INSERT INTO VETMEDICINARYDB.ANIMAL (Status, Tattoo, Date_B, City, Breed, Type, Name, Sex, User_ID) 
 VALUES 
-('Available', '982', '10/21/2017', 'Calgary', 'DSH', 'Cat', 'Cinnamon', 'M', '7'),
-('Available', '413', '03/04/2020', 'Calgary', 'Manx', 'Cat', 'Ginger', 'M', '7'),
-('Needs Vaccination', '362', '06/23/2015', 'Cochrane', 'Bulldog', 'Dog', 'Maverik', 'F', '7'),
-('Injured', '734', '04/15/2012', 'Canmore', 'Shire', 'Horse', 'Seabiscuit', 'M', '8'),
-('Available', '392', '07/13/2018', 'Calgary', 'Poodle', 'Dog', 'Frank', 'F', '7'),
-('Available', '734', '05/01/2016', 'Lethbridge', 'Boxer', 'Dog', 'Clifford', 'F', '7'),
-('Needs new medication', '274', '08/02/2018', 'Okotoks', 'Scottish Fold', 'Cat', 'Ruben', 'F', '7'),
-('Available', '463', '12/10/2019', 'Cochrane', 'Golden Retriever', 'Dog', 'Spot', 'M', '7'),
-('Available', '427', '10/02/2012', 'Calgary', 'Throughbred', 'Horse', 'Dakota', 'M', '8'),
-('Injured', '246', '01/24/2016', 'Calgary', 'DSH', 'Cat', 'Whiskey', 'M', '7');
+('Available', '982', '2017-10-21', 'Calgary', 'DSH', 'Cat', 'Cinnamon', 'M', '7'),
+('Available', '413', '2020-03-04', 'Calgary', 'Manx', 'Cat', 'Ginger', 'M', '7'),
+('Needs Vaccination', '362', '2015-06-23', 'Cochrane', 'Bulldog', 'Dog', 'Maverik', 'F', '7'),
+('Injured', '734', '2012-04-15', 'Canmore', 'Shire', 'Horse', 'Seabiscuit', 'M', '8'),
+('Available', '392', '2018-07-13', 'Calgary', 'Poodle', 'Dog', 'Frank', 'F', '7'),
+('Available', '734', '2016-05-01', 'Lethbridge', 'Boxer', 'Dog', 'Clifford', 'F', '7'),
+('Needs new medication', '274', '2018-08-02', 'Okotoks', 'Scottish Fold', 'Cat', 'Ruben', 'F', '7'),
+('Available', '463', '2019-12-10', 'Cochrane', 'Golden Retriever', 'Dog', 'Spot', 'M', '7'),
+('Available', '427', '2012-10-12', 'Calgary', 'Throughbred', 'Horse', 'Dakota', 'M', '8'),
+('Injured', '246', '2016-01-24', 'Calgary', 'DSH', 'Cat', 'Whiskey', 'M', '7');
 
 /*------------------------ANIMAL_PROBLEM-----------------*/
 DROP TABLE IF EXISTS VETMEDICINARYDB.ANIMAL_PROBLEM;

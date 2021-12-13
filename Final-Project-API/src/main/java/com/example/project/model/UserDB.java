@@ -11,7 +11,7 @@ import java.sql.*;
 public class UserDB {
 
 
-    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
     ; // build an object of connection for connecting to database
 
 

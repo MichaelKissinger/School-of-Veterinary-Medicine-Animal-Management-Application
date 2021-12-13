@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
+ import swal from 'sweetalert';
 
  const AddPrescriptionForm = (props) => {
      const[addDrugName, setDrugName] = React.useState();
@@ -12,7 +13,42 @@ import React, { useEffect, useState, useRef } from "react";
     const userId = localStorage.getItem('username');
     const id = localStorage.getItem('currentAnimal');
 
+    var error = null;
+
   function problemInput(e) {
+
+    if (!addDrugName) {
+        error = "Drug name cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (!addDeliveryMethod) {
+        error = "Delivery method cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (!addDosage) {
+        error = "Dosage cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (isNaN(addDosage)) {
+        error = "Dosage can only be number";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (!addInstructions) {
+        error = "Instructions cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else if (!addTreatmentMethod) {
+        error = "Treatment method cannot be empty";
+        console.log(error);
+        swal(error, "", "error");
+    }
+    else {
+
     const newPrescription = {
         drugName : addDrugName,
         deliveryMethod : addDeliveryMethod,
@@ -23,8 +59,9 @@ import React, { useEffect, useState, useRef } from "react";
     };
     console.log(newPrescription);
        axios.post('http://localhost:8080/animal/addPrescription/' + id, newPrescription)
-           .then();
+           .then(swal("Submitted Sucessfully", "", "success"));
   }
+}
 
     return(
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

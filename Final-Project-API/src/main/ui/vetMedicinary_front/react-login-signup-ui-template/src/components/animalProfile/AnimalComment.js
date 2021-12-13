@@ -2,6 +2,7 @@ import React from "react";
 import "bulma/css/bulma.css"
 import AnimalService from "../../service/AnimalService";
 import axios from "axios";
+import swal from 'sweetalert';
 
 const AnimalComments = (props) => {
   
@@ -28,8 +29,9 @@ const AnimalComments = (props) => {
         axios.post('http://localhost:8080/animal/addHistory/' + id, newHistory )
             .then();
         axios.post('http://localhost:8080/animal/addComment/' + id, newComment )
-            .then();
+            .then(swal("Submitted Sucessfully", "", "success"));
         // window.location.reload(false);
+        setTimeout(() => { window.location.reload(false); }, 500);
       }
 
     return(
@@ -39,7 +41,7 @@ const AnimalComments = (props) => {
             <thead>
             <tr>
                 <th>Comment ID</th>
-                <th>Record ID</th>
+                {/* <th>Record ID</th> */}
                 <th>Comment</th>
             </tr>
             </thead>
@@ -48,7 +50,7 @@ const AnimalComments = (props) => {
                 myArray.map(myArray =>
                     <tr key={myArray.id}>
                     <td>{myArray.commentId}</td>
-                    <td>{myArray.recordId}</td>
+                    {/* <td>{myArray.recordId}</td> */}
                     <td>{myArray.description}</td>
                     </tr>)
             } 

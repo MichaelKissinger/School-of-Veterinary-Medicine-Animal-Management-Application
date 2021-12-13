@@ -113,17 +113,15 @@ const TeachingTechnicianAnimalSearch = () => {
                                             <th scope="col">ID</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Type</th>
+                                            <th scope="col">Breed</th>
                                             <th scope="col">City</th>
                                             <th scope="col">Date of Birth</th>
-                                            
                                             <th scope="col">Sex</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Tattoo</th>
-                                            <th scope="col">Breed</th>
                                             <th scope="col">Assigned Vet</th>
                                             <th scope="col">Request Animal</th>
                                             <th scope="col">Animal Profile</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -132,16 +130,14 @@ const TeachingTechnicianAnimalSearch = () => {
                                             <tr key={myArray.animalId}>
                                               <td>{myArray.animalId}</td>
                                               <td>{myArray.name}</td>
+                                              <td>{myArray.type}</td>
                                               <td>{myArray.breed}</td>
                                               <td>{myArray.city}</td>
                                               <td>{myArray.dateBirth}</td>
-                                              
                                               <td>{myArray.sex}</td>
                                               <td>{myArray.status}</td>
                                               <td>{myArray.tattoo}</td>
-                                              <td>{myArray.type}</td>
                                               <td>{myArray.userID}</td>
-                                                
                                             <td><button className="fa fa-edit" href="#" onClick= {() => statusInput(myArray.animalId)}></button></td>
                                             <td><Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
                                             </tr>)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
  import axios from "axios";
  import AnimalService from "../../service/AnimalService";
+ import swal from 'sweetalert';
 
  const AnimalStatus = (props) => {
      const[changeStatus, setChangeStatus] = React.useState();

@@ -176,8 +176,8 @@ public class AnimalProfilesController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> addComment(@PathVariable("animalID") int animalId, @RequestBody HashMap<String, String> animalInfo) throws SQLException {
-        myJDBC.createConnection();
         int recordId = myDatabase.getHistoryNumber(animalId);
+        myJDBC.createConnection();
         myJDBC.addAnimalComment(recordId, animalInfo.get("Comment"));
         myDatabase.initializeDatabase();
         return null;
