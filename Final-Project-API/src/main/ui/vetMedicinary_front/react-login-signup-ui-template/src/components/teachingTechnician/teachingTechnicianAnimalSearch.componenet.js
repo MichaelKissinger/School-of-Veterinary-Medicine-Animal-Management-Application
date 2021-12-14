@@ -8,11 +8,11 @@ const User_REST_API_URL = 'http://localhost:8080/allAnimals';
 
 const TeachingTechnicianAnimalSearch = () => {
 
-    // const history = useHistory();
+    const history = useHistory();
 
     function handleLogout (){
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
 
     const[myArray, setMyArray] = React.useState([]);
@@ -141,7 +141,8 @@ const TeachingTechnicianAnimalSearch = () => {
                                               <td>{myArray.status}</td>
                                               <td>{myArray.tattoo}</td>
                                               <td>{myArray.userID}</td>
-                                            <td><button className="fa fa-edit" href="#" onClick= {() => statusInput(myArray.animalId)}></button></td>
+                                            <td>
+                                                <button className="btn btn-outline-danger" href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-edit"></i></button></td>
                                             <td><Link to={"/AnimalRestrictedProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
                                             </tr>)
                                         }

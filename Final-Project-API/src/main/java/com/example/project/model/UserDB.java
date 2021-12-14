@@ -10,7 +10,6 @@ import java.sql.*;
  */
 public class UserDB {
 
-
     private Connection connection;
 
     public void createConnection() {

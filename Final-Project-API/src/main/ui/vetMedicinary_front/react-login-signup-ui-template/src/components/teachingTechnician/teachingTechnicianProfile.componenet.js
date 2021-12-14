@@ -5,8 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-
 
 const TeachingTechnicianProfile = () => {
 
-    // const history = useHistory();
-
+    const history = useHistory();
     const FName = localStorage.getItem('FName');
     const LName = localStorage.getItem('LName');
     const bithday = localStorage.getItem('birthDate');
@@ -16,7 +15,7 @@ const TeachingTechnicianProfile = () => {
 
     function handleLogout() {
         localStorage.clear();
-        // history.push("/Login/");
+        history.push("/Login/");
     }
 
     return (

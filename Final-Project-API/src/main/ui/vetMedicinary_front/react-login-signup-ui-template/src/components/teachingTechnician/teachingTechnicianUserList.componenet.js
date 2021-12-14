@@ -8,7 +8,7 @@ const User_REST_API_URL = 'http://localhost:8080/studentlist';
 
 const TeachingTechnicianStudentList = () => {
 
-    // const history = useHistory();
+    const history = useHistory();
     const[myArray, setMyArray] = React.useState([]);
     const[ID1, setID1] = React.useState();
     const[ID2, setID2] = React.useState();
@@ -18,7 +18,7 @@ const TeachingTechnicianStudentList = () => {
 
     function handleLogout() {
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
     // const statusText = useRef();
 

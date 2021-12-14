@@ -6,11 +6,11 @@ const User_REST_API_URL = 'http://localhost:8080/reqAnimalList';
 
 const CareAttendanceRequestList = () => {
     
-    // const history = useHistory();
+    const history = useHistory();
 
     function handleLogout (){
         localStorage.clear();
-        // history.push("/Login");
+        history.push("/Login");
     }
     
     const FName=localStorage.getItem('FName');
@@ -48,9 +48,9 @@ React.useEffect(() => {
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal List</Link>
                                     </li>
-                                    <li className="nav-item">
+                                    {/* <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAlertAnimal"}>Alerts</Link>
-                                    </li>
+                                    </li> */}
                                     <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
