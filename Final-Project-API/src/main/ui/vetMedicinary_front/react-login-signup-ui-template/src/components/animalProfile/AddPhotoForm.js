@@ -22,6 +22,18 @@ import React, { useEffect, useState, useRef } from "react";
         swal(error, "", "error");
     }
     else {
+    
+    const newHistory = {
+        measurement : "Photo",
+        value : 0,
+        userId : id,
+        vaccination : "N",
+    };
+
+    console.log(newHistory);
+        
+    axios.post('http://localhost:8080/animal/addHistory/' + id, newHistory )
+        .then();
 
 
     const newPhoto = { fileName: addFileName, type: addType};
