@@ -8,13 +8,19 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AnimalPhoto = (props) => {
     var photo = null;
+    var photo2 = null;
     const[myArray, setMyArray] = React.useState([]);
+    const[myPhotos, setMyPhotos] = React.useState([]);
     const id = props.id;
     const link = "/AnimalAddPhoto/" + id;
 
     React.useEffect(() => {
       AnimalService.getAnimalById(id).then(response => setMyArray(response.data));
     }, []);
+
+    React.useEffect(() => {
+        AnimalService.getAnimalPhotos(id).then(response => setMyPhotos(response.data));
+      }, []);
 
     if (myArray.type == "Cat") {
         photo = photoCat;
@@ -23,6 +29,10 @@ const AnimalPhoto = (props) => {
     } else if (myArray.type == "Horse"){
         photo = photoHorse;
     } 
+
+    photo2 = myPhotos.fileName;
+    console.log(myPhotos.type);
+
   
     // const[count, setCount] = useState(0);
     return(
@@ -33,10 +43,12 @@ const AnimalPhoto = (props) => {
         </figure>
         </div>
         <div class="column">
-        
+            <figure class="image is-128x128">
+                <img src={photo2}/>
+            </figure>
         </div>
         <div class="column is-narrow">
-        <Link to={link} className="btn btn-primary">Add new Animal Picture</Link>
+            <Link to={link} className="btn btn-primary">Add new Animal Picture</Link>
         </div>
         </div>
 

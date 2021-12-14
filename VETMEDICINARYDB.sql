@@ -211,12 +211,12 @@ CREATE TABLE VETMEDICINARYDB.HISTORY_PHOTOS (
   PRIMARY KEY (Image_ID));
   -- FOREIGN KEY (Record_ID) REFERENCES VETMEDICINARYDB.HISTORY (Record_ID));
 
-INSERT INTO VETMEDICINARYDB.HISTORY_PHOTOS (Record_ID, File_Name, Type) 
-VALUES 
-('6', 'Image1', 'jpeg'),
-('7', 'Image2', 'jpeg'),
-('8', 'Image3', 'jpeg'),
-('9', 'Image4', 'png');
+-- INSERT INTO VETMEDICINARYDB.HISTORY_PHOTOS (Record_ID, File_Name, Type) 
+-- VALUES 
+-- ('6', 'Image1', 'jpeg'),
+-- ('7', 'Image2', 'jpeg'),
+-- ('8', 'Image3', 'jpeg'),
+-- ('9', 'Image4', 'png');
 
 /*---------------------HISTORY_COMMENTS--------------------------*/
 DROP TABLE IF EXISTS VETMEDICINARYDB.HISTORY_COMMENTS;

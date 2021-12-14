@@ -48,9 +48,23 @@ public class AnimalProfilesController {
     }
 
     //Animal Pictures
+//    @GetMapping("/animal/photos/{animalID}")
+//    public ArrayList<AnimalHistoryPhotos> getAnimalPhotos(@PathVariable("animalID") int animalId) throws SQLException {
+//        Animal myAnimal = myDatabase.findAnimal(animalId);
+//        ArrayList<AnimalHistoryPhotos> allPhotos = new ArrayList<AnimalHistoryPhotos>();
+//        for (AnimalHistory h: myAnimal.getAnimalHistory()) {
+//            ArrayList<AnimalHistoryPhotos> myPhotos = h.getAnimalHistoryPhotos();
+//            for (AnimalHistoryPhotos c: myPhotos) {
+//                allPhotos.add(c);
+//            }
+//        }
+//        return allPhotos;
+//    }
+
     @GetMapping("/animal/photos/{animalID}")
-    public ArrayList<AnimalHistoryPhotos> getAnimalPhotos(@PathVariable("animalID") int animalId) throws SQLException {
+    public AnimalHistoryPhotos getAnimalPhotos(@PathVariable("animalID") int animalId) throws SQLException {
         Animal myAnimal = myDatabase.findAnimal(animalId);
+        int size = 0;
         ArrayList<AnimalHistoryPhotos> allPhotos = new ArrayList<AnimalHistoryPhotos>();
         for (AnimalHistory h: myAnimal.getAnimalHistory()) {
             ArrayList<AnimalHistoryPhotos> myPhotos = h.getAnimalHistoryPhotos();
@@ -58,8 +72,17 @@ public class AnimalProfilesController {
                 allPhotos.add(c);
             }
         }
-        return allPhotos;
+        if (allPhotos.size() == 0) {
+            size = 0;
+            return null;
+        } else {
+            size = allPhotos.size() - 1;
+        }
+
+        AnimalHistoryPhotos myPhoto = allPhotos.get(size);
+        return myPhoto;
     }
+
 
     //Animal Problems
     @GetMapping("/animal/problems/{animalID}")
