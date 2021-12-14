@@ -43,5 +43,3 @@ Pass: 1250
 Student
 User: 9
 Password: 3020
-
-Link for demo -> https://www.youtube.com/watch?v=dHw2cCh95PE
