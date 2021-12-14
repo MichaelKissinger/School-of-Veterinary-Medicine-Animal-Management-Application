@@ -50,7 +50,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
@@ -81,7 +81,7 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
        
        {/* <div className="auth-wrapper">
        <div className="auth-inner"> */}
