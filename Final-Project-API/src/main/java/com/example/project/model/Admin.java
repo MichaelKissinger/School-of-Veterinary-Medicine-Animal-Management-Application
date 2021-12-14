@@ -2,6 +2,7 @@ package com.example.project.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -104,6 +105,23 @@ public class Admin {
             users.add(new User(Integer.parseInt(a[0]), Integer.parseInt(a[1]))); // it creates a user object for each user id, password that exist on the database
         }
         scanner.close();
+    }
+
+    public User getOneUserInfo(int userID) throws SQLException {
+        String user = userDB.getOneUserInfo(userID);
+        Scanner scanner = new Scanner(user);
+        String userPass = scanner.nextLine();
+        String[] a = userPass.split(" ");
+        scanner.close();
+//        System.out.println(Arrays.toString(a));
+//        return null;
+        return (new User(Integer.parseInt(a[0]), Integer.parseInt(a[1])));
+    }
+
+    public void updateUserStatus(String userID, String fName, String lName, String email, String phone, String birthD) throws SQLException {
+        userDB.updateUser(userID, fName, lName,email, phone, birthD);
+        users.clear();
+        addUser();
     }
 
 

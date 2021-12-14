@@ -16,21 +16,23 @@ const AdministratorAccess = () => {
     }
 
     const[myArray, setMyArray] = React.useState([]);
-    const[ID, setID] = React.useState();
-    const[changeStatus, setChangeStatus] = React.useState();
+    const[ID, setID] = React.useState('');
+    const[changeStatus, setChangeStatus] = React.useState('Blocked');
     const FName=localStorage.getItem('FName');
     const LName=localStorage.getItem('LName');
     const[name, setName] = React.useState('')
     const[searchId, setSearchId] = React.useState('');
-
+    
     React.useEffect(() => {
         axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
     function blockUser(id) {
-        setChangeStatus("Blocked");
+        
+        // setChangeStatus("Blocked");
         setID(id);
         const status = { Status: changeStatus };
+        console.log(status);
         console.log(ID);
         axios.put('http://localhost:8080/blockUsers/' + ID, status)
             .then();
@@ -133,7 +135,9 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
                                                 <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                                <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockUser(myArray.username)} ></button></th>
+                                                <td scope="col"><button className="fa fa-times" href="#" type="submit" onClick={()=> blockUser(myArray.username)} ></button></td>
+                                                <td><Link to={"/AdminEditUser/"+ myArray.username}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
+                                                
 
                                             </tr>)
                                     }
