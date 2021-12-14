@@ -120,6 +120,7 @@ const AdministratorAccess = () => {
                             <table className="table table-responsive table-hover table-striped">
                                 <thead>
                                     <tr>
+                                    <th scope="col">User ID</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Phone Number</th>
@@ -137,6 +138,7 @@ const AdministratorAccess = () => {
                                     {
                                         myArray.map(myArray =>
                                             <tr key={myArray.userID}>
+                                                <td>{myArray.username}</td>
                                                 <td>{myArray.fname}</td>
                                                 <td>{myArray.lname}</td>
                                                 <td>{myArray.phoneNumber}</td>

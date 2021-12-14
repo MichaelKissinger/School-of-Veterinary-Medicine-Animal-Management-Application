@@ -40,14 +40,15 @@ const AnimalCareAttendanceAnimalSearch = () => {
         axios.post('http://localhost:8080/searchAnimal', sendData).then(response => setMyArray(response.data));
     }
 
-    function statusInput(id) {
+    function statusInput(e, id) {
+    e.preventDefault();
     setChangeStatus("Requested");
     setID(id);
     const status = {Status : changeStatus};
     console.log(status);
     axios.put('http://localhost:8080/animal/updateStatus/'+ID, status)
           .then();
-    window.location.reload(false);
+
   }
         return (
             <form>
@@ -137,7 +138,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                                   <td>{myArray.tattoo}</td>
                                                   <td>{myArray.userID}</td>
                                                   <td>
-                                                      <button className="btn btn-danger"  href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-ambulance"></i></button>
+                                                      <button className="btn btn-danger"  href="#"  onClick={(e) => { statusInput(e, myArray.animalId); }}><i className="fa fa-ambulance"></i></button>
                                                   </td>
                                                   <td>
                                                       <Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-primary" type="submit">Go</button></Link>

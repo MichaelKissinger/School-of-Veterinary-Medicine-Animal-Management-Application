@@ -10,18 +10,7 @@ import java.sql.*;
  */
 public class UserDB {
 
-    private Connection connection;
-
-    public void createConnection() {
-        try {
-            // You will have to enter your own SQL password below to make this work
-
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
 
     ResultSet rs; // build an object of resultSet to store the result of the query
 
@@ -37,7 +26,6 @@ public class UserDB {
      * @return
      */
     public int validateUser(int username, int pass) throws SQLException {
-        createConnection();
         int flag = -1;
         try {
 
@@ -52,7 +40,6 @@ public class UserDB {
             else
                 flag = 0;
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +57,6 @@ public class UserDB {
      * @return
      */
     public String getUserInfo(int username, int pass, String column) throws SQLException {
-        createConnection();
         StringBuffer userInformation = new StringBuffer();
 
         try {
@@ -84,7 +70,6 @@ public class UserDB {
             if (rs.next())
                 userInformation.append(rs.getString(column));
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +78,6 @@ public class UserDB {
     }
 
     public String getOneUserInfo(int username) throws SQLException {
-        createConnection();
         StringBuffer userInformation = new StringBuffer();
 
         try {
@@ -110,7 +94,6 @@ public class UserDB {
 
             userInformation.append(rs.getString("Password"));
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,7 +108,6 @@ public class UserDB {
      * @return permissionType
      */
     public String getPermissionType(int username) throws SQLException {
-        createConnection();
         String permissionType = "";
 
         try {
@@ -141,7 +123,6 @@ public class UserDB {
                 }
             }
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -155,7 +136,6 @@ public class UserDB {
      * @return
      */
     public String adminAccessGetUser() throws SQLException {
-        createConnection();
         StringBuffer result = new StringBuffer();
         try {
             Statement myStmt = connection.createStatement();
@@ -164,7 +144,6 @@ public class UserDB {
             while (rs.next())
                 result.append(rs.getString("userID") + " " + rs.getString("Password") + "\n");
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -178,7 +157,6 @@ public class UserDB {
      * @return
      */
     public String adminAccessGetAnimal() throws SQLException {
-        createConnection();
         StringBuffer result_animal = new StringBuffer();
         try {
             Statement myStmt = connection.createStatement();
@@ -187,7 +165,6 @@ public class UserDB {
             while (rs.next())
                 result_animal.append(rs.getString("Animal_ID") + "\n");
 
-            connection.close();
             myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
@@ -204,14 +181,12 @@ public class UserDB {
      * @param update
      */
     public void updateUserInfo(String username, String pass, String column, String update) throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username
                     + " AND Password = " + pass + ";");
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -226,12 +201,10 @@ public class UserDB {
      * @param pass
      */
     public void removeUser(String pass) throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Removed" + " \" WHERE Password = " + pass + ";");
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -239,12 +212,10 @@ public class UserDB {
     }
 
     public void blockUser(String pass) throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -253,7 +224,6 @@ public class UserDB {
 
     public void updateUser(String userID, String fName, String lName, String email, String phone, String birthD)
             throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
 
@@ -261,7 +231,6 @@ public class UserDB {
             myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
 
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -286,7 +255,6 @@ public class UserDB {
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
                             String sex, String dateB, String activationDate, String permission) throws SQLException {
-        createConnection();
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
         preparedStmt.setString(1, status);
@@ -360,7 +328,6 @@ public class UserDB {
             preparedStatement.close();
         }
 //
-        connection.close();
         preparedStmt.close();
     }
 
@@ -370,14 +337,12 @@ public class UserDB {
      * @param id
      */
     public void updateAnimalStatusToRequested(int id) throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate(
                     "UPDATE ANIMAL SET " + "Status = \"" + "Requested" + " \" WHERE Animal_ID = " + id + ";");
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -391,13 +356,11 @@ public class UserDB {
      * @param status
      */
     public void changeAnimalStatus(int id, String status) throws SQLException {
-        createConnection();
         try {
             Statement myStmt = connection.createStatement();
 
             myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");
 
-            connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
