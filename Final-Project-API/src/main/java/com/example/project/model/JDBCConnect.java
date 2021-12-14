@@ -223,7 +223,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
     public void addAnimalPrescription(String drugName, String deliveryMethod,
@@ -243,7 +243,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
     public void addAnimalHistory(String date, String measurement,
@@ -260,7 +260,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
     public void addAnimalPhoto(int recordId, String fileName, String type) throws SQLException {
@@ -272,7 +272,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
     public void addAnimalComment(int recordId, String description) throws SQLException {
@@ -283,7 +283,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
     public void addAnimal(String status, String tattoo,
@@ -303,7 +303,7 @@ public class JDBCConnect {
 
         // execute the prepared statement
         preparedStmt.execute();
-        dbConnect.close();
+//        dbConnect.close();
     }
 
 }
