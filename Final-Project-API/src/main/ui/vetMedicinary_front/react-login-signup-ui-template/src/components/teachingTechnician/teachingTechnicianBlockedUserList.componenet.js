@@ -41,26 +41,26 @@ const TeachingTechnicianBlockedUserList = () => {
                                 <span><strong>{FName}  {LName}</strong></span>
                             </h6>
 
-                            <ul className="nav flex-column mb-2">                                <li className="nav-item">
-                                <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
+                            <ul style={{marginTop: 30}} className="nav flex-column mb-2">                                <li className="nav-item">
+                                <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
                             </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked Student List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked Student List</Link>
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                 </li>
                             </ul>
                             <button
                                     onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                         </div>
                     </nav>
 
@@ -79,7 +79,7 @@ const TeachingTechnicianBlockedUserList = () => {
                                 </table>
                             </div>
                         </div>
-                        <h2>Blocked Students</h2>
+                        <h1 style={{marginTop: 20,marginBottom: 20,fontSize:20}}><strong>Blocked Students</strong></h1>
                         <div className="table-responsive">
                             <table className="table table-responsive table-hover table-striped">
                                 <thead>

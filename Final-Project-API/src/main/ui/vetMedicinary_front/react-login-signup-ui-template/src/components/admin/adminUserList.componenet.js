@@ -68,23 +68,23 @@ const AdministratorAccess = () => {
                             <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                 <span><strong>{FName}  {LName}</strong></span>
                             </h6>
-                            <ul className="nav flex-column mb-2">
+                            <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
+                                    <Link style={{color: "black"}} className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/AdminUserList"}>User List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                 </li>
                             </ul>
                             <button
                                 onClick={handleLogout}
-                                style={{ marginLeft: 50 }} type="submit" className="btn btn-outline-primary">Logout</button>
+                                style={{ marginLeft: 50 }} type="submit" className="btn btn-secondary">Logout</button>
                         </div>
                     </nav>
 
@@ -98,13 +98,13 @@ const AdministratorAccess = () => {
                                         <tr>
                                             <td><input className="form-control mr-sm-2" type="search" placeholder="User ID" onChange={e => setSearchId(e.target.value)}/> </td>
                                             <td><input className="form-control mr-sm-2" type="search" placeholder="First/Last Name" onChange={e => setName(e.target.value)}/></td>
-                                            <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
+                                            <td><button className="btn btn-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <h2>Users</h2>
+                        <h1 style={{marginTop: 20,marginBottom: 20,fontSize:20}}><strong>Users</strong></h1>
                         <div className="table-responsive">
                             <table className="table table-responsive table-hover table-striped">
                                 <thead>
@@ -134,11 +134,8 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.sex}</td>
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
-                                                <th scope="col"><a className="fa fa-edit" href="#"></a></th>
-                                                <td scope="col"><button className="fa fa-times" href="#" type="submit" onClick={()=> blockUser(myArray.username)} ></button></td>
-                                                <td><Link to={"/AdminEditUser/"+ myArray.username}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
-                                                
-
+                                                <td><Link to={"/AdminEditUser/"+ myArray.username}> <button className="btn btn-primary" type="submit"><i className="fa fa-edit"></i></button></Link></td>
+                                                <td scope="col"><button className="btn btn-danger"  href="#" type="submit" onClick={()=> blockUser(myArray.username)} ><i className="fa fa-times"></i></button></td>
                                             </tr>)
                                     }
                                 </tbody>
@@ -146,7 +143,7 @@ const AdministratorAccess = () => {
 
                         </div>
                         <br />
-                        <Link to={"/adminAddUser"}> <button className="btn btn-outline-primary" type="submit">Add User</button></Link>
+                        <Link to={"/adminAddUser"}> <button className="btn btn-primary" type="submit">Add User</button></Link>
                     </main>
                 </div>
             </div>
