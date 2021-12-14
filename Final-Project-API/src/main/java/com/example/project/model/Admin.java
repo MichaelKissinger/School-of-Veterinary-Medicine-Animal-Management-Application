@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Admin class has full access to users and animals. It can add users, edit users, block users, monitor an animal's status, and review comments.
  *
- * @author Arman Hosseinsarraf, Behnaz Sheikhi
+ * @author Behnaz Sheikhi
  */
 
 public class Admin {

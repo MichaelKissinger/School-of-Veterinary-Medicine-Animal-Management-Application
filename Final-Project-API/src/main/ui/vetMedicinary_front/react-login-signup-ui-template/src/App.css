@@ -47,7 +47,7 @@
 .login{
    overflow-y: hidden;
    overflow-x: hidden;
-   max-width: 1600px;
+   /* max-width: 1600px; */
    direction: ltr;
    height: 100%;
 }

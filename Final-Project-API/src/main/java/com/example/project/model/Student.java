@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 /**
  * Student class is designed to let a student search and view animal profiles and make comments on animal profiles.
- * @author Behnaz Sheikhi
+ * @author Arman Hosseinsarraf
  */
 
 public class Student {
