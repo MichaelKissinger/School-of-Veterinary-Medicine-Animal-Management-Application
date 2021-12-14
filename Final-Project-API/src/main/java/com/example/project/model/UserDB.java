@@ -15,7 +15,7 @@ public class UserDB {
     public void createConnection() {
         try {
             // You will have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -42,17 +42,20 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-                                                                                                                // from
-                                                                                                                // DB
+            // from
+            // DB
 
             if (rs.next())
                 flag = 1;
             else
                 flag = 0;
 
+            connection.close();
+            myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return flag;
     }
 
@@ -73,12 +76,40 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             rs = myStmt.executeQuery(
                     "SELECT * FROM USER WHERE Password = \"" + pass + "\" AND UserID = \"" + username + "\";"); // query
-                                                                                                                // from
-                                                                                                                // DB
+            // from
+            // DB
 
             if (rs.next())
                 userInformation.append(rs.getString(column));
 
+            connection.close();
+            myStmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userInformation.toString();
+    }
+
+    public String getOneUserInfo(int username) throws SQLException {
+        createConnection();
+        StringBuffer userInformation = new StringBuffer();
+
+        try {
+
+            Statement myStmt = connection.createStatement();
+            rs = myStmt.executeQuery(
+                    "SELECT * FROM USER WHERE UserID = \"" + username + "\";"); // query
+            // from
+            // DB
+            if (rs.next())
+
+                userInformation.append(rs.getString("UserID"));
+            userInformation.append(" ");
+
+            userInformation.append(rs.getString("Password"));
+
+            connection.close();
+            myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -97,8 +128,8 @@ public class UserDB {
 
         try {
             Statement myStmt = connection.createStatement();
-            String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
-                    "STUDENT" };
+            String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
+                    "STUDENT"};
             for (String permission : permissionList) {
                 rs = myStmt.executeQuery("SELECT * FROM " + permission + " WHERE UserID = \"" + username + "\";");
                 if (rs.next()) {
@@ -108,6 +139,8 @@ public class UserDB {
                 }
             }
 
+            connection.close();
+            myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -129,6 +162,8 @@ public class UserDB {
             while (rs.next())
                 result.append(rs.getString("userID") + " " + rs.getString("Password") + "\n");
 
+            connection.close();
+            myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -150,6 +185,8 @@ public class UserDB {
             while (rs.next())
                 result_animal.append(rs.getString("Animal_ID") + "\n");
 
+            connection.close();
+            myStmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -172,6 +209,8 @@ public class UserDB {
             myStmt.executeUpdate("UPDATE USER SET " + column + " = \"" + update + " \" WHERE UserID = " + username
                     + " AND Password = " + pass + ";");
 
+            connection.close();
+            myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -190,6 +229,8 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Removed" + " \" WHERE Password = " + pass + ";");
 
+            connection.close();
+            myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -201,6 +242,21 @@ public class UserDB {
             Statement myStmt = connection.createStatement();
             myStmt.executeUpdate("UPDATE USER SET " + "Status = \"" + "Blocked" + " \" WHERE Password = " + pass + ";");
 
+            connection.close();
+            myStmt.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public void updateUser(String userID, String fName, String lName, String email, String phone, String birthD) throws SQLException {
+        createConnection();
+        try {
+            Statement myStmt = connection.createStatement();
+            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName +"\" , Phone = \"" + phone +"\" , Email = \"" + email +"\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
+//+ "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email + "\" Date_B= \"" + birthD
+            connection.close();
+            myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -223,7 +279,7 @@ public class UserDB {
      * @throws SQLException
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
-            String sex, String dateB, String activationDate, String permission) throws SQLException {
+                            String sex, String dateB, String activationDate, String permission) throws SQLException {
         createConnection();
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
@@ -240,6 +296,7 @@ public class UserDB {
         // execute the preparedstatement
         preparedStmt.execute();
         connection.close();
+        preparedStmt.close();
     }
 
     /**
@@ -255,6 +312,8 @@ public class UserDB {
             myStmt.executeUpdate(
                     "UPDATE ANIMAL SET " + "Status = \"" + "Requested" + " \" WHERE Animal_ID = " + id + ";");
 
+            connection.close();
+            myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -273,6 +332,8 @@ public class UserDB {
 
             myStmt.executeUpdate("UPDATE ANIMAL SET " + "Status = \"" + status + " \" WHERE Animal_ID = " + id + ";");
 
+            connection.close();
+            myStmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

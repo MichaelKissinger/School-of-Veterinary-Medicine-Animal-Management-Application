@@ -82,13 +82,12 @@ public class InformationController {
     }
 
 
-
     @PutMapping(
             value = "/blockUsers/{UserID}",
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<HashMap> updateStatus(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        Admin admin = new Admin(new User(1,3333), userDB);
+        Admin admin = new Admin(new User(1, 3333), userDB);
         admin.blockUser(userId);
         return null;
     }
@@ -147,6 +146,43 @@ public class InformationController {
         return users;
     }
 
+//    @GetMapping("/getUserInfo")
+//    public String getUserInfo() throws SQLException {
+//        Admin admin = new Admin(new User(1, 3333), userDB);
+//        return "Hello";
+//    }
+
+    @PutMapping(
+            value = "/getUserInfo/{UserID}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public User getUserInfo(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        Admin admin = new Admin(new User(1, 3333), userDB);
+        return admin.getOneUserInfo(userId);
+    }
+
+    @PutMapping(
+            value = "/updateUserInfo/{UserID}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public boolean updateUserInfo(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
+        System.out.println(userId);
+        System.out.println(animalStatus.get("FName_edit"));
+        System.out.println(animalStatus.get("LName_edit"));
+        System.out.println(animalStatus.get("email_edit"));
+        System.out.println(animalStatus.get("phoneNumber_edit"));
+        System.out.println(animalStatus.get("birthdate_edit"));
+
+        String userID = String.valueOf(userId);
+        String fName = animalStatus.get("FName_edit");
+        String lName = animalStatus.get("LName_edit");
+        String phone = animalStatus.get("phoneNumber_edit");
+        String birthD = animalStatus.get("birthdate_edit");
+        String email = animalStatus.get("email_edit");
+        Admin admin = new Admin(new User(1, 3333), userDB);
+        admin.updateUserStatus(userID, fName, lName, email, phone, birthD);
+        return true;
+    }
 
 //    @RequestMapping(("/admin"))
 //    public String display() {
@@ -222,6 +258,25 @@ public class InformationController {
         admin.addNewUser("Active", password, LName, FName, phoneNumber, email, gender, birthday, activatedate,
                 permission);
         return true;
+    }
+
+    @RequestMapping("/editUser")
+    public Boolean editUser(@RequestBody HashMap<String, String> userInfo) throws SQLException {
+
+        String FName = userInfo.get("FName");
+        String LName = userInfo.get("LName");
+        String email = userInfo.get("email");
+        String phoneNumber = userInfo.get("phoneNumber");
+        String permission = userInfo.get("permission");
+        String activatedate = userInfo.get("activatedate");
+        String password = userInfo.get("password");
+        String birthday = userInfo.get("birthday");
+        String gender = userInfo.get("gender");
+
+//
+        System.out.println(FName + LName + email);
+        return true;
+
     }
 
     // @RequestMapping(("/admin"))

@@ -21,6 +21,7 @@ import AdminBlockedUserList from './components/admin/adminBlockedUserList.compon
 import AdminAddUser from './components/admin/adminAddUser.componenet';
 import AdminProfile from './components/admin/adminProfile.componenet';
 import AdminAddAnimal from './components/admin/adminAddAnimal.component';
+import AdminEditUser from './components/admin/adminEditUser.component';
 
 // Animal Health Technician
 import AnimalHealthTechnicianAnimalSearch from './components/animalHealthTechnician/animalHealthTechnicianAnimalSearch.componenet';
@@ -126,6 +127,8 @@ function App() {
           <Route path="/AdminAddUser" component={AdminAddUser} />
           <Route path="/AdminProfile" component={AdminProfile} />
           <Route path="/AdminAddAnimal" component={AdminAddAnimal} />
+          <Route path="/AdminEditUser/:id" component={AdminEditUser} />
+
           {/* Animal Health Technician */}
           <Route path="/AnimalHealthTechnicianAnimalSearch" component={AnimalHealthTechnicianAnimalSearch} />
           <Route path="/AnimalHealthTechnicianProfile" component={AnimalHealthTechnicianProfile} />
