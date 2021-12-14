@@ -4,11 +4,13 @@ import AnimalService from "../../service/AnimalService";
 import photoCat from "../../image/cat1.jpg";
 import photoDog from "../../image/dog1.jpg";
 import photoHorse from "../../image/horse1.jpg";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const AnimalPhoto = (props) => {
     var photo = null;
     const[myArray, setMyArray] = React.useState([]);
     const id = props.id;
+    const link = "/AnimalAddPhoto/" + id;
 
     React.useEffect(() => {
       AnimalService.getAnimalById(id).then(response => setMyArray(response.data));
@@ -34,7 +36,7 @@ const AnimalPhoto = (props) => {
         
         </div>
         <div class="column is-narrow">
-          <button class="button is-dark">Add new Animal Picture</button>  
+        <Link to={link} className="btn btn-primary">Add new Animal Picture</Link>
         </div>
         </div>
 

@@ -16,7 +16,9 @@ public class JDBCConnect {
     public void createConnection() {
         try {
             // You may have to enter your own SQL password below to make this work
+
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -261,10 +263,10 @@ public class JDBCConnect {
         dbConnect.close();
     }
 
-    public void addAnimalPhoto(String recordId, String fileName, String type) throws SQLException {
+    public void addAnimalPhoto(int recordId, String fileName, String type) throws SQLException {
         String query = "INSERT INTO HISTORY_PHOTOS (Record_ID, File_Name, Type) values (?, ?, ?)";
         PreparedStatement preparedStmt = dbConnect.prepareStatement(query);
-        preparedStmt.setInt(1, Integer.parseInt(recordId));
+        preparedStmt.setInt(1, recordId);
         preparedStmt.setString(2, fileName);
         preparedStmt.setString(3, type);
 
