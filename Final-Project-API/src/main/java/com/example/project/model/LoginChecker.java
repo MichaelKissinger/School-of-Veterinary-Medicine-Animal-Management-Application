@@ -34,14 +34,6 @@ public class LoginChecker {
      * @return true if user is in database and false if the information is not in
      *         database
      */
-    // behnaz comment
-    // public boolean checkUsernamePassword() {
-    // flag = userDB.validateUser(username, password);
-    // if (flag == 1)
-    // return true;
-    // else
-    // return false;
-    // }
 
     public User checkUsernamePassword() throws SQLException {
         flag = userDB.validateUser(username, password);
