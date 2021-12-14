@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * API for check the username and password input by user with the backend and database
+ * @author Behnaz Sheikhi, Arman Hosseinsarraf
+ */
 @CrossOrigin
 @RestController
 public class LoginController {
 
-    private String userName;
-    // private int response;
-    private int pass;
 
     @RequestMapping("/login")
     public HashMap<String, String> authentication(@RequestBody HashMap<String, Integer> userInfo) throws SQLException {
@@ -44,10 +45,3 @@ public class LoginController {
         }
     }
 }
-
-// String phoneNumber;
-// String email;
-// String sex;
-// String birthDate;
-// String activationDate;
-// String permission;
