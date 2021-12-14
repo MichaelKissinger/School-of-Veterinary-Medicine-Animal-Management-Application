@@ -112,23 +112,23 @@ export default class AdministratorAccess extends Component {
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                     <span><strong>{this.state.FName}  {this.state.LName}</strong></span>
                                 </h6>
-                                <ul className="nav flex-column mb-2">
+                                <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminUserList"}>User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
                                 <button
                                     onClick={this.handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                             </div>
                         </nav>
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">

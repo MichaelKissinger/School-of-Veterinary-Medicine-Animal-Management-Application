@@ -10,7 +10,7 @@ import "bulma/css/bulma.css"
 import AnimalName from "./AnimalName"
 import AnimalStatus from "./AnimalStatus";
 import axios from "axios";
-import AddProblemForm from "./AddProblemForm";
+import AddPhotoForm from "./AddPhotoForm";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 

@@ -10,6 +10,7 @@ import AnimalAddProblem from './components/animalProfile/AnimalAddProblems';
 import AnimalAddHistory from './components/animalProfile/AnimalAddHistory';
 import AnimalAddPrescription from './components/animalProfile/AnimalAddPrescription';
 import AnimalRestrictedProfile from './components/animalRestrictedProfile/animalProfile.component';
+import AnimalAddPhoto from './components/animalProfile/AnimalAddPhoto';
 
 import SearchAnimal from './components/searchAnimal.componenet';
 import AnimalService from './service/AnimalService';
@@ -106,14 +107,13 @@ function App() {
           {/* <Route path="/SearchMain" component={SearchMain} /> */}
           <Route path="/SearchAnimal" component={SearchAnimal} />
 
-
           {/* Animal Profile */}
           <Route path="/AnimalProfile/:id" component={AnimalProfile} />
           <Route path="/AnimalProblems/:id" component={AnimalAddProblem} />
           <Route path="/AnimalPrescriptions/:id" component={AnimalAddPrescription} />
           <Route path="/AnimalHistory/:id" component={AnimalAddHistory} />
           <Route path="/AnimalRestrictedProfile/:id" component={AnimalRestrictedProfile} />
-          
+          <Route path="/AnimalAddPhoto/:id" component={AnimalAddPhoto} />
 
           {/* <Route path="/AdministratorAccess" component={AdministratorAccess} />
             <Route path="/TeachingTechnician" component={TeachingTechnician} />

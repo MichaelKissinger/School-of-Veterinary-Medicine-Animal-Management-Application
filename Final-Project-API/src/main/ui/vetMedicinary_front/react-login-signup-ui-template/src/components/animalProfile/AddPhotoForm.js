@@ -36,7 +36,7 @@ import React, { useEffect, useState, useRef } from "react";
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             </div>
-                            <h3 class="title is-3">Add Animal Problem</h3>
+                            <h3 class="title is-3">Add Animal Photo</h3>
                             <div class="col-md-8 order-md-1">
                                 <div class="field">
                                     <label class="label">File Name</label>
@@ -51,10 +51,8 @@ import React, { useEffect, useState, useRef } from "react";
                                         <input class="input" type="text" placeholder="enter photo type" onChange={e => setAddType(e.target.value)}/>
                                     </div>
                                     </div>
-                 
-                                {/* <button type="submit" className="btn btn-primary btn-block" onClick={problemInput}>Add Animal Problem</button> */}
                                 <a class="button is-info" onClick={photoInput}>
-                                    Add Animal Problem
+                                    Add Animal Photo
                                 </a>
                             </div>
                         </main>

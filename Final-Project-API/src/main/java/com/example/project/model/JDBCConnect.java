@@ -17,6 +17,7 @@ public class JDBCConnect {
         try {
             // You may have to enter your own SQL password below to make this work
             dbConnect = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "Katana123!");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
