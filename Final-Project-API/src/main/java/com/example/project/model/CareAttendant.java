@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * Care Attendant is designed to take photos of animals and upload them, request treatment from technicians, change animals’ status, update daily status and treatment, and alert disease and problems (location).
- * @author Arman Hosseinsarraf
+ * @author Behnaz Sheikhi
  */
 public class CareAttendant {
     ArrayList<Animal> animals;
@@ -35,7 +35,6 @@ public class CareAttendant {
         for (Animal animal:animalDatabase.getAnimals()){
             if (animal.getStatus().contains("Requested"))
                 requestedAnimals.add(animal);
-            System.out.println(21334234);
         }
         return requestedAnimals;
     }

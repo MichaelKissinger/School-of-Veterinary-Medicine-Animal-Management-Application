@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Animal Database is used to load all animals from
  * the SQL database.
  *
- * @author Michael Kissinger
+ * @author Michael Kissinger, Arman Hosseinsarraf
  */
 public class AnimalDatabase {
     private ArrayList<Animal> animalDatabase;

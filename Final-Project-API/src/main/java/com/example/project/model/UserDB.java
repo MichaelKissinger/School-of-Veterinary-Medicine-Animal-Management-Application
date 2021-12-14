@@ -6,7 +6,7 @@ import java.sql.*;
  * UserDB class is the bridge between backend and database. It has all required
  * functionalities to get information from DB and write information to DB
  *
- * @author Arman Hosseinsarraf
+ * @author Arman Hosseinsarraf, Behnaz Sheikhi
  */
 public class UserDB {
 
