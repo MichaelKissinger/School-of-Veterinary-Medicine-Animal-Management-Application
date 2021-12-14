@@ -27,17 +27,29 @@ const AdministratorAccess = () => {
         axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
-    function blockUser(id) {
-        
-        // setChangeStatus("Blocked");
-        setID(id);
+    // function blockUser(e, id) {
+    //     // setChangeStatus("Blocked");
+    //     e.preventDefault();
+    //     setID(id);
+    //     const status = { Status: changeStatus };
+    //     console.log(status);
+    //     console.log(ID);
+    //     axios.put('http://localhost:8080/blockUsers/' + ID, status)
+    //         .then();
+    //     window.location.reload(false);
+    // }
+ function blockUser(e, userID) {
+        setChangeStatus("Blocked");
+        setID(userID);
+        e.preventDefault();
         const status = { Status: changeStatus };
         console.log(status);
-        console.log(ID);
+        console.log(userID);
         axios.put('http://localhost:8080/blockUsers/' + ID, status)
             .then();
-        window.location.reload(false);
+        // window.location.reload(false);
     }
+    
 
     function handleSubmit(event){
         event.preventDefault();
@@ -135,7 +147,8 @@ const AdministratorAccess = () => {
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
                                                 <td><Link to={"/AdminEditUser/"+ myArray.username}> <button className="btn btn-primary" type="submit"><i className="fa fa-edit"></i></button></Link></td>
-                                                <td scope="col"><button className="btn btn-danger"  href="#" type="submit" onClick={()=> blockUser(myArray.username)} ><i className="fa fa-times"></i></button></td>
+                                                {/* <td scope="col"><button className="btn btn-danger"  href="#" type="submit" onClick={() => blockUser(myArray.username)} ><i className="fa fa-times"></i></button></td> */}
+                                                <td scope="col"><a className="btn btn-danger"  href="#" type="submit" onClick={(e) => {blockUser(e, myArray.username);}} ><i className="fa fa-times"></i></a></td>
                                             </tr>)
                                     }
                                 </tbody>
