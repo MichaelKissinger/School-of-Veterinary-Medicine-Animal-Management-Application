@@ -128,8 +128,8 @@ public class UserDB {
 
         try {
             Statement myStmt = connection.createStatement();
-            String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
-                    "STUDENT" };
+            String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
+                    "STUDENT"};
             for (String permission : permissionList) {
                 rs = myStmt.executeQuery("SELECT * FROM " + permission + " WHERE UserID = \"" + username + "\";");
                 if (rs.next()) {
@@ -255,6 +255,7 @@ public class UserDB {
         try {
             Statement myStmt = connection.createStatement();
 
+
             myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
 
 
@@ -282,7 +283,7 @@ public class UserDB {
      * @throws SQLException
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
-            String sex, String dateB, String activationDate, String permission) throws SQLException {
+                            String sex, String dateB, String activationDate, String permission) throws SQLException {
         createConnection();
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
