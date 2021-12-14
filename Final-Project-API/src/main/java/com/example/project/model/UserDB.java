@@ -254,16 +254,10 @@ public class UserDB {
         createConnection();
         try {
             Statement myStmt = connection.createStatement();
-<<<<<<< HEAD
+
             myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
-//+ "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email + "\" Date_B= \"" + birthD
-=======
-            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName
-                    + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD
-                    + "\" WHERE UserID = " + userID + ";");
-            // + "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email +
-            // "\" Date_B= \"" + birthD
->>>>>>> main
+
+
             connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
