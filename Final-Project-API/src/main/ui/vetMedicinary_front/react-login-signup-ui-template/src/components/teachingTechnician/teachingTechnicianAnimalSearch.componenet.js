@@ -30,15 +30,16 @@ const TeachingTechnicianAnimalSearch = () => {
       axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
-    function statusInput(id) {
-    setChangeStatus("Requested");
-    setID(id);
-    const status = {Status : changeStatus};
-    console.log(status);
-    axios.put('http://localhost:8080/animal/updateStatus/'+ID, status)
-          .then();
-    window.location.reload(false);
+    function statusInput(e, id) {
+        e.preventDefault();
+        setChangeStatus("Requested");
+        setID(id);
+        const status = { Status: changeStatus };
+        console.log(status);
+        axios.put('http://localhost:8080/animal/updateStatus/' + ID, status)
+            .then();
     }
+
 
     function handleSubmit(event){
         event.preventDefault();
@@ -141,8 +142,10 @@ const TeachingTechnicianAnimalSearch = () => {
                                               <td>{myArray.status}</td>
                                               <td>{myArray.tattoo}</td>
                                               <td>{myArray.userID}</td>
-                                            <td>
-                                                <button className="btn btn-danger" href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-edit"></i></button></td>
+                                              <td>
+                                                    <button className="btn btn-danger" href="#"
+                                                        onClick={(e) => { statusInput(e, myArray.animalId); }}
+                                                    ><i className="fa fa-edit"></i></button></td>
                                             <td><Link to={"/AnimalRestrictedProfile/" + myArray.animalId}> <button className="btn btn-primary" type="submit">Go</button></Link></td>
                                             </tr>)
                                         }
