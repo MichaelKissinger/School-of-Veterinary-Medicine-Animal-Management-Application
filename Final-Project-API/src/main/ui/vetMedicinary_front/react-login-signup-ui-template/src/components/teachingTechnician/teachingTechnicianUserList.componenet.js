@@ -29,7 +29,8 @@ const TeachingTechnicianStudentList = () => {
         axios.get(User_REST_API_URL).then(response => setMyArray(response.data));
     }, []);
 
-    function removeStudent(id) {
+    function removeStudent(e,id) {
+        e.preventDefault();
         setChangeStatus("Removed");
         setID1(id);
         console.log(ID1);
@@ -37,18 +38,17 @@ const TeachingTechnicianStudentList = () => {
         // console.log(status);
         axios.put('http://localhost:8080/removestudent/' + ID1, status)
             .then();
-        window.location.reload(false);
     }
 
-    function blockStudent(id) {
+    function blockStudent(e,id) {
+        e.preventDefault();
         setChangeStatus("Blocked");
         setID2(id);
-        console.log(id);
+        console.log(ID2);
         const status = { Status: changeStatus };
         // console.log(status);
         axios.put('http://localhost:8080/blockstudent/' + ID2, status)
             .then();
-        window.location.reload(false);
     }
 
     function handleSubmit(event){
@@ -149,8 +149,12 @@ const TeachingTechnicianStudentList = () => {
                                                 <td>{myArray.sex}</td>
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
-                                                <th scope="col"><button className="btn btn-warning" href="#" onClick={() => removeStudent(myArray.username)}><i className="fa fa-minus-circle"></i></button></th>
-                                                <th scope="col"><button className="btn btn-danger" href="#" onClick={() => blockStudent(myArray.username)}><i className="fa fa-times"></i></button></th>
+                                                <th scope="col"><button className="btn btn-warning" href="#" 
+                                                onClick={(e) => {removeStudent(e, myArray.username);}}
+                                                ><i className="fa fa-minus-circle"></i></button></th>
+                                                <th scope="col"><button className="btn btn-danger" href="#" 
+                                                onClick={(e) => {blockStudent(e, myArray.username);}}
+                                                ><i className="fa fa-times"></i></button></th>
                                             </tr>)
                                     }
                                 </tbody>
