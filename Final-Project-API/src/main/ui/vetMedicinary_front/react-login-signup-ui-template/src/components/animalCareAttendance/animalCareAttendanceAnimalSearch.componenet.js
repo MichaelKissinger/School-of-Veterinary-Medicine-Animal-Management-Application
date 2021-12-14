@@ -137,7 +137,7 @@ const AnimalCareAttendanceAnimalSearch = () => {
                                                   <td>{myArray.tattoo}</td>
                                                   <td>{myArray.userID}</td>
                                                   <td>
-                                                      <button className="btn btn-outline-danger"  href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-ambulance"></i></button>
+                                                      <button className="btn btn-danger"  href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-ambulance"></i></button>
                                                   </td>
                                                   <td>
                                                       <Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-primary" type="submit">Go</button></Link>
