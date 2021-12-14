@@ -81,27 +81,27 @@ const TeachingTechnicianStudentList = () => {
                                 <span><strong>{FName}  {LName}</strong></span>
                             </h6>
 
-                            <ul className="nav flex-column mb-2">
+                            <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked Student List</Link>
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
+                                    <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                 </li>
                             </ul>
                             <button
                                     onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                         </div>
                     </nav>
 
@@ -114,13 +114,13 @@ const TeachingTechnicianStudentList = () => {
                                         <tr>
                                             <td><input className="form-control mr-sm-2" type="search" placeholder="User ID" onChange={e => setSearchId(e.target.value)}/> </td>
                                             <td><input className="form-control mr-sm-2" type="search" placeholder="First/Last Name" onChange={e => setName(e.target.value)}/></td>
-                                            <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
+                                            <td><button className="btn btn-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <h2>Students</h2>
+                        <h1 style={{marginTop: 20,marginBottom: 20,fontSize:20}}><strong>Students</strong></h1>
                         <div className="table-responsive">
                             <table className="table table-responsive table-hover table-striped">
                                 <thead>
@@ -149,15 +149,15 @@ const TeachingTechnicianStudentList = () => {
                                                 <td>{myArray.sex}</td>
                                                 <td>{myArray.status}</td>
                                                 <td>{myArray.permission}</td>
-                                                <th scope="col"><button className="fa fa-edit" href="#" onClick={() => removeStudent(myArray.username)}></button></th>
-                                                <th scope="col"><button className="fa fa-times" href="#" onClick={() => blockStudent(myArray.username)}></button></th>
+                                                <th scope="col"><button className="btn btn-warning" href="#" onClick={() => removeStudent(myArray.username)}><i className="fa fa-minus-circle"></i></button></th>
+                                                <th scope="col"><button className="btn btn-danger" href="#" onClick={() => blockStudent(myArray.username)}><i className="fa fa-times"></i></button></th>
                                             </tr>)
                                     }
                                 </tbody>
                             </table>
                         </div>
                         <br />
-                        <Link to={"/TeachingTechnicianAddUser"}> <button className="btn btn-outline-primary" type="submit">Add Student</button></Link>
+                        <Link to={"/TeachingTechnicianAddUser"}> <button className="btn btn-primary" type="submit">Add Student</button></Link>
                     </main>
                 </div>
             </div>

@@ -53,23 +53,23 @@ const AdministratorAccess = () => {
                                    <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
 
-                                <ul className="nav flex-column mb-2">
+                                <ul  style={{marginTop: 30}} className="nav flex-column mb-2">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
+                                        <Link style={{color: "black"}} className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminUserList"}>User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
                                 <button
                                     onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                             </div>
                         </nav>
 
@@ -82,13 +82,13 @@ const AdministratorAccess = () => {
                                             <tr>
                                                 <td><input className="form-control mr-sm-2" type="search" placeholder="ID" onChange={e => setID(e.target.value)}/></td>
                                                 <td><input className="form-control mr-sm-2" type="search" placeholder="Name" onChange={e => setName(e.target.value)}/></td>
-                                                <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
+                                                <td><button className="btn btn-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <h2>Animals List</h2>
+                            <h1 style={{marginTop: 20,marginBottom: 20,fontSize:20}}><strong>Animals List</strong></h1>
                             <div className="table-responsive">
                                 <table className="table table-responsive table-striped table-hover">
                                     <thead>
@@ -121,14 +121,14 @@ const AdministratorAccess = () => {
                                                   <td>{myArray.status}</td>
                                                   <td>{myArray.tattoo}</td>
                                                   <td>{myArray.userID}</td>
-                                                  <td><Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
+                                                  <td><Link to={"/AnimalProfile/" + myArray.animalId}> <button className="btn btn-primary" type="submit">Go</button></Link></td>
                                                   </tr>)
                                             }
                                     </tbody>
                                 </table>
                             </div>
                             <br/>
-                            <Link to={"/adminAddAnimal"}> <button className="btn btn-outline-primary" type="submit">Add Animal</button></Link>
+                            <Link to={"/adminAddAnimal"}> <button className="btn btn-primary" type="submit">Add Animal</button></Link>
                         </main>
                     </div>
                 </div>

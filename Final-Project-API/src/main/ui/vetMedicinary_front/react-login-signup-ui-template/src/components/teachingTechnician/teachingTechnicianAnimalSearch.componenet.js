@@ -69,27 +69,27 @@ const TeachingTechnicianAnimalSearch = () => {
                                 <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
 
-                                <ul className="nav flex-column mb-2">
+                                <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                 <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianProfile"}>My Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianUserList"}>Student List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianBlockedUserList"}>Blocked Student List</Link>
                                     </li>
 
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianAnimalSearch"}>Animal List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/TeachingTechnicianRequestedAnimal"}>Requested Animal</Link>
                                     </li>
                                 </ul>
                                 <button
                                     onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                             </div>
                         </nav>
 
@@ -102,13 +102,13 @@ const TeachingTechnicianAnimalSearch = () => {
                                             <tr>
                                             <td><input className="form-control mr-sm-2" type="search" placeholder="ID" onChange={e => setA(e.target.value)}/></td>
                                                 <td><input className="form-control mr-sm-2" type="search" placeholder="Name" onChange={e => setName(e.target.value)}/></td>
-                                                <td><button className="btn btn-outline-primary" type="submit" onClick={handleSubmit}>Search</button></td>
+                                                <td><button className="btn btn-primary" type="submit" onClick={handleSubmit}>Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                            <h2>Animals List</h2>
+                            <h1 style={{marginTop: 20,marginBottom: 20,fontSize:20}}><strong>Animals List</strong></h1>
                             <div className="table-responsive">
                                 <table className="table table-responsive table-striped table-hover">
                                     <thead>
@@ -142,8 +142,8 @@ const TeachingTechnicianAnimalSearch = () => {
                                               <td>{myArray.tattoo}</td>
                                               <td>{myArray.userID}</td>
                                             <td>
-                                                <button className="btn btn-outline-danger" href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-edit"></i></button></td>
-                                            <td><Link to={"/AnimalRestrictedProfile/" + myArray.animalId}> <button className="btn btn-outline-primary" type="submit">Go</button></Link></td>
+                                                <button className="btn btn-danger" href="#" onClick= {() => statusInput(myArray.animalId)}><i className="fa fa-edit"></i></button></td>
+                                            <td><Link to={"/AnimalRestrictedProfile/" + myArray.animalId}> <button className="btn btn-primary" type="submit">Go</button></Link></td>
                                             </tr>)
                                         }
                                     </tbody>
