@@ -86,9 +86,9 @@ export default class Login extends Component {
                     }
                     else{
                             swal("User Not Found!", "", "error")                   
-                            .then(function() {
-                                window.location.reload();
-                            });
+                            // .then(function() {
+                            //     window.location.reload();
+                            // });
                     }
                 })
                 .catch(response => {

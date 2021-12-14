@@ -5,7 +5,7 @@ import java.sql.SQLException;
 /**
  * User class contains all the information that a user in this system has. It gets the username and password and loads all the information related to that user
  *
- * @author Arman Hosseinsarraf
+ * @author Behnaz Sheikhi, Arman Hosseinsarraf
  */
 public class User {
     int username;

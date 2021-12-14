@@ -19,6 +19,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This class is the core of integration between frontend and backend.
+ * IT connects APIs to see user list, animal list, student list, add student, edit, block remove users and request animals.
+ * @author Arman Hosseinsarraf, Behnaz Sheikhi
+ */
 @CrossOrigin
 @RestController
 public class InformationController {

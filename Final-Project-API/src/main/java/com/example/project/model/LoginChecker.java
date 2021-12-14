@@ -6,7 +6,7 @@ import java.sql.SQLException;
  * Login Checker class checks the username and password with the information in
  * the user database to see if that user is authorized
  * 
- * @author Arman Hosseinsarraf
+ * @author Arman Hosseinsarraf, Behnaz Sheikhi
  */
 public class LoginChecker {
     UserDB userDB;

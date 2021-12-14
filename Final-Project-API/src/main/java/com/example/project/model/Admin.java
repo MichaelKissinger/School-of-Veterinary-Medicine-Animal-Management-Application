@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Admin class has full access to users and animals. It can add users, edit users, block users, monitor an animal's status, and review comments.
  *
- * @author Arman Hosseinsarraf
+ * @author Arman Hosseinsarraf, Behnaz Sheikhi
  */
 
 public class Admin {
@@ -113,13 +113,11 @@ public class Admin {
         String userPass = scanner.nextLine();
         String[] a = userPass.split(" ");
         scanner.close();
-//        System.out.println(Arrays.toString(a));
-//        return null;
         return (new User(Integer.parseInt(a[0]), Integer.parseInt(a[1])));
     }
 
     public void updateUserStatus(String userID, String fName, String lName, String email, String phone, String birthD) throws SQLException {
-        userDB.updateUser(userID, fName, lName,email, phone, birthD);
+        userDB.updateUser(userID, fName, lName, email, phone, birthD);
         users.clear();
         addUser();
     }
@@ -162,7 +160,6 @@ public class Admin {
     public void reloadUserDB() throws SQLException {
         users.clear();
         addUser();
-        System.out.println(users.toString());
     }
 
 }
