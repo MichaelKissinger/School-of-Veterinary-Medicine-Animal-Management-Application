@@ -162,6 +162,7 @@ public class Admin {
     public void reloadUserDB() throws SQLException {
         users.clear();
         addUser();
+        System.out.println(users.toString());
     }
 
 }

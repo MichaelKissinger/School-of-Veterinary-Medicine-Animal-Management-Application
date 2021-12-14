@@ -253,7 +253,7 @@ public class UserDB {
         createConnection();
         try {
             Statement myStmt = connection.createStatement();
-            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName +"\" , Phone = \"" + phone +"\" , Email = \"" + email +"\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
+            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
 //+ "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email + "\" Date_B= \"" + birthD
             connection.close();
             myStmt.close();
@@ -292,9 +292,68 @@ public class UserDB {
         preparedStmt.setString(7, sex);
         preparedStmt.setString(8, dateB);
         preparedStmt.setString(9, activationDate);
-
-        // execute the preparedstatement
         preparedStmt.execute();
+        preparedStmt.close();
+
+        StringBuffer stringBuffer = new StringBuffer();
+        String ab = "";
+
+        try {
+            Statement myStmt = connection.createStatement();
+            rs = myStmt.executeQuery("SELECT MAX(UserID) userID FROM USER" + ";");
+            if (rs.next())
+                ab = rs.getString("userID");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (permission.equals("Admin")) {
+            String queryy = " INSERT INTO ADMIN (UserID, Permission) values (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryy);
+            preparedStatement.setString(1, ab);
+            preparedStatement.setString(2, permission);
+            preparedStatement.execute();
+            preparedStatement.close();
+        }
+
+        if (permission.equals("Health")) {
+            String queryy = " INSERT INTO HEALTH_TECHNICIAN (UserID, Permission) values (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryy);
+            preparedStatement.setString(1, ab);
+            preparedStatement.setString(2, permission);
+            preparedStatement.execute();
+            preparedStatement.close();
+        }
+
+        if (permission.equals("Care")) {
+            String queryy = " INSERT INTO CARE_ATTENDANT (UserID, Permission) values (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryy);
+            preparedStatement.setString(1, ab);
+            preparedStatement.setString(2, permission);
+            preparedStatement.execute();
+            preparedStatement.close();
+        }
+
+        if (permission.equals("Teacher")) {
+            String queryy = " INSERT INTO TEACHER_TECHNICIAN (UserID, Permission) values (?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryy);
+            preparedStatement.setString(1, ab);
+            preparedStatement.setString(2, permission);
+            preparedStatement.execute();
+            preparedStatement.close();
+        }
+
+        if (permission.equals("Student")) {
+            String queryy = " INSERT INTO STUDENT (UserID, Permission, StudentID) values (?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(queryy);
+            preparedStatement.setString(1, ab);
+            preparedStatement.setString(2, permission);
+            preparedStatement.setString(3, "10232125");
+            preparedStatement.execute();
+            preparedStatement.close();
+        }
+//
         connection.close();
         preparedStmt.close();
     }

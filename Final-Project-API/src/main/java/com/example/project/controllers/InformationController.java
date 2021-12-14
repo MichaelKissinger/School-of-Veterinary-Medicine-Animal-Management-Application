@@ -166,12 +166,7 @@ public class InformationController {
             consumes = {MediaType.APPLICATION_JSON_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE})
     public boolean updateUserInfo(@PathVariable("UserID") int userId, @RequestBody HashMap<String, String> animalStatus) throws SQLException {
-        System.out.println(userId);
-        System.out.println(animalStatus.get("FName_edit"));
-        System.out.println(animalStatus.get("LName_edit"));
-        System.out.println(animalStatus.get("email_edit"));
-        System.out.println(animalStatus.get("phoneNumber_edit"));
-        System.out.println(animalStatus.get("birthdate_edit"));
+
 
         String userID = String.valueOf(userId);
         String fName = animalStatus.get("FName_edit");
@@ -273,8 +268,6 @@ public class InformationController {
         String birthday = userInfo.get("birthday");
         String gender = userInfo.get("gender");
 
-//
-        System.out.println(FName + LName + email);
         return true;
 
     }
