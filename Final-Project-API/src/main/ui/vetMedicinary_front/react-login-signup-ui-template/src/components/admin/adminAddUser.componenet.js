@@ -109,23 +109,23 @@ export default class AdministratorAccess extends Component {
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                     <span><strong>{this.state.FName}  {this.state.LName}</strong></span>
                                 </h6>
-                                <ul className="nav flex-column mb-2">
+                                <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminProfile"}>My Profile</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminProfile"}>My Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminUserList"}>User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminUserList"}>User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminBlockedUserList"}>Blocked User List</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
+                                        <Link style={{color: "black"}}  className="nav-link" to={"/AdminAnimalSearch"}>Animal List</Link>
                                     </li>
                                 </ul>
                                 <button
                                     onClick={this.handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                             </div>
                         </nav>
 
@@ -133,7 +133,6 @@ export default class AdministratorAccess extends Component {
                             <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
                             </div>
                             <h2 style={{ marginBottom: 20, fontSize: 20 }}> Add User</h2>
-                            {/* <div className="col-md-8 order-md-1"> */}
                             <form class="col-md-8 order-md-1 needs-validation">  
                                 <div className="col-md-6 mb-3">
                                     <label for="firstName">First Name</label>
@@ -224,7 +223,6 @@ export default class AdministratorAccess extends Component {
                                 <button
                                     onClick={this.handleSubmit}
                                     type="submit" className="btn btn-primary btn-block">Submit</button>
-                            {/* </div> */}
                             </form>
                         </main>
                     </div>

@@ -41,28 +41,28 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
                                 <h6 className="sidebar-heading d-flex flex-column align-items-center text-center px-3 mt-4 mb-1 text-muted">
                                 <span><strong>{FName}  {LName}</strong></span>
                                 </h6>
-                                <ul className="nav flex-column mb-2">
+                                <ul style={{marginTop: 30}} className="nav flex-column mb-2">
                                 <li className="nav-item">
-                                        <Link className="nav-link" to={"/AnimalCareAttendanceProfile"}>My Profile</Link>
+                                        <Link style={{color: "black"}} className="nav-link" to={"/AnimalCareAttendanceProfile"}>My Profile</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal List</Link>
+                                        <Link style={{color: "black"}} className="nav-link" to={"/AnimalCareAttendanceAnimalSearch"}>Animal List</Link>
                                     </li>
                                     {/* <li className="nav-item">
                                         <Link className="nav-link" to={"/AnimalCareAttendanceAlertAnimal"}>Alerts</Link>
                                     </li> */}
                                     <li className="nav-item">
-                                        <Link className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
+                                        <Link style={{color: "black"}} className="nav-link" to={"/AnimalCareAttendanceRequestedTreatment"}>Requested Treatment</Link>
                                     </li>
                                 </ul>
                                 <button
                                     onClick={handleLogout}
-                                    style={{marginLeft:50}} type="submit" className="btn btn-outline-primary">Logout</button>
+                                    style={{marginLeft:50}} type="submit" className="btn btn-secondary">Logout</button>
                             </div>
                         </nav>
 
                         <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-                            <h2>Profile</h2>
+                        <h1><strong>Profile</strong></h1>
                             <div className="mt-3">
                                 <table className="table table-responsive">
                                     <tbody>

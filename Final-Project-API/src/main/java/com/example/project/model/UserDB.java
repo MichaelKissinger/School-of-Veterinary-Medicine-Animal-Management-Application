@@ -15,7 +15,7 @@ public class UserDB {
     public void createConnection() {
         try {
             // You will have to enter your own SQL password below to make this work
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "9788");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost/VETMEDICINARYDB", "root", "BSh@23071367");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,8 +128,8 @@ public class UserDB {
 
         try {
             Statement myStmt = connection.createStatement();
-            String[] permissionList = {"Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
-                    "STUDENT"};
+            String[] permissionList = { "Admin", "TEACHER_TECHNICIAN", "CARE_ATTENDANT", "HEALTH_TECHNICIAN",
+                    "STUDENT" };
             for (String permission : permissionList) {
                 rs = myStmt.executeQuery("SELECT * FROM " + permission + " WHERE UserID = \"" + username + "\";");
                 if (rs.next()) {
@@ -249,12 +249,16 @@ public class UserDB {
         }
     }
 
-    public void updateUser(String userID, String fName, String lName, String email, String phone, String birthD) throws SQLException {
+    public void updateUser(String userID, String fName, String lName, String email, String phone, String birthD)
+            throws SQLException {
         createConnection();
         try {
             Statement myStmt = connection.createStatement();
-            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName +"\" , Phone = \"" + phone +"\" , Email = \"" + email +"\" , Date_B = \"" + birthD + "\" WHERE UserID = " + userID + ";");
-//+ "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email + "\" Date_B= \"" + birthD
+            myStmt.executeUpdate("UPDATE USER SET " + "Lname = \"" + lName + "\" " + ", Fname = \"" + fName
+                    + "\" , Phone = \"" + phone + "\" , Email = \"" + email + "\" , Date_B = \"" + birthD
+                    + "\" WHERE UserID = " + userID + ";");
+            // + "\" Fname= \"" + fName + "\" Phone= \"" + phone + "\" Email= \"" + email +
+            // "\" Date_B= \"" + birthD
             connection.close();
             myStmt.close();
         } catch (SQLException throwables) {
@@ -279,7 +283,7 @@ public class UserDB {
      * @throws SQLException
      */
     public void addUserToDB(String status, String password, String lName, String fName, String phone, String email,
-                            String sex, String dateB, String activationDate, String permission) throws SQLException {
+            String sex, String dateB, String activationDate, String permission) throws SQLException {
         createConnection();
         String query = " insert into USER (Status, Password, Lname, Fname, Phone , Email, Sex, Date_B, ActivationDate) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement preparedStmt = connection.prepareStatement(query);
