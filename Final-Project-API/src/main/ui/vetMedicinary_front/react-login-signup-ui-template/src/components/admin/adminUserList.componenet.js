@@ -38,7 +38,7 @@ const AdministratorAccess = () => {
     //         .then();
     //     window.location.reload(false);
     // }
- function blockUser(e, userID) {
+    function blockUser(e, userID) {
         setChangeStatus("Blocked");
         setID(userID);
         e.preventDefault();
@@ -49,7 +49,6 @@ const AdministratorAccess = () => {
             .then();
         // window.location.reload(false);
     }
-    
 
     function handleSubmit(event){
         event.preventDefault();
