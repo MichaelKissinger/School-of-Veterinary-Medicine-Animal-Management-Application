@@ -50,7 +50,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
               <ul className="navbar-nav ml-auto">
@@ -63,21 +63,6 @@ function App() {
                 <li className="nav-item">
                   <Link className="nav-link" to={"/AnimalProfile/:id"}>AnimalProfile</Link>
                 </li>
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/UserProfile"}>Student Profile</Link>
-              </li> */}
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/TeachingTechnician"}>Teaching Technician</Link>
-              </li> */}
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/AdministratorAccess"}>Administrator Access</Link>
-              </li> */}
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/AnimalCareAttendance"}>Animal Care Attendance</Link>
-              </li> */}
-                {/* <li className="nav-item">
-                <Link className="nav-link" to={"/AnimalHealthTechnician"}>Animal Health Technician</Link>
-              </li> */}
                 <li className="nav-item">
                   <Link className="nav-link" to={"/AdminAnimalSearch"}>Admin</Link>
                 </li>
@@ -96,17 +81,14 @@ function App() {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav> */}
        
-       <div className="auth-wrapper">
-       <div className="auth-inner">
+       {/* <div className="auth-wrapper">
+       <div className="auth-inner"> */}
         <Switch>
           <Route exact path='/' component={Login} />
           <Route path="/Login" component={Login} />
-          {/* <Route path="/UserProfile" component={UserProfile} /> */}
-          {/* <Route path="/SearchMain" component={SearchMain} /> */}
           <Route path="/SearchAnimal" component={SearchAnimal} />
-
           {/* Animal Profile */}
           <Route path="/AnimalProfile/:id" component={AnimalProfile} />
           <Route path="/AnimalProblems/:id" component={AnimalAddProblem} />
@@ -114,11 +96,6 @@ function App() {
           <Route path="/AnimalHistory/:id" component={AnimalAddHistory} />
           <Route path="/AnimalRestrictedProfile/:id" component={AnimalRestrictedProfile} />
           <Route path="/AnimalAddPhoto/:id" component={AnimalAddPhoto} />
-
-          {/* <Route path="/AdministratorAccess" component={AdministratorAccess} />
-            <Route path="/TeachingTechnician" component={TeachingTechnician} />
-            <Route path="/AnimalCareAttendance" component={AnimalCareAttendance}/>
-            <Route path="/AnimalHealthTechnician" component={AnimalHealthTechnician}/> */}
 
           {/* Admin */}
           <Route path="/AdminAnimalSearch" component={AdminAnimalSearch} />
@@ -150,8 +127,8 @@ function App() {
           <Route path="/StudentAnimalSearch" component={StudentAnimalSearch} />
           <Route path="/StudentProfile" component={StudentProfile} />
         </Switch>
-        </div>
-      </div> 
+        {/* </div>
+      </div>  */}
 
       </div>
     </Router>
