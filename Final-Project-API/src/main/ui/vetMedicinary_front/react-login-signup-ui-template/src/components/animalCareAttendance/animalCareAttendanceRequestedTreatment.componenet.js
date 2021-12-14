@@ -72,7 +72,7 @@ React.useEffect(() => {
                                             <tr>
                                                 <td><input className="form-control mr-sm-2" type="search" placeholder="ID" /></td>
                                                 <td><input className="form-control mr-sm-2" type="search" placeholder="Name" /></td>
-                                                <td><button className="btn btn-outline-primary" type="submit">Search</button></td>
+                                                <td><button className="btn btn-primary" type="submit">Search</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
