@@ -14,8 +14,8 @@ How To Run the Application:
 4. run the command 'npm start'
 5. Find and go to path -> 'final-project-uofeng607-981\Final-Project-API\src\main\java\com\example\project' 
 6. Open the java files with an IDE
-7. Please make sure you have Maven install on your IDE
-8. Please add mysql library to your IDE (path -> 'C:\Users\arman\Desktop\New folder (2)\final-project-uofeng607-981\Final-Project-API\mysql-connector-java-8.0.27')
+7. Please make sure you have Maven installed on your IDE
+8. Please add mysql library to your IDE (path -> 'final-project-uofeng607-981\Final-Project-API\mysql-connector-java-8.0.27')
 9. Please run the sql script where could be found -> 'final-project-uofeng607-981\VETMEDICINARYDB.sql'
 10. Change username and password for database connection in 'final-project-uofeng607-981\Final-Project-API\src\main\java\com\example\project\model' for 'UserDB' and 'JDBCConnect' classes.
 11. 'ProjectApplication.java' is the runnable class of this project, please run this class
